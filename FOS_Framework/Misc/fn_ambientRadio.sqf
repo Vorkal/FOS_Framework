@@ -13,7 +13,7 @@ Example:
 params ["_object"];
 
 //Must be able to suspend
-if (!canSuspend) exitWith {this spawn FOS_fnc_ambientRadio};
+if (!canSuspend) exitWith {this spawn _fnc_scriptName};
 
 //Set variable that signifies that this radio should be looping
 _object setVariable ["FOS_radioLoop",true,true];

@@ -24,8 +24,8 @@
  * 	Number = Decides how long spawn protection lasts
  *
  * Example(s):
- * 	[true,"INIT",3] spawn FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their starting gear. with 3 second spawn protection
- *	[true,"SAVED",0] spawn FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their gear on death. No spawn protection
+ * 	[true,"INIT",3] call FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their starting gear. with 3 second spawn protection
+ *	[true,"SAVED",0] call FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their gear on death. No spawn protection
  *
  */
 scriptName "CheckpointSystem";
