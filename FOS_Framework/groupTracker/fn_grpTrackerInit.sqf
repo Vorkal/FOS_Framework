@@ -1,8 +1,6 @@
 while {true} do {
-	{
-		if (isPlayer leader _x && _x != group player) then {
-		  [_x] call FOS_fnc_setGrpTracker;
-		};
-	} forEach allGroups;
 	sleep 5;
+	_playerGroup = allGroups select {isPlayer leader _x};
+  [_playerGroup,"b_inf",0] spawn FOS_fnc_setGrpTracker;
+
 };

@@ -14,7 +14,7 @@ if (hasInterface) then {
 	[] spawn FOS_fnc_briefing;
 	[] spawn FOS_fnc_spectatorInit;
 	[] spawn FOS_fnc_FTMarkerInit;
-	//[] spawn FOS_fnc_grpTrackerinit;
+	{[_x,nil,5] spawn FOS_fnc_grpTrackerinit} forEach BIS_fnc_listPlayers;
 	[1] spawn FOS_fnc_difficultyInit;
 
 
