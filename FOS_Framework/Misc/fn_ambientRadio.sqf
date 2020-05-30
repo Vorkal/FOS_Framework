@@ -4,10 +4,10 @@ Author: 417
 Description: makes the object play ambient radio sounds. It creates an add action option and hit event handler to make it turn off.
 
 Parameters:
-
+_object (OBJECT): The object you wish to be the radio
 
 Example:
-[allPlayers,4]
+[this] spawn FOS_fnc_ambientRadio;
 */
 
 params ["_object"];
