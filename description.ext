@@ -1,0 +1,162 @@
+/////////////////////
+/// Mission Header///
+/////////////////////
+
+class Header
+{
+  gameType = Coop;
+  minPlayers = 1;
+  maxPlayers = 32;
+};
+
+//add the user IDs of players you trust with debug console.
+enableDebugConsole[] = {};
+
+//////////////
+/// Author ///
+//////////////
+
+author = "417";
+
+///////////////////////////////
+/// Pictures and description///
+///////////////////////////////
+onLoadMission = "onLoadMission";
+overViewText = "overViewText";
+// overviewPicture = "";
+onLoadName = "onLoadName";
+// loadScreen = "";
+
+///////////////
+/// Respawn ///
+///////////////
+
+
+respawn = "BASE";		//Use base respawn
+//End mission if all players are dead. NOTE: This respawn template does not appear to work.
+respawnTemplates[] = {"EndMission"};
+
+respawnDialog = 0;		//Disable counter and leaderboard
+
+respawnDelay = 1e10;	//Make respawn timer infinite.
+
+/////////////////////////////////
+/// Playable unit manipulation///
+/////////////////////////////////
+
+
+disabledAI = 1;			//Stop AI from taking player slots
+
+respawnOnStart = -1;	//Keep onPlayerRespawn.sqf file from firing at start.
+
+//////////////////////
+/// Revive options ///
+//////////////////////
+
+ReviveMode = 0;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+ReviveUnconsciousStateMode = 1;         //0: basic, 1: advanced, 2: realistic
+ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
+ReviveRequiredItems = 0;                //0: none, 1: medkit, 2: medkit or first aid kit
+ReviveRequiredItemsFakConsumed = 0;     //0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+ReviveDelay = 15;                        //time needed to revive someone (in secs)
+ReviveMedicSpeedMultiplier = 3;         //speed multiplier for revive performed by medic
+ReviveForceRespawnDelay = 3;            //time needed to perform force respawn (in secs)
+ReviveBleedOutDelay = 500;              //unconscious state duration (in secs)
+
+/////////////
+/// Tasks ///
+/////////////
+
+taskManagement_drawDist = 500;			// Any tasks within this distance will appear, even if unassigned.
+taskManagement_propagate = 1;			// Squad leader controls the assigned task of himself and his subordinates.
+
+
+//Class useful for creating template task names. Leave empty if you don't know what it does.
+class CfgTaskDescriptions
+{
+};
+
+//////////////
+/// Dialog ///
+//////////////
+
+#include "FOS_Framework\JIP\defines.hpp"
+#include "FOS_Framework\JIP\dialogs.hpp"
+
+
+/////////////////
+/// Functions ///
+/////////////////
+
+class CfgFunctions
+{
+	#include "FOS_Framework\cfgFunctions.hpp"
+};
+
+///Parameters
+class Params
+{
+	class Example
+	{
+		title = "Example Parameter";
+		values[] = {0, 1};
+		texts[] = { "No", "Yes"};
+		default = 1;
+	};
+};
+///Endings
+class CfgDebriefing
+{
+	// Win.
+	class Win
+	{
+		win = 1;
+		title = "Mission accomplished!";
+		subtitle = "";
+		description = "";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {1,0,0,1};
+	};
+	// Lose
+	class Lose
+	{
+		win = 0;
+		title = "Mission failed";
+		subtitle = "";
+		description = "";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0.6,0.6,0.0,1};
+	};
+};
+
+class CfgNotifications {
+	class FOS_Safestart  {
+		color[] = {1,1,1,0.8};
+		colorIconPicture[] = {1,1,1,0.8};
+		colorIconText[] = {"(profilenamespace getvariable ['IGUI_TEXT_RGB_R',0])","(profilenamespace getvariable ['IGUI_TEXT_RGB_G',1])","(profilenamespace getvariable ['IGUI_TEXT_RGB_B',1])","(profilenamespace getvariable ['IGUI_TEXT_RGB_A',0.8])"};
+		description = "Safe Start ends in %1:%2";
+		iconPicture = "\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
+		priority = 7;
+		duration = 5;
+		title = "Safe Start"
+		sound = "defaultNotification";
+		soundClose = "defaultNotificationClose";
+		soundRadio = "";
+	};
+	class FOS_SafestartBegin : FOS_Safestart {
+		description = "Safe Start begins";
+	};
+	class FOS_SafestartTimer : FOS_Safestart {
+	};
+	class FOS_SafestartEnd : FOS_Safestart {
+		description = "Safe Start ends"
+	}
+};
+
+
+class Extended_InitPost_EventHandlers {
+
+};
+allowFunctionsRecompile = 1;
