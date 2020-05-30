@@ -30,15 +30,7 @@ onLoadName = "onLoadName";
 ///////////////
 /// Respawn ///
 ///////////////
-
-
-respawn = "BASE";		//Use base respawn
-//End mission if all players are dead. NOTE: This respawn template does not appear to work.
-respawnTemplates[] = {"EndMission"};
-
 respawnDialog = 0;		//Disable counter and leaderboard
-
-respawnDelay = 1e10;	//Make respawn timer infinite.
 
 /////////////////////////////////
 /// Playable unit manipulation///
