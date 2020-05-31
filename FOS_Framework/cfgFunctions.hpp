@@ -71,7 +71,7 @@ class FOS
 	class Params
 	{
 		file = "FOS_Framework\Params";
-		class getParams {};
+		class getParamValue {};
 		class saveParams {};
 	}
 	class SafeStart
