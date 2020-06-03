@@ -68,6 +68,12 @@ class FOS
 		class sideDetectsPlayers {};
 		class ambientRadio {};
 	};
+	class Params
+	{
+		file = "FOS_Framework\Params";
+		class getParamValue {};
+		class saveParams {};
+	}
 	class SafeStart
 	{
 		file = "FOS_Framework\SafeStart";

@@ -6,13 +6,12 @@ if (!canSuspend) exitWith {_this spawn FOS_fnc_setGrpTracker};
 
 //fixes a bug that can be caused by the editor.
 if (time == 0) then {
-    _initGroupId = groupID _group;
-    waitUntil {_initGroupId != groupID _group};
+    _initGroupId = _group;
+    waitUntil {_initGroupId != _group};
 };
 
-_grpMarker = format ["grpMrk_%1", groupID _group];
+_grpMarker = format ["grpMrk_%1", _group];
 _pos = getPos leader _group;
-
 
 if (getMarkerPos _grpMarker isEqualTo [0,0,0]) then {
     createMarkerLocal [_grpMarker,_pos];
@@ -31,6 +30,6 @@ if (getMarkerPos _grpMarker isEqualTo [0,0,0]) then {
 
 if (_loop > 0) exitWith {
     sleep _loop;
+    if (_group isEqualTo grpNull) exitWith {deleteMarker _grpMarker};
     _this spawn FOS_fnc_setGrpTracker;
-
 };
