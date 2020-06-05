@@ -1,3 +1,7 @@
+if (["difficulty",1] call FOS_fnc_getParamValue) then {
+    [_x] call FOS_fnc_saveParams
+};
+
 FOS_difficulty = ["difficulty",1] call FOS_fnc_getParamValue;
 
 //Increase mission played amount by one.

@@ -100,7 +100,7 @@ class Params
 		texts[] = {"Easy","Normal","Hard"};
 		default = 1;
 	};
-    class SystemSettings
+    class systemSettings
 	{
 		title = "### SYSTEM SETTINGS ###";
 		values[] = {};
@@ -116,10 +116,24 @@ class Params
     };
     class reviveSystem
     {
-        title = "Load parameters (If previously saved)";
+        title = "Vanilla Revive";
 		values[] = {0,1};
-		texts[] = {"Save","Load"};
+		texts[] = {"Off","On"};
 		default = 1;
+    };
+    class ftMarkers
+    {
+        title = "FT markers";
+        values[] = {0,1};
+        texts[] = {"Off","On"};
+        default = 1;
+    };
+    class groupMarkers
+    {
+        title = "Group markers";
+        values[] = {0,1};
+        texts[] = {"Off","On"};
+        default = 1;
     };
 };
 ///Endings
