@@ -1,5 +1,5 @@
 params ["_value","_default"];
-private ["result"];
+private ["_result"];
 
 if (["loadParams",1] call BIS_fnc_getParamValue) then {
   _result = profileNamespace getVariable ["FOS" + _value,nil];
