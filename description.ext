@@ -86,13 +86,41 @@ class CfgFunctions
 ///Parameters
 class Params
 {
-	class Example
+	class missionSettings
 	{
-		title = "Example Parameter";
-		values[] = {0, 1};
-		texts[] = { "No", "Yes"};
+		title = "### MISSION SETTINGS ###";
+		values[] = {};
+		texts[] = {};
+		default = 0;
+	};
+    class difficulty
+	{
+		title = "Difficulty";
+		values[] = {0,1,2};
+		texts[] = {"Easy","Normal","Hard"};
 		default = 1;
 	};
+    class SystemSettings
+	{
+		title = "### SYSTEM SETTINGS ###";
+		values[] = {};
+		texts[] = {};
+		default = 0;
+	};
+    class loadParams
+    {
+        title = "Load parameters (If previously saved)";
+		values[] = {0,1};
+		texts[] = {"Save","Load"};
+		default = 1;
+    };
+    class reviveSystem
+    {
+        title = "Load parameters (If previously saved)";
+		values[] = {0,1};
+		texts[] = {"Save","Load"};
+		default = 1;
+    };
 };
 ///Endings
 class CfgDebriefing
