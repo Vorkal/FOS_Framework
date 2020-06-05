@@ -7,6 +7,9 @@ if (isServer) then {
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
 	};
+	if (["revivesystem",true] call FOS_fnc_getParamValue) then {
+    	call BIS_fnc_reviveInit;
+	};
 };
 
 
