@@ -20,7 +20,7 @@ _endings = [];
 {
 	_title = (missionconfigfile >> "CfgDebriefing" >> _x >> "title") call BIS_fnc_getCfgData;
 	_description = (missionconfigfile >> "CfgDebriefing" >> _x >> "description") call BIS_fnc_getCfgData;
-	_state = (missionconfigfile >> "CfgDebriefing" >> _x >> "state") call BIS_fnc_getCfgData;
+	_state = (missionconfigfile >> "CfgDebriefing" >> _x >> "win") call BIS_fnc_getCfgDataBool;
 	if (isNil "_title") exitWith {};
 	_ending = [_x,_title,_description,_state];
 	_endings append ([_ending])
@@ -35,7 +35,7 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 {
 	_end = _this select 0;
 	_briefing = _briefing + format ["
-	<execute expression='[%1,%4,true,false,true] remoteExec [""BIS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
+	<execute expression='[%1] remoteExec [""FOS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
 	%3<br/><br/>
 	"
 	,_x select 0,_x select 1,_x select 2,_x select 3];

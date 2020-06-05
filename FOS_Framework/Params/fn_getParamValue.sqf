@@ -13,7 +13,7 @@ private ["_result"];
 _profileVar = profileNameSpace getVariable ("FOS_" + _value);
 
 if (["loadParams",1] call BIS_fnc_getParamValue isEqualTo 1 && !(isNil "_profileVar")) then {
-  _result = profileNamespace getVariable ["FOS_" + _value,_default];
+  _result = profileNamespace getVariable ("FOS_" + _value);
 } else {
   _result = [_value,_default] call BIS_fnc_getParamValue;
 };

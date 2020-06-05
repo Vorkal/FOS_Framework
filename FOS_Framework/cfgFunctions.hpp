@@ -63,6 +63,7 @@ class FOS
 		class sideDetectsPlayers {};
 		class ambientRadio {};
 		class protectedUnit {};
+		class endMission {};
 	};
 	class Params
 	{

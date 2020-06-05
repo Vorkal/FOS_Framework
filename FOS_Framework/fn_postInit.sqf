@@ -20,9 +20,9 @@ if (hasInterface) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
-		{[_x,nil,5] spawn FOS_fnc_grpTrackerinit} forEach BIS_fnc_listPlayers;
+		//[] spawn FOS_fnc_grpTrackerinit;
 	};
-	[1] spawn FOS_fnc_difficultyInit;
+	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
 
 	if (isMultiplayer) then {
