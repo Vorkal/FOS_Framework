@@ -7,8 +7,8 @@ if (isServer) then {
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
 	};
-	if (["revivesystem",true] call FOS_fnc_getParamValue) then {
-    	call BIS_fnc_reviveInit;
+	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
+    	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
 	};
 };
 
@@ -16,8 +16,10 @@ if (isServer) then {
 if (hasInterface) then {
 	[] spawn FOS_fnc_briefing;
 	[] spawn FOS_fnc_spectatorInit;
-	[] spawn FOS_fnc_FTMarkerInit;
-	if (["groupMarkers",true]) then {
+	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
+		[] spawn FOS_fnc_FTMarkerInit;
+	};
+	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		{[_x,nil,5] spawn FOS_fnc_grpTrackerinit} forEach BIS_fnc_listPlayers;
 	};
 	[1] spawn FOS_fnc_difficultyInit;
