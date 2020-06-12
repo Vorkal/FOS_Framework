@@ -19,6 +19,19 @@ _ftEventHandlers = {
 				sleep 0.1;
 				_this setMarkerColor "colorBlack";
 			};
+			if ("handgrenade" in toLower _magazine || "minigrenade" in toLower _magazine) then {
+				[_unit,_projectile] spawn {
+					params ["_unit","_projectile"];
+					_mrk = createMarkerLocal [name _unit + str _projectile + str random 999, getPos _projectile];
+					_mrk setMarkerType "Loc_SmallTree";
+					_mrk setMarkerSizeLocal [1.25,1.25];
+					_mrk setMarkerColorLocal "colorRed";
+					while {_projectile != objNull} do {
+						_mrk setMarkerPosLocal getpos _projectile;
+					};
+					deleteMarker _mrk;
+				};
+			};
 		}];
 
 	} forEach _units;
