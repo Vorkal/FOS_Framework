@@ -65,7 +65,7 @@ _ftEventHandlers = {
 };
 
 [units group player] call _ftEventHandlers;
-//Alt click map click handler
+
 addMissionEventHandler ["MapSingleClick", {
 	params ["_units", "_pos", "_alt", "_shift"];
 	if (!(_alt) && !(_shift)) then {
