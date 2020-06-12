@@ -1,3 +1,5 @@
+
+
 params ["_unit"];
 private ["_type","_size","_size_Shadow","_alpha_Shadow"];
 _FTMarker = format ["FTMrk_%1", name _unit];
@@ -7,6 +9,17 @@ _pos = getPos _unit;
 _color = "Color" + assignedTeam _unit;
 //Convert string to match white marker color classname
 if (_color isEqualTo "ColorMAIN") then {_color = "ColorWhite"};
+
+//Disable FT markers while unnit is in zeus
+if (!isNull findDisplay 312) exitWith {
+	 _FTMarker setMarkerAlphaLocal 0;
+	 _FTMarker_Shadow setMarkerAlphaLocal 0;
+};
+
+
+//This will probably break dialogs that use map or mainmap type
+/* //Don't bother updating marker pos if player doesn't have any way to see them.
+if !(visibleMap || visibleGPS) exitWith {}; */
 
 
 // CREATE MARKERS (If they don't exist)
