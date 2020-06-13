@@ -31,6 +31,7 @@ onLoadName = "onLoadName";
 /// Respawn ///
 ///////////////
 respawn = 3;
+respawnDelay = 1e10;
 respawnDialog = 0;		//Disable counter and leaderboard
 
 /////////////////////////////////
