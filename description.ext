@@ -30,6 +30,7 @@ onLoadName = "onLoadName";
 ///////////////
 /// Respawn ///
 ///////////////
+respawn = 3;
 respawnDialog = 0;		//Disable counter and leaderboard
 
 /////////////////////////////////
