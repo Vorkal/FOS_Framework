@@ -1,14 +1,11 @@
 
 params ["_group","_markerType","_text","_loop"];
+private ["_initGroupId"];
 
 if (_group isEqualTo group player) exitWith {};
 if (!canSuspend) exitWith {_this spawn FOS_fnc_setGrpTracker};
 
-//fixes a bug that can be caused by the editor.
-if (time == 0) then {
-    _initGroupId = _group;
-    waitUntil {_initGroupId != _group};
-};
+
 
 _grpMarker = format ["grpMrk_%1", _group];
 _pos = getPos leader _group;
@@ -26,6 +23,14 @@ if (getMarkerPos _grpMarker isEqualTo [0,0,0]) then {
     _grpMarker setMarkerPosLocal _pos;
     _grpMarker setMarkerTypeLocal _markerType;
     _grpMarker setMarkerText _text;
+};
+
+//fixes a bug that can be caused by the editor.
+if (time == 0) then {
+    _initGroupId = _group;
+    waitUntil {time > 0};
+    deleteMarker _grpMarker;
+    _this spawn FOS_fnc_setGrpTracker;
 };
 
 if (_loop > 0) exitWith {

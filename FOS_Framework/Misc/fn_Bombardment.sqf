@@ -28,7 +28,7 @@ params [
   ["_magazine", currentMagazine _unit,["string"]],
   ["_amount", 2,[1]],
   ["_delay", 10,[5]],
-  ["_condition", true,[true,false]]]
+  ["_condition", true,[true,false]]
  ];
 
 if (_unit isEqualTo objNull) exitWith {};

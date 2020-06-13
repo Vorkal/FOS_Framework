@@ -23,11 +23,6 @@ class FOS
 		file = "FOS_Framework\Briefing";
 		class briefing {};
 	}
-	class CBA {
-		file = "FOS_Framework\CBA";
-		class CBAMenu {};
-		requiredAddons[] = {"cba_main"};
-	}
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";
@@ -68,6 +63,7 @@ class FOS
 		class sideDetectsPlayers {};
 		class ambientRadio {};
 		class protectedUnit {};
+		class endMission {};
 	};
 	class Params
 	{

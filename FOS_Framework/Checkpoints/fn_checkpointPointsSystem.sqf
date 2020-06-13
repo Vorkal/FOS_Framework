@@ -30,7 +30,7 @@ switch (typeName _var) do {
 		//Initialize points
 		//missionNameSpace setVariable ["FOS_PointsLeft",0,true];
 
-		[player ,["Checkpoint system",["Call checkpoint","
+		/* [player ,["Checkpoint system",["Call checkpoint","
 		<font color='#FF8C00'>CHECKPOINT SYSTEM</font color>
 		<br/><br/>
 		<font color='#ffff00'><execute expression='[""spawnsLeft""] call FOS_fnc_checkpointPointsSystem'>Amount of checkpoints left</execute></font color>.
@@ -41,7 +41,7 @@ switch (typeName _var) do {
 		<br/><br/>
 		Complete optional tasks to increase the amount of checkpoints available to call!
 		"
-		]]] remoteExec ["createDiaryRecord",0,true];
+		]]] remoteExec ["createDiaryRecord",0,true]; */
 
 		if (!isMultiplayer) then {systemChat "FOS: Call Checkpoints briefing menu created"};
 	};

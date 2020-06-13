@@ -43,7 +43,7 @@ disabledAI = 1;			//Stop AI from taking player slots
 /// Revive options ///
 //////////////////////
 
-ReviveMode = 0;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+ReviveMode = 1;                         //0: disabled, 1: enabled, 2: controlled by player attributes
 ReviveUnconsciousStateMode = 1;         //0: basic, 1: advanced, 2: realistic
 ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
 ReviveRequiredItems = 0;                //0: none, 1: medkit, 2: medkit or first aid kit
@@ -100,7 +100,7 @@ class Params
 		texts[] = {"Easy","Normal","Hard"};
 		default = 1;
 	};
-    class SystemSettings
+    class systemSettings
 	{
 		title = "### SYSTEM SETTINGS ###";
 		values[] = {};
@@ -109,17 +109,31 @@ class Params
 	};
     class loadParams
     {
-        title = "Load parameters (If previously saved)";
+        title = "Load parameters (Be sure to change this to save if you change below settings)";
 		values[] = {0,1};
 		texts[] = {"Save","Load"};
 		default = 1;
     };
     class reviveSystem
     {
-        title = "Load parameters (If previously saved)";
+        title = "Vanilla Revive";
 		values[] = {0,1};
-		texts[] = {"Save","Load"};
+		texts[] = {"Off","On"};
 		default = 1;
+    };
+    class ftMarkers
+    {
+        title = "FT markers";
+        values[] = {0,1};
+        texts[] = {"Off","On"};
+        default = 1;
+    };
+    class groupMarkers
+    {
+        title = "Group markers";
+        values[] = {0,1};
+        texts[] = {"Off","On"};
+        default = 1;
     };
 };
 ///Endings

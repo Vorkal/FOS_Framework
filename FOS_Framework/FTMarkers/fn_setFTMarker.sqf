@@ -1,3 +1,5 @@
+
+
 params ["_unit"];
 private ["_type","_size","_size_Shadow","_alpha_Shadow"];
 _FTMarker = format ["FTMrk_%1", name _unit];
@@ -8,6 +10,17 @@ _color = "Color" + assignedTeam _unit;
 //Convert string to match white marker color classname
 if (_color isEqualTo "ColorMAIN") then {_color = "ColorWhite"};
 
+//Disable FT markers while unnit is in zeus
+if (!isNull findDisplay 312) exitWith {
+	 _FTMarker setMarkerAlphaLocal 0;
+	 _FTMarker_Shadow setMarkerAlphaLocal 0;
+};
+
+
+//This will probably break dialogs that use map or mainmap type
+/* //Don't bother updating marker pos if player doesn't have any way to see them.
+if !(visibleMap || visibleGPS) exitWith {}; */
+
 
 // CREATE MARKERS (If they don't exist)
 if (getMarkerPos _FTMarker isEqualTo [0,0,0] || getMarkerPos _FTMarker_Shadow isEqualTo [0,0,0]) then {
@@ -15,21 +28,11 @@ if (getMarkerPos _FTMarker isEqualTo [0,0,0] || getMarkerPos _FTMarker_Shadow is
 	//Create shadow
 	createMarkerLocal [_FTMarker_Shadow,_pos];
 	_FTMarker_Shadow setMarkerShapeLocal "ICON";
+	_FTMarker_Shadow setMarkerColorLocal "colorBlack";
 
 	//Create marker
 	createMarkerLocal [_FTMarker,_pos];
 	_FTMarker setMarkerShapeLocal "ICON";
-
-	//Garbage collector
-	_x spawn {
-		_mrk = format ["FTMrk_%1", _this];
-		_mrk_Shadow = format ["FTMrk_%1_Shadow", _this];
-		waitUntil {sleep 1; !(alive _this)};
-		_deathTime = time;
-		waitUntil {sleep 1; time > _deathTime + 300};
-		[_mrk] spawn BIS_fnc_hideMarker;
-		[_mrk_Shadow] spawn BIS_fnc_hideMarker;
-	}
 };
 
 //if unit is up
@@ -46,17 +49,8 @@ if (alive _unit && lifeState _unit == "INCAPACITATED") then {
 	_size = [0.75,0.75];
 };
 
-// If unit is dead
-if (!alive _unit) then {
-	_type = "KIA";
-	_size_Shadow = [0,0];
-	_size = [0.5,0.5];
-};
-
-
-
 _FTMarker_Shadow setMarkerTypeLocal _type;
-_FTMarker_Shadow setMarkerColorLocal "colorBlack";
+
 _FTMarker_Shadow setMarkerSizeLocal _size_Shadow;
 _FTMarker_Shadow setMarkerAlphaLocal 1;
 _FTMarker_Shadow setMarkerPosLocal _pos;
