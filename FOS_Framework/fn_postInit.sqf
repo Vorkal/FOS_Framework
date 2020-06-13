@@ -1,6 +1,7 @@
+[] spawn FOS_fnc_checkpointSystemInit;
+
 if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;
-	[] spawn FOS_fnc_checkpointSystemInit;
 	[1] spawn FOS_fnc_difficultyInit;
 	if (isMultiplayer) then {
 		["init"] spawn FOS_fnc_safeStartServerInit;

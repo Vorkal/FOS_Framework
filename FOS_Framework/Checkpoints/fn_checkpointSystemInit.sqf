@@ -12,6 +12,8 @@ player addEventHandler ["killed", {
 
 }];
 
-[true] call FOS_fnc_checkpointPointsSystem;
+if (isServer) then {
+	[true] call FOS_fnc_checkpointPointsSystem;
+};
 
 if (!isMultiplayer) then {systemChat "FOS: Checkpoint system initialized";};
