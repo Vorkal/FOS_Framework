@@ -2,7 +2,7 @@
 
 if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;
-	[1] spawn FOS_fnc_difficultyInit;
+	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 	if (isMultiplayer) then {
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
