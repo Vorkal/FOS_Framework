@@ -1,5 +1,5 @@
-if (["loadParams"] call FOS_fnc_getParamValue isEqualTo 1) then {
-    [_x] call FOS_fnc_saveParams;
+if (["loadParams"] call FOS_fnc_getParamValue isEqualTo 0) then {
+    [] call FOS_fnc_saveParams;
 };
 
 FOS_difficulty = ["difficulty",1] call BIS_fnc_getParamValue;
