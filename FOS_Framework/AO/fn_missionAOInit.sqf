@@ -1,55 +1,77 @@
+/*
+File: fn_coverMap.sqf
+Author: Karel Moricky
+
+Description:
+Covers unused part of the map
+
+Parameter(s):
+_this: OBJECT - Area Trigger
+
+Returns:
+Nothing
+*/
 params [
 	["_markerName","AO"],
 	["_createMissionAO",true],
 	["_cacheOutsideAO",false]
 ];
 
-//No one needs to run this except server
-if !(isServer) exitWith {};
+_pos = getMarkerPos _markerName;
+_posX = _pos select 0;
+_posY = _pos select 1;
+_size = getMarkerSize _markerName;
+_sizeX = _size select 0;
+_sizeY = _size select 1;
+_dir = 0;
+_sizeOut = 100000;
+_sizeBorder = (_sizeX max _sizeY) / 50;
 
-//Exit if the mission maker requests missionAO be disabled.
-if (_createMissionAO isEqualTo false) exitWith {["FOS: MissionAO function exiting! _createMissionAO value is false!"] call BIS_fnc_logFormat};
-//Exit if map marker is missing
-if (getMarkerPos "AO" isEqualTo [0,0,0]) exitWith {["FOS: MissionAO function exiting! AO marker is missing!"] call BIS_fnc_logFormat};
-//AO map marker is not a square
-if !(markerShape "AO" isEqualTo "RECTANGLE") exitWith {
-	["AO Marker is a (%1). Must be ('RECTANGLE')",markerShape "AO"] call BIS_fnc_error;
-};
-
-//Remove old borders if they exist
-//for "_i" from 0 to 270 step 90 do {deleteMarker (format ["FOS_fnc_CoverMap_%1",_i])};
-
-_AO = _markerName;
-_markerWidth = getMarkerPos _AO # 0;
-_markerHeight = getMarkerPos _AO # 1;
-_sizeX = getMarkerSize _AO # 0;
-_sizeY = getMarkerSize _AO # 1;
-_dir = getMarkerPos _AO # 2;
-
-_sizeOut = 50000;
 
 for "_i" from 0 to 270 step 90 do {
-	_size1 = [_sizeX,_sizeY] select (abs cos _i);
-	_size2 = [_sizeX,_sizeY] select (abs sin _i);
-	_sizeMarker = [_size2,_sizeOut] select (abs sin _i);
+	_sizeMarker = [_sizeX,_sizeOut] select ((_i / 90) % 2);
 	_dirTemp = _dir + _i;
 	_markerPos = [
-		_markerWidth + (sin _dirTemp * _sizeOut),
-		_markerHeight + (cos _dirTemp * _sizeOut)
+		_posX + (sin _dirTemp * (_sizeX + _sizeOut)),
+		_posY + (cos _dirTemp * (_sizeY + _sizeOut))
 	];
-	[_i,_markerPos,[_sizeMarker,_sizeOut - _size1]] call bis_fnc_log;
-	_marker = format ["FOS_fnc_CoverMap_%1",_i];
-	createmarker [_marker,_markerPos];
-	_marker setmarkerpos _markerPos;
-	_marker setmarkersize [_sizeMarker,_sizeOut - _size1];
+	_marker = createmarker [format ["zone_%1",_i],_markerPos];
+	_marker setmarkersize [_sizeMarker,_sizeOut];
 	_marker setmarkerdir _dirTemp;
 	_marker setmarkershape "rectangle";
 	_marker setmarkerbrush "solidFull";
-	_marker setmarkercolor "colorBlack";
+	_marker setmarkercolor "colorblack";
+
+	//--- White borders
+	_sizeMarker = [_sizeX,_sizeY + _sizeBorder * 2] select ((_i / 90) % 2);
+	//_sizeBorderTemp = if (_i == 90) then {_sizeBorder * 2} else {_sizeBorder};
+	_sizeBorderTemp = _sizeBorder;
+	_markerPos = [
+		_posX + (sin _dirTemp * (_sizeX + _sizeBorderTemp)),
+		_posY + (cos _dirTemp * (_sizeY + _sizeBorderTemp))
+	];
+	for "_m" from 0 to 7 do {
+		_marker = createmarker [format ["zoneBorder_%1_%2",_i,_m],_markerPos];
+		_marker setmarkersize [_sizeMarker,_sizeBorderTemp];
+		_marker setmarkerdir _dirTemp;
+		_marker setmarkershape "rectangle";
+		_marker setmarkerbrush "solid";
+		_marker setmarkercolor "colorwhite";
+	};
 };
 
-_AO setMarkerBrush "Border";
+//--- Black frame Inner
+_marker = createmarker ["zoneBorderInner",_pos];
+_marker setmarkersize [_sizeX,_sizeY];
+_marker setmarkerdir 0;
+_marker setmarkershape "rectangle";
+_marker setmarkerbrush "border";
+_marker setmarkercolor "colorblack";
 
-//TODO: Cache outside AO
-
-if (!isMultiplayer) then {systemChat "FOS: AO initialized"};
+//--- Black frame Outer
+_marker = createmarker ["zoneBorderOuter",_pos];
+_marker setmarkersize [_sizeX + _sizeBorder * 2,_sizeY + _sizeBorder * 2];
+_marker setmarkerdir 0;
+_marker setmarkershape "rectangle";
+_marker setmarkerbrush "border";
+_marker setmarkercolor "colorblack";
