@@ -26,6 +26,7 @@ _curator addCuratorEditableObjects [(entities ""),true];
 _curator setCuratorWaypointCost 0;
 {_curator setCuratorCoef [_x,0];} forEach ["place","edit","delete","destroy","group","synchronize"];
 
+// Work around I found from 3den enhanced
 _curator addeventhandler ["curatorFeedbackMessage",{_this call bis_fnc_showCuratorFeedbackMessage;}];
 _curator addeventhandler ["curatorPinged",{_this call bis_fnc_curatorPinged;}];
 _curator addeventhandler ["curatorObjectPlaced",{_this call bis_fnc_curatorObjectPlaced;}];
