@@ -26,5 +26,16 @@ _curator addCuratorEditableObjects [(entities ""),true];
 _curator setCuratorWaypointCost 0;
 {_curator setCuratorCoef [_x,0];} forEach ["place","edit","delete","destroy","group","synchronize"];
 
+_curator addeventhandler ["curatorFeedbackMessage",{_this call bis_fnc_showCuratorFeedbackMessage;}];
+_curator addeventhandler ["curatorPinged",{_this call bis_fnc_curatorPinged;}];
+_curator addeventhandler ["curatorObjectPlaced",{_this call bis_fnc_curatorObjectPlaced;}];
+_curator addeventhandler ["curatorObjectEdited",{_this call bis_fnc_curatorObjectEdited;}];
+_curator addeventhandler ["curatorWaypointPlaced",{_this call bis_fnc_curatorWaypointPlaced;}];
+_curator addeventhandler ["curatorObjectDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
+_curator addeventhandler ["curatorGroupDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
+_curator addeventhandler ["curatorWaypointDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
+_curator addeventhandler ["curatorMarkerDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
+
+
 //Return zeus object
 _curator
