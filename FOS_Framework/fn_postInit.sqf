@@ -1,3 +1,4 @@
+[] spawn FOS_fnc_debugSystemInit;
 [] spawn FOS_fnc_checkpointSystemInit;
 
 if (isServer) then {
@@ -12,7 +13,6 @@ if (isServer) then {
     	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
 	};
 };
-
 
 if (hasInterface) then {
 	[] spawn FOS_fnc_briefing;

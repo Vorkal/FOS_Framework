@@ -64,4 +64,4 @@ if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
 	#include "adminBriefing.sqf";
 };
 
-if (!isMultiplayer) then {systemChat "FOS: briefing system initialized"};
+"FOS: briefing system initialized" call FOS_fnc_debugSystemAdd;

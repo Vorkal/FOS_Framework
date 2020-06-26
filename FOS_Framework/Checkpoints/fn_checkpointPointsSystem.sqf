@@ -45,7 +45,7 @@ switch (typeName _var) do {
 		"
 		]]] remoteExec ["createDiaryRecord",0,true];
 
-		if (!isMultiplayer) then {systemChat "FOS: Call Checkpoints briefing menu created"};
+		"FOS: Call Checkpoints briefing menu created" call FOS_fnc_debugSystemAdd
 	};
 	case "SCALAR": {
 	if (!isServer) exitWith {};
