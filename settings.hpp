@@ -26,11 +26,11 @@
 #define LOADSCREENIMAGE "" //Image seen on load screen
 #define BRIEFINGNAME "TEST"
 
-//#define OverviewDescription "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
+#define OverviewDescription "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OverviewPicture "" //Image seen on mission select screen
 
 #define RespawnType 3 //set to 3 for MP respawn. set to 0 for no respawn.
-#define RespawnTime 5 //Respawn delay for players in seconds
+#define RespawnTime 1e10 //Respawn delay for players in seconds
 #define VehicleRespawnDelay 30 // respawn delay for vehicles in seconds
 #define RespawnButton 1 //Allows players to respawn themselves in the menu
 #define RespawnPrompt 1 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
@@ -40,7 +40,8 @@
 /// VANILLA REVIVE ///
 //////////////////////
 
-#define	reviveEnabled	1
+#define	reviveEnabled 1
+
 //////////////////
 /// MISSION AO ///
 //////////////////

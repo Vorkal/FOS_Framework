@@ -1,12 +1,14 @@
+#include "settings.hpp"
+
 /////////////////////
 /// Mission Header///
 /////////////////////
 
 class Header
 {
-  gameType = Coop;
-  minPlayers = 1;
-  maxPlayers = 32;
+  gameType = GAMETYPE;
+  minPlayers = MINPLAYERS;
+  maxPlayers = MAXPLAYERS;
 };
 
 //add the user IDs of players you trust with debug console.
@@ -16,28 +18,27 @@ enableDebugConsole[] = {};
 /// Author ///
 //////////////
 
-author = "417";
+author = AUTHOR;
 
 ///////////////////////////////
 /// Pictures and description///
 ///////////////////////////////
-onLoadMission = "onLoadMission";
-overViewText = "overViewText";
-// overviewPicture = "";
-onLoadName = "onLoadName";
-// loadScreen = "";
+onLoadMission = LOADSCREENDESCRIPTON;
+overViewText = OverviewDescription;
+overviewPicture = OverviewPicture;
+onLoadName = onLoadName;
+loadScreen = LOADSCREENIMAGE;
 
 ///////////////
 /// Respawn ///
 ///////////////
-respawn = 3;
-respawnDelay = 1e10;
-respawnDialog = 0;		//Disable counter and leaderboard
+respawn = RespawnType;
+respawnDelay = RespawnTime;
+respawnDialog = RespawnPrompt;		//Disable counter and leaderboard
 
 /////////////////////////////////
 /// Playable unit manipulation///
 /////////////////////////////////
-
 
 disabledAI = 1;			//Stop AI from taking player slots
 
