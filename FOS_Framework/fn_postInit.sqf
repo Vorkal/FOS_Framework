@@ -13,6 +13,9 @@ if (isServer) then {
 	};
 };
 
+if (!isMultiplayer) then {
+	[] spawn FOS_fnc_debugSystemInit;
+};
 
 if (hasInterface) then {
 	[] spawn FOS_fnc_briefing;

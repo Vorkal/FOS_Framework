@@ -30,6 +30,12 @@ class FOS
 		class checkpointSystem {};
 		class checkpointPointsSystem {};
 	};
+	class Debug
+	{
+		file = "FOS_Framework\Debug";
+		class debugSystemAdd {};
+		class debugSystemInit {};
+	}
 	class Difficulty
 	{
 		file = "FOS_Framework\Difficulty";
