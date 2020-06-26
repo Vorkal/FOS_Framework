@@ -35,6 +35,7 @@ class FOS
 		file = "FOS_Framework\Debug";
 		class debugSystemAdd {};
 		class debugSystemInit {};
+		class debugSystemCopy {};
 	}
 	class Difficulty
 	{
