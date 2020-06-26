@@ -1,9 +1,12 @@
 
 
 params ["_unit"];
-private ["_type","_size","_size_Shadow","_alpha_Shadow"];
+private ["_type","_size","_size_Shadow","_alpha_Shadow","_tfarcondition"];
 _FTMarker = format ["FTMrk_%1", name _unit];
 _FTMarker_Shadow = format ["FTMrk_%1_Shadow", name _unit];
+_FTMarker_Sel = format ["FTMrk_%1_Sel", name _unit];
+_FTMarker_Speech = format ["FTMrk_%1_Speech", name _unit];
+
 _pos = getPos _unit;
 //Find the current team
 _color = "Color" + assignedTeam _unit;
@@ -62,3 +65,49 @@ _FTMarker setMarkerSizeLocal _size;
 _FTMarker setMarkerAlphaLocal 1;
 _FTMarker setMarkerPosLocal _pos;
 _FTMarker setMarkerDirLocal (direction _unit);
+
+if (_unit in groupSelectedUnits player) then {
+	createMarkerLocal [_FTMarker_Sel,_pos];
+	_FTMarker_Sel setMarkerPosLocal _pos;
+	_FTMarker_Sel setMarkerShapeLocal "ICON";
+	_FTMarker_Sel setMarkerTypeLocal "mil_circle";
+	_FTMarker_Sel setMarkerColorLocal _color;
+} else {deleteMarker _FTMarker_Sel};
+
+
+if (!isNil "TFAR_fnc_isSpeaking") then {_tfarcondition = _unit call TFAR_fnc_isSpeaking} else {_tfarcondition = false};
+
+if (getPlayerChannel _unit != -1 || _tfarcondition) then {
+	for "_i" from 1 to 3 do {
+		_mrk = (_FTMarker_Speech + str _i);
+		createMarkerLocal [_mrk,_pos];
+		_ctrl = ((findDisplay 12) displayCtrl 51);
+		_scale = (ctrlMapScale _ctrl) * 200;
+		switch (_i) do {
+		    case (1): {
+				_mrkPos = _pos getPos [_scale, (getDir _unit) - 55];
+				_mrk setMarkerPosLocal _mrkPos;
+				_mrk setMarkerDirLocal (_unit getDir _mrkPos);
+		    };
+			case (2): {
+				_mrkPos = _pos getPos [_scale, (getDir _unit)];
+				_mrk setMarkerPosLocal _mrkPos;
+				_mrk setMarkerDirLocal (_unit getDir _mrkPos);
+		    };
+			case (3): {
+				_mrkPos = _pos getPos [_scale, (getDir _unit) + 55];
+				_mrk setMarkerPosLocal _mrkPos;
+				_mrk setMarkerDirLocal (_unit getDir _mrkPos);
+		    };
+		};
+		_mrk setMarkerShapeLocal "ICON";
+		_mrk setMarkerSizeLocal [0.15,0.75];
+		_mrk setMarkerTypeLocal "mil_box";
+		_mrk setMarkerColorLocal _color;
+	};
+} else {
+	for "_i" from 1 to 3 do {
+		_mrk = (_FTMarker_Speech + str _i);
+		deleteMarker _mrk;
+	};
+}
