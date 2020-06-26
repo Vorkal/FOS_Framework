@@ -7,12 +7,12 @@
 * CHANGING #DEFINE OR THE MIDDLE TEXT WILL CAUSE A PARSING ERROR
 */
 
-///////////////////////////////////////////////////////////////////////
-/*NOTE: NONE OF THIS WORKS YET. YOU STILL HAVE TO EDIT THE CORE FILES*/
-///////////////////////////////////////////////////////////////////////
+//Just a catcher to make sure it is not overwriting settings
+#ifndef FOSSETTINGS
 
-
-
+///////////////////////
+/// MISSION DETAILS ///
+//////////////////////
 
 //NOTE: These settings will not restrict player count or alter functionality. They are purely server browser info.
 #define GAMETYPE "TEST" // the gametype of your mission
@@ -21,33 +21,59 @@
 
 #define AUTHOR "Mission Maker" //Name of the mission maker
 
-#define onLoadName "onLoadName" //Title of the mission seen on load screen
+#define MISSIONTITLE "onLoadName" //Title of the mission seen on load screen
 #define LOADSCREENDESCRIPTON "LOADSCREENDESCRIPTON" //Description of the mission seen on load screen
 #define LOADSCREENIMAGE "" //Image seen on load screen
 #define BRIEFINGNAME "TEST"
 
-#define OverviewDescription "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
-#define OverviewPicture "" //Image seen on mission select screen
+#define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
+#define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-#define RespawnType 3 //set to 3 for MP respawn. set to 0 for no respawn.
-#define RespawnTime 1e10 //Respawn delay for players in seconds
-#define VehicleRespawnDelay 30 // respawn delay for vehicles in seconds
-#define RespawnButton 1 //Allows players to respawn themselves in the menu
-#define RespawnPrompt 1 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
-#define RespawnOnSpawn -1 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
+
+
+
+
+////////////////////////
+/// RESPAWN SETTINGS ///
+///////////////////////
+
+
+#define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
+#define RESPAWNTIME 1e10 //Respawn delay for players in seconds
+#define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
+#define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
+#define RESPAWNPROMPT 1 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
+#define RESPAWNONSPAWN -1 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
+#define	REVIVEENABLED 1 //This should turn off by default if ACE is detected
 
-#define	reviveEnabled 1
 
 //////////////////
-/// MISSION AO ///
+/// DIFFICULTY ///
 //////////////////
 
-#define MissionAO true //use the marker named "AO" to block off the area outside of it.
-#define MissionAO_PunishPlayers true //Punish players for leaving the mission AO
-#define MissionAO_ignoreAir true //Ignore air vehicles outside AO
-#define MissionAO_punishDelayTime 30 //Time before players are damaged for leaving AO
-#define MissionAO_CacheOutsideAO false //Cache all objects outside missionAO at mission start
+#define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
+#define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params
+
+//////////////////////////
+/// OVERRIDE FUNCTIONS ///
+//////////////////////////
+/*
+Change any of these to false to completely turn off the functionality
+Safer method than deleting files
+*/
+
+#define	MISSIONAO true
+#define BRIEFING true
+#define CHECKPOINTSYSTEM true
+#define DEBUGMESSAGESYSTEM true
+#define JIPMENU true
+#define FTMARKERS true
+#define GROUPTRACKER true
+#define SAFESTART true
+#define SPECTATOR true
+
+#endif

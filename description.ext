@@ -24,9 +24,9 @@ author = AUTHOR;
 /// Pictures and description///
 ///////////////////////////////
 onLoadMission = LOADSCREENDESCRIPTON;
-overViewText = OverviewDescription;
-overviewPicture = OverviewPicture;
-onLoadName = onLoadName;
+overViewText = OVERVIEWDESCRIPTION;
+overviewPicture = OVERVIEWPICTURE;
+onLoadName = ONLOADNAME;
 loadScreen = LOADSCREENIMAGE;
 
 ///////////////
@@ -46,7 +46,7 @@ disabledAI = 1;			//Stop AI from taking player slots
 /// Revive options ///
 //////////////////////
 
-ReviveMode = 1;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+ReviveMode = REVIVEENABLED;                         //0: disabled, 1: enabled, 2: controlled by player attributes
 ReviveUnconsciousStateMode = 1;         //0: basic, 1: advanced, 2: realistic
 ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
 ReviveRequiredItems = 0;                //0: none, 1: medkit, 2: medkit or first aid kit

@@ -1,4 +1,7 @@
 if !(isServer) exitWith {};
+
+#include "..\..\settings.hpp"
+if !(SAFESTART) exitWith {};
 sleep 2;
 
 _time = missionNamespace getVariable ["FOS_SafeStartTimer",330];
@@ -9,4 +12,3 @@ if (missionNamespace getVariable ["FOS_Safemode",true]) then {
 	[false] call FOS_fnc_safeStartToggleServer;
 
 };
-

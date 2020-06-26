@@ -1,3 +1,8 @@
+#include "..\..\settings.hpp"
+
+
+if !(CHECKPOINTSYSTEM) exitWith {};
+
 _saveInitLoadout = getUnitLoadout player;
 player setVariable ["FOS_InitPlayerloadout",_saveInitLoadout,false];
 

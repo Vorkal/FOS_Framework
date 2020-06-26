@@ -1,3 +1,6 @@
+#include "..\..\settings.hpp"
+if !(GROUPTRACKER) exitWith {};
+
 while {true} do {
 	sleep 5;
 	_playerGroup = allGroups select {isPlayer leader _x};

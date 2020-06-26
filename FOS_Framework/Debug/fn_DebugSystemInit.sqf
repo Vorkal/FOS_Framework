@@ -8,6 +8,9 @@ You can also run a different fuction to copy all debug messages to your clipboar
 
 */
 
+#include "..\..\settings.hpp"
+if !(DEBUGMESSAGESYSTEM) exitWith {};
+
 scriptName "FOS_debugSystem";
 params [["_debug",true,[true]],["_frequency",5,[123]]];
 

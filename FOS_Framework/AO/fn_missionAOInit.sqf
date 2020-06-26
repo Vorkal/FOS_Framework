@@ -17,6 +17,13 @@ params [
 	["_cacheOutsideAO",false]
 ];
 
+
+#include "..\..\settings.hpp"
+
+if !(MISSIONAO) exitWIth {};
+if (getMarkerPos _markerName isEqualTo [0,0,0]) exitWith {};
+
+
 _pos = getMarkerPos _markerName;
 _posX = _pos select 0;
 _posY = _pos select 1;
