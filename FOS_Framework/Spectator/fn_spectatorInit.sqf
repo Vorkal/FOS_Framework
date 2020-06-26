@@ -17,6 +17,6 @@ player addEventHandler ["respawn",{
 	hideBody _corpse;
 
 
-	}];
+}];
 
-if (!isMultiplayer) then {systemChat "FOS: Spectator system initialized"};
+"FOS: Spectator system initialized" call FOS_fnc_debugSystemAdd

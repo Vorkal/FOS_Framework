@@ -16,4 +16,4 @@ if (isServer) then {
 	[true] call FOS_fnc_checkpointPointsSystem;
 };
 
-if (!isMultiplayer) then {systemChat "FOS: Checkpoint system initialized";};
+"FOS: Checkpoint system initialized" call FOS_fnc_debugSystemAdd;
