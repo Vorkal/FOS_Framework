@@ -1,9 +1,9 @@
+[] spawn FOS_fnc_debugSystemInit;
 [] spawn FOS_fnc_checkpointSystemInit;
 
 if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
-	[] spawn FOS_fnc_debugSystemInit;
 	if (isMultiplayer) then {
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
