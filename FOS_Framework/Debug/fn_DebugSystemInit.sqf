@@ -11,6 +11,10 @@ You can also run a different fuction to copy all debug messages to your clipboar
 scriptName "FOS_debugSystem";
 params [["_debug",true,[true]],["_frequency",5,[123]]]
 
+
+//Exit if this is in multiplayer.
+if (!isMultiplayer) exitWith {};
+
 _originalState = missionNamespace getVariable ["FOS_debugSystem",[false,-1]];
 _scriptName = missionNamespace getVariable ["FOS_debugSystemName",nil];
 
