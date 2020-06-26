@@ -1,5 +1,3 @@
-_customText = "";
-
 _briefing = "
 <br/>
 <font size='18'>ADMIN SECTION</font><br/>
@@ -7,9 +5,9 @@ This briefing section can only be seen by the current admin.
 <br/><br/>
 ";
 
-if (_customText != "") then {
+if (_adminText != "") then {
 	_briefing = _briefing + "<br/><font size='18'>MISSION-MAKER NOTES</font><br/>";
-	_briefing = _briefing + _customText + "<br/><br/>";
+	_briefing = _briefing + _adminText + "<br/><br/>";
 };
 
 //Grab all ending types listed in mission cfgDebriefing

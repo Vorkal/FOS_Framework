@@ -9,7 +9,10 @@ You can also run a different fuction to copy all debug messages to your clipboar
 */
 
 scriptName "FOS_debugSystem";
-params [["_debug",true,[true]],["_frequency",5,[123]]]
+params [["_debug",true,[true]],["_frequency",5,[123]]];
+
+//Exit if this is in multiplayer.
+if (isMultiplayer) exitWith {};
 
 _originalState = missionNamespace getVariable ["FOS_debugSystem",[false,-1]];
 _scriptName = missionNamespace getVariable ["FOS_debugSystemName",nil];
@@ -24,13 +27,15 @@ if (_originalState # 0 isEqualTo true && _originalState # 1 isEqualTo _frequency
 };
 
 //kill past script if older version exists
-if !(isNil _scriptName) then {
+if !(isNil "_scriptName") then {
 	terminate _scriptName
 };
 
-
 //Tag this script into a variable name so that it may be terminated later
 missionNamespace setVariable ["FOS_debugSystemName",_thisScript];
+
+missionNameSpace setVariable ["FOS_debugSystemMessages",[]];
+missionNameSpace setVariable ["FOS_debugSystemMessageArchive",[]];
 
 _messages = missionNameSpace getVariable ["FOS_debugSystemMessages",[]];
 
