@@ -3,6 +3,7 @@
 if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
+	[] spawn FOS_fnc_debugSystemInit;
 	if (isMultiplayer) then {
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
@@ -11,10 +12,6 @@ if (isServer) then {
 	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
     	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
 	};
-};
-
-if (!isMultiplayer) then {
-	[] spawn FOS_fnc_debugSystemInit;
 };
 
 if (hasInterface) then {
