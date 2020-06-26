@@ -11,4 +11,4 @@ params ["_message"];
 
 _messageQueue = missionNameSpace getVariable ["FOS_debugSystemMessages",[]];
 
-_messageQueue pushBackUnique _message;
+_messageQueue pushBack _message;
