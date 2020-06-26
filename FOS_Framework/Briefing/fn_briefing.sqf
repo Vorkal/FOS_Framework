@@ -41,18 +41,24 @@ _situation = _situation call _autoBreak;
 _credits = _credits call _autoBreak;
 
 
-player createDiaryRecord ["diary", ["Credits",_credits]];
-
-player createDiaryRecord ["Diary",["Administration",_Administration]];
-
-player createDiaryRecord ["Diary",["Intel",_Intel]];
-
-player createDiaryRecord ["Diary",["Execution",_Execution]];
-
-player createDiaryRecord ["Diary",["Mission",_mission]];
-
-player createDiaryRecord ["Diary",["Situation",_Situation]];
-
+if (_credits != "") then {
+    player createDiaryRecord ["diary", ["Credits",_credits]];
+};
+if (_Administration != "") then {
+    player createDiaryRecord ["Diary",["Administration",_Administration]];
+};
+if (_Intel != "") then {
+    player createDiaryRecord ["Diary",["Intel",_Intel]];
+};
+if (_Execution != "") then {
+    player createDiaryRecord ["Diary",["Execution",_Execution]];
+};
+if (_mission != "") then {
+    player createDiaryRecord ["Diary",["Mission",_mission]];
+};
+if (_Situation != "") then {
+    player createDiaryRecord ["Diary",["Situation",_Situation]];
+};
 
 if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
 	#include "adminBriefing.sqf";
