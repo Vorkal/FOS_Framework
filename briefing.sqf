@@ -4,7 +4,7 @@
 
 /*
     This is file contains all you need to edit the briefing
-    Place into the strings your briefing information. The framework will structure it for you.
+    Place into the strings your briefing information.
     <br/> can be used to create a new line
  */
 
