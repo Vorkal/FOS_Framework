@@ -38,8 +38,10 @@
 ///////////////////////
 
 
+//NOTE: Leave these settings like this if you plan to use the checkpoint system
 #define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
 #define RESPAWNTIME 1e10 //Respawn delay for players in seconds
+
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 1 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
@@ -61,6 +63,7 @@
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
+
 /*
 Change any of these to false to completely turn off the functionality
 Safer method than deleting files
