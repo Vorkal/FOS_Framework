@@ -35,6 +35,8 @@ if !(isNil "_scriptName") then {
 missionNamespace setVariable ["FOS_debugSystemName",_thisScript];
 
 missionNameSpace setVariable ["FOS_debugSystemMessages",[]];
+missionNameSpace setVariable ["FOS_debugSystemMessageArchive",[]];
+
 _messages = missionNameSpace getVariable ["FOS_debugSystemMessages",[]];
 
 //create loop that pushes out a debug message on a loop(parameter)
