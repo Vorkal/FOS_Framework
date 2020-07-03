@@ -10,9 +10,6 @@
 //Just a catcher to make sure it is not overwriting settings
 #ifndef FOSSETTINGS
 
-#define TESTGITHUB FALSE
-
-
 ///////////////////////
 /// MISSION DETAILS ///
 //////////////////////
