@@ -5,11 +5,13 @@ if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 	if (isMultiplayer) then {
+		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
+		//Init the dynamic groups menu so that players can select create their own grouping if they wish
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
 	} else {
-		//safe start timer isn't needed for singleplayer. Set it to false so a mission can detect when safestart is over regardless of mode
+		//safe start timer isn't needed for singleplayer. Set it to false.
 		FOS_Safemode = false
 	};
 	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
