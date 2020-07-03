@@ -5,7 +5,11 @@
 * Almost all lines in this file will look like this: #define name value
 * To change a setting, change the value part (The 3rd portion of the line)
 * CHANGING #DEFINE OR THE MIDDLE TEXT WILL CAUSE A PARSING ERROR
+*
+*
+* NOTE: Obviously, this menu is not complete. If you don't see something that can be changed here, you will have to edit it from the file directly.
 */
+
 
 //Just a catcher to make sure it is not overwriting settings
 #ifndef FOSSETTINGS
@@ -30,9 +34,6 @@
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
 
-
-
-
 ////////////////////////
 /// RESPAWN SETTINGS ///
 ///////////////////////
@@ -44,7 +45,7 @@
 
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
-#define RESPAWNPROMPT 1 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
+#define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
 #define RESPAWNONSPAWN -1 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 
 //////////////////////
@@ -71,11 +72,13 @@
 /// JIP ///
 ///////////
 
+//TODO: Disable teleport option on JIP
 
 /////////////////////
 /// GROUP TRACKER ///
 /////////////////////
 
+//TODO: Create automatic bluforce tracker
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
