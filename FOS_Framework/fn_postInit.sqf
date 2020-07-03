@@ -8,6 +8,9 @@ if (isServer) then {
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
+	} else {
+		//safe start timer isn't needed for singleplayer. Set it to false so a mission can detect when safestart is over regardless of mode
+		FOS_Safemode = false
 	};
 	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
     	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
