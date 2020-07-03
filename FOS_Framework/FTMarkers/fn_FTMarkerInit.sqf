@@ -1,4 +1,9 @@
 
+#include "..\..\settings.hpp"
+if !(FTMARKERS) exitWith {};
+
+
+
 waitUntil {!isNull player};
 
 _initUnits = units group player;

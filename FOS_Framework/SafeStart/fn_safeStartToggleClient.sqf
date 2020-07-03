@@ -16,6 +16,7 @@ switch (_mode) do
 				deletevehicle _projectile;
 			} else {
 				_unit removeEventHandler ["FiredMan",_thisEventHandler];
+				player allowDamage true;
 			};
 		}];
 	};

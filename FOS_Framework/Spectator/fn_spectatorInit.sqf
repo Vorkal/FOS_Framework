@@ -1,3 +1,7 @@
+#include "..\..\settings.hpp"
+if !(SPECTATOR) exitWith {};
+
+
 player addEventHandler ["killed",{
 	//Make array to push side relations into.
 	_friendList = [];

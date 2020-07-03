@@ -27,7 +27,6 @@ if (hasInterface) then {
 
 
 	if (isMultiplayer) then {
-		[true] spawn FOS_fnc_safeStartClientInit;
 		["InitializePlayer", [player]] spawn BIS_fnc_dynamicGroups;
 	};
 

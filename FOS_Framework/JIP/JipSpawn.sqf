@@ -14,6 +14,9 @@ private ["_index"];
 // Give unit a radio if he did not have one already
 //player linkItem "itemRadio";
 
+#include "..\..\settings.hpp"
+if !(JIPMENU) exitWith {};
+
 //Create menu and then fill the menu list with data of every playable unit including AI controlled ones
 createDialog "FOS_JipMenu";
 {
