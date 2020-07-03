@@ -60,6 +60,23 @@
 #define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
 #define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params
 
+//////////////////
+/// SAFE START ///
+//////////////////
+
+#define SAFESTARTINIT true //Controls if safestart fires at mission start
+#define SAFESTARTTIMER 330 //Controls how long the safe start init timer is
+
+///////////
+/// JIP ///
+///////////
+
+
+/////////////////////
+/// GROUP TRACKER ///
+/////////////////////
+
+
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
