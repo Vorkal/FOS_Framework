@@ -63,6 +63,10 @@ setPlayerRespawnTime 1e10;
 //Do not perform anything if _spawn is false
 if !(_spawn) exitWith {};
 
+
+
+
+
 switch (typename _spawn) do {
     case ("BOOL"): {
         //Check if player is leader of his group
@@ -72,10 +76,10 @@ switch (typename _spawn) do {
         if (_isLeader) then {
             _friendlyPlayers = allGroups select {[side group player, side _x] call BIS_fnc_sideIsFriendly && isPlayer leader _x};
             _distances = _friendlyPlayers apply {leader _x distance _oldPos};
-            _spawnGroup = _friendlyPlayers find (selectmin _distances);
+            _spawnGroup = _friendlyPlayers select (_distances find (selectmin _distances));
         };
         //Put player in the vehicle of the spawn group if they are in a vehicle
-        _moveIn = if (vehicle leader _spawnGroup != leader _spawnGroup) then {
+        _moveIn = if (vehicle (leader _spawnGroup) != leader _spawnGroup) then {
             player moveInAny vehicle leader _spawnGroup;
         };
         //if the player couldn't fit.
