@@ -43,6 +43,8 @@ params [
     ["_reviveDowned",false,[false]]
 ];
 
+private ["_movein"];
+
 //Exit the script if player alive or down in revive mode
 if (player getVariable "BIS_revive_incapacitated" || alive player) exitWith {};
 //See what the previous group was for this user
@@ -63,10 +65,6 @@ setPlayerRespawnTime 1e10;
 //Do not perform anything if _spawn is false
 if !(_spawn) exitWith {};
 
-
-
-
-
 switch (typename _spawn) do {
     case ("BOOL"): {
         //Check if player is leader of his group
@@ -79,9 +77,7 @@ switch (typename _spawn) do {
             _spawnGroup = _friendlyPlayers select (_distances find (selectmin _distances));
         };
         //Put player in the vehicle of the spawn group if they are in a vehicle
-        _moveIn = if (vehicle (leader _spawnGroup) != leader _spawnGroup) then {
-            player moveInAny vehicle leader _spawnGroup;
-        };
+        _movein = player moveInAny vehicle leader _spawnGroup;
         //if the player couldn't fit.
         if !(_moveIn) then {
             //Find if the player can fit in ANY vehicle the spawn group owns
