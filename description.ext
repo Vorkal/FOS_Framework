@@ -13,7 +13,7 @@ class Header
 
 //add the user IDs of players you trust with debug console.
 enableDebugConsole[] = {};
-
+allowFunctionsRecompile = 1;
 //////////////
 /// Author ///
 //////////////
@@ -32,15 +32,17 @@ loadScreen = LOADSCREENIMAGE;
 ///////////////
 /// Respawn ///
 ///////////////
-respawn = RespawnType;
-respawnDelay = RespawnTime;
-respawnDialog = RespawnPrompt;		//Disable counter and leaderboard
+respawn = RESPAWNTYPE;
+respawnDelay = RESPAWNTIME;
+respawnDialog = RESPAWNPROMPT;		//Disable counter and leaderboard
+respawnTemplates[] = {};
+respawnOnStart = -1;
 
 /////////////////////////////////
 /// Playable unit manipulation///
 /////////////////////////////////
 
-disabledAI = 1;			//Stop AI from taking player slots
+disabledAI = 0;			//Stop AI from taking player slots
 
 //////////////////////
 /// Revive options ///
@@ -190,8 +192,19 @@ class CfgNotifications {
 	}
 };
 
+class CfgRespawnTemplates
+{
+	// Class used in respawnTemplates entry
+	class checkpointSystem
+	{
+		onPlayerKilled = "FOS_fnc_checkpointSystemOnKilled";
+		onPlayerRespawn = "FOS_fnc_checkpointSystemOnRespawn";
+		respawnDelay = 1e10;
+		respawnOnStart = 0;
+		isCall = 1;
+	};
+	class SpectatorFilter
+	{
 
-class Extended_InitPost_EventHandlers {
-
+	};
 };
-allowFunctionsRecompile = 1;

@@ -1,5 +1,4 @@
 [] spawn FOS_fnc_debugSystemInit;
-[] spawn FOS_fnc_checkpointSystemInit;
 
 if (isServer) then {
 	[] spawn FOS_fnc_missionAOInit;

@@ -26,9 +26,10 @@ class FOS
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";
-		class checkpointSystemInit {};
 		class checkpointSystem {};
 		class checkpointPointsSystem {};
+		class checkpointSystemOnKilled {};
+		class checkpointSystemOnRespawn {};
 	};
 	class Debug
 	{
