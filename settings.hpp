@@ -53,7 +53,6 @@
 //////////////////////
 #define	REVIVEENABLED 1 //This should turn off by default if ACE is detected
 
-
 //////////////////
 /// DIFFICULTY ///
 //////////////////
