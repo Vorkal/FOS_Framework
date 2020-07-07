@@ -53,7 +53,9 @@ _oldPos = getPos player;
 
 //Delay subordinate spawn time
 if (leader _playerGroup != player && !(alive leader _playerGroup)) then {
-    sleep 1;
+    _time = time;
+    //Wait 1 second OR until leader comes back to life
+    waitUntil {alive leader _playerGroup || time > _time + 1};
 };
 
 //Spawn player
@@ -71,8 +73,8 @@ switch (typename _spawn) do {
         //Check if player is leader of his group
         _isLeader = leader player == player;
         _spawnGroup = _playerGroup;
-        //If player is leader then change the spawn group
-        if (_isLeader) then {
+        //If player is leader and all members are dead then change the spawn group
+        if (_isLeader && {alive _x} count units _spawnGroup == 0) then {
             _friendlyPlayers = allGroups select {[side group player, side _x] call BIS_fnc_sideIsFriendly && isPlayer leader _x && leader _x != player};
             if (count _friendlyPlayers > 0) then {
                 _distances = _friendlyPlayers apply {leader _x distance _oldPos};
@@ -107,7 +109,7 @@ switch (typename _spawn) do {
                 };
             };
         } else {
-            //If leader is alive of spawn group hten spawn on them.
+            //If leader is alive of spawn group then spawn on them.
             if (alive leader _spawnGroup && leader _spawnGroup != player) then {
                 player setPosATL (vehicle leader _spawnGroup getRelPos [2.5,180]);
             } else {
@@ -143,6 +145,7 @@ switch (typename _spawn) do {
     };
     case ("ARRAY"): {
         _randomspawn = selectRandom _spawn;
+        //Find out if "randomSpawn" is actually cordinates
         if ({_x isEqualType 0} count _spawn == 3) then {_randomSpawn = _spawn};
         if (_randomspawn isEqualType objNull) then {
             //if _spawn is an static object then just spawn on top of it
