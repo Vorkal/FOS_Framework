@@ -20,7 +20,6 @@ if (isServer) then {
 
 if (hasInterface) then {
 	[] spawn FOS_fnc_briefing;
-	[] spawn FOS_fnc_spectatorInit;
 	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};

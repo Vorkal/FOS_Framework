@@ -199,12 +199,13 @@ class CfgRespawnTemplates
 	{
 		onPlayerKilled = "FOS_fnc_checkpointSystemOnKilled";
 		onPlayerRespawn = "FOS_fnc_checkpointSystemOnRespawn";
-		respawnDelay = 1e10;
+		respawnDelay = RESPAWNTIME;
 		respawnOnStart = RESPAWNONSTART;
 		isCall = 1;
 	};
 	class SpectatorFilter
 	{
+        onPlayerKilled = "FOS_fnc_spectatorOnKilled";
         onPlayerRespawn = "FOS_fnc_spectatorOnRespawn";
         isCall = 0;
 	};
