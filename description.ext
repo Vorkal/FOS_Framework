@@ -32,9 +32,9 @@ loadScreen = LOADSCREENIMAGE;
 ///////////////
 /// Respawn ///
 ///////////////
-respawn = RespawnType;
-respawnDelay = RespawnTime;
-respawnDialog = RespawnPrompt;		//Disable counter and leaderboard
+respawn = RESPAWNTYPE;
+respawnDelay = RESPAWNTIME;
+respawnDialog = RESPAWNPROMPT;		//Disable counter and leaderboard
 
 /////////////////////////////////
 /// Playable unit manipulation///
