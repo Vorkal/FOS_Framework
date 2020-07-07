@@ -26,9 +26,10 @@ class FOS
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";
-		class checkpointSystemInit {};
 		class checkpointSystem {};
 		class checkpointPointsSystem {};
+		class checkpointSystemOnKilled {};
+		class checkpointSystemOnRespawn {};
 	};
 	class Debug
 	{
@@ -59,7 +60,8 @@ class FOS
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
-		class spectatorInit {};
+		class spectatorOnRespawn {};
+		class spectatorOnKilled {};
 	};
 	class Misc
 	{
