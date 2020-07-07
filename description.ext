@@ -207,6 +207,6 @@ class CfgRespawnTemplates
 	{
         onPlayerKilled = "FOS_fnc_spectatorOnKilled";
         onPlayerRespawn = "FOS_fnc_spectatorOnRespawn";
-        isCall = 0;
+        isCall = 1;
 	};
 };
