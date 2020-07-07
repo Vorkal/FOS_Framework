@@ -23,9 +23,6 @@
  * _Protection(SCALAR): - Spawn protection?
  * 	Number = Decides how long spawn protection lasts
  *
- * _reviveDowned(BOOLEAN): - revive uncon units
- * 	TRUE = Downed units get back up
- *  FALSE = Downed units stay down
  *
  * Example(s):
  * 	[true,"INIT",3] spawn FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their starting gear. with 3 second spawn protection
