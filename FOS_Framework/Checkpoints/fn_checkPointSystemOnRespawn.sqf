@@ -5,7 +5,7 @@ params [
 	"_respawnDelay"
 ];
 
-if (time == 0) then {
+if (_oldUnit isEqualTo objNull) then {
     _saveInitLoadout = getUnitLoadout player;
     player setVariable ["FOS_InitPlayerloadout",_saveInitLoadout,false];
 };
