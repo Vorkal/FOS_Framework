@@ -60,7 +60,8 @@ class FOS
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
-		class spectatorInit {};
+		class spectatorOnRespawn {};
+		class spectatorOnKilled {};
 	};
 	class Misc
 	{
