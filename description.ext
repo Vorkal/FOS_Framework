@@ -35,8 +35,8 @@ loadScreen = LOADSCREENIMAGE;
 respawn = RESPAWNTYPE;
 respawnDelay = RESPAWNTIME;
 respawnDialog = RESPAWNPROMPT;		//Disable counter and leaderboard
-respawnTemplates[] = {"checkpointSystem"};
-respawnOnStart = -1;
+respawnTemplates[] = RESPAWNTEMPLATES
+respawnOnStart = RESPAWNONSTART;
 
 /////////////////////////////////
 /// Playable unit manipulation///
@@ -200,7 +200,7 @@ class CfgRespawnTemplates
 		onPlayerKilled = "FOS_fnc_checkpointSystemOnKilled";
 		onPlayerRespawn = "FOS_fnc_checkpointSystemOnRespawn";
 		respawnDelay = 1e10;
-		respawnOnStart = 0;
+		respawnOnStart = RESPAWNONSTART;
 		isCall = 1;
 	};
 	class SpectatorFilter

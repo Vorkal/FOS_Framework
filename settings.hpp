@@ -46,7 +46,15 @@
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
-#define RESPAWNONSPAWN -1 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
+
+//WARNING: DO NOT CHANGE THIS IF YOU PLAN TO USE THE CHECKPOINT SYSTEM
+#define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
+#define RESPAWNTEMPLATES {"checkpointSystem","SpectatorFilter"};
+
+/////////////////////////
+/// CHECKPOINT SYSTEM ///
+////////////////////////
+
 
 //////////////////////
 /// VANILLA REVIVE ///
