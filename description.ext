@@ -34,7 +34,7 @@ loadScreen = LOADSCREENIMAGE;
 ///////////////
 respawn = RESPAWNTYPE;
 respawnDelay = RESPAWNTIME;
-respawnDialog = RESPAWNPROMPT;		//Disable counter and leaderboard
+respawnDialog = RESPAWNPROMPT;
 respawnTemplates[] = RESPAWNTEMPLATES
 respawnOnStart = RESPAWNONSTART;
 
