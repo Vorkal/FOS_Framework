@@ -54,14 +54,13 @@
 /// Mission AO ///
 //////////////////
 
-#define CREATEMISSIONAO true
-#define AOMARKERNAME "test"
-#define CACHEOUTSIDEAO true
+#define AOMARKERNAME "AO" //Your marker name (make sure it is a rectangle area marker)
 
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
 
+//No configurable settings yet!
 
 //////////////////////
 /// VANILLA REVIVE ///
@@ -86,7 +85,7 @@
 /// JIP ///
 ///////////
 
-//TODO: Disable teleport option on JIP
+//No configurable settings yet!
 
 /////////////////////
 /// GROUP TRACKER ///
