@@ -106,8 +106,6 @@ addMissionEventHandler ["MapSingleClick", {
 	private ["_newUnits"];
 	while {sleep 0.1; true} do {
 		waitUntil {sleep 5; _newUnits = (units group player) - _initUnits; count _newUnits > 0};
-		systemChat "new unit detected";
-		systemChat str _newUnits;
 		[_newUnits] call _ftEventHandlers;
 		_initUnits = (units group player);
 	};
