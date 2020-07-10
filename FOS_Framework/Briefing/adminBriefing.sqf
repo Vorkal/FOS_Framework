@@ -36,7 +36,7 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 	<execute expression='[%1] remoteExec [""FOS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
 	%3<br/><br/>
 	"
-	,_x select 0,_x select 1,_x select 2,_x select 3];
+	,str (_x # 0),(_x # 1),(_x # 2),(_x # 3)];
 } forEach _endings;
 
 _briefing = _briefing + "
