@@ -14,8 +14,10 @@ if !(DEBUGMESSAGESYSTEM) exitWith {};
 scriptName "FOS_debugSystem";
 params [["_debug",true,[true]],["_frequency",5,[123]]];
 
-//Exit if this is in multiplayer.
-if (isMultiplayer) exitWith {};
+//Exit if this isn't in eden preview.
+if !(call BIS_fnc_3DENMissionPreview) exitWith {};
+
+execVM "testfile.sqf";
 
 _originalState = missionNamespace getVariable ["FOS_debugSystem",[false,-1]];
 _scriptName = missionNamespace getVariable ["FOS_debugSystemName",nil];
