@@ -11,14 +11,14 @@ _this: OBJECT - Area Trigger
 Returns:
 Nothing
 */
+
+#include "..\..\settings.hpp"
+
 params [
 	["_markerName","AO"],
 	["_createMissionAO",true],
 	["_cacheOutsideAO",false]
 ];
-
-
-#include "..\..\settings.hpp"
 
 if !(MISSIONAO) exitWIth {};
 if (getMarkerPos _markerName isEqualTo [0,0,0]) exitWith {};

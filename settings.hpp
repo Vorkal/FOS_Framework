@@ -38,18 +38,25 @@
 /// RESPAWN SETTINGS ///
 ///////////////////////
 
+//WARNING: DO NOT CHANGE THIS IF YOU PLAN TO USE THE CHECKPOINT SYSTEM
 
 //NOTE: Leave these settings like this if you plan to use the checkpoint system
 #define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
 #define RESPAWNTIME 1e10 //Respawn delay for players in seconds
-
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
-
-//WARNING: DO NOT CHANGE THIS IF YOU PLAN TO USE THE CHECKPOINT SYSTEM
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 #define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
+
+
+//////////////////
+/// Mission AO ///
+//////////////////
+
+#define CREATEMISSIONAO true
+#define AOMARKERNAME "test"
+#define CACHEOUTSIDEAO true
 
 /////////////////////////
 /// CHECKPOINT SYSTEM ///

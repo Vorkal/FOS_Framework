@@ -1,7 +1,9 @@
+#include "..\settings.hpp"
+
 [] spawn FOS_fnc_debugSystemInit;
 
 if (isServer) then {
-	[] spawn FOS_fnc_missionAOInit;
+	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
