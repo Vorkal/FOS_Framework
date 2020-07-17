@@ -87,6 +87,16 @@
 
 //No configurable settings yet!
 
+
+
+///////////////
+/// NAMETAG ///
+///////////////
+
+//WIP: Doesn't work yet
+#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players
+#define NAMETAGFORCED true //Controls if the player can cycle through default targets (They can always turn off nametags)
+
 /////////////////////
 /// GROUP TRACKER ///
 /////////////////////
@@ -108,6 +118,7 @@ Safer method than deleting files
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
 #define FTMARKERS true
+#define NAMETAG true
 #define GROUPTRACKER true
 #define SAFESTART true
 #define SPECTATOR true

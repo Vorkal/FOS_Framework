@@ -74,6 +74,11 @@ class FOS
 		class protectedUnit {};
 		class endMission {};
 	};
+	class nametag {
+		file = "FOS_Framework\Nametag"
+		class nametagInit {};
+		class setNametag {};
+	};
 	class Params
 	{
 		file = "FOS_Framework\Params";
