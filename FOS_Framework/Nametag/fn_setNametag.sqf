@@ -33,7 +33,7 @@ if (alive _unit) then {
 
     //If the player is directly looking at nametag unit, change to opacity to 1
     _color set [3, 1 - _dist];
-    if (cursorObject isEqualTo _unit) then {
+    if (cursorTarget isEqualTo _unit) then {
         _color set [3, 1];
     };
 
