@@ -88,6 +88,11 @@
 //No configurable settings yet!
 
 
+////////////////////////
+/// FIRETEAM MARKERS ///
+////////////////////////
+
+#define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
 
 ///////////////
 /// NAMETAG ///
@@ -96,7 +101,7 @@
 //WIP: Doesn't work yet
 #define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players
 #define NAMETAGFORCED true //Controls if the player can cycle through default targets (They can always turn off nametags)
-
+#define NEEDGLASSES false //Rrquires player to have tactical glasses in order to see nametags
 /////////////////////
 /// GROUP TRACKER ///
 /////////////////////
