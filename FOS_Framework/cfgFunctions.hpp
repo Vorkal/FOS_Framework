@@ -56,7 +56,13 @@ class FOS
 		file = "FOS_Framework\groupTracker";
 		class grpTrackerInit {};
 		class setGrpTracker {};
-	}
+	};
+	class IFF
+	{
+		file = "FOS_Framework\IFF";
+		class iffInit {};
+		class setIFF {};
+	};
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";

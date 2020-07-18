@@ -25,6 +25,7 @@ if (hasInterface) then {
 	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
+	[] spawn FOS_fnc_iffInit;
 	[] spawn FOS_fnc_nametagInit;
 	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_grpTrackerinit;
