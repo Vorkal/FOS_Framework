@@ -27,7 +27,7 @@ if (hasInterface) then {
 	};
 	[] spawn FOS_fnc_nametagInit;
 	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
-		//[] spawn FOS_fnc_grpTrackerinit;
+		[] spawn FOS_fnc_grpTrackerinit;
 	};
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
