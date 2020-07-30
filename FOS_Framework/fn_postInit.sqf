@@ -15,8 +15,8 @@ if (isServer) then {
 		//safe start timer isn't needed for singleplayer. Set it to false.
 		FOS_Safemode = false
 	};
-	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
-    	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
+	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
+    	if (isMultiplayer) then {(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive};
 	};
 };
 
