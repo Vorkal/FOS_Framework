@@ -2,7 +2,7 @@
 if !(NAMETAG) exitWith {};
 
 addMissionEventHandler ["EachFrame", {
-    if (NEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
+    if (NAMETAGNEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
     private ["_targets"];
     switch (NAMETAGDEFAULTTARGET) do {
         case (0): {
