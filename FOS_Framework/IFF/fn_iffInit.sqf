@@ -6,7 +6,7 @@ addMissionEventHandler ["EachFrame", {
     _targets = allUnits select {
         leader _x != leader player
         &&
-        [side player, side _x] call BIS_fnc_sideIsFriendly
+        [side group player, side group _x] call BIS_fnc_sideIsFriendly
     };
     //Do not draw IFF icons if the need glasses parameter is added and they do not have glasses equipped
     if (NEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
