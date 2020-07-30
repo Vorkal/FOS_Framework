@@ -1,8 +1,10 @@
 params [["_difficulty",1]];
 
+#include "..\..\settings.hpp"
+if !(DIFFICULTY) exitWith {};
 
 //// SERVER CODE
-if (isServer && missionNamespace getVariable ["BIS_exp_camp_dynamicEnemySkill_init", false]) then {
+if (isServer && missionNamespace getVariable ["BIS_exp_camp_dynamicEnemySkill_init", false] isEqualTo false) then {
 	switch ( _difficulty) do
 	{
 		case 0:
