@@ -123,6 +123,7 @@ Safer method than deleting files
 #define CHECKPOINTSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
+#define DIFFICULTY true
 #define FTMARKERS true
 #define NAMETAG true
 #define IFF true
