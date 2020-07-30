@@ -5,7 +5,7 @@
 * Almost all lines in this file will look like this: #define name value
 * To change a setting, change the value part (The 3rd portion of the line)
 * CHANGING #DEFINE OR THE MIDDLE TEXT WILL CAUSE A PARSING ERROR
-*
+* Also do not delete an entire #define line for any reason.
 *
 * NOTE: Obviously, this menu is not complete. If you don't see something that can be changed here, you will have to edit it from the file directly.
 */
@@ -65,7 +65,9 @@
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
-#define	REVIVEENABLED 1 //This should turn off by default if ACE is detected
+
+#define	REVIVEENABLED 1 //This should turn off anyways if ACE is detected. Turn it to 0 anyways though.
+
 
 //////////////////
 /// DIFFICULTY ///
@@ -79,7 +81,7 @@
 //////////////////
 
 #define SAFESTARTINIT true //Controls if safestart fires at mission start
-#define SAFESTARTTIMER 330 //Controls how long the safe start init timer is
+#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
 
 ///////////
 /// JIP ///
@@ -87,11 +89,12 @@
 
 //No configurable settings yet!
 
-
 ////////////////////////
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
+#define DRAWPLAYER true //Controls if a marker is drawn for the player.
+#define DRAWTEAM true //Controls if a marker is drawn for the player's team
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
 
 ///////////////
