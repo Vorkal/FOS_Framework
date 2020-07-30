@@ -101,10 +101,11 @@
 /// NAMETAG ///
 ///////////////
 
-//WIP: Doesn't work yet
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players
-#define NAMETAGFORCED true //Controls if the player can cycle through default targets (They can always turn off nametags)
-#define NEEDGLASSES false //Rrquires player to have tactical glasses in order to see nametags
+#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
+#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances. Use -1 for infinite
+#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
+#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define NEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 /////////////////////
 /// GROUP TRACKER ///
@@ -119,6 +120,7 @@
 /*
 Change any of these to false to completely turn off the functionality
 Safer method than deleting files
+Also useful if you are an advanced mission maker and something you want to do conflicts with the framework
 */
 
 #define	MISSIONAO true
