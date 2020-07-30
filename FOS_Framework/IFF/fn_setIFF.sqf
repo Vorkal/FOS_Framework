@@ -1,10 +1,12 @@
 params ["_unit"];
+#include "..\..\settings.hpp"
+if !(IFF) exitWith {};
 
 //Current color for friendlies in game
 _color = getArray (configFile/'CfgInGameUI'/'SideColors'/'colorFriendly');
 
 //Find the distance and then scale the number down for use in controlling the alpha of icons
-_dist = (player distance _unit) / 100;
+_dist = (player distance _unit) / 2 / IFFMAXDISPLAYDISTANCE;
 if (_dist > 1) then {_dist = 1};
 
 
@@ -12,7 +14,11 @@ if (_dist > 1) then {_dist = 1};
 _pos = _unit selectionPosition "Spine3";
 _pos = _unit modelToWorldVisual _pos;
 
-if (cursorTarget == _x) then {
+_color set [3,0.5 - _dist];
+
+if (player distance _unit < IFFMAXDISTANCE && cursorTarget isEqualTo _unit) then {
+    if (player distance _unit > IFFPRECISETHRESHOLD && cursorObject != cursorTarget) exitWith {};
+    _color set [3,1];
     //Add a name above the IFF group hex if player is targeting them
     drawIcon3D [
         "",
@@ -25,11 +31,13 @@ if (cursorTarget == _x) then {
         2,
         0.025
     ];
-    _headPos = _unit selectionPosition "Head";
+    _headPos = _unit selectionPosition "head";
     _headPos = _unit modelToWorldVisual _headPos;
+    _headPos = _headPos vectorAdd [-0.05,-0.1,0];
 
     //Really complicated scaling and turning of the status indicator line. Pretend this looks cleaner.
     _scale = ((player distance _unit) * 0.25);
+
     if (player distance _unit <= 5) then {_scale = 5 * 0.25};
     _line1_start = _headPos;
     _line1_end = _line1_start vectorAdd [0,0, 0.30 * _scale];
@@ -78,7 +86,8 @@ if (cursorTarget == _x) then {
     drawIcon3D ["a3\missions_f_exp\data\img\classes\assault_ca.paa", _color, _AmmoIco_Pos, 0.75, 0.75, 0,str round _AmmoIco_Info + "%"];
     drawIcon3D ["a3\ui_f\data\igui\cfg\simpletasks\types\run_ca.paa", _color,_StaminaIco_Pos, 0.75, 0.75, 0, str round _staminaIco_Info + "%"];
 };
-_color set [3,0.5 - _dist];
+
+
 drawIcon3D [
     "a3\ui_f\data\igui\cfg\cursors\select_ca.paa",
     _color,

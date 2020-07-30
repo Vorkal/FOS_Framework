@@ -102,7 +102,7 @@
 ///////////////
 
 #define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
-#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances. Use -1 for infinite
+#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
 #define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
@@ -111,7 +111,17 @@
 /// GROUP TRACKER ///
 /////////////////////
 
-//TODO: Create automatic bluforce tracker
+/*No configurable settings yet!*/
+
+
+///////////
+/// IFF ///
+///////////
+#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
+#define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
+#define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
+#define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define NEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
