@@ -2,6 +2,7 @@
 if !(IFF) exitWith {};
 
 addMissionEventHandler ["EachFrame", {
+    if (NEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
     //Find all units that are not the player's group and are friendly
     private ["_targets"];
     switch (IFFDEFAULTTARGET) do {
