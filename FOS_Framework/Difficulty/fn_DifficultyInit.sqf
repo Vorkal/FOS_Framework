@@ -4,7 +4,7 @@ params [["_difficulty",1]];
 if !(DIFFICULTY) exitWith {};
 
 //// SERVER CODE
-if (isServer && missionNamespace getVariable ["BIS_exp_camp_dynamicEnemySkill_init", false] isEqualTo false) then {
+if (DYNAMICSKILL && isServer && missionNamespace getVariable ["BIS_exp_camp_dynamicEnemySkill_init", false] isEqualTo false) then {
 	switch ( _difficulty) do
 	{
 		case 0:
@@ -28,7 +28,7 @@ if (isServer && missionNamespace getVariable ["BIS_exp_camp_dynamicEnemySkill_in
 
 
 //// CLIENT CODE
-if (isPlayer player) then {
+if (isPlayer player && DAMAGEREDUCER) then {
 	//Stop damage reducer from firing if ace_medical is detected
 	if (isClass(configfile >> "CfgPatches" >> "ace_medical")) exitWith {};
 	switch (_difficulty) do
