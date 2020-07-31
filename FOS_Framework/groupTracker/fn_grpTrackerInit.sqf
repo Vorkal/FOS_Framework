@@ -1,6 +1,12 @@
 #include "..\..\settings.hpp"
 if !(GROUPTRACKER) exitWith {};
 
+
+//Do not initialize if ACE Blueforce tracking is possible
+if !(GRPTRACKERIGNOREACE) then {
+	if (isClass(configfile >> "CfgPatches" >> "ace_map")) exitWith {};
+};
+
 addMissionEventHandler ["EachFrame", {
 	_playerGroup = allGroups select {leader _x != leader player && isPlayer leader _x && [side player, side _x] call BIS_fnc_sideIsFriendly};
 	{
