@@ -1,0 +1,116 @@
+/*%FSM<COMPILE "F:\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, CommanderAI">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-103.705437,-282.987457,-3.705444,-232.987411,0.000000,"Start"};
+item1[] = {"Client",8,218,-228.705444,-282.987457,-128.705444,-232.987411,0.000000,"Client"};
+item2[] = {"Terminate",1,250,-228.705444,-207.987411,-128.705444,-157.987411,0.000000,"Terminate"};
+item3[] = {"Server",4,218,-101.404427,-199.933807,-1.404419,-149.933807,1.000000,"Server"};
+item4[] = {"init",2,250,-95.725525,-105.442169,-5.725510,-55.442169,0.000000,"init"};
+item5[] = {"_",8,218,-95.058723,1.426483,-5.058716,51.426483,0.000000,""};
+item6[] = {"loop",2,250,-95.161224,105.991386,-5.161209,155.991394,0.000000,"loop"};
+link0[] = {0,1};
+link1[] = {0,3};
+link2[] = {1,2};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {5,6};
+globals[] = {0.000000,0,0,0,0,640,480,1,212,6316128,1,-471.107208,317.422546,525.301147,-362.673767,785,884,1};
+window[] = {2,-1,-1,-1,-1,1041,304,1564,182,3,803};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "CommanderAI";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Server">*/
+                                class Server
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="init";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isServer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Client">*/
+                                class Client
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Terminate">*/
+                class Terminate
+                {
+                        name = "Terminate";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "init">*/
+                class init
+                {
+                        name = "init";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "" \n
+                         "_groups = [];" \n
+                         "_zones = [];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "loop">*/
+                class loop
+                {
+                        name = "loop";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "Terminate",
+        };
+};
+/*%FSM</COMPILE>*/
