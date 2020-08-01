@@ -26,7 +26,7 @@ author = AUTHOR;
 onLoadMission = LOADSCREENDESCRIPTON;
 overViewText = OVERVIEWDESCRIPTION;
 overviewPicture = OVERVIEWPICTURE;
-onLoadName = ONLOADNAME;
+onLoadName = MISSIONTITLE;
 loadScreen = LOADSCREENIMAGE;
 
 ///////////////
