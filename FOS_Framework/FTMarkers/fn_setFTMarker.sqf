@@ -7,6 +7,7 @@ _FTMarker_Shadow = format ["FTMrk_%1_Shadow", name _unit];
 _FTMarker_Sel = format ["FTMrk_%1_Sel", name _unit];
 _FTMarker_Speech = format ["FTMrk_%1_Speech", name _unit];
 
+//Delete markers if the NEEDGPS parameter is true and they have no GPS
 if ({"GPS" in _x || "Terminal" in _x} count assignedItems player == 0 && NEEDGPS) exitWith {
 	{deleteMarker _x} forEach [_FTMarker,_FTMarker_Shadow,_FTMarker_Sel,_FTMarker_Speech];
 };
