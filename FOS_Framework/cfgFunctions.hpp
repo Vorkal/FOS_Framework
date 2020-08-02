@@ -13,6 +13,7 @@ class FOS
 		class spawnPatrol {};
 		class spawnGarrison {};
 		class spawnCamp {};
+		class spawnDefend {};
 	}
 	class AO
 	{
