@@ -20,7 +20,7 @@ params [
 	["_cacheOutsideAO",false]
 ];
 
-if !(MISSIONAO) exitWIth {};
+if !(MISSIONAO) exitWith {};
 if (getMarkerPos _markerName isEqualTo [0,0,0]) exitWith {};
 
 

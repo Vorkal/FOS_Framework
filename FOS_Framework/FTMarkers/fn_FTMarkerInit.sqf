@@ -9,7 +9,10 @@ waitUntil {!isNull player};
 _initUnits = units group player;
 
 addMissionEventHandler ["EachFrame", {
-	{[_x] call FOS_fnc_setFTMarker} forEach units group player;
+	_units = [];
+	if (DRAWPLAYER) then {_units pushBack player};
+	if (DRAWTEAM) then {{_units pushBack _x} forEach units group player - [player]};
+	{[_x] call FOS_fnc_setFTMarker} forEach _units;
 }];
 
 //private function that adds event handlers to units. Needed to detect when they have fired and such.

@@ -5,7 +5,7 @@
 * Almost all lines in this file will look like this: #define name value
 * To change a setting, change the value part (The 3rd portion of the line)
 * CHANGING #DEFINE OR THE MIDDLE TEXT WILL CAUSE A PARSING ERROR
-*
+* Also do not delete an entire #define line for any reason.
 *
 * NOTE: Obviously, this menu is not complete. If you don't see something that can be changed here, you will have to edit it from the file directly.
 */
@@ -65,7 +65,9 @@
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
-#define	REVIVEENABLED 1 //This should turn off by default if ACE is detected
+
+#define	REVIVEENABLED 1 //This should turn off anyways if ACE is detected. Turn it to 0 anyways though.
+
 
 //////////////////
 /// DIFFICULTY ///
@@ -79,7 +81,7 @@
 //////////////////
 
 #define SAFESTARTINIT true //Controls if safestart fires at mission start
-#define SAFESTARTTIMER 330 //Controls how long the safe start init timer is
+#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
 
 ///////////
 /// JIP ///
@@ -87,29 +89,44 @@
 
 //No configurable settings yet!
 
-
 ////////////////////////
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
+<<<<<<< HEAD
 #define DEATHMARKER true //True for a skull to replace the FT marker.
 #define DELETEONDEATH false //always delete the FT marker on death (Even if nobody has seen the death)
+=======
+#define DRAWPLAYER true //Controls if a marker is drawn for the player.
+#define DRAWTEAM true //Controls if a marker is drawn for the player's team
+>>>>>>> 5cea2ff0260d9d511a293da34ec9ae61f947ce9e
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
 
 ///////////////
 /// NAMETAG ///
 ///////////////
 
-//WIP: Doesn't work yet
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players
-#define NAMETAGFORCED true //Controls if the player can cycle through default targets (They can always turn off nametags)
-#define NEEDGLASSES false //Rrquires player to have tactical glasses in order to see nametags
+#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
+#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
+#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
+#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 /////////////////////
 /// GROUP TRACKER ///
 /////////////////////
 
-//TODO: Create automatic bluforce tracker
+/*No configurable settings yet!*/
+#define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
+
+///////////
+/// IFF ///
+///////////
+#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
+#define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
+#define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
+#define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
@@ -118,6 +135,7 @@
 /*
 Change any of these to false to completely turn off the functionality
 Safer method than deleting files
+Also useful if you are an advanced mission maker and something you want to do conflicts with the framework
 */
 
 #define	MISSIONAO true
@@ -125,6 +143,7 @@ Safer method than deleting files
 #define CHECKPOINTSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
+#define DIFFICULTY true
 #define FTMARKERS true
 #define NAMETAG true
 #define IFF true
