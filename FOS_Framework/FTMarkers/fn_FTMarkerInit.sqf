@@ -124,3 +124,19 @@ addMissionEventHandler ["MapSingleClick", {
 		_initUnits = (units group player);
 	};
 };
+
+[] spawn {
+	//Force exit if mission maker chose to use death markers
+	if !(DEATHMARKER) exitWith {};
+    while {sleep 1; true} do {
+        _FTMarkers = allMapMarkers;
+        //Filter array down to FTMARKER specific markers
+        _FTMarkers = _FTMarkers select {"FTMrk_" in _x};
+        //Delete any markers that doesn't match a unit name
+        {
+            _marker = _x;
+            _index = (units group player) findIf {name _x in _marker};
+            if (_index == -1) then {deletemarker _marker};
+        } forEach _FTMarkers;
+    };
+};
