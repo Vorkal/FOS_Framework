@@ -93,13 +93,11 @@
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
-<<<<<<< HEAD
 #define DEATHMARKER true //True for a skull to replace the FT marker.
 #define DELETEONDEATH false //always delete the FT marker on death (Even if nobody has seen the death)
-=======
 #define DRAWPLAYER true //Controls if a marker is drawn for the player.
 #define DRAWTEAM true //Controls if a marker is drawn for the player's team
->>>>>>> 5cea2ff0260d9d511a293da34ec9ae61f947ce9e
+
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
 
 ///////////////
