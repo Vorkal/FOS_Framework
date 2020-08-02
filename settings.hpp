@@ -92,6 +92,8 @@
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
+#define DEATHMARKER true //True for a skull to replace the FT marker.
+#define DELETEONDEATH false //always delete the FT marker on death (Even if nobody has seen the death)
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
 
 ///////////////
