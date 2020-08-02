@@ -17,7 +17,7 @@ switch (_mode) do
 {
 	case "init":
 	{
-		_time = missionNamespace getVariable ["FOS_SafeStartTimer",330];
+		_time = missionNamespace getVariable ["FOS_SafeStartTimer",SAFESTARTTIMER];
 		["FOS_SafeStartTimer",[floor (_time / 60), _time % 60]] remoteExec ["BIS_fnc_showNotification",0];
 		missionNamespace setVariable ["FOS_Safemode",true,true];
 		[true] remoteExec ["FOS_fnc_safeStartClientInit",0,"FOS_SafeStart"];

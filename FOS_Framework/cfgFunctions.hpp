@@ -56,7 +56,13 @@ class FOS
 		file = "FOS_Framework\groupTracker";
 		class grpTrackerInit {};
 		class setGrpTracker {};
-	}
+	};
+	class IFF
+	{
+		file = "FOS_Framework\IFF";
+		class iffInit {};
+		class setIFF {};
+	};
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
@@ -73,6 +79,11 @@ class FOS
 		class ambientRadio {};
 		class protectedUnit {};
 		class endMission {};
+	};
+	class nametag {
+		file = "FOS_Framework\Nametag"
+		class nametagInit {};
+		class setNametag {};
 	};
 	class Params
 	{

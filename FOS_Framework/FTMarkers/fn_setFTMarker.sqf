@@ -1,5 +1,5 @@
 
-
+#include "..\..\settings.hpp"
 params ["_unit"];
 private ["_type","_size","_size_Shadow","_alpha_Shadow","_tfarcondition"];
 _FTMarker = format ["FTMrk_%1", name _unit];
@@ -7,13 +7,18 @@ _FTMarker_Shadow = format ["FTMrk_%1_Shadow", name _unit];
 _FTMarker_Sel = format ["FTMrk_%1_Sel", name _unit];
 _FTMarker_Speech = format ["FTMrk_%1_Speech", name _unit];
 
+//Delete markers if the NEEDGPS parameter is true and they have no GPS
+if ({"GPS" in _x || "Terminal" in _x} count assignedItems player == 0 && NEEDGPS) exitWith {
+	{deleteMarker _x} forEach [_FTMarker,_FTMarker_Shadow,_FTMarker_Sel,_FTMarker_Speech];
+};
+
 _pos = getPos _unit;
 //Find the current team
 _color = "Color" + assignedTeam _unit;
 //Convert string to match white marker color classname
 if (_color isEqualTo "ColorMAIN") then {_color = "ColorWhite"};
 
-//Disable FT markers while unnit is in zeus
+//Disable FT markers while unit is in zeus
 if (!isNull findDisplay 312) exitWith {
 	 _FTMarker setMarkerAlphaLocal 0;
 	 _FTMarker_Shadow setMarkerAlphaLocal 0;

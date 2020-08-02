@@ -15,8 +15,8 @@ if (isServer) then {
 		//safe start timer isn't needed for singleplayer. Set it to false.
 		FOS_Safemode = false
 	};
-	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0) then {
-    	(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive;
+	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
+    	if (isMultiplayer) then {(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive};
 	};
 };
 
@@ -25,8 +25,10 @@ if (hasInterface) then {
 	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
+	[] spawn FOS_fnc_iffInit;
+	[] spawn FOS_fnc_nametagInit;
 	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
-		//[] spawn FOS_fnc_grpTrackerinit;
+		[] spawn FOS_fnc_grpTrackerinit;
 	};
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 

@@ -1,11 +1,15 @@
 
-params ["_group","_markerType","_text","_loop"];
+params [
+    ["_group",grpNull,[grpnull]],
+    ["_markerType","b_inf",["string"]],
+    ["_markerColor","ColorWEST",["string"]],
+    ["_text",nil]
+];
 private ["_initGroupId"];
 
-if (_group isEqualTo group player) exitWith {};
+if (_group isEqualTo grpNull) exitWith {};
 if (!canSuspend) exitWith {_this spawn FOS_fnc_setGrpTracker};
-
-
+if (isNil "_text") then {_text = groupId _group};
 
 _grpMarker = format ["grpMrk_%1", _group];
 _pos = getPos leader _group;
@@ -30,11 +34,5 @@ if (time == 0) then {
     _initGroupId = _group;
     waitUntil {time > 0};
     deleteMarker _grpMarker;
-    _this spawn FOS_fnc_setGrpTracker;
-};
-
-if (_loop > 0) exitWith {
-    sleep _loop;
-    if (_group isEqualTo grpNull) exitWith {deleteMarker _grpMarker};
     _this spawn FOS_fnc_setGrpTracker;
 };
