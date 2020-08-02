@@ -66,7 +66,7 @@
 /// VANILLA REVIVE ///
 //////////////////////
 
-#define	REVIVEENABLED 1 //This should turn off anyways if ACE is detected. Turn it to 0 anyways though.
+#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
 
 
 //////////////////
@@ -74,7 +74,7 @@
 //////////////////
 
 #define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
-#define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params
+#define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params (Always off if Ace_Medical detected)
 
 //////////////////
 /// SAFE START ///
