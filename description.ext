@@ -13,7 +13,9 @@ class Header
 
 //add the user IDs of players you trust with debug console.
 enableDebugConsole[] = {};
-allowFunctionsRecompile = 0;
+
+//Allows you to recompile functions in the function library without having to restart.
+allowFunctionsRecompile = 0; //You should only change this to 1 for a testing environment.
 //////////////
 /// Author ///
 //////////////
