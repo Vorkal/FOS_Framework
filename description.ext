@@ -13,7 +13,7 @@ class Header
 
 //add the user IDs of players you trust with debug console.
 enableDebugConsole[] = {};
-allowFunctionsRecompile = 1;
+allowFunctionsRecompile = 0;
 //////////////
 /// Author ///
 //////////////
