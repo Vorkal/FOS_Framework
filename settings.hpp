@@ -114,7 +114,6 @@
 /// GROUP TRACKER ///
 /////////////////////
 
-/*No configurable settings yet!*/
 #define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
 
 ///////////
@@ -129,6 +128,8 @@
 /////////////////////
 /// Misc settings ///
 /////////////////////
+
+
 
 
 //////////////////////////
