@@ -6,13 +6,9 @@
     This is file contains all you need to edit the briefing
     Place into the strings your briefing information.
     <br/> can be used to create a new line
- */
+*/
 
-//Set this to true if you want the briefing file to auto detect dobule line breaks
-//NOTE: You will need to hit enter twice to do a new line. Not once. Because reasons.
-_autolinebreak = false; //-- Doesn't work properly yet! You should leave it false
-
-
+_autolinebreak = false; //Set this to true if you want the briefing file to auto detect double line breaks
 ////////////////////////
 /// PLAYER BRIEFING ///
 ///////////////////////
