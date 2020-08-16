@@ -24,7 +24,6 @@ _situation = _situation + _enemyForcesHeader + _enemyForces + _friendlyForcesHea
 
 //TODO: WHY DOES THIS WORK IN DEBUG CONSOLE BUT NOT SCRIPT FILES?
 _autoBreak = {
-    if (!_autolinebreak) exitWith {_this};
     _text = _this splitString endl;
     systemChat str _text;
     _test = _text joinstring "<br/>";
@@ -32,13 +31,33 @@ _autoBreak = {
     _test
 };
 
+/* _autoBreak = {
+    private ["_arrayNew"];
+    _arrayString = toArray _this;
+    if (10 in _arrayString isEqualTo false) exitWith {_this};
+    _index = 0;
+    {
+        if (_x == 10) then {
+            _arrayNew = [_arrayString, [60,98,114,47,62], _index] call BIS_fnc_arrayInsert;
+            _index = _index + 5;
+            _arrayString deleteAt _index;
+            systemChat str _arrayNew;
+        } else {
+            _index = _index + 1;
+        };
+    } forEach _arrayString;
+    toString _arrayNew
+}; */
 
-_Administration = _Administration call _autoBreak;
-_Intel = _Intel call _autoBreak;
-_Execution = _Execution call _autoBreak;
-_mission = _mission call _autoBreak;
-_situation = _situation call _autoBreak;
-_credits = _credits call _autoBreak;
+if (_autolinebreak) exitWith {
+    _Administration = _Administration call _autoBreak;
+    _Intel = _Intel call _autoBreak;
+    _Execution = _Execution call _autoBreak;
+    _mission = _mission call _autoBreak;
+    _situation = _situation call _autoBreak;
+    _credits = _credits call _autoBreak;
+};
+
 
 
 if (_credits != "") then {

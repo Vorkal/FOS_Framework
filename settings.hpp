@@ -49,7 +49,6 @@
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 #define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
 
-
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -60,7 +59,8 @@
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
 
-//No configurable settings yet!
+#define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
+#define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
 //////////////////////
 /// VANILLA REVIVE ///
@@ -114,7 +114,6 @@
 /// GROUP TRACKER ///
 /////////////////////
 
-/*No configurable settings yet!*/
 #define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
 
 ///////////
@@ -125,6 +124,13 @@
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
+
+/////////////////////
+/// Misc settings ///
+/////////////////////
+
+
+
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
