@@ -1,11 +1,13 @@
 
+params ["_unit"];
+
 #include "..\..\settings.hpp"
 if !(DIFFICULTY) exitWith {};
 
-player addEventHandler ["InventoryOpened", {
+_unit addEventHandler ["InventoryOpened", {
     params ["_unit", "_container"];
 
-    //Don't run clear the inventory of non-enemy containers
+    //Don't clear the inventory of non-enemy containers
     if !([side group _unit, side group _container] call BIS_fnc_sideIsEnemy) exitWith {};
 
     //Find every unique item
@@ -18,8 +20,8 @@ player addEventHandler ["InventoryOpened", {
         _item = _x;
         //Count how much of this item exists
         _amount = {_item == _x} count ((magazines _container));
-        //If the amount is larger than two; reduce the amount to 2
-        if (_amount > 2) then {
+        //If the amount is larger than LOOTAMOUNT; reduce the amount to LOOTAMOUNT
+        if (_amount > LOOTAMOUNT) then {
             for "_i" from _amount to 2 step -1 do {
                 _container removeMagazine _item;
             };

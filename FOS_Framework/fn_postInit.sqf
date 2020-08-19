@@ -32,7 +32,9 @@ if (hasInterface) then {
 	};
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
-
+	if (REDUCELOOT) then {
+		[player] call FOS_fnc_limitLootDrop;
+	};
 	if (isMultiplayer) then {
 		["InitializePlayer", [player]] spawn BIS_fnc_dynamicGroups;
 	};
