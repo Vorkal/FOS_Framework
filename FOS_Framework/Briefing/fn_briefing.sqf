@@ -25,6 +25,7 @@ _situation = _situation + _enemyForcesHeader + _enemyForces + _friendlyForcesHea
 
 //Private function to convert line breaks into readable linebreaks for the briefing
 _autoBreak = {
+    if !(_this isEqualType "string") exitWith {_this};
     //Convert string into array
     _convertedString = toArray _this;
     //If no line break detected, return original parameter
