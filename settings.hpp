@@ -51,7 +51,7 @@
 
 
 #define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
-#define INITIALPOINTAMOUNT 3 //Amount of checkpoint calls the players have at the start.
+#define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
 //////////////////
 /// Mission AO ///
 //////////////////
