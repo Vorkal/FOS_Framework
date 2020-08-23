@@ -80,6 +80,7 @@ class FOS
 		class ambientRadio {};
 		class protectedUnit {};
 		class endMission {};
+		class fillAmmoContainer {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
