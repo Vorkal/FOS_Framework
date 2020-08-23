@@ -10,7 +10,7 @@ params [
 
 if (_oldUnit isEqualTo objNull) then {
     _saveInitLoadout = getUnitLoadout player;
-    player setVariable ["FOS_InitPlayerloadout",_saveInitLoadout,false];
+    player setVariable ["FOS_InitPlayerloadout",_saveInitLoadout,true];
 };
 
 if (HIDEBODIES) then {hidebody _oldUnit};
