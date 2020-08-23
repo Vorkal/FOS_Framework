@@ -10,9 +10,12 @@ _players (ARRAY): list of players that will have their equipment added to the co
 _initialgear (BOOLEAN): true adds the player's classname based gear to the box. Default is false
     NOTE:   If the checkpoint system is active, then the initial gear will be the player's actual starting gear.
     Not just class based.
+
 Example:
 [ammoBox,allPlayers,false] call FOS_fnc_fillAmmoContainer;
 */
+
+//TODO: Return value when process succeeds
 
 params [["_container",objNull,[objnull]],["_players",allPlayers,[[objNull,objnull]]],["_initialgear",false,[true,false]]];
 
