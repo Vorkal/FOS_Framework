@@ -20,8 +20,8 @@
 
 //NOTE: These settings will not restrict player count or alter functionality. They are purely server browser info.
 #define GAMETYPE "TEST" // the gametype of your mission
-#define MINPLAYERS 1 // min players
-#define MAXPLAYERS 32 // max players
+#define MINPLAYERS 1    // min players
+#define MAXPLAYERS 32   // max players
 
 #define AUTHOR "Mission Maker" //Name of the mission maker
 
