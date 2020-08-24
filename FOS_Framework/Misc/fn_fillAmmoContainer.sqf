@@ -3,14 +3,12 @@ Author: 417
 
 Description: Fill an ammo container with all ammo and weapons that players currently have. Or their starting gear
     NOTE: Run this everywhere. It will only execute where the container is local.
-
 Parameters:
 _container (OBJECT): The cargo space that the ammo will be added to.
 _players (ARRAY): list of players that will have their equipment added to the container
 _initialgear (BOOLEAN): true adds the player's classname based gear to the box. Default is false
     NOTE:   If the checkpoint system is active, then the initial gear will be the player's actual starting gear.
     Not just class based.
-
 Example:
 [ammoBox,allPlayers,false] call FOS_fnc_fillAmmoContainer;
 */
