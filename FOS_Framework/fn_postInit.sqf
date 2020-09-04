@@ -21,6 +21,10 @@ if (isServer) then {
 	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
     	if (isMultiplayer) then {(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive};
 	};
+	if (CHECKPOINTPOINTSYSTEM) then {
+		[true] call FOS_fnc_checkpointPointsSystem;
+		[INITIALPOINTAMOUNT] call FOS_fnc_checkpointPointsSystem
+	};
 };
 
 //Client only code
