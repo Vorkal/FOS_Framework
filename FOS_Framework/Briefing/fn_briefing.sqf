@@ -6,7 +6,7 @@ if (!isDedicated && (isNull player)) then
 #include "..\..\Briefing.sqf";
 
 _enemyForcesHeader = "<br/><br/>
-<font size='18'>FRIENDLY FORCES</font>
+<font size='18'>ENEMY FORCES</font>
 <br/>";
 
 _friendlyForcesHeader = "<br/><br/>
