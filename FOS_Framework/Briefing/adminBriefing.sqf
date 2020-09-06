@@ -26,7 +26,7 @@ _endings = [];
 
 
 _briefing = _briefing + "
-<font size='18'>ENDINGS</font><br/>
+<font color='#32CD32' size='18' face='PuristaBold'>ENDINGS</font><br/>
 These endings are available. To trigger an ending click on its link.<br/><br/>
 ";
 
@@ -34,45 +34,51 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 	_end = _this select 0;
 	_briefing = _briefing + format ["
 	<execute expression='[%1] remoteExec [""FOS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
-	%3<br/><br/>
+	%3<br/>
 	"
 	,str (_x # 0),(_x # 1),(_x # 2),(_x # 3)];
 } forEach _endings;
 
 _briefing = _briefing + "
-<font size='18'>ZEUS</font><br/>
-<br/>
+<font color='#48D1CC' size='18' face='PuristaBold'>Zeus</font><br/>
 <execute expression=""
 if !(isNull (getAssignedCuratorLogic player)) then {hintsilent 'ZEUS already assigned!'} else {
     [player] remoteExec ['FOS_fnc_zeusInit',2]; hintsilent 'Curator assigned.';
 };"">Assign ZEUS to admin</execute>.<br/><br/>
 ";
 
-
 _briefing = _briefing + "
-<font size='18'>SAFE START</font><br/><br/>
+<font color='#6A5ACD' size='18' face='PuristaBold'>SAFE START</font><br/>
 <execute expression='[true] remoteExec [""FOS_fnc_safeStartToggleServer"",2]'>start safe start mode</execute>
-<br/><br/>
+<br/>
 <execute expression='[false] remoteExec [""FOS_fnc_safeStartToggleServer"",2]'>end safe start mode</execute>
+<br/><br/>
 ";
 
-_briefing = _briefing + "
-<font size='18'>Checkpoint System</font><br/><br/>
-<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',0]'>spawn all players with starting gear</execute>
-<br/><br/>
-<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',0]'>spawn all players with on-death gear</execute>
-<br/><br/><br/>
-<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',west]'>west only with starting gear</execute>
-<br/><br/>
-<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',west]'>west only players with on-death gear</execute>
-<br/><br/><br/>
-<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',east]'>east only with starting gear</execute>
-<br/><br/>
-<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',east]'>east only players with on-death gear</execute>
-<br/><br/><br/>
-<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',independent]'>independent only with starting gear</execute>
-<br/><br/>
-<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',independent]'>independent only players with on-death gear</execute>
-";
+if (isMultiplayer) then {
+	_briefing = _briefing + "
+	<font color='#FFA500' size='18' face='PuristaBold'>CHECKPOINT SYSTEM</font><br/>
+	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",0]'>spawn all players with starting gear</execute>
+	<br/>
+	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",0]'>spawn all players with on-death gear</execute>
+	<br/><br/>
+	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",west]'>west only with starting gear</execute>
+	<br/>
+	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",west]'>west only players with on-death gear</execute>
+	<br/><br/>
+	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",east]'>east only with starting gear</execute>
+	<br/>
+	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",east]'>east only players with on-death gear</execute>
+	<br/><br/>
+	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",independent]'>independent only with starting gear</execute>
+	<br/>
+	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",independent]'>independent only players with on-death gear</execute>
+	<br/><br/>
+	<execute expression='[1] remoteExec [""FOS_fnc_checkpointPointsSystem"",2]'>add a point</execute>
+	<br/>
+	<execute expression='[-1] remoteExec [""FOS_fnc_checkpointPointsSystem"",2]'>remove a point</execute>
+	<br/><br/>
+	";
+};
 
 player createDiaryRecord ["Diary", ["FOS Admin Menu",_briefing]];
