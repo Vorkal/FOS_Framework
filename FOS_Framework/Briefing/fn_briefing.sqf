@@ -8,7 +8,7 @@ if (!isDedicated && (isNull player)) then
 private ["_situation"];
 
 _enemyForcesHeader = "<br/><br/>
-<font size='18'>FRIENDLY FORCES</font>
+<font size='18'>ENEMY FORCES</font>
 <br/>";
 
 _friendlyForcesHeader = "<br/><br/>
