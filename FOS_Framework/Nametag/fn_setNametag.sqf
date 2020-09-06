@@ -13,26 +13,7 @@ if (alive _unit) then {
     if (_dist > 1) then {_dist = 1};
 
     //Determine what color should be used based on assigned team
-    switch (assignedTeam _unit) do {
-        case ("MAIN"): {
-            _color = [1,1,1,1]
-        };
-        case ("RED"): {
-            _color = [0.9,0,0,1]
-        };
-        case ("BLUE"): {
-            _color = [0,0,1,1]
-        };
-        case ("YELLOW"): {
-            _color = [0.85,0.85,0,1]
-        };
-        case ("GREEN"): {
-            _color = [0,0.8,0,1]
-        };
-        default {
-            _color = [1,1,1,1]
-        };
-    };
+    _color = [_unit] call FOS_fnc_getTeamColor;
 
     //If the player is directly looking at nametag unit, change to opacity to 1
     _color set [3, 1 - _dist];
