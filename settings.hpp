@@ -57,8 +57,8 @@
 /// Briefing ///
 ////////////////
 
-#define CANREFRESH false //Players can press the refresh button to get an update on the current ORBAT
-#define SHOWALL false //Lists all players friendly to you in ORBAT. Even if they are a different side.
+#define CANREFRESH true //Players can press the refresh button to get an update on the current ORBAT
+#define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
 #define CLICKTOFIND false //Players can click on the group name to find the group on the map
 #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
 
