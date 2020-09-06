@@ -52,8 +52,8 @@ if !(local _container) exitWith {};
     } else {
 
         for "_i" from 0 to 2 do {
-            if (count (_loadout # _i) == 0) exitWith {};
-            _container addWeaponWithAttachmentsCargoGlobal [(getUnitLoadout _unit # _i),1];
+            if (count ((getUnitLoadout _unit) # _i) == 0) exitWith {};
+            _container addWeaponWithAttachmentsCargoGlobal [((getUnitLoadout _unit) # _i),1];
         };
         //Find all unique ammo
         _items = [];
