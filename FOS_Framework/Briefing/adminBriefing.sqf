@@ -60,19 +60,19 @@ if (isMultiplayer) then {
 	<font color='#FFA500' size='18' face='PuristaBold'>CHECKPOINT SYSTEM</font><br/>
 	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",0]'>spawn all players with starting gear</execute>
 	<br/>
-	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",0]'>spawn all players with on-death gear</execute>
+	<execute expression='[true,""SAVED"",1] remoteExec [""FOS_fnc_checkpointSystem"",0]'>spawn all players with on-death gear</execute>
 	<br/><br/>
 	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",west]'>west only with starting gear</execute>
 	<br/>
-	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",west]'>west only players with on-death gear</execute>
+	<execute expression='[true,""SAVED"",1] remoteExec [""FOS_fnc_checkpointSystem"",west]'>west only players with on-death gear</execute>
 	<br/><br/>
 	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",east]'>east only with starting gear</execute>
 	<br/>
-	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",east]'>east only players with on-death gear</execute>
+	<execute expression='[true,""SAVED"",1] remoteExec [""FOS_fnc_checkpointSystem"",east]'>east only players with on-death gear</execute>
 	<br/><br/>
 	<execute expression='[true,""INIT"",1] remoteExec [""FOS_fnc_checkpointSystem"",independent]'>independent only with starting gear</execute>
 	<br/>
-	<execute expression='[true,""saved"",1] remoteExec [""FOS_fnc_checkpointSystem"",independent]'>independent only players with on-death gear</execute>
+	<execute expression='[true,""SAVED"",1] remoteExec [""FOS_fnc_checkpointSystem"",independent]'>independent only players with on-death gear</execute>
 	<br/><br/>
 	<execute expression='[1] remoteExec [""FOS_fnc_checkpointPointsSystem"",2]'>add a point</execute>
 	<br/>
