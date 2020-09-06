@@ -49,9 +49,13 @@
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 #define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
 
-
 #define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
+#define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
+#define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
+#define POINTPROTECTION 5 //Number: amount of spawn protection time
+
+#define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
 ////////////////
 /// Briefing ///

@@ -17,6 +17,9 @@
  * 	[3] call FOS_fnc_checkpointPointsSystem
  */
 
+ #include "..\..\settings.hpp"
+ if !(CHECKPOINTSYSTEM) exitWith {};
+
 params ["_var"];
 
 //if caller put false... for some reason... exit script
@@ -74,9 +77,13 @@ switch (typeName _var) do {
 			_player = name player;
 
 			//Broadcast the person who used the checkpoint
-			(format ["%1 used a checkpoint point!",_player]) remoteExec ["hint",0,false];
+			if (ANNOUNCEUSER) then {
+                (format ["%1 used a checkpoint point!",_player]) remoteExec ["hint",0,false]
+                } else {
+                (format ["%1 used a checkpoint point!",_player]) remoteExec ["hint",(call FOS_fnc_getAdmin),false]
+            };
 			//Respawn people
-			[true,"SAVED",3] remoteExec ["FOS_fnc_checkpointSystem",0,false];
+			[POINTSPAWN,POINTGEAR,POINTPROTECTION] remoteExec ["FOS_fnc_checkpointSystem",0,false];
 		};
 	};
 };
