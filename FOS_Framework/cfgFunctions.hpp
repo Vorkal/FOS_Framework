@@ -46,6 +46,7 @@ class FOS
 		class setSkill {};
 		class setDynamicSkill {};
 		class difficultyInit {};
+		class limitLootDrop {};
 	};
 	class FTMarkers
 	{
