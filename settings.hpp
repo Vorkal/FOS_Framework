@@ -52,6 +52,16 @@
 
 #define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
+
+////////////////
+/// Briefing ///
+////////////////
+
+#define CANREFRESH false //Players can press the refresh button to get an update on the current ORBAT
+#define SHOWALL false //Lists all players friendly to you in ORBAT. Even if they are a different side.
+#define CLICKTOFIND false //Players can click on the group name to find the group on the map
+#define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
+
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -149,6 +159,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 
 #define	MISSIONAO true
 #define BRIEFING true
+#define ORBAT true
 #define CHECKPOINTSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true

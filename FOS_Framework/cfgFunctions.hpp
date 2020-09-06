@@ -23,7 +23,8 @@ class FOS
 	class briefing {
 		file = "FOS_Framework\Briefing";
 		class briefing {};
-	}
+		class orbatnotes {};
+	};
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";
@@ -81,6 +82,8 @@ class FOS
 		class protectedUnit {};
 		class endMission {};
 		class fillAmmoContainer {};
+		class getRoleIcon {};
+		class getTeamColor {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
