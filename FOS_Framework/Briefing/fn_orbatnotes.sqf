@@ -43,7 +43,7 @@ if (SHOWALL) then {
 {
     //Define the _x variable into a private one so we can use it later
     _side = _x;
-    if ([side group player, _side] call BIS_fnc_sideIsFriendly) then {
+    if ([side group player, _side] call BIS_fnc_sideIsFriendly && {side _x == _side} count playableUnits > 0) then {
         _color = switch (_side) do {
 			 case west: {"#007fff"};
 			 case east: {"#ff0000"};
@@ -52,8 +52,9 @@ if (SHOWALL) then {
  		};
         //Create side header
         _orbatText = _orbatText + format ["<font color='%1' size='20' face=''>%2</font>",_color, str _side] + "<br/>";
-
-        _groups = allGroups select {side _x == _side};
+        //Find all player groups
+        _groups = allGroups select {side _x == _side && isPlayer leader _x};
+        _groups = _groups - HIDEGROUPS;
         {
             //Define the _x variable into a private one so we can use it later
             _group = _x;
