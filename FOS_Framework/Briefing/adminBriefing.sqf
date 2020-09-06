@@ -56,4 +56,23 @@ _briefing = _briefing + "
 <execute expression='[false] remoteExec [""FOS_fnc_safeStartToggleServer"",2]'>end safe start mode</execute>
 ";
 
+_briefing = _briefing + "
+<font size='18'>Checkpoint System</font><br/><br/>
+<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',0]'>spawn all players with starting gear</execute>
+<br/><br/>
+<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',0]'>spawn all players with on-death gear</execute>
+<br/><br/><br/>
+<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',west]'>west only with starting gear</execute>
+<br/><br/>
+<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',west]'>west only players with on-death gear</execute>
+<br/><br/><br/>
+<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',east]'>east only with starting gear</execute>
+<br/><br/>
+<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',east]'>east only players with on-death gear</execute>
+<br/><br/><br/>
+<execute expression='[true,'INIT',1] remoteExec ['FOS_fnc_checkpointSystem',independent]'>independent only with starting gear</execute>
+<br/><br/>
+<execute expression='[true,'SAVED',1] remoteExec ['FOS_fnc_checkpointSystem',independent]'>independent only players with on-death gear</execute>
+";
+
 player createDiaryRecord ["Diary", ["FOS Admin Menu",_briefing]];
