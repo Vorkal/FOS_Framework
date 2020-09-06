@@ -5,6 +5,8 @@ if (!isDedicated && (isNull player)) then
 
 #include "..\..\Briefing.sqf";
 
+private ["_situation"];
+
 _enemyForcesHeader = "<br/><br/>
 <font size='18'>ENEMY FORCES</font>
 <br/>";
@@ -21,35 +23,26 @@ if (_friendlyForces == "") then {_friendlyForcesHeader = ""};
 //Merge situation details
 _situation = _situation + _enemyForcesHeader + _enemyForces + _friendlyForcesHeader + _friendlyForces;
 
-
-//TODO: WHY DOES THIS WORK IN DEBUG CONSOLE BUT NOT SCRIPT FILES?
+//Private function to convert line breaks into readable linebreaks for the briefing
 _autoBreak = {
-    _text = _this splitString endl;
-    systemChat str _text;
-    _test = _text joinstring "<br/>";
-    systemChat str _text;
-    _test
+    if !(_this isEqualType "string") exitWith {_this};
+    //Convert string into array
+    _convertedString = toArray _this;
+    //If no line break detected, return original parameter
+    if (10 in _convertedString isEqualTo false) exitWith {_this};
+    //Run for each line break detected
+    while {10 in _convertedString} do {
+        //find and delete the line break
+        _index = _convertedString findIf {10 == _x};
+        _convertedString deleteAt (_convertedString findIf {10 == _x});
+        //Insert a linebreak in the location of the line break
+        _convertedString = [_convertedString, [60,98,114,47,62], _index] call BIS_fnc_arrayInsert;
+    };
+    //Convert the array back into a string that includes the linebreaks
+    toString _convertedString
 };
 
-/* _autoBreak = {
-    private ["_arrayNew"];
-    _arrayString = toArray _this;
-    if (10 in _arrayString isEqualTo false) exitWith {_this};
-    _index = 0;
-    {
-        if (_x == 10) then {
-            _arrayNew = [_arrayString, [60,98,114,47,62], _index] call BIS_fnc_arrayInsert;
-            _index = _index + 5;
-            _arrayString deleteAt _index;
-            systemChat str _arrayNew;
-        } else {
-            _index = _index + 1;
-        };
-    } forEach _arrayString;
-    toString _arrayNew
-}; */
-
-if (_autolinebreak) exitWith {
+if (_autolinebreak) then {
     _Administration = _Administration call _autoBreak;
     _Intel = _Intel call _autoBreak;
     _Execution = _Execution call _autoBreak;
@@ -57,8 +50,6 @@ if (_autolinebreak) exitWith {
     _situation = _situation call _autoBreak;
     _credits = _credits call _autoBreak;
 };
-
-
 
 if (_credits != "") then {
     player createDiaryRecord ["diary", ["Credits",_credits]];

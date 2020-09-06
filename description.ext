@@ -44,7 +44,7 @@ respawnOnStart = RESPAWNONSTART;
 /// Playable unit manipulation///
 /////////////////////////////////
 
-disabledAI = 0;			//Stop AI from taking player slots
+disabledAI = DISABLEAI;			//Stop AI from taking player slots
 
 //////////////////////
 /// Revive options ///

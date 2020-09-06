@@ -1,3 +1,6 @@
+#include "..\..\settings.hpp"
+if !(CHECKPOINTSYSTEM) exitWith {};
+
 params [
 	"_oldUnit",
 	"_killer",
