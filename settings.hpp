@@ -49,14 +49,6 @@
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 #define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
 
-#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
-#define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
-#define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
-#define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
-#define POINTPROTECTION 5 //Number: amount of spawn protection time
-
-#define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
-
 ////////////////
 /// Briefing ///
 ////////////////
@@ -79,6 +71,14 @@
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
+#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
+#define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
+#define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
+#define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
+#define POINTPROTECTION 5 //Number: amount of spawn protection time
+
+#define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
+
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
@@ -92,6 +92,8 @@
 
 #define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
 #define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params (Always off if Ace_Medical detected)
+
+//NOTE: Untested in MP
 #define REDUCELOOT false //True will make every player see reduced amount of magazines per unit they kill.
 #define LOOTAMOUNT 2 //What is the max amount the player can see on a unit per item type
 
@@ -147,8 +149,6 @@
 /////////////////////
 /// Misc settings ///
 /////////////////////
-
-
 
 
 //////////////////////////
