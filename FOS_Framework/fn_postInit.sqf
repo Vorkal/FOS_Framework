@@ -51,6 +51,7 @@ if (hasInterface) then {
 
 	if (isMultiplayer) then {
 		["InitializePlayer", [player]] spawn BIS_fnc_dynamicGroups;
+		[] call FOS_fnc_orbatnotes;
 	};
 
 	if (_this # 1) then {

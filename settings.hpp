@@ -34,6 +34,7 @@
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
 
+#define DISABLEAI 1
 ////////////////////////
 /// RESPAWN SETTINGS ///
 ///////////////////////
@@ -49,9 +50,15 @@
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
 #define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
 
+////////////////
+/// Briefing ///
+////////////////
 
-#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
-#define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
+#define CANREFRESH true //Players can press the refresh button to get an update on the current ORBAT
+#define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
+#define CLICKTOFIND false //Players can click on the group name to find the group on the map
+#define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
+#define HIDEGROUPS []; //List of groups you can tell the ORBAT to hide no matter what
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -65,12 +72,19 @@
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
+#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
+#define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
+#define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
+#define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
+#define POINTPROTECTION 5 //Number: amount of spawn protection time
+
+#define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
+
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
 
 #define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
-
 
 //////////////////
 /// DIFFICULTY ///
@@ -78,6 +92,7 @@
 
 #define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
 #define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params (Always off if Ace_Medical detected)
+
 #define REDUCELOOT false //True will make every player see reduced amount of magazines per unit they kill.
 #define LOOTAMOUNT 2 //What is the max amount the player can see on a unit per item type
 
@@ -135,8 +150,6 @@
 /////////////////////
 
 
-
-
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
@@ -149,6 +162,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 
 #define	MISSIONAO true
 #define BRIEFING true
+#define ORBAT true
 #define CHECKPOINTSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true

@@ -30,7 +30,8 @@
  *  [true,"SAVED",0] remoteExec ["FOS_fnc_checkpointSystem",0]; // Same as above, except it will fire globally. Useful when ran server only
  */
 
-
+ #include "..\..\settings.hpp"
+ if !(CHECKPOINTSYSTEM) exitWith {};
 
 params [
     ["_spawn",false,[true,objNull,[1,2,3]]],
