@@ -25,6 +25,7 @@ if (isServer) then {
 		[true] call FOS_fnc_checkpointPointsSystem;
 		[INITIALPOINTAMOUNT] call FOS_fnc_checkpointPointsSystem
 	};
+	[] spawn FOS_fnc_adminChecker;
 };
 
 //Client only code

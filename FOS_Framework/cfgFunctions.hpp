@@ -24,6 +24,7 @@ class FOS
 		file = "FOS_Framework\Briefing";
 		class briefing {};
 		class orbatnotes {};
+		class adminChecker {};
 	};
 	class Checkpoints
 	{
