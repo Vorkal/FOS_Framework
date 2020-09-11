@@ -212,3 +212,9 @@ class CfgRespawnTemplates
         isCall = 1;
 	};
 };
+
+class Extended_InitPost_EventHandlers {
+    class Man {
+        serverInit = "_this call FOS_fnc_customLoadout";
+    };
+};

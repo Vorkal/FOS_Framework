@@ -86,6 +86,7 @@ class FOS
 		class fillAmmoContainer {};
 		class getRoleIcon {};
 		class getTeamColor {};
+		class customLoadout {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
