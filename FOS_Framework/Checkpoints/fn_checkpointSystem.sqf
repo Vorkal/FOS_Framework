@@ -34,9 +34,9 @@
  if !(CHECKPOINTSYSTEM) exitWith {};
 
 params [
-    ["_spawn",true,[true,objNull,[1,2,3]]],
+    ["_spawn",false,[true,objNull,[1,2,3]]],
     ["_Gear","",["default"]],
-    ["_Protection",5,[417]],
+    ["_Protection",0,[417]],
     ["_reviveDowned",false,[false]]
 ];
 
