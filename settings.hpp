@@ -58,7 +58,7 @@
 #define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
 #define CLICKTOFIND false //Players can click on the group name to find the group on the map
 #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
-#define HIDEGROUPS []; //List of groups you can tell the ORBAT to hide no matter what
+#define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -149,6 +149,7 @@
 /// Misc settings ///
 /////////////////////
 
+#define LOADOUTARRAY []
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
@@ -173,5 +174,6 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define GROUPTRACKER true
 #define SAFESTART true
 #define SPECTATOR true
+#define CUSTOMLOADOUT true
 
 #endif
