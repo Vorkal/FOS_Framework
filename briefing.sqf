@@ -36,10 +36,3 @@ _credits = "";
 
 //Details that only the admin can see
 _adminText = "";
-
-/////////////////////
-/// Zeus Briefing ///
-/////////////////////
-
-//Details that only admin OR zeus can see
-_zeusText = "";
