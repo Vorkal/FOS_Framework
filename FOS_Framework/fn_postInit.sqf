@@ -31,6 +31,9 @@ if (isServer) then {
 if (hasInterface) then {
 	//Execute briefing
 	[] spawn FOS_fnc_briefing;
+	if (CHECKPOINTPOINTSYSTEM) then {
+		[true] call FOS_fnc_checkpointPointsSystem;
+	};
 	//create fire team markers if requested on in the parameters
 	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_FTMarkerInit;
