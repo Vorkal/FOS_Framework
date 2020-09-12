@@ -1,3 +1,6 @@
+
+_players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
+
 _tab = toString [9];
 _br = toString [10];
 
@@ -10,7 +13,7 @@ _addHeader = {
 };
 
 _addText = {
-    _str = _str + _br + _tab + _this;
+    _str = _str + _br + _tab + _this + _br;
 };
 
 
@@ -39,7 +42,7 @@ _fsmCount = count diag_activeMissionFSMs;
 /// FEATURE CHECK ///
 ////////////////////
 _checkFeature = {
-    
+
 };
 
 "FEATURE CHECK: " call _addHeader;
@@ -53,12 +56,20 @@ if (_checkpointPointsCheck) then {
 };
 
 //TODO: check if FOS admin menu exists
-/* _checkpointPointsCheck = player diarySubjectExists "Checkpoint system";
-if (_checkpointPointsCheck) then {
-    "Checkpoint point system is detected!" call _addText
-    } else {
-    "Checkpoint point system NOT detected!" call _addText
-}; */
+
+
 _AOCheck = "zoneBorderInner" in allMapMarkers;
 if (_AOCheck) then {"AO Marker is detected!" call _addText} else {};
+
+
+
+
+"NOTES: " call _addHeader;
+
+_aiCount = {!isPlayer _x} count allUnits;
+_playableSlots = {isPlayer _x} count allUnits;
+_unitRatio = _aiCount / _playableSlots;
+if (_unitRatio > 15) then {"There are about " + str round _unitRatio + " units per player unit. This could be a bit high, depending on your mission design."  call _addText};
+
+
 copyToClipboard _str;
