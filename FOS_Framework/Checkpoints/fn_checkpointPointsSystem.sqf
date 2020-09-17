@@ -5,7 +5,7 @@
  * Author:  417
  *
  * Description:
- * Intended for use with the checkpointSystem. Must be executed by the server. Currently respawns EVERY PLAYER.
+ * Intended for use with the checkpointSystem. number parameter requires running from the server. Fails silently when ran on client. Currently respawns EVERY PLAYER.
  *
  *
  * Parameter(s):
@@ -54,8 +54,8 @@ switch (typeName _var) do {
 	case "STRING": {
 		if (_var isEqualTo "spawnsLeft") then {
 			//Report to player points left
-			systemChat str (missionNameSpace getVariable ["FOS_PointsLeft",0]);
-
+			_points = format ["Checkpoints left: %1",missionNameSpace getVariable ["FOS_PointsLeft",0]];
+            cutText ["<t color='#FFA500' size='2.5'>" + _points + "</t><br/>", "PLAIN DOWN",0.15, true, true];
 		};
 		if (_var isEqualTo "activated") then {
 			_currentPoints = missionNameSpace getVariable ["FOS_PointsLeft",0];
@@ -72,9 +72,9 @@ switch (typeName _var) do {
 
 			//Broadcast the person who used the checkpoint
 			if (ANNOUNCEUSER) then {
-                (format ["%1 used a checkpoint point!",_player]) remoteExec ["hint",0,false]
+                (format ["%1 used a checkpoint point! \n %2 more points left!",_player,_currentPoints - 1]) remoteExec ["hint",0,false]
                 } else {
-                (format ["%1 used a checkpoint point!",_player]) remoteExec ["hint",(call FOS_fnc_getAdmin),false]
+                (format ["%1 used a checkpoint point! \n %2 more points left!",_player]) remoteExec ["hint",(call FOS_fnc_getAdmin),false]
             };
 			//Respawn people
 			[POINTSPAWN,POINTGEAR,POINTPROTECTION] remoteExec ["FOS_fnc_checkpointSystem",0,false];
