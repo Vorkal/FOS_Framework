@@ -23,7 +23,7 @@ if (!alive player) then {
 
         _ctrl ctrlCommit 0;
         _Ctrl ctrlSetText "Call Checkpoint";
-        _ctrl ctrlAddEventHandler ["ButtonClick", {["spawnsLeft"] call FOS_fnc_checkpointPointsSystem}];
+        _ctrl ctrlAddEventHandler ["ButtonClick", {["activated"] call FOS_fnc_checkpointPointsSystem}];
 
         _ctrl = findDisplay 60492 ctrlCreate ["RscButton", -1];
 
@@ -34,12 +34,11 @@ if (!alive player) then {
 
         _ctrl ctrlCommit 0;
         _Ctrl ctrlSetText "Checkpoints Left";
-        _ctrl ctrlAddEventHandler ["ButtonClick", {["activated"] call FOS_fnc_checkpointPointsSystem}];
-
-        _ctrl = findDisplay 60492 ctrlCreate ["RscButton", -1];
+        _ctrl ctrlAddEventHandler ["ButtonClick", {["spawnsLeft"] call FOS_fnc_checkpointPointsSystem}];
     };
     //TODO: Make this an alert to the admin that they were arma'd
-    /* _ctrl ctrlSetPositionY -0.42;
+    /* ctrl = findDisplay 60492 ctrlCreate ["RscButton", -1];
+    _ctrl ctrlSetPositionY -0.42;
     _ctrl ctrlSetPositionX 0.8;
     _ctrl ctrlSetPositionh 0.07;
     _ctrl ctrlSetPositionw 0.24;
