@@ -69,6 +69,6 @@ if (!alive player) then {
             };
         } forEach (entities "man" + entities "AllVehicles");
     };
-
+    //Reset everyone back to visble if player respawns. As long as they aren't in the _hiddenObjects list we created earlier
     {if !(_x in _hiddenObjects) then {_x hideObject false}} forEach (entities "man" + entities "AllVehicles")
 };
