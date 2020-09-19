@@ -9,7 +9,8 @@ _friendList = [];
 
 //Start Spectator, no free cam and only player side
 if (!alive player) then {
-    ["Initialize", [player, _friendList, true, false, true, true, true, true, true, true]] call BIS_fnc_EGSpectator;
+    if (SHOWALLUNITS) then {_friendList = []};
+    ["Initialize", [player, _friendList, SHOWAI, FREECAM, THIRDPERSONCAM, SHOWFOCUSINFO, SHOWCAMERABUTTONS, SHOWCONTROLSHELPER, SHOWHEADER, SHOWENTITYLIST]] call BIS_fnc_EGSpectator;
 
     waitUntil {!((findDisplay 60492) isEqualTo displayNull)};
 
@@ -47,4 +48,27 @@ if (!alive player) then {
     _Ctrl ctrlSetText "I got ArmA'd";
     _ctrl ctrlSetTextColor [1,0,0,1];
     _ctrl ctrlAddEventHandler ["ButtonClick", {hint "Hurray!!! You pushed me!!!"}]; */
+};
+
+
+//Secondary
+[] spawn {
+    //Check if mission maker wants this function
+    if !(HIDEUNKNOWNENEMY) exitWith {};
+
+    //Get an array of already hidden objects. We don't want to mess with them
+    _hiddenObjects = [];
+    {if (isObjectHidden _x) then {_hiddenObjects pushBack _x}} ForEach (entities "man" + entities "AllVehicles");
+
+    //Run this code until the player respawns
+    while {!alive player} do {
+        {
+            //If unit was not already hidden, hide them until they are revealed by knowsAbout
+            if !(_x in _hiddenObjects) then {
+                if (side group player knowsAbout _x == 0 && side group _x != side group player) then {_x hideObject true} else { _x hideObject false};
+            };
+        } forEach (entities "man" + entities "AllVehicles");
+    };
+
+    {if !(_x in _hiddenObjects) then {_x hideObject false}} forEach (entities "man" + entities "AllVehicles")
 };

@@ -145,6 +145,23 @@
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 
+/////////////////
+/// SPECTATOR ///
+/////////////////
+
+#define SHOWALLUNITS false //Allows player to spectate enemy players
+#define SHOWAI true //Allow players to spectate AI
+#define FREECAM false //Allow players to FREECAM
+#define THIRDPERSONCAM true //Allow player to spectate in third person pov
+#define SHOWFOCUSINFO true //Show or hide focus widget
+#define SHOWCAMERABUTTONS true //Show camera widget
+#define SHOWCONTROLSHELPER true //Show controls widget
+#define SHOWHEADER true //Show header
+#define SHOWENTITYLIST true //show entitiy/location widget
+
+//NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
+#define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
+
 /////////////////////
 /// Misc settings ///
 /////////////////////
