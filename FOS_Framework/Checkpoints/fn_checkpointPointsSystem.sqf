@@ -58,11 +58,33 @@ switch (typeName _var) do {
             cutText ["<t color='#FFA500' size='2.5'>" + _points + "</t><br/>", "PLAIN DOWN",0.15, true, true];
 		};
 		if (_var isEqualTo "activated") then {
+            //Check if player is allowed to
+            _permissionGranted = switch (CALLCHECKPOINTPERMISSIONS) do {
+                case 0: {
+                    true
+                };
+                case 1: {
+                    if (player == leader player) then {
+                        true
+                    } else {
+                        false
+                    };
+                };
+                case 2: {
+                    if (player == ([] call FOS_fnc_getAdmin)) then {
+                        true
+                    } else {
+                        false
+                    };
+                };
+            };
+            if !(_permissionGranted) exitWith {hintSilent "You are not allowed to call checkpoints"};
+
 			_currentPoints = missionNameSpace getVariable ["FOS_PointsLeft",0];
 			//Stop activation of the checkpoint during briefing
 			if (time isEqualTo 0) exitWith {};
 			//Stop activation of the checkpoint if there are none left
-			if (_currentPoints <= 0) exitWith {};
+			if (_currentPoints <= 0) exitWith {hintSilent "Out of checkpoints"};
 
 			//Remove a point
 			missionNameSpace setVariable ["FOS_PointsLeft",_currentPoints + -1,true];
