@@ -72,11 +72,16 @@
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
-#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
+#define CHECKPOINTPOINTSYSTEM true //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
 #define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
 #define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
 #define POINTPROTECTION 5 //Number: amount of spawn protection time
+
+#define CALLCHECKPOINTPERMISSIONS 1 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
+
+#define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
+#define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
