@@ -166,6 +166,13 @@
 /// Misc settings ///
 /////////////////////
 
+/*
+Insert the variable names of units with loadouts you would like to replace over units of the same classname
+
+Example: If want NATO Squad leads to have 416s instead of an MX, create a nato squad lead. Edit his loadout in 3den, give him a variable,
+and then add that variable name into the LOADOUTARRAY array. Every unit that matches the classname of that unit you added into the array
+(In this case, they are a Nato Squad Lead) will convert to the new loadout at mission start and any mid-mission creation including Zeus.
+*/
 #define LOADOUTARRAY []
 
 //////////////////////////
