@@ -89,8 +89,15 @@ if (isMultiplayer) then {
 
 _adminRecord = missionNameSpace getVariable ["FOS_AdminRecord",nil];
 
-if !(isNil "_adminRecord") then {
-    player setDiaryRecordText [["FOS_Options", _adminRecord], ["FOS Admin Menu",_briefing]];
+_nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value
+
+if (!isNil "_adminRecord") then {
+	if !(_adminRecord isEqualTo _nullRecord) then {
+    	player setDiaryRecordText [["FOS_Options", _adminRecord], ["FOS Admin Menu",_briefing]];
+	} else {
+		_adminRecord = player createDiaryRecord ["FOS_Options", ["FOS Admin Menu",_briefing]];
+		missionNameSpace setVariable ["FOS_AdminRecord",_adminRecord];
+	};
 } else {
     _adminRecord = player createDiaryRecord ["FOS_Options", ["FOS Admin Menu",_briefing]];
 	missionNameSpace setVariable ["FOS_AdminRecord",_adminRecord];

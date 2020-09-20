@@ -81,8 +81,11 @@ if (_Situation != "" && isNil "FOS_SituationRecord") then {
 if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
 	#include "adminBriefing.sqf";
 } else {
-    _adminRecord = missionNameSpace getVariable ["FOS_AdminRecord",""];
-    player removeDiaryRecord ["FOS_Options", _adminRecord];
+    _adminRecord = missionNameSpace getVariable ["FOS_AdminRecord",nil];
+    if !(isNil "_adminRecord") then {
+        player removeDiaryRecord ["FOS_Options", _adminRecord];
+        missionNameSpace setVariable ["FOS_AdminRecord",nil];
+    };
 };
 
 "FOS: briefing system initialized" call FOS_fnc_debugSystemAdd;
