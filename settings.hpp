@@ -78,7 +78,7 @@
 #define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
 #define POINTPROTECTION 5 //Number: amount of spawn protection time
 
-#define CALLCHECKPOINTPERMISSIONS 1 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
+#define CALLCHECKPOINTPERMISSIONS 0 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
 
 #define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
 #define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
