@@ -14,8 +14,8 @@ if !(DEBUGMESSAGESYSTEM) exitWith {};
 scriptName "FOS_debugSystem";
 params [["_debug",true,[true]],["_frequency",5,[123]]];
 
-//Exit if this isn't in eden preview.
-if !(call BIS_fnc_3DENMissionPreview) exitWith {};
+//Exit if player isn't admin
+if (player != (call FOS_fnc_getAdmin)) exitWith {};
 
 execVM "testfile.sqf";
 
