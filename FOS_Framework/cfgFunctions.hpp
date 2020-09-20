@@ -24,6 +24,7 @@ class FOS
 		file = "FOS_Framework\Briefing";
 		class briefing {};
 		class orbatnotes {};
+		class adminChecker {};
 	};
 	class Checkpoints
 	{
@@ -39,6 +40,7 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
+		class CopyQA {};
 	}
 	class Difficulty
 	{
@@ -85,6 +87,7 @@ class FOS
 		class fillAmmoContainer {};
 		class getRoleIcon {};
 		class getTeamColor {};
+		class customLoadout {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"

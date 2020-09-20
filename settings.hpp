@@ -72,11 +72,16 @@
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
-#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
+#define CHECKPOINTPOINTSYSTEM true //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
 #define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
 #define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
 #define POINTPROTECTION 5 //Number: amount of spawn protection time
+
+#define CALLCHECKPOINTPERMISSIONS 0 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
+
+#define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
+#define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
@@ -145,10 +150,35 @@
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 
+/////////////////
+/// SPECTATOR ///
+/////////////////
+
+#define SHOWALLUNITS false //Allows player to spectate enemy players
+#define SHOWAI true //Allow players to spectate AI
+#define FREECAM false //Allow players to FREECAM
+#define THIRDPERSONCAM true //Allow player to spectate in third person pov
+#define SHOWFOCUSINFO true //Show or hide focus widget
+#define SHOWCAMERABUTTONS true //Show camera widget
+#define SHOWCONTROLSHELPER true //Show controls widget
+#define SHOWHEADER true //Show header
+#define SHOWENTITYLIST true //show entitiy/location widget
+
+//NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
+#define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
+
 /////////////////////
 /// Misc settings ///
 /////////////////////
 
+/*
+Insert the variable names of units with loadouts you would like to replace over units of the same classname
+
+Example: If want NATO Squad leads to have 416s instead of an MX, create a nato squad lead. Edit his loadout in 3den, give him a variable,
+and then add that variable name into the LOADOUTARRAY array. Every unit that matches the classname of that unit you added into the array
+(In this case, they are a Nato Squad Lead) will convert to the new loadout at mission start and any mid-mission creation including Zeus.
+*/
+#define LOADOUTARRAY []
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
@@ -173,5 +203,6 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define GROUPTRACKER true
 #define SAFESTART true
 #define SPECTATOR true
+#define CUSTOMLOADOUT true
 
 #endif

@@ -1,7 +1,13 @@
+
+if (isNil "FOS_AlertRecord") then {
+	_AlertRecord = player createDiaryRecord ["Diary", ["FOS Admin Menu", "It's under Mission Options now. Not Briefing"]];
+	missionNameSpace setVariable ["FOS_AlertRecord",_AlertRecord];
+};
+
 _briefing = "
 <br/>
 <font size='18'>ADMIN SECTION</font><br/>
-This briefing section can only be seen by the current admin.
+This can only be seen by the current admin.
 <br/><br/>
 ";
 
@@ -81,4 +87,18 @@ if (isMultiplayer) then {
 	";
 };
 
-player createDiaryRecord ["Diary", ["FOS Admin Menu",_briefing]];
+_adminRecord = missionNameSpace getVariable ["FOS_AdminRecord",nil];
+
+_nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value
+
+if (!isNil "_adminRecord") then {
+	if !(_adminRecord isEqualTo _nullRecord) then {
+    	player setDiaryRecordText [["FOS_Options", _adminRecord], ["FOS Admin Menu",_briefing]];
+	} else {
+		_adminRecord = player createDiaryRecord ["FOS_Options", ["FOS Admin Menu",_briefing]];
+		missionNameSpace setVariable ["FOS_AdminRecord",_adminRecord];
+	};
+} else {
+    _adminRecord = player createDiaryRecord ["FOS_Options", ["FOS Admin Menu",_briefing]];
+	missionNameSpace setVariable ["FOS_AdminRecord",_adminRecord];
+};

@@ -7,6 +7,8 @@ if (!isDedicated && (isNull player)) then
 
 private ["_situation"];
 
+player createDiarySubject ["FOS_Options","Mission Options"];
+
 _enemyForcesHeader = "<br/><br/>
 <font size='18'>ENEMY FORCES</font>
 <br/>";
@@ -51,27 +53,39 @@ if (_autolinebreak) then {
     _credits = _credits call _autoBreak;
 };
 
-if (_credits != "") then {
+if (_credits != "" && isNil "FOS_CreditRecord") then {
     player createDiaryRecord ["diary", ["Credits",_credits]];
+    missionNameSpace setVariable ["FOS_CreditRecord",_credits];
 };
-if (_Administration != "") then {
+if (_Administration != "" && isNil "FOS_AdministrationRecord") then {
     player createDiaryRecord ["Diary",["Administration",_Administration]];
+    missionNameSpace setVariable ["FOS_AdministrationRecord",_Administration];
 };
-if (_Intel != "") then {
+if (_Intel != "" && isNil "FOS_IntelRecord") then {
     player createDiaryRecord ["Diary",["Intel",_Intel]];
+    missionNameSpace setVariable ["FOS_IntelRecord",_Intel];
 };
-if (_Execution != "") then {
+if (_Execution != "" && isNil "FOS_ExecutionRecord") then {
     player createDiaryRecord ["Diary",["Execution",_Execution]];
+    missionNameSpace setVariable ["FOS_ExecutionRecord",_Execution];
 };
-if (_mission != "") then {
+if (_mission != "" && isNil "FOS_MissionRecord") then {
     player createDiaryRecord ["Diary",["Mission",_mission]];
+    missionNameSpace setVariable ["FOS_MissionRecord",_mission];
 };
-if (_Situation != "") then {
+if (_Situation != "" && isNil "FOS_SituationRecord") then {
     player createDiaryRecord ["Diary",["Situation",_Situation]];
+    missionNameSpace setVariable ["FOS_SituationRecord",_Situation];
 };
 
 if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
 	#include "adminBriefing.sqf";
+} else {
+    _adminRecord = missionNameSpace getVariable ["FOS_AdminRecord",nil];
+    if !(isNil "_adminRecord") then {
+        player removeDiaryRecord ["FOS_Options", _adminRecord];
+        missionNameSpace setVariable ["FOS_AdminRecord",nil];
+    };
 };
 
 "FOS: briefing system initialized" call FOS_fnc_debugSystemAdd;
