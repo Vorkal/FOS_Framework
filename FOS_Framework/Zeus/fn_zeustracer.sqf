@@ -1,16 +1,17 @@
-//Executes only in 3den (preview scenario)
-
-
-//Attach the event handler to detect when the EMP bullet is shot
 {_x addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+	//Get current tracer varaible
     private _projectiles = missionNamespace getVariable ["FOS_Tracers", []];
+	//If there are already 50 projectiles, delete tracer for one
     if (count _projectiles > 50) then {_projectiles deleteAt 0};
+	//Push this projectile fired into the array
     _projectiles pushBack [_projectile, [[getPosVisual _projectile, [1,0,0,0]]]];
+	//Set FOS_Tracer with new array
     missionNamespace setVariable ["FOS_Tracers", _projectiles];
 }]} forEach allUnits;
 
 addMissionEventHandler ["Draw3D", {
+	//Exit with Zeus interface is not detected
     if (isNull findDisplay 312) exitWith {};
     private _projectiles = missionNamespace getVariable ["FOS_Tracers", []];
     private _projectilesNew = [];
