@@ -112,5 +112,6 @@ class FOS
 	{
 		file = "FOS_Framework\Zeus";
 		class zeusInit {};
+		class zeusTracer {};
 	};
 };
