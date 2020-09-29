@@ -136,7 +136,6 @@ addMissionEventHandler ["Draw3D", {
 	while {sleep 1;!isNull player} do {
 		//Wait until Zeus detected
 		waitUntil {!(displayNull isEqualTo findDisplay 312)};
-		systemChat "YOH I DETECT IT";
 		//If T is pressed (20 = t) then activate tracer drawing
 		(findDisplay 312) displayAddEventHandler ["KeyDown", "
 		systemChat str (_this # 1);
@@ -150,6 +149,5 @@ addMissionEventHandler ["Draw3D", {
 		"];
 		//Wait until Zeus no longer exists before looping
 		waitUntil {displayNull isEqualTo findDisplay 312};
-		systemChat "YOH IT GONE";
 	};
 };
