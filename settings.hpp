@@ -98,7 +98,7 @@
 #define DYNAMICSKILL true //Allow the AI skill level to be globaly adjusted based on player count. Increases and decreases as people connect and disconnect
 #define DAMAGEREDUCER true //Reduces damage based on difficulty setting set in mission params (Always off if Ace_Medical detected)
 
-#define REDUCELOOT false //True will make every player see reduced amount of magazines per unit they kill.
+#define REDUCELOOT false //True will reduce the loot players see when opening enemy unit gear. NOTE: Checks the classname of the dead unit.
 #define LOOTAMOUNT 2 //What is the max amount the player can see on a unit per item type
 
 //////////////////
