@@ -146,28 +146,66 @@ class Params
 ///Endings
 class CfgDebriefing
 {
-	// Win.
-	class Win
-	{
-		win = 1;
-		title = "Mission accomplished!";
-		subtitle = "";
-		description = "";
+    class WIN1NAME
+    {
+        win = 1;
+		title = WIN1TITLE;
+		subtitle = WIN1SUBTITLE;
+		description = WIN1DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
-	};
-	// Lose
-	class Lose
-	{
-		win = 0;
-		title = "Mission failed";
-		subtitle = "";
-		description = "";
+    };
+    class WIN2NAME
+    {
+        win = 1;
+		title = WIN2TITLE;
+		subtitle = WIN2SUBTITLE;
+		description = WIN2DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
-		pictureColor[] = {0.6,0.6,0.0,1};
-	};
+		pictureColor[] = {1,0,0,1};
+    };
+    class WIN3NAME
+    {
+        win = 1;
+		title = WIN3TITLE;
+		subtitle = WIN3SUBTITLE;
+		description = WIN3DESCRIPTION;
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {1,0,0,1};
+    };
+    class LOSE1NAME
+    {
+        win = 0;
+        title = LOSE1TITLE;
+        subtitle = LOSE1SUBTITLE;
+        description = LOSE1DESCRIPTION;
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.6,0.6,0.0,1};
+    };
+    class LOSE2NAME
+    {
+        win = 0;
+        title = LOSE2TITLE;
+        subtitle = LOSE2SUBTITLE;
+        description = LOSE2DESCRIPTION;
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.6,0.6,0.0,1};
+    };
+    class LOSE3NAME
+    {
+        win = 0;
+        title = LOSE3TITLE;
+        subtitle = LOSE3SUBTITLE;
+        description = LOSE3DESCRIPTION;
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.6,0.6,0.0,1};
+    };
 };
 
 class CfgNotifications {

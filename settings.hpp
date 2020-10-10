@@ -54,6 +54,54 @@
 /// Briefing ///
 ////////////////
 
+    /////////////
+    /// WIN 1 ///
+    /////////////
+    #define WIN1NAME WIN1 //Name of the win type as shown to the admin (NO SPACES!)
+    #define WIN1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+    #define WIN1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define WIN1DESCRIPTION "" //Text that appears in the debriefing screen
+
+    /////////////
+    /// WIN 2 ///
+    /////////////
+    #define WIN2NAME WIN2 //Name of the win type as shown to the admin (NO SPACES!)
+    #define WIN2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+    #define WIN2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define WIN2DESCRIPTION "" //Text that appears in the debriefing screen
+
+    /////////////
+    /// WIN 3 ///
+    /////////////
+    #define WIN3NAME WIN3 //Name of the win type as shown to the admin (NO SPACES!)
+    #define WIN3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+    #define WIN3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define WIN3DESCRIPTION "" //Text that appears in the debriefing screen
+
+    //////////////
+    /// LOSE 1 ///
+    //////////////
+    #define LOSE1NAME LOSE1 //Name of the win type as shown to the admin (NO SPACES!)
+    #define LOSE1TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+    #define LOSE1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define LOSE1DESCRIPTION "" //Text that appears in the debriefing screen
+
+    //////////////
+    /// LOSE 2 ///
+    //////////////
+    #define LOSE2NAME LOSE2 //Name of the win type as shown to the admin (NO SPACES!)
+    #define LOSE2TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+    #define LOSE2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define LOSE2DESCRIPTION "" //Text that appears in the debriefing screen
+
+    //////////////
+    /// LOSE 3 ///
+    //////////////
+    #define LOSE3NAME LOSE3 //Name of the win type as shown to the admin (NO SPACES!)
+    #define LOSE3TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+    #define LOSE3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+    #define LOSE3DESCRIPTION "" //Text that appears in the debriefing screen
+
 #define CANREFRESH true //Players can press the refresh button to get an update on the current ORBAT
 #define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
 #define CLICKTOFIND false //Players can click on the group name to find the group on the map
