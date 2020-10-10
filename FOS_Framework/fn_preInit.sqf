@@ -1,3 +1,5 @@
+#include "..\settings.hpp"
+
 if (["loadParams"] call FOS_fnc_getParamValue isEqualTo 0) then {
     [] call FOS_fnc_saveParams;
 };

@@ -107,11 +107,6 @@
 #define CLICKTOFIND false //Players can click on the group name to find the group on the map
 #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
 #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
-//////////////////
-/// Mission AO ///
-//////////////////
-
-#define AOMARKERNAME "AO" //Your marker name (make sure it is a rectangle area marker)
 
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
@@ -133,12 +128,6 @@
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
-//////////////////////
-/// VANILLA REVIVE ///
-//////////////////////
-
-#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
-
 //////////////////
 /// DIFFICULTY ///
 //////////////////
@@ -149,18 +138,23 @@
 #define REDUCELOOT false //True will make every player see reduced amount of magazines per unit they kill.
 #define LOOTAMOUNT 2 //What is the max amount the player can see on a unit per item type
 
-//////////////////
-/// SAFE START ///
-//////////////////
+//////////////////////////
+/// DYNAMIC SIMULATION ///
+/////////////////////////
 
-#define SAFESTARTINIT true //Controls if safestart fires at mission start
-#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
+#define ENABLEDYNAMICSIMULATION True
 
-///////////
-/// JIP ///
-///////////
+//Note: When sleeping units are damaged, they will not react to the damage until they are "woken up" by distance.
+#define DYNAMICSIMDISTANCEINFANTRY 750 //Approximate distance from enemy units before dynamic simulationn will put infantry to sleep
+#define DYNAMICSIMDISTANCEVEHICLE 350 //Approximate distance from enemy units before dynamic simulationn will put active vehicle to sleep
+#define DYNAMICSIMDISTANCEEMPTYVEHICLE 250 //Approximate distance from enemy units before dynamic simulationn will put empty vehicle to sleep
+#define DYNAMICSIMDISTANCEPROP 50 //Approximate distance from all units before dynamic simulationn will put props to sleep
 
-//No configurable settings yet!
+#define DYNAMICSIMMOVEMENTCOEF 2 //Doubles the activation distances listed above if the unit is currently moving
+
+//NOTE: These two settings may override what you set in 3DEN if changed!
+#define DYNAMICSIMAUTOADDUNITS false //Automatically adds all AI into dynamic simulation manager so you don't have to through 3DEN
+#define DYNAMICSIMCANAIWAKE true //Controls if AI can wake up enemy units in their presence
 
 ////////////////////////
 /// FIRETEAM MARKERS ///
@@ -172,16 +166,6 @@
 #define DRAWTEAM true //Controls if a marker is drawn for the player's team
 
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
-
-///////////////
-/// NAMETAG ///
-///////////////
-
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
-#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
-#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
-#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
-#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 /////////////////////
 /// GROUP TRACKER ///
@@ -197,6 +181,35 @@
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
+
+///////////
+/// JIP ///
+///////////
+
+//No configurable settings yet!
+
+//////////////////
+/// Mission AO ///
+//////////////////
+
+#define AOMARKERNAME "AO" //Your marker name (make sure it is a rectangle area marker)
+
+///////////////
+/// NAMETAG ///
+///////////////
+
+#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
+#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
+#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
+#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
+
+//////////////////
+/// SAFE START ///
+//////////////////
+
+#define SAFESTARTINIT true //Controls if safestart fires at mission start
+#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
 
 /////////////////
 /// SPECTATOR ///
@@ -214,6 +227,12 @@
 
 //NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
+
+//////////////////////
+/// VANILLA REVIVE ///
+//////////////////////
+
+#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
 
 /////////////////////
 /// Misc settings ///

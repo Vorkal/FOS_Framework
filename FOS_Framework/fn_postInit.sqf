@@ -26,6 +26,27 @@ if (isServer) then {
 		[INITIALPOINTAMOUNT] call FOS_fnc_checkpointPointsSystem
 	};
 	[] spawn FOS_fnc_adminChecker;
+
+	//Run dynamic simulation settings if requested
+	if (isServer && ENABLEDYNAMICSIMULATION) then {
+		enableDynamicSimulationSystem ENABLEDYNAMICSIMULATION;
+		"Group" setDynamicSimulationDistance DYNAMICSIMDISTANCEINFANTRY;
+		"Vehicle" setDynamicSimulationDistance DYNAMICSIMDISTANCEVEHICLE;
+		"EmptyVehicle" setDynamicSimulationDistance DYNAMICSIMDISTANCEEMPTYVEHICLE;
+		"Prop" setDynamicSimulationDistance DYNAMICSIMDISTANCEPROP;
+
+		"IsMoving" setDynamicSimulationDistanceCoef DYNAMICSIMMOVEMENTCOEF;
+
+		//Get all AI units
+		_AIUnits = allUnits - (call BIS_fnc_listPlayers);
+		//Add all AI units into simulation manager if requested
+		if (DYNAMICSIMAUTOADDUNITS) then {
+			{_x enableDynamicSimulation true} forEach _AIUnits;
+		};
+		if !(DYNAMICSIMCANAIWAKE) then {
+			{_x triggerDynamicSimulation false} forEach _AIUnits;
+		};
+	};
 };
 
 //Client only code
