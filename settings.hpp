@@ -98,6 +98,7 @@
     #define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
     #define CLICKTOFIND false //Players can click on the group name to find the group on the map
     #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
+    #define FINDFREQ true //Lets you click on any unit in ORBAT in order to see their currently used frequencies (TFAR ONLY SETTING)
     #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
 
 

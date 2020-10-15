@@ -89,6 +89,7 @@ class FOS
 		class getTeamColor {};
 		class customLoadout {};
 		class canSee {};
+		class tfarFindFrequency {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
