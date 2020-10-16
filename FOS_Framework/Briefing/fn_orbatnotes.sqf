@@ -72,7 +72,7 @@ if (SHOWALL) then {
             {
                 _unit = _x;
                 //Create unit information under the group header
-                if (alive _unit || !(PERFECTINFO)) then {
+                if ((alive _unit || !(PERFECTINFO)) && isPlayer _unit) then {
                     if (isClass(configfile >> "CfgPatches" >> "task_force_radio") && FINDFREQ) then {
                         _orbatText = _orbatText + "          " + format [
                         "<img image='%2' width='16' height='16'/><img image='%3' width='16' height='16'/><font color='%4' size='14' face=''><execute expression='[%5,true] call FOS_fnc_tfarFindFrequency'>%1</execute></font>",
