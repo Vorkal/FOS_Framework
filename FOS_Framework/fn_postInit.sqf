@@ -10,6 +10,9 @@ if (isServer) then {
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
+		if (RESTRICTATSTART) then {
+			[] spawn FOS_fnc_safeStartRestrictZone;
+		};
 		if (PAUSEATSTART) then {
 			call FOS_fnc_pauseMissionServer;
 		};

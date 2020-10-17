@@ -218,6 +218,8 @@
 #define SAFESTARTINIT true //Controls if safestart fires at mission start
 #define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
 #define PAUSEATSTART false //Starts the game paused. Can be unpaused by admin in FOS ADMIN MENU
+#define RESTRICTATSTART false //Drags players back if they walk too far from starting point at safe start
+#define RESTRICTDISTANCE 50 //How far the player can go before it drags them back
 
 /////////////////
 /// SPECTATOR ///

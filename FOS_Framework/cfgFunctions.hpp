@@ -111,6 +111,7 @@ class FOS
 		class safeStartServerInit {};
 		class safeStartToggleClient {};
 		class safeStartToggleServer {};
+		class safeStartRestrictZone {};
 	};
 	class Zeus
 	{
