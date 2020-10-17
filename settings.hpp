@@ -238,6 +238,15 @@
 //NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
 
+////////////////////////
+/// Mission Teleport ///
+///////////////////////
+#define TELEOBJECT FOS_SafeFlag //Name of object that players use to teleport with
+#define TELEBLACKLIST [[getPos player,100]] //Black list for mission teleport. Check BIS_fnc_getArea for syntax information
+#define TELEMOVESQUAD true //Allows the Squad lead to move the entire squad at once. Restricts access to SL only.
+#define TELESAFESTARTONLY false //Can only be accessed during safestart
+#define TELEAFTERSAFESTART true //Allows SLs to mark where they want to be teleported once safe start is over. If safe start is off it just sends them there
+
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
@@ -264,6 +273,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 */
 
 #define	MISSIONAO true
+#define MISSIONTELEPORT true
 #define BRIEFING true
 #define ORBAT true
 #define CHECKPOINTSYSTEM true

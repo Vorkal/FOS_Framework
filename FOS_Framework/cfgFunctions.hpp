@@ -92,6 +92,7 @@ class FOS
 		class tfarFindFrequency {};
 		class pauseMissionServer {};
 		class pauseMissionClient {};
+		class addTeleportAction {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
