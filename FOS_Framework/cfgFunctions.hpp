@@ -88,6 +88,8 @@ class FOS
 		class getRoleIcon {};
 		class getTeamColor {};
 		class customLoadout {};
+		class canSee {};
+		class tfarFindFrequency {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
@@ -112,5 +114,6 @@ class FOS
 	{
 		file = "FOS_Framework\Zeus";
 		class zeusInit {};
+		class zeusTracer {};
 	};
 };

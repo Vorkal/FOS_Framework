@@ -69,11 +69,19 @@ if (SHOWALL) then {
             } else {
                 _orbatText = _orbatText + "     " + format ["<font color='#FFFFFF' size='18' face=''>%1</font>",groupID _group] + "<br/>"
             };
-
             {
                 _unit = _x;
-                //Create unit information under the group header
-                if (alive _unit || !(PERFECTINFO)) then {
+                //Create unit information under the group header. Adds TFAR script to player name if detected and set to on in settings.hpp file
+                if ((alive _unit || !(PERFECTINFO)) && isPlayer _unit && isClass(configfile >> "CfgPatches" >> "task_force_radio") && FINDFREQ) then {
+                    _orbatText = _orbatText + "          " + format [
+                    "   <img image='%2' width='16' height='16'/>   <img image='%3' width='16' height='16'/>  <font color='%4' size='14' face=''><execute expression='[%5,true] call FOS_fnc_tfarFindFrequency'>%1</execute></font>",
+                    name _unit,
+                    [rank _unit, "texture"] call BIS_fnc_rankParams,
+                    [_unit] call FOS_fnc_getRoleIcon,
+                    ([_unit] call FOS_fnc_getTeamColor) call BIS_fnc_colorRGBAtoHTML,
+                    _unit
+                    ] + "<br/>";
+                } else {
                     _orbatText = _orbatText + "          " + format [
                     "   <img image='%2' width='16' height='16'/>   <img image='%3' width='16' height='16'/>  <font color='%4' size='14' face=''>%1</font>",
                     name _unit,

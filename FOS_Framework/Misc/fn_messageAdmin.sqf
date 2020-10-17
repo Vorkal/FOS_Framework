@@ -18,7 +18,7 @@
 
 
 if !(isServer) exitWith {};
-params [["_hint",false],["_string","default message",["string"]],["_values",nil]];
+params [["_string","default message",["string"]],["_hint",false],["_values",objnull]];
 
 _admin = call FOS_fnc_getAdmin;
 

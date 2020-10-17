@@ -33,37 +33,74 @@
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-
 #define DISABLEAI 1
-////////////////////////
-/// RESPAWN SETTINGS ///
-///////////////////////
-
-//WARNING: DO NOT CHANGE THIS IF YOU PLAN TO USE THE CHECKPOINT SYSTEM
-
-//NOTE: Leave these settings like this if you plan to use the checkpoint system
-#define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
-#define RESPAWNTIME 1e10 //Respawn delay for players in seconds
-#define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
-#define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
-#define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
-#define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
-#define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
 
 ////////////////
 /// Briefing ///
 ////////////////
 
-#define CANREFRESH true //Players can press the refresh button to get an update on the current ORBAT
-#define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
-#define CLICKTOFIND false //Players can click on the group name to find the group on the map
-#define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
-#define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
-//////////////////
-/// Mission AO ///
-//////////////////
+    ////////////////////
+    /// Ending types ///
+    ///////////////////
 
-#define AOMARKERNAME "AO" //Your marker name (make sure it is a rectangle area marker)
+        /////////////
+        /// WIN 1 ///
+        /////////////
+        #define WIN1NAME WIN1 //Name of the win type as shown to the admin (NO SPACES!)
+        #define WIN1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define WIN1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define WIN1DESCRIPTION "" //Text that appears in the debriefing screen
+
+        /////////////
+        /// WIN 2 ///
+        /////////////
+        #define WIN2NAME WIN2 //Name of the win type as shown to the admin (NO SPACES!)
+        #define WIN2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define WIN2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define WIN2DESCRIPTION "" //Text that appears in the debriefing screen
+
+        /////////////
+        /// WIN 3 ///
+        /////////////
+        #define WIN3NAME WIN3 //Name of the win type as shown to the admin (NO SPACES!)
+        #define WIN3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define WIN3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define WIN3DESCRIPTION "" //Text that appears in the debriefing screen
+
+        //////////////
+        /// LOSE 1 ///
+        //////////////
+        #define LOSE1NAME LOSE1 //Name of the win type as shown to the admin (NO SPACES!)
+        #define LOSE1TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+        #define LOSE1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define LOSE1DESCRIPTION "" //Text that appears in the debriefing screen
+
+        //////////////
+        /// LOSE 2 ///
+        //////////////
+        #define LOSE2NAME LOSE2 //Name of the win type as shown to the admin (NO SPACES!)
+        #define LOSE2TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+        #define LOSE2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define LOSE2DESCRIPTION "" //Text that appears in the debriefing screen
+
+        //////////////
+        /// LOSE 3 ///
+        //////////////
+        #define LOSE3NAME LOSE3 //Name of the win type as shown to the admin (NO SPACES!)
+        #define LOSE3TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+        #define LOSE3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define LOSE3DESCRIPTION "" //Text that appears in the debriefing screen
+
+    /////////////
+    /// ORBAT ///
+    /////////////
+    #define CANREFRESH true //Players can press the refresh button to get an update on the current ORBAT
+    #define SHOWALL true //Lists all players friendly to you in ORBAT. Even if they are a different side.
+    #define CLICKTOFIND false //Players can click on the group name to find the group on the map
+    #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
+    #define FINDFREQ true //Lets you click on any unit in ORBAT in order to see their currently used frequencies (TFAR ONLY SETTING)
+    #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
+
 
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
@@ -85,12 +122,6 @@
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
-//////////////////////
-/// VANILLA REVIVE ///
-//////////////////////
-
-#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
-
 //////////////////
 /// DIFFICULTY ///
 //////////////////
@@ -101,18 +132,23 @@
 #define REDUCELOOT false //True will reduce the loot players see when opening enemy unit gear. NOTE: Checks the classname of the dead unit.
 #define LOOTAMOUNT 2 //What is the max amount the player can see on a unit per item type
 
-//////////////////
-/// SAFE START ///
-//////////////////
+//////////////////////////
+/// DYNAMIC SIMULATION ///
+/////////////////////////
 
-#define SAFESTARTINIT true //Controls if safestart fires at mission start
-#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
+#define ENABLEDYNAMICSIMULATION True
 
-///////////
-/// JIP ///
-///////////
+//Note: When sleeping units are damaged, they will not react to the damage until they are "woken up" by distance.
+#define DYNAMICSIMDISTANCEINFANTRY 750 //Approximate distance from enemy units before dynamic simulationn will put infantry to sleep
+#define DYNAMICSIMDISTANCEVEHICLE 350 //Approximate distance from enemy units before dynamic simulationn will put active vehicle to sleep
+#define DYNAMICSIMDISTANCEEMPTYVEHICLE 250 //Approximate distance from enemy units before dynamic simulationn will put empty vehicle to sleep
+#define DYNAMICSIMDISTANCEPROP 50 //Approximate distance from all units before dynamic simulationn will put props to sleep
 
-//No configurable settings yet!
+#define DYNAMICSIMMOVEMENTCOEF 2 //Doubles the activation distances listed above if the unit is currently moving
+
+//NOTE: These two settings may override what you set in 3DEN if changed!
+#define DYNAMICSIMAUTOADDUNITS false //Automatically adds all AI into dynamic simulation manager so you don't have to through 3DEN
+#define DYNAMICSIMCANAIWAKE true //Controls if AI can wake up enemy units in their presence
 
 ////////////////////////
 /// FIRETEAM MARKERS ///
@@ -124,16 +160,6 @@
 #define DRAWTEAM true //Controls if a marker is drawn for the player's team
 
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
-
-///////////////
-/// NAMETAG ///
-///////////////
-
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
-#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
-#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
-#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
-#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 /////////////////////
 /// GROUP TRACKER ///
@@ -149,6 +175,49 @@
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
+
+///////////
+/// JIP ///
+///////////
+
+
+
+//////////////////
+/// Mission AO ///
+//////////////////
+
+#define AOMARKERNAME "AO" //Hides area outside of marker area.
+
+///////////////
+/// NAMETAG ///
+///////////////
+
+#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
+#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
+#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
+#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
+
+////////////////////////
+/// RESPAWN SETTINGS ///
+///////////////////////
+
+//NOTE: Leave these settings like this if you plan to use the checkpoint system
+#define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
+#define RESPAWNTIME 1e10 //Respawn delay for players in seconds
+#define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
+#define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
+#define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
+#define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
+#define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
+
+//////////////////
+/// SAFE START ///
+//////////////////
+
+#define SAFESTARTINIT true //Controls if safestart fires at mission start
+#define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
+#define PAUSEATSTART false //Starts the game paused. Can be unpaused by admin in FOS ADMIN MENU
 
 /////////////////
 /// SPECTATOR ///
@@ -167,18 +236,20 @@
 //NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
 
+//////////////////////
+/// VANILLA REVIVE ///
+//////////////////////
+
+#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
+
 /////////////////////
 /// Misc settings ///
 /////////////////////
 
-/*
-Insert the variable names of units with loadouts you would like to replace over units of the same classname
+#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout
 
-Example: If want NATO Squad leads to have 416s instead of an MX, create a nato squad lead. Edit his loadout in 3den, give him a variable,
-and then add that variable name into the LOADOUTARRAY array. Every unit that matches the classname of that unit you added into the array
-(In this case, they are a Nato Squad Lead) will convert to the new loadout at mission start and any mid-mission creation including Zeus.
-*/
-#define LOADOUTARRAY []
+#define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin
+#define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged"
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///

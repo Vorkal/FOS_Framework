@@ -37,6 +37,6 @@ _curator addeventhandler ["curatorGroupDoubleClicked",{(_this select 1) call bis
 _curator addeventhandler ["curatorWaypointDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
 _curator addeventhandler ["curatorMarkerDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
 
-
+[] spawn FOS_fnc_zeusTracer;
 //Return zeus object
 _curator
