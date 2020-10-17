@@ -90,6 +90,8 @@ class FOS
 		class customLoadout {};
 		class canSee {};
 		class tfarFindFrequency {};
+		class pauseMissionServer {};
+		class pauseMissionClient {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
