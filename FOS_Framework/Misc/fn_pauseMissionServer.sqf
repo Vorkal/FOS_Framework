@@ -1,7 +1,6 @@
 _state = missionNameSpace getVariable ["FOS_PauseState",false];
 
 if !(_state) then {
-
     //Disable all entities
     {_x enableSimulationGlobal false} forEach entities "";
     //Alert players about the pause
