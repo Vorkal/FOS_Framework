@@ -10,6 +10,9 @@ if (isServer) then {
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
+		if (PAUSEATSTART) then {
+			call FOS_fnc_pauseMissionServer;
+		};
 		//Init the dynamic groups menu so that players can select create their own grouping if they wish
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
