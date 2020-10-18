@@ -255,8 +255,9 @@
 
 #define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout
 
-#define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin
-#define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged"
+
+#define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
+#define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged" (CBA REQUIRED)
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
