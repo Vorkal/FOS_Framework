@@ -51,6 +51,33 @@ if (_autolinebreak) then {
     _mission = _mission call _autoBreak;
     _situation = _situation call _autoBreak;
     _credits = _credits call _autoBreak;
+
+    _westsituation = _westsituation call _autoBreak;
+    _westenemyForces = _westenemyForces call _autoBreak;
+    _westfriendlyForces = _westfriendlyForces call _autoBreak;
+    _westmission = _westmission call _autoBreak;
+    _westExecution = _westExecution call _autoBreak;
+    _westintel = _westintel call _autoBreak;
+    _westAdministration = _westAdministration call _autoBreak;
+    _westcredits = _westcredits call _autoBreak;
+
+    _eastsituation = _eastsituation call _autoBreak;
+    _eastenemyForces = _eastenemyForces call _autoBreak;
+    _eastfriendlyForces = _eastfriendlyForces call _autoBreak;
+    _eastmission = _eastmission call _autoBreak;
+    _eastExecution = _eastExecution call _autoBreak;
+    _eastintel = _eastintel call _autoBreak;
+    _eastAdministration = _eastAdministration call _autoBreak;
+    _eastcredits = _eastcredits call _autoBreak;
+
+    _indsituation = _indsituation call _autoBreak;
+    _indenemyForces = _indenemyForces call _autoBreak;
+    _indfriendlyForces = _indfriendlyForces call _autoBreak;
+    _indmission = _indmission call _autoBreak;
+    _indExecution = _indExecution call _autoBreak;
+    _indintel = _indintel call _autoBreak;
+    _indAdministration = _indAdministration call _autoBreak;
+    _indcredits = _indcredits call _autoBreak;
 };
 
 if (_credits != "" && isNil "FOS_CreditRecord") then {
@@ -76,6 +103,148 @@ if (_mission != "" && isNil "FOS_MissionRecord") then {
 if (_Situation != "" && isNil "FOS_SituationRecord") then {
     player createDiaryRecord ["Diary",["Situation",_Situation]];
     missionNameSpace setVariable ["FOS_SituationRecord",_Situation];
+};
+if (_SMECA != "" && isNil "FOS_SMECARecord") then {
+    player createDiaryRecord ["Diary",["SMECA",_Situation]];
+    missionNameSpace setVariable ["FOS_SMECARecord",_Situation];
+};
+
+if (side player == west) then {
+    _enemyForcesHeaderWest = "<br/><br/>
+    <font size='18'>ENEMY FORCES</font>
+    <br/>";
+
+    _friendlyForcesHeaderWest = "<br/><br/>
+    <font size='18'>FRIENDLY FORCES</font>
+    <br/>";
+
+    //Remove the formating text if mission maker did not add any details
+    if (_westenemyForces == "") then {_enemyForcesHeaderWest = ""};
+    if (_westfriendlyForces == "") then {_friendlyForcesHeaderWest = ""};
+
+    //Merge situation details
+    _situation = _situation + _enemyForcesHeaderWest + _westenemyForces + _friendlyForcesHeaderWest + _westfriendlyForces;
+
+    if (_westcredits != "" && isNil "FOS_CreditRecord") then {
+        player createDiaryRecord ["diary", ["Credits",_westcredits]];
+        missionNameSpace setVariable ["FOS_CreditRecord",_westcredits];
+    };
+    if (_westAdministration != "" && isNil "FOS_AdministrationRecord") then {
+        player createDiaryRecord ["Diary",["Administration",_westAdministration]];
+        missionNameSpace setVariable ["FOS_AdministrationRecord",_westAdministration];
+    };
+    if (_westintel != "" && isNil "FOS_IntelRecord") then {
+        player createDiaryRecord ["Diary",["Intel",_westintel]];
+        missionNameSpace setVariable ["FOS_IntelRecord",_westintel];
+    };
+    if (_westExecution != "" && isNil "FOS_ExecutionRecord") then {
+        player createDiaryRecord ["Diary",["Execution",_westExecution]];
+        missionNameSpace setVariable ["FOS_ExecutionRecord",_westExecution];
+    };
+    if (_westmission != "" && isNil "FOS_MissionRecord") then {
+        player createDiaryRecord ["Diary",["Mission",_westmission]];
+        missionNameSpace setVariable ["FOS_MissionRecord",_westmission];
+    };
+    if (_westsituation != "" && isNil "FOS_SituationRecord") then {
+        player createDiaryRecord ["Diary",["Situation",_westsituation]];
+        missionNameSpace setVariable ["FOS_SituationRecord",_westsituation];
+    };
+    if (_westSMECA != "" && isNil "FOS_SMECARecord") then {
+        player createDiaryRecord ["Diary",["SMECA",_Situation]];
+        missionNameSpace setVariable ["FOS_SMECARecord",_Situation];
+    };
+};
+
+if (side player == east) then {
+    _enemyForcesHeadereast = "<br/><br/>
+    <font size='18'>ENEMY FORCES</font>
+    <br/>";
+
+    _friendlyForcesHeadereast = "<br/><br/>
+    <font size='18'>FRIENDLY FORCES</font>
+    <br/>";
+
+    //Merge situation details
+    _situation = _situation + _enemyForcesHeadereast + _eastenemyForces + _friendlyForcesHeadereast + _eastfriendlyForces;
+
+    //Remove the formating text if mission maker did not add any details
+    if (_eastenemyForces == "") then {_enemyForcesHeadereast = ""};
+    if (_eastfriendlyForces == "") then {_friendlyForcesHeadereast = ""};
+
+    if (_eastcredits != "" && isNil "FOS_CreditRecord") then {
+        player createDiaryRecord ["diary", ["Credits",_eastcredits]];
+        missionNameSpace setVariable ["FOS_CreditRecord",_eastcredits];
+    };
+    if (_eastAdministration != "" && isNil "FOS_AdministrationRecord") then {
+        player createDiaryRecord ["Diary",["Administration",_eastAdministration]];
+        missionNameSpace setVariable ["FOS_AdministrationRecord",_eastAdministration];
+    };
+    if (_eastintel != "" && isNil "FOS_IntelRecord") then {
+        player createDiaryRecord ["Diary",["Intel",_eastintel]];
+        missionNameSpace setVariable ["FOS_IntelRecord",_eastintel];
+    };
+    if (_eastExecution != "" && isNil "FOS_ExecutionRecord") then {
+        player createDiaryRecord ["Diary",["Execution",_eastExecution]];
+        missionNameSpace setVariable ["FOS_ExecutionRecord",_eastExecution];
+    };
+    if (_eastmission != "" && isNil "FOS_MissionRecord") then {
+        player createDiaryRecord ["Diary",["Mission",_eastmission]];
+        missionNameSpace setVariable ["FOS_MissionRecord",_eastmission];
+    };
+    if (_eastsituation != "" && isNil "FOS_SituationRecord") then {
+        player createDiaryRecord ["Diary",["Situation",_eastsituation]];
+        missionNameSpace setVariable ["FOS_SituationRecord",_eastsituation];
+    };
+    if (_eastSMECA != "" && isNil "FOS_SMECARecord") then {
+        player createDiaryRecord ["Diary",["SMECA",_Situation]];
+        missionNameSpace setVariable ["FOS_SMECARecord",_Situation];
+    };
+};
+
+if (side player == independent) then {
+    _enemyForcesHeaderindependent = "<br/><br/>
+    <font size='18'>ENEMY FORCES</font>
+    <br/>";
+
+    _friendlyForcesHeaderindependent = "<br/><br/>
+    <font size='18'>FRIENDLY FORCES</font>
+    <br/>";
+
+    //Merge situation details
+    _situation = _situation + _enemyForcesHeaderindependent + _indenemyForces + _friendlyForcesHeaderindependent + _indfriendlyForces;
+
+    //Remove the formating text if mission maker did not add any details
+    if (_independentenemyForces == "") then {_enemyForcesHeaderindependent = ""};
+    if (_independentfriendlyForces == "") then {_friendlyForcesHeaderindependent = ""};
+
+    if (_independentcredits != "" && isNil "FOS_CreditRecord") then {
+        player createDiaryRecord ["diary", ["Credits",_independentcredits]];
+        missionNameSpace setVariable ["FOS_CreditRecord",_independentcredits];
+    };
+    if (_independentAdministration != "" && isNil "FOS_AdministrationRecord") then {
+        player createDiaryRecord ["Diary",["Administration",_independentAdministration]];
+        missionNameSpace setVariable ["FOS_AdministrationRecord",_independentAdministration];
+    };
+    if (_independentintel != "" && isNil "FOS_IntelRecord") then {
+        player createDiaryRecord ["Diary",["Intel",_independentintel]];
+        missionNameSpace setVariable ["FOS_IntelRecord",_independentintel];
+    };
+    if (_independentExecution != "" && isNil "FOS_ExecutionRecord") then {
+        player createDiaryRecord ["Diary",["Execution",_independentExecution]];
+        missionNameSpace setVariable ["FOS_ExecutionRecord",_independentExecution];
+    };
+    if (_independentmission != "" && isNil "FOS_MissionRecord") then {
+        player createDiaryRecord ["Diary",["Mission",_independentmission]];
+        missionNameSpace setVariable ["FOS_MissionRecord",_independentmission];
+    };
+    if (_independentsituation != "" && isNil "FOS_SituationRecord") then {
+        player createDiaryRecord ["Diary",["Situation",_independentsituation]];
+        missionNameSpace setVariable ["FOS_SituationRecord",_independentsituation];
+    };
+    if (_indSMECA != "" && isNil "FOS_SMECARecord") then {
+        player createDiaryRecord ["Diary",["SMECA",_Situation]];
+        missionNameSpace setVariable ["FOS_SMECARecord",_Situation];
+    };
 };
 
 if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
