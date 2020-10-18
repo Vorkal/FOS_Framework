@@ -138,7 +138,6 @@ addMissionEventHandler ["Draw3D", {
 		waitUntil {!(displayNull isEqualTo findDisplay 312)};
 		//If T is pressed (20 = t) then activate tracer drawing
 		(findDisplay 312) displayAddEventHandler ["KeyDown", "
-		systemChat str (_this # 1);
 			if ((_this # 1) isEqualTo 20) then {
 				if (missionNameSpace getVariable ['FOS_DrawZeusTracer',true]) then {
 					missionNameSpace setVariable ['FOS_DrawZeusTracer',false]
