@@ -44,52 +44,48 @@
     ///////////////////
 
         /////////////
-        /// WIN 1 ///
+        /// END 1 ///
         /////////////
-        #define WIN1NAME WIN1 //Name of the win type as shown to the admin (NO SPACES!)
-        #define WIN1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
-        #define WIN1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define WIN1DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END1NAME END1//Name of the win type as shown to the admin (NO SPACES!)
+        #define END1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define END1DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END1WIN 1
 
         /////////////
-        /// WIN 2 ///
+        /// END 2 ///
         /////////////
-        #define WIN2NAME WIN2 //Name of the win type as shown to the admin (NO SPACES!)
-        #define WIN2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
-        #define WIN2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define WIN2DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END2NAME END2//Name of the win type as shown to the admin (NO SPACES!)
+        #define END2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define END2DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END2WIN 1
 
         /////////////
-        /// WIN 3 ///
+        /// END 3 ///
         /////////////
-        #define WIN3NAME WIN3 //Name of the win type as shown to the admin (NO SPACES!)
-        #define WIN3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
-        #define WIN3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define WIN3DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END3NAME END3//Name of the win type as shown to the admin (NO SPACES!)
+        #define END3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
+        #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define END3DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END3WIN 1
 
         //////////////
-        /// LOSE 1 ///
-        //////////////
-        #define LOSE1NAME LOSE1 //Name of the win type as shown to the admin (NO SPACES!)
-        #define LOSE1TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
-        #define LOSE1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define LOSE1DESCRIPTION "" //Text that appears in the debriefing screen
-
-        //////////////
-        /// LOSE 2 ///
-        //////////////
-        #define LOSE2NAME LOSE2 //Name of the win type as shown to the admin (NO SPACES!)
-        #define LOSE2TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
-        #define LOSE2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define LOSE2DESCRIPTION "" //Text that appears in the debriefing screen
-
-        //////////////
-        /// LOSE 3 ///
-        //////////////
-        #define LOSE3NAME LOSE3 //Name of the win type as shown to the admin (NO SPACES!)
-        #define LOSE3TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
-        #define LOSE3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
-        #define LOSE3DESCRIPTION "" //Text that appears in the debriefing screen
+        /// END 4 ///
+        /////////////
+        #define END4NAME END4//Name of the win type as shown to the admin (NO SPACES!)
+        #define END4TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+        #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define END4DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END4WIN 0
+        /////////////
+        /// END 5 ///
+        /////////////
+        #define END5NAME END5//Name of the win type as shown to the admin (NO SPACES!)
+        #define END5TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
+        #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
+        #define END5DESCRIPTION "" //Text that appears in the debriefing screen
+        #define END5WIN 0
 
     /////////////
     /// ORBAT ///
@@ -218,6 +214,8 @@
 #define SAFESTARTINIT true //Controls if safestart fires at mission start
 #define SAFESTARTTIMER 180 //Controls how long the safe start init timer is
 #define PAUSEATSTART false //Starts the game paused. Can be unpaused by admin in FOS ADMIN MENU
+#define RESTRICTATSTART false //Drags players back if they walk too far from starting point at safe start
+#define RESTRICTDISTANCE 50 //How far the player can go before it drags them back
 
 /////////////////
 /// SPECTATOR ///
@@ -236,6 +234,15 @@
 //NOTE: This works, but isn't perfect. It relies on knowsAbout which can take time to update. There may be a delay before it actually reveals a unit
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by player side. objects already hidden at the time of death will not be checked
 
+////////////////////////
+/// Mission Teleport ///
+///////////////////////
+#define TELEOBJECT FOS_SafeFlag //Name of object that players use to teleport with
+#define TELEBLACKLIST [[getPos player,100]] //Black list for mission teleport. Check BIS_fnc_getArea for syntax information
+#define TELEMOVESQUAD true //Allows the Squad lead to move the entire squad at once. Restricts access to SL only.
+#define TELESAFESTARTONLY false //Can only be accessed during safestart
+#define TELEAFTERSAFESTART true //Allows SLs to mark where they want to be teleported once safe start is over. If safe start is off it just sends them there
+
 //////////////////////
 /// VANILLA REVIVE ///
 //////////////////////
@@ -248,8 +255,9 @@
 
 #define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout
 
-#define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin
-#define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged"
+
+#define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
+#define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged" (CBA REQUIRED)
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
@@ -262,6 +270,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 */
 
 #define	MISSIONAO true
+#define MISSIONTELEPORT true
 #define BRIEFING true
 #define ORBAT true
 #define CHECKPOINTSYSTEM true

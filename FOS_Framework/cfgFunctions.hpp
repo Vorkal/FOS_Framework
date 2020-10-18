@@ -90,6 +90,9 @@ class FOS
 		class customLoadout {};
 		class canSee {};
 		class tfarFindFrequency {};
+		class pauseMissionServer {};
+		class pauseMissionClient {};
+		class addTeleportAction {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
@@ -109,6 +112,7 @@ class FOS
 		class safeStartServerInit {};
 		class safeStartToggleClient {};
 		class safeStartToggleServer {};
+		class safeStartRestrictZone {};
 	};
 	class Zeus
 	{

@@ -10,6 +10,12 @@ if (isServer) then {
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
+		if (RESTRICTATSTART) then {
+			[] spawn FOS_fnc_safeStartRestrictZone;
+		};
+		if (PAUSEATSTART) then {
+			call FOS_fnc_pauseMissionServer;
+		};
 		//Init the dynamic groups menu so that players can select create their own grouping if they wish
 		["Initialize"] spawn BIS_fnc_dynamicGroups;
 		enableSentences false;
@@ -47,6 +53,8 @@ if (isServer) then {
 			{_x triggerDynamicSimulation false} forEach _AIUnits;
 		};
 	};
+	waitUntil {time > 0};
+	{_x setUnitLoadout getUnitLoadout _x} forEach allUnits;
 };
 
 //Client only code
@@ -57,7 +65,7 @@ if (hasInterface) then {
 	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
-
+	[] spawn FOS_fnc_addTeleportAction;
 	//add nametags
 	[] spawn FOS_fnc_iffInit;
 	[] spawn FOS_fnc_nametagInit;
