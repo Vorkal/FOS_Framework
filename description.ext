@@ -16,6 +16,7 @@ enableDebugConsole[] = {};
 
 //Allows you to recompile functions in the function library without having to restart.
 allowFunctionsRecompile = 0; //You should only change this to 1 for a testing environment.
+
 //////////////
 /// Author ///
 //////////////
@@ -30,6 +31,11 @@ overViewText = OVERVIEWDESCRIPTION;
 overviewPicture = OVERVIEWPICTURE;
 onLoadName = MISSIONTITLE;
 loadScreen = LOADSCREENIMAGE;
+briefingName = BRIEFINGNAME;
+
+////////////////////////
+/// Mission Settings ///
+////////////////////////
 
 ///////////////
 /// Respawn ///
@@ -39,6 +45,8 @@ respawnDelay = RESPAWNTIME;
 respawnDialog = RESPAWNPROMPT;
 respawnTemplates[] = RESPAWNTEMPLATES
 respawnOnStart = RESPAWNONSTART;
+
+
 
 /////////////////////////////////
 /// Playable unit manipulation///
@@ -67,6 +75,19 @@ ReviveBleedOutDelay = 500;              //unconscious state duration (in secs)
 taskManagement_drawDist = 500;			// Any tasks within this distance will appear, even if unassigned.
 taskManagement_propagate = 1;			// Squad leader controls the assigned task of himself and his subordinates.
 
+///////////////////////
+/// GARBAGE MANAGER ///
+///////////////////////
+
+corpseManagerMode = CORPSEMANAGERMODE;
+corpseLimit = CORPSELIMIT;
+corpseRemovalMinTime = CORPSEREMOVALMINTIME;
+corpseRemovalMaxTime = CORPSEREMOVALMAXTIME;
+wreckManagerMode = WRECKMANAGERMODE;
+wreckLimit = WRECKLIMIT;
+wreckRemovalMinTime = WRECKREMOVALMINTIME;
+wreckRemovalMaxTime = WRECKREMOVALMAXTIME;
+minPlayerDistance = MINPLAYERDISTANCE;
 
 //Class useful for creating template task names. Leave empty if you don't know what it does.
 class CfgTaskDescriptions

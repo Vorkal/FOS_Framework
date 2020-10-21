@@ -25,15 +25,17 @@
 
 #define AUTHOR "Mission Maker" //Name of the mission maker
 
+#define BRIEFINGNAME "BriefingName"//Name of mission when seen from mission selection screen
 #define MISSIONTITLE "onLoadName" //Title of the mission seen on load screen
 #define LOADSCREENDESCRIPTON "LOADSCREENDESCRIPTON" //Description of the mission seen on load screen
 #define LOADSCREENIMAGE "" //Image seen on load screen
-#define BRIEFINGNAME "TEST"
+
 
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-#define DISABLEAI 1
+
+#define DISABLEAI 1 // Disables AI for playable slots
 
 ////////////////
 /// Briefing ///
@@ -97,7 +99,6 @@
     #define FINDFREQ true //Lets you click on any unit in ORBAT in order to see their currently used frequencies (TFAR ONLY SETTING)
     #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
 
-
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
@@ -156,6 +157,20 @@
 #define DRAWTEAM true //Controls if a marker is drawn for the player's team
 
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
+
+///////////////////////
+/// GARBAGE MANAGER ///
+///////////////////////
+
+#define CORPSEMANAGERMODE  2
+#define CORPSELIMIT  15
+#define CORPSEREMOVALMINTIME  10
+#define CORPSEREMOVALMAXTIME  3600
+#define WRECKMANAGERMODE  2
+#define WRECKLIMIT  15
+#define WRECKREMOVALMINTIME  10
+#define WRECKREMOVALMAXTIME  36000
+#define MINPLAYERDISTANCE  250
 
 /////////////////////
 /// GROUP TRACKER ///
@@ -284,5 +299,6 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define SAFESTART true
 #define SPECTATOR true
 #define CUSTOMLOADOUT true
+#define CUSTOMCHATCOMMANDS true
 
 #endif
