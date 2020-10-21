@@ -268,7 +268,7 @@
 /// Misc settings ///
 /////////////////////
 
-#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout
+#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
 
 
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
