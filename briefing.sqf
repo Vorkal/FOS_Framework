@@ -32,7 +32,7 @@ _Administration = "";
 //Who made the mission
 _credits = "";
 //A single record for the weird people who like putting every detail in the same briefing
-_SMECA = "";
+_SMEAC = "";
 /////////////////////
 /// WEST BRIEFING ///
 /////////////////////
