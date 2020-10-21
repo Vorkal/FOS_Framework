@@ -36,6 +36,8 @@ briefingName = BRIEFINGNAME;
 ////////////////////////
 /// Mission Settings ///
 ////////////////////////
+aiKills = 0;
+debriefing = 1;
 
 ///////////////
 /// Respawn ///
