@@ -61,7 +61,7 @@ if (_autolinebreak) then {
     _westintel = _westintel call _autoBreak;
     _westAdministration = _westAdministration call _autoBreak;
     _westcredits = _westcredits call _autoBreak;
-    _westSMECA = _westSMECA call _autoBreak;
+    _westSMEAC = _westSMEAC call _autoBreak;
 
     _eastsituation = _eastsituation call _autoBreak;
     _eastenemyForces = _eastenemyForces call _autoBreak;
@@ -71,7 +71,7 @@ if (_autolinebreak) then {
     _eastintel = _eastintel call _autoBreak;
     _eastAdministration = _eastAdministration call _autoBreak;
     _eastcredits = _eastcredits call _autoBreak;
-    _eastSMECA = _eastSMECA call _autoBreak;
+    _eastSMEAC = _eastSMEAC call _autoBreak;
 
     _indsituation = _indsituation call _autoBreak;
     _indenemyForces = _indenemyForces call _autoBreak;
@@ -81,7 +81,7 @@ if (_autolinebreak) then {
     _indintel = _indintel call _autoBreak;
     _indAdministration = _indAdministration call _autoBreak;
     _indcredits = _indcredits call _autoBreak;
-    _indSMECA = _indSMECA call _autoBreak;
+    _indSMEAC = _indSMEAC call _autoBreak;
 };
 
 if (_credits != "" && isNil "FOS_CreditRecord") then {
@@ -153,7 +153,7 @@ if (side player == west) then {
         player createDiaryRecord ["Diary",["Situation",_westsituation]];
         missionNameSpace setVariable ["FOS_SituationRecord",_westsituation];
     };
-    if (_westSMECA != "" && isNil "FOS_SMEACRecord") then {
+    if (_westSMEAC != "" && isNil "FOS_SMEACRecord") then {
         player createDiaryRecord ["Diary",["SMECA",_Situation]];
         missionNameSpace setVariable ["FOS_SMEACRecord",_Situation];
     };
@@ -199,7 +199,7 @@ if (side player == east) then {
         player createDiaryRecord ["Diary",["Situation",_eastsituation]];
         missionNameSpace setVariable ["FOS_SituationRecord",_eastsituation];
     };
-    if (_eastSMECA != "" && isNil "FOS_SMEACRecord") then {
+    if (_eastSMEAC != "" && isNil "FOS_SMEACRecord") then {
         player createDiaryRecord ["Diary",["SMECA",_Situation]];
         missionNameSpace setVariable ["FOS_SMEACRecord",_Situation];
     };
@@ -245,7 +245,7 @@ if (side player == independent) then {
         player createDiaryRecord ["Diary",["Situation",_independentsituation]];
         missionNameSpace setVariable ["FOS_SituationRecord",_independentsituation];
     };
-    if (_indSMECA != "" && isNil "FOS_SMEACRecord") then {
+    if (_indSMEAC != "" && isNil "FOS_SMEACRecord") then {
         player createDiaryRecord ["Diary",["SMECA",_Situation]];
         missionNameSpace setVariable ["FOS_SMEACRecord",_Situation];
     };
