@@ -52,7 +52,7 @@
         #define END1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END1WIN 1
+        #define END1WIN 1  // 1 is a win state. 0 is a fail state
 
         /////////////
         /// END 2 ///
@@ -61,7 +61,7 @@
         #define END2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END2DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END2WIN 1
+        #define END2WIN 1  // 1 is a win state. 0 is a fail state
 
         /////////////
         /// END 3 ///
@@ -70,7 +70,7 @@
         #define END3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END3WIN 1
+        #define END3WIN 1  // 1 is a win state. 0 is a fail state
 
         //////////////
         /// END 4 ///
@@ -79,7 +79,7 @@
         #define END4TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END4DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END4WIN 0
+        #define END4WIN 0  // 1 is a win state. 0 is a fail state
         /////////////
         /// END 5 ///
         /////////////
@@ -87,7 +87,7 @@
         #define END5TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END5WIN 0
+        #define END5WIN 0  // 1 is a win state. 0 is a fail state
 
     /////////////
     /// ORBAT ///
