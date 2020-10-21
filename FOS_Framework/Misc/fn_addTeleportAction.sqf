@@ -1,3 +1,19 @@
+/*
+Author: 417
+
+Description: Makes an object an interactable object that allows people to teleport to selected areas on the map
+
+Parameters:
+_object (OBJECT): The object you wish to be the action point
+_Blacklist (ARRAY): Black list area the player is not allowed to teleport to. Check BIS_fnc_getArea for more information on this formatting
+_moveSquad (BOOL): Controls if the player moves his entire team when position is selected.
+_safeStartOnly (BOOL): Player can only use this object when safe start is detected on.
+_TeleAfterSafeStart (BOOL): If a player uses the action during safe start then the teleport will occur after safe start ends
+
+Example:
+[] spawn FOS_fnc_addTeleportAction;
+[flag,[[position player, 200]],true,false,true] spawn FOS_fnc_addTeleportAction;
+*/
 #include "..\..\settings.hpp"
 if !(MISSIONTELEPORT) exitWith {};
 if (isNil {TELEOBJECT}) exitWith {};
