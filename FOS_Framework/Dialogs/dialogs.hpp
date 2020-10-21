@@ -21,7 +21,7 @@ class FOS_JipMenu
 			y = 21 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5 * GUI_GRID_W;
 			h = 2.5 * GUI_GRID_H;
-			onButtonClick = "execVM '.\pressSpawn.sqf'";
+			onButtonClick = "execVM 'FOS_Framework\Dialogs\pressSpawn.sqf'";
 		};
 		class FOS_CANCEL: RscButtonMenuCancel
 		{
