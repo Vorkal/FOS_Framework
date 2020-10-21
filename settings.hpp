@@ -25,15 +25,17 @@
 
 #define AUTHOR "Mission Maker" //Name of the mission maker
 
+#define BRIEFINGNAME "BriefingName"//Name of mission when seen from mission selection screen
 #define MISSIONTITLE "onLoadName" //Title of the mission seen on load screen
 #define LOADSCREENDESCRIPTON "LOADSCREENDESCRIPTON" //Description of the mission seen on load screen
 #define LOADSCREENIMAGE "" //Image seen on load screen
-#define BRIEFINGNAME "TEST"
+
 
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-#define DISABLEAI 1
+
+#define DISABLEAI 1 // Disables AI for playable slots
 
 ////////////////
 /// Briefing ///
@@ -50,7 +52,7 @@
         #define END1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END1WIN 1
+        #define END1WIN 1  // 1 is a win state. 0 is a fail state
 
         /////////////
         /// END 2 ///
@@ -59,7 +61,7 @@
         #define END2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END2DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END2WIN 1
+        #define END2WIN 1  // 1 is a win state. 0 is a fail state
 
         /////////////
         /// END 3 ///
@@ -68,7 +70,7 @@
         #define END3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END3WIN 1
+        #define END3WIN 1  // 1 is a win state. 0 is a fail state
 
         //////////////
         /// END 4 ///
@@ -77,7 +79,7 @@
         #define END4TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END4DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END4WIN 0
+        #define END4WIN 0  // 1 is a win state. 0 is a fail state
         /////////////
         /// END 5 ///
         /////////////
@@ -85,7 +87,7 @@
         #define END5TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
-        #define END5WIN 0
+        #define END5WIN 0  // 1 is a win state. 0 is a fail state
 
     /////////////
     /// ORBAT ///
@@ -96,7 +98,6 @@
     #define PERFECTINFO false //If true, clicking refresh removes dead players from group. Even if they have not been "found" or "reported" yet
     #define FINDFREQ true //Lets you click on any unit in ORBAT in order to see their currently used frequencies (TFAR ONLY SETTING)
     #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
-
 
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
@@ -156,6 +157,20 @@
 #define DRAWTEAM true //Controls if a marker is drawn for the player's team
 
 #define NEEDGPS false //Requires player to have a GPS in order to see fireteam markers
+
+///////////////////////
+/// GARBAGE MANAGER ///
+///////////////////////
+
+#define CORPSEMANAGERMODE  2
+#define CORPSELIMIT  15
+#define CORPSEREMOVALMINTIME  10
+#define CORPSEREMOVALMAXTIME  3600
+#define WRECKMANAGERMODE  2
+#define WRECKLIMIT  15
+#define WRECKREMOVALMINTIME  10
+#define WRECKREMOVALMAXTIME  36000
+#define MINPLAYERDISTANCE  250
 
 /////////////////////
 /// GROUP TRACKER ///
@@ -253,7 +268,7 @@
 /// Misc settings ///
 /////////////////////
 
-#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout
+#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
 
 
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
@@ -284,5 +299,6 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define SAFESTART true
 #define SPECTATOR true
 #define CUSTOMLOADOUT true
+#define CUSTOMCHATCOMMANDS true
 
 #endif

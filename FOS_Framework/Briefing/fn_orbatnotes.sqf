@@ -1,5 +1,5 @@
 /*
-Author: F3 (Modified by 417)
+Author: F3 (Modified heavily by 417)
 
 Description: initializes the ORBAT notes
 
@@ -11,22 +11,25 @@ if (!hasInterface) exitWith {}; //Exit if not a player.
 
 private ["_sides","_orbatText","_refreshNote","_perfectInfoNote"];
 
+//Create a refresh button, unless mission maker specifies otherwise
 if (CANREFRESH) then {
     _refreshNote = "<execute expression='[] spawn FOS_fnc_orbatnotes'>refresh</execute>";
 } else {
     _refreshNote = "ORBAT is only accurate at player join";
 };
 
+//Create a notification if the mission maker disables perfect info
 if (PERFECTINFO && CANREFRESH) then {
     _perfectInfoNote = "";
 } else {
     _perfectInfoNote = "Note: Dead units are not removed from list until they are reported";
 };
 
-
+// Add notifications into _orbatText if needed
 _orbatText = "
 <font size='22'>ORBAT</font><br/><br/>" + _perfectInfoNote + "<br/><br/>" + _refreshNote + "<br/><br/> ";
 
+//Callable code
 _findGroup = {
     params ["_group"];
     mapAnimAdd [0.5, 0.1, getPos leader _group];
@@ -95,13 +98,17 @@ if (SHOWALL) then {
     };
 } forEach _sides;
 
+//Check if ORBAT record already exists
 _ORBATRecord = missionNameSpace getVariable ["FOS_ORBAT",nil];
 
+//Check to see if record already exists (deleting and readding the record will cause a flicker effect)
 if !(isNil "_ORBATRecord") then {
+    //Orbat record exists. Overwrite the text
     player setDiaryRecordText [["diary", _ORBATRecord], ["ORBAT",_orbatText]];
 } else {
+    //Orbat record nonexistant. Create new record
     _ORBATRecord = player createDiaryRecord ["diary", ["ORBAT", _orbatText]];
 };
 
-
+//Create variable to hold the record. Used for later loops of the script
 missionNameSpace setVariable ["FOS_ORBAT",_ORBATRecord];

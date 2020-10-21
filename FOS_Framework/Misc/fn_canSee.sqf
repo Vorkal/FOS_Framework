@@ -1,3 +1,17 @@
+/*
+Author: 417
+
+Description: Returns if the list of units can see the position given
+
+Parameters:
+_pos (ARRAY): position checked
+_units (ARRAY): List of units checked to see if they can see _pos
+_distanceThreshold (SCALAR): minimum distance before a unit is automatically considered able to see the area. (Useful if you are spawning units and a nearby player may still hear them when they spawn)
+
+Example:
+[getpos thisTrigger,allPlayers,50] call FOS_fnc_canSee;
+*/
+
 params [["_pos",[0,0,0]],["_units",allPlayers],["_distanceThreshold",50]];
 private ["_canSee"];
 

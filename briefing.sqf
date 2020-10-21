@@ -32,7 +32,7 @@ _Administration = "";
 //Who made the mission
 _credits = "";
 //A single record for the weird people who like putting every detail in the same briefing
-_SMECA = "";
+_SMEAC = "";
 /////////////////////
 /// WEST BRIEFING ///
 /////////////////////
@@ -45,7 +45,7 @@ _westExecution = "";
 _westintel = "";
 _westAdministration = "";
 _westcredits = "";
-_westSMECA = "";
+_westSMEAC = "";
 /////////////////////
 /// EAST BRIEFING ///
 /////////////////////
@@ -58,7 +58,7 @@ _eastExecution = "";
 _eastintel = "";
 _eastAdministration = "";
 _eastcredits = "";
-_eastSMECA = "";
+_eastSMEAC = "";
 ////////////////////////////
 /// INDEPENDENT BRIEFING ///
 ///////////////////////////
@@ -71,7 +71,7 @@ _indExecution = "";
 _indintel = "";
 _indAdministration = "";
 _indcredits = "";
-_indSMECA = "";
+_indSMEAC = "";
 
 //////////////////////
 /// Admin Briefing ///
