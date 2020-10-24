@@ -80,6 +80,7 @@ if (hasInterface) then {
 	};
 
 	if (_this # 1) then {
+		if !(JIPMENU) exitWith {};
 		createDialog "FOS_JipMenu";
 		{
 			_index = lbAdd [1500, (format ["%1",name _x])];
