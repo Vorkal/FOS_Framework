@@ -53,8 +53,10 @@ if (isServer) then {
 			{_x triggerDynamicSimulation false} forEach _AIUnits;
 		};
 	};
-	waitUntil {time > 0};
-	{_x setUnitLoadout getUnitLoadout _x} forEach allUnits;
+	if (FIXARSENALBUG) then {
+		waitUntil {time > 0};
+		{_x setUnitLoadout getUnitLoadout _x} forEach allUnits;
+	};
 };
 
 //Client only code
