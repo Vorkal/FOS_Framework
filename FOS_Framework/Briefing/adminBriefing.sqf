@@ -61,6 +61,13 @@ _briefing = _briefing + "
 <br/><br/>
 ";
 
+//Pause section
+_briefing = _briefing + "
+<font color='#c90e0e' size='18' face='PuristaBold'>PAUSE</font><br/>
+<execute expression='[] remoteExec [""FOS_fnc_pauseMissionServer"",2]'>Toogle pause mission state</execute>
+<br/><br/>
+";
+
 if (isMultiplayer) then {
 	_briefing = _briefing + "
 	<font color='#FFA500' size='18' face='PuristaBold'>CHECKPOINT SYSTEM</font><br/>

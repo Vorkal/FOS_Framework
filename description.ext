@@ -16,6 +16,7 @@ enableDebugConsole[] = {};
 
 //Allows you to recompile functions in the function library without having to restart.
 allowFunctionsRecompile = 0; //You should only change this to 1 for a testing environment.
+
 //////////////
 /// Author ///
 //////////////
@@ -30,6 +31,13 @@ overViewText = OVERVIEWDESCRIPTION;
 overviewPicture = OVERVIEWPICTURE;
 onLoadName = MISSIONTITLE;
 loadScreen = LOADSCREENIMAGE;
+briefingName = BRIEFINGNAME;
+
+////////////////////////
+/// Mission Settings ///
+////////////////////////
+aiKills = 0;
+debriefing = 1;
 
 ///////////////
 /// Respawn ///
@@ -39,6 +47,8 @@ respawnDelay = RESPAWNTIME;
 respawnDialog = RESPAWNPROMPT;
 respawnTemplates[] = RESPAWNTEMPLATES
 respawnOnStart = RESPAWNONSTART;
+
+
 
 /////////////////////////////////
 /// Playable unit manipulation///
@@ -67,6 +77,19 @@ ReviveBleedOutDelay = 500;              //unconscious state duration (in secs)
 taskManagement_drawDist = 500;			// Any tasks within this distance will appear, even if unassigned.
 taskManagement_propagate = 1;			// Squad leader controls the assigned task of himself and his subordinates.
 
+///////////////////////
+/// GARBAGE MANAGER ///
+///////////////////////
+
+corpseManagerMode = CORPSEMANAGERMODE;
+corpseLimit = CORPSELIMIT;
+corpseRemovalMinTime = CORPSEREMOVALMINTIME;
+corpseRemovalMaxTime = CORPSEREMOVALMAXTIME;
+wreckManagerMode = WRECKMANAGERMODE;
+wreckLimit = WRECKLIMIT;
+wreckRemovalMinTime = WRECKREMOVALMINTIME;
+wreckRemovalMaxTime = WRECKREMOVALMAXTIME;
+minPlayerDistance = MINPLAYERDISTANCE;
 
 //Class useful for creating template task names. Leave empty if you don't know what it does.
 class CfgTaskDescriptions
@@ -146,62 +169,52 @@ class Params
 ///Endings
 class CfgDebriefing
 {
-    class WIN1NAME
+    class END1NAME
     {
-        win = 1;
-		title = WIN1TITLE;
-		subtitle = WIN1SUBTITLE;
-		description = WIN1DESCRIPTION;
+        win = END1WIN;
+		title = END1TITLE;
+		subtitle = END1SUBTITLE;
+		description = END1DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
     };
-    class WIN2NAME
+    class END2NAME
     {
-        win = 1;
-		title = WIN2TITLE;
-		subtitle = WIN2SUBTITLE;
-		description = WIN2DESCRIPTION;
+        win = END2WIN;
+		title = END2TITLE;
+		subtitle = END2SUBTITLE;
+		description = END2DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
     };
-    class WIN3NAME
+    class END3NAME
     {
-        win = 1;
-		title = WIN3TITLE;
-		subtitle = WIN3SUBTITLE;
-		description = WIN3DESCRIPTION;
+        win = END3WIN;
+		title = END3TITLE;
+		subtitle = END3SUBTITLE;
+		description = END3DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
     };
-    class LOSE1NAME
+    class END4NAME
     {
-        win = 0;
-        title = LOSE1TITLE;
-        subtitle = LOSE1SUBTITLE;
-        description = LOSE1DESCRIPTION;
+        win = END4WIN;
+        title = END4TITLE;
+        subtitle = END4SUBTITLE;
+        description = END4DESCRIPTION;
         pictureBackground = "";
         picture = "";
         pictureColor[] = {0.6,0.6,0.0,1};
     };
-    class LOSE2NAME
+    class END5NAME
     {
-        win = 0;
-        title = LOSE2TITLE;
-        subtitle = LOSE2SUBTITLE;
-        description = LOSE2DESCRIPTION;
-        pictureBackground = "";
-        picture = "";
-        pictureColor[] = {0.6,0.6,0.0,1};
-    };
-    class LOSE3NAME
-    {
-        win = 0;
-        title = LOSE3TITLE;
-        subtitle = LOSE3SUBTITLE;
-        description = LOSE3DESCRIPTION;
+        win = END5WIN;
+        title = END5TITLE;
+        subtitle = END5SUBTITLE;
+        description = END5DESCRIPTION;
         pictureBackground = "";
         picture = "";
         pictureColor[] = {0.6,0.6,0.0,1};

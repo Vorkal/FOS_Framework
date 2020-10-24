@@ -8,93 +8,22 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=931;
-	};
-	class MarkerIDProvider
-	{
-		nextID=49;
-	};
-	class LayerIndexProvider
-	{
-		nextID=31;
+		nextID=19;
 	};
 	class Camera
 	{
-		pos[]={3703.3394,23.624304,4418.251};
-		dir[]={0.01717169,-0.45183071,0.89194757};
-		up[]={0.0086971577,0.89210403,0.45174912};
-		aside[]={0.99982107,4.0523446e-008,-0.019249026};
+		pos[]={14602.627,67.336418,16827.594};
+		dir[]={0.029816898,-0.54238337,0.83963412};
+		up[]={0.019249329,0.84012812,0.54204726};
+		aside[]={0.9993915,4.5989145e-007,-0.035490759};
 	};
 };
 binarizationWanted=0;
 class AddonsMetaData
 {
 };
-randomSeed=15682527;
+randomSeed=11704977;
 class ScenarioData
 {
 	author="417";
-};
-class CustomAttributes
-{
-	class Category0
-	{
-		name="Scenario";
-		class Attribute0
-		{
-			property="EnableDebugConsole";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=1;
-				};
-			};
-		};
-		nAttributes=1;
-	};
-};
-class Mission
-{
-	class Intel
-	{
-		timeOfChanges=1800.0002;
-		startWeather=0.35174546;
-		startFog=0.029323593;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0.60166037;
-		forecastFog=0.066811055;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		wavesForced=1;
-		windForced=1;
-		year=2035;
-		month=6;
-		day=16;
-		hour=18;
-		minute=-15;
-		startFogDecay=0.014;
-		forecastFogDecay=0.014;
-	};
-	class Entities
-	{
-		items=1;
-		class Item0
-		{
-			dataType="Layer";
-			name="Camp Ant";
-			id=914;
-			atlOffset=185.97;
-		};
-	};
 };

@@ -17,8 +17,6 @@ _amount (SCALAR): How many rounds will be fired
 _delay (SCALAR): Delay between each shot
 _condition (CODE): Condition that will cause the unit to cease fire support if false
 
-Example:
-
 */
 
 params [
