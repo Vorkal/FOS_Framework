@@ -127,10 +127,10 @@ PMPERMISSIONS] call CBA_fnc_registerChatCommand;
     if (count _messageArray == 1) exitWith {systemChat format ["TP ERROR: %1 IS TOO FEW PARAMETERS",_messageArray]};
     //list of elements to check
     //_playerList = (call BIS_fnc_listPlayers) apply {name _x};
-    _playerList = allUnits apply {name _x};
+    _playerList = (call BIS_fnc_listPlayers) apply {name _x};
     _groupList = allGroups apply {groupID _x};
     _strList = _playerList + _groupList;
-    _list = allUnits + allGroups;
+    _list = (call BIS_fnc_listPlayers) + allGroups;
 
     //Search for a match for first parameter
     _firstParam = _strList findIf {(_messageArray # 0) == _x};
