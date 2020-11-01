@@ -151,8 +151,7 @@ PMPERMISSIONS] call CBA_fnc_registerChatCommand;
             //If second param is a player then move the group in first param to player in second param
             {_x setPos getPos _secondParam} forEach units _firstParam;
         };
-    };
-    if (typeName _firstParam == "OBJECT") then {
+    } else {
         if (typeName _secondParam == "GROUP") then {
             //If second param is a group then move the player in first param to leader of the group in second param
             _firstParam setPos getPos leader _secondParam;
