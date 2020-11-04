@@ -98,11 +98,11 @@ _addAction = {
             {
                 //Due to some really weird issue, AI are teleported slower because they keep snapping back to their original position otherwise
                 if !(isPlayer _x) then {sleep 1};
-                _x setPos ([getMarkerPos _mrk, 0, 15, 2.5,0,0,0,[],getMarkerPos _mrk] call BIS_fnc_findSafePos)
+                vehicle _x setPos ([getMarkerPos _mrk, 0, 30, 2.5,0,0,0,[],getMarkerPos _mrk] call BIS_fnc_findSafePos)
             } forEach units group player;
             [_mapClickId] call _clearVar;
         } else {
-            player setPos getMarkerPos _mrk;
+            vehicle player setPos getMarkerPos _mrk;
             [_mapClickId] call _clearVar;
         };
 
@@ -112,11 +112,11 @@ _addAction = {
             {
                 //Due to some really weird issue, AI are teleported slower because they keep snapping back to their original position otherwise
                 if !(isPlayer _x) then {sleep 1};
-                _x setPos ([_pos, 0, 15, 2.5,0,0,0,[],_pos] call BIS_fnc_findSafePos);
+                vehicle _x setPos ([_pos, 0, 30, 2.5,0,0,0,[],_pos] call BIS_fnc_findSafePos);
             } forEach units group player;
             [_mapClickId] call _clearVar;
         } else {
-            player setPos _pos;
+            vehicle player setPos _pos;
             [_mapClickId] call _clearVar;
         };
     };
@@ -135,4 +135,4 @@ if (_moveSquad) then {
 if (_cond == "") then {
     _cond = "true";
 };
-_object addAction ["Teleport", _addAction, [_object,_Blacklist,_moveSquad,_safeStartOnly,_TeleAfterSafeStart], 1.5, true, true, "", _cond, 3, false, "", ""];
+_object addAction ["Teleport", _addAction, [_object,_Blacklist,_moveSquad,_safeStartOnly,_TeleAfterSafeStart], 1.5, true, true, "", _cond, 10, false, "", ""];
