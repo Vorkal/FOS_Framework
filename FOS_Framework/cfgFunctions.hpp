@@ -50,6 +50,11 @@ class FOS
 		class difficultyInit {};
 		class limitLootDrop {};
 	};
+	class Editor
+	{
+		file = "FOS_Framework\Editor"
+		class addUnitComposition {};
+	};
 	class FTMarkers
 	{
 		file = "FOS_Framework\FTMarkers";
