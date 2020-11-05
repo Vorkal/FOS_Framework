@@ -15,6 +15,52 @@ _squadPrefixes = _squadDictionary apply {[_x,0,0] call BIS_fnc_trimString};
 _side = west;
 _sidePrefix = "B";
 
+//Create FT units
+_createFT = {
+    _entity = objNull;
+    _ftPos = _pos;
+    {
+        if (_forEachIndex == 0) then {
+            //Create group leader
+            _entity = create3DENEntity ["Object",_x # 0,_ftPos];
+            //Assign group variable name
+            group _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadPrefix + _x # 4];
+            group _entity set3DENAttribute ["groupID", _squadName + _x # 5];
+        } else {
+            //Find new position to place subordinate
+            _ftPos = _ftPos vectorAdd [0,-2.5,0];
+            //create subordinate
+            _entity = group _entity create3DENEntity ["Object",_x # 0,_ftPos];
+        };
+        //Assign variable name
+        _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadPrefix + _x # 4 +  _x # 1];
+        //Assign init code
+        _entity set3DENAttribute ["Init", _x # 2];
+        //Assign slot screen name
+        _entity set3DENAttribute ["description",_squadName + _x # 4 + " " + _x # 3];
+        //Declare as playable
+        _entity set3DENAttribute ["ControlMP",true];
+    } forEach _this # 0;
+
+    //Create assigned vehicles
+    _vehiclePos = _ftPos;
+    _entity = objNull;
+    {
+        //Create vehicle
+        _entity = create3DENEntity ["Object",_x,_vehiclePos vectorAdd [3.5,-(-2.5 * count (_this # 0)),0],true];
+        //Move the position down for the next vehicle spawn
+        _vehiclePos = _vehiclePos vectorAdd [0,-10,0];
+        //Variable name for vehicle
+        _entity set3DENAttribute ["Name", (_sidePrefix + "_" +  _squadPrefix + _this # 0 # 0 # 4 + "_vehicle_" + str _forEachIndex)];
+        //Make this vehicle a refill point for the assigned group
+        _entity set3DENAttribute ["Init", "[this, units "+ _sidePrefix + "_" + _squadPrefix + _this # 0 # 0 # 4 + ",false] call FOS_fnc_fillAmmoContainer"];
+        //Remove gear already in the cargo
+        _entity set3DENAttribute ["ammoBox", ""];
+    } forEach _this # 1;
+
+    _pos = _pos vectorAdd [7.5,0,0];
+};
+
 _cmdUnits = [
     [
         [_sidePrefix + "_officer_F","_CMD_CO","0 = this spawn {_this assignTeam 'MAIN'}","CO"],
@@ -41,6 +87,7 @@ _entity = objNull;
 } forEach _cmdUnits # 0;
 
 for "_i" from 0 to (_amountOfSquads - 1) do {
+    if (_i > 26) exitWith {};
     _squadName = _squadDictionary # _i;
     _squadPrefix = _squadPrefixes # _i;
     switch (_squadType) do {
@@ -49,59 +96,55 @@ for "_i" from 0 to (_amountOfSquads - 1) do {
             //Define the comp
             _FTComp = [
                 [
-                    [_sidePrefix + "_Soldier_SL_F","_SL","0 = this spawn {_this assignTeam 'MAIN'}", "Squad Lead"],
-                    [_sidePrefix + "_medic_F","_M","0 = this spawn {_this assignTeam 'YELLOW'}", "Medic"],
-                    [_sidePrefix + "_HeavyGunner_F","_MMG","0 = this spawn {_this assignTeam 'BLUE'}", "MMG"],
-                    [_sidePrefix + "_Soldier_A_F","_AG","0 = this spawn {_this assignTeam 'BLUE'}", "Ammo bearer"],
-                    [_sidePrefix + "_Soldier_TL_F","_TL","0 = this spawn {_this assignTeam 'RED'}", "Team lead"],
-                    [_sidePrefix + "_soldier_AR_F","_AR","0 = this spawn {_this assignTeam 'RED'}", "Automatic Rifleman"],
-                    [_sidePrefix + "_soldier_LAT_F","_AT","0 = this spawn {_this assignTeam 'RED'}", "Anti Tank"],
-                    [_sidePrefix + "_Soldier_F","_R","0 = this spawn {_this assignTeam 'RED'}", "Rifleman"]
+                    //[objecttype,unitNameSuffix,initCode,Role Description,groupindex,groupID]
+                    [_sidePrefix + "_Soldier_SL_F","_SL","0 = this spawn {_this assignTeam 'MAIN'}", "Squad Lead","",""],
+                    [_sidePrefix + "_medic_F","_M","0 = this spawn {_this assignTeam 'YELLOW'}", "Medic","",""],
+                    [_sidePrefix + "_HeavyGunner_F","_MMG","0 = this spawn {_this assignTeam 'BLUE'}", "MMG","",""],
+                    [_sidePrefix + "_Soldier_A_F","_AG","0 = this spawn {_this assignTeam 'BLUE'}", "Ammo bearer","",""],
+                    [_sidePrefix + "_Soldier_TL_F","_TL","0 = this spawn {_this assignTeam 'RED'}", "Team lead","",""],
+                    [_sidePrefix + "_soldier_AR_F","_AR","0 = this spawn {_this assignTeam 'RED'}", "Automatic Rifleman","",""],
+                    [_sidePrefix + "_soldier_LAT_F","_AT","0 = this spawn {_this assignTeam 'RED'}", "Anti Tank","",""],
+                    [_sidePrefix + "_Soldier_F","_R","0 = this spawn {_this assignTeam 'RED'}", "Rifleman","",""]
                 ],
                 ["B_MRAP_01_F","B_MRAP_01_F"]
             ];
-
-            //Create FT units
-            _entity = objNull;
-            _ftPos = _pos;
-            {
-                if (_forEachIndex == 0) then {
-                    //Create group leader
-                    _entity = create3DENEntity ["Object",_x # 0,_ftPos];
-                    //Assign group variable name
-                    group _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadName];
-                } else {
-                    //Find new position to place subordinate
-                    _ftPos = _ftPos vectorAdd [0,-2.5,0];
-                    //create subordinate
-                    _entity = group _entity create3DENEntity ["Object",_x # 0,_ftPos];
-                };
-                //Assign variable name
-                _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadPrefix +  _x # 1];
-                //Assign init code
-                _entity set3DENAttribute ["Init", _x # 2];
-                //Assign slot screen name
-                _entity set3DENAttribute ["description",_squadName + " " + _x # 3];
-                //Declare as playable
-                _entity set3DENAttribute ["ControlMP",true];
-            } forEach _FTComp # 0;
-
-            //Create assigned vehicles
-            _vehiclePos = _ftPos;
-            _entity = objNull;
-            {
-                _entity = create3DENEntity ["Object",_x,_vehiclePos vectorAdd [3.5,-(-2.5 * count (_FTComp # 0)),0],true];
-                _vehiclePos = _vehiclePos vectorAdd [0,-10,0];
-                _entity set3DENAttribute ["Name", (_sidePrefix + "_" +  _squadPrefix + "_vehicle_" + str _forEachIndex)];
-                _entity set3DENAttribute ["Init", "[this, units "+ _sidePrefix + "_" + _squadName + ",false] call FOS_fnc_fillAmmoContainer"];
-                _entity set3DENAttribute ["ammoBox", ""];
-            } forEach _FTComp # 1;
-
-            _pos = _pos vectorAdd [7.5,0,0];
+            _FTComp call _createFT;
         };
         //14 Man Squad | 2 FT
         case (1): {
-            //code
+            //Define the comp
+            _SLComp = [
+                [
+                    [_sidePrefix + "_Soldier_SL_F","_SL","0 = this spawn {_this assignTeam 'MAIN'}", "Squad Lead","","_SL"],
+                    [_sidePrefix + "_medic_F","_M","0 = this spawn {_this assignTeam 'YELLOW'}", "Medic","",""]
+                ],
+                ["B_MRAP_01_F"]
+            ];
+            _FT1Comp = [
+                [
+                    [_sidePrefix + "_Soldier_TL_F","_TL","0 = this spawn {_this assignTeam 'MAIN'}", "Team Lead","1","_FT1"],
+                    [_sidePrefix + "_soldier_AR_F","_AR","0 = this spawn {_this assignTeam 'RED'}", "Automatic Rifleman","1",""],
+                    [_sidePrefix + "_soldier_AAR_F","_AAR","0 = this spawn {_this assignTeam 'RED'}", "Asst. Automatic Rifleman","1",""],
+                    [_sidePrefix + "_soldier_LAT_F","_AT1","0 = this spawn {_this assignTeam 'GREEN'}", "Rifleman AT","1",""],
+                    [_sidePrefix + "_soldier_LAT_F","_AT2","0 = this spawn {_this assignTeam 'GREEN'}", "Rifleman AT","1",""],
+                    [_sidePrefix + "_Soldier_F","_R","0 = this spawn {_this assignTeam 'GREEN'}", "Rifleman","1",""]
+                ],
+                ["B_LSV_01_unarmed_F"]
+            ];
+            _FT2Comp = [
+                [
+                    [_sidePrefix + "_Soldier_TL_F","_TL","0 = this spawn {_this assignTeam 'MAIN'}", "Team Lead","2","_FT2"],
+                    [_sidePrefix + "_soldier_AR_F","_AR1","0 = this spawn {_this assignTeam 'BLUE'}", "Automatic Rifleman","2",""],
+                    [_sidePrefix + "_soldier_AAR_F","_AAR1","0 = this spawn {_this assignTeam 'BLUE'}", "Asst. Automatic Rifleman","2",""],
+                    [_sidePrefix + "_soldier_AR_F","_AR2","0 = this spawn {_this assignTeam 'YELLOW'}", "Automatic Rifleman","2",""],
+                    [_sidePrefix + "_soldier_AAR_F","_AAR2","0 = this spawn {_this assignTeam 'YELLOW'}", "Asst. Automatic Rifleman","2",""],
+                    [_sidePrefix + "_Soldier_F","_R","0 = this spawn {_this assignTeam 'YELLOW'}", "Rifleman","2",""]
+                ],
+                ["B_LSV_01_unarmed_F"]
+            ];
+            _SLComp call _createFT;
+            _FT1Comp call _createFT;
+            _FT2Comp call _createFT;
         };
         //14 Man Squad | 3 FT
         case (2): {
