@@ -30,10 +30,8 @@
 #define LOADSCREENDESCRIPTON "LOADSCREENDESCRIPTON" //Description of the mission seen on load screen
 #define LOADSCREENIMAGE "" //Image seen on load screen
 
-
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
-
 
 #define DISABLEAI 1 // Disables AI for playable slots
 
@@ -186,12 +184,6 @@
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
-
-///////////
-/// JIP ///
-///////////
-
-
 
 //////////////////
 /// Mission AO ///
