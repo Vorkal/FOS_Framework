@@ -31,8 +31,9 @@ _intel = "";
 _Administration = "";
 //Who made the mission
 _credits = "";
-//A single record for the weird people who like putting every detail in the same briefing
-_SMEAC = "";
+
+//Places all sections above into a single briefing page if set to true
+_SMEAC = false;
 /////////////////////
 /// WEST BRIEFING ///
 /////////////////////
@@ -45,7 +46,9 @@ _westExecution = "";
 _westintel = "";
 _westAdministration = "";
 _westcredits = "";
-_westSMEAC = "";
+
+//Places all sections above into a single briefing page if set to true
+_westSMEAC = false;
 /////////////////////
 /// EAST BRIEFING ///
 /////////////////////
@@ -58,7 +61,8 @@ _eastExecution = "";
 _eastintel = "";
 _eastAdministration = "";
 _eastcredits = "";
-_eastSMEAC = "";
+//Places all sections above into a single briefing page if set to true
+_eastSMEAC = true;
 ////////////////////////////
 /// INDEPENDENT BRIEFING ///
 ///////////////////////////
@@ -71,7 +75,9 @@ _indExecution = "";
 _indintel = "";
 _indAdministration = "";
 _indcredits = "";
-_indSMEAC = "";
+
+//Places all sections above into a single briefing page if set to true
+_indSMEAC = false;
 
 //////////////////////
 /// Admin Briefing ///
