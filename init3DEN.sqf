@@ -10,7 +10,7 @@ _FOSMissions = profileNameSpace getVariable ["FOS_MissionList",[]];
 
 _index = _FOSMissions findIf {(missionName + "." + worldName) == _x};
 //Only keep up with the last 25 missions
-if (count _FOSMissions > 1) then {
+if (count _FOSMissions > 25) then {
     _FOSMissions deleteat 0;
 };
 _FOSMissions pushBackUnique (missionName + "." + worldName);
