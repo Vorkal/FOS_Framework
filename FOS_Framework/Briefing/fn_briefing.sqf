@@ -7,7 +7,6 @@ if (!isDedicated && (isNull player)) then
 
 private ["_situation"];
 
-systemChat "start";
 player createDiarySubject ["FOS_Options","Mission Options"];
 
 _enemyForcesHeader = "<br/><br/>
