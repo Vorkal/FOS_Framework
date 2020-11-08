@@ -57,9 +57,9 @@ if (leader _playerGroup != player && !(alive leader _playerGroup)) then {
 };
 
 //Spawn player
-setPlayerRespawnTime 0;
+setPlayerRespawnTime 1.5;
 //Wait for player to be alive
-waitUntil {alive player};
+waitUntil {sleep 0.1;alive player};
 //Reset timer
 setPlayerRespawnTime 1e10;
 
