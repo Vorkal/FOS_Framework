@@ -266,6 +266,9 @@
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
 #define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged" (CBA REQUIRED)
 
+#define FRIENDLYFIRETRACKER true //Tells the admin when a friendly hits a friendly
+#define FRIENDLYKILLTRACKER true //Tells the admin when a friendly kills a friendly
+
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
