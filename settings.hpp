@@ -33,6 +33,9 @@
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
+#define BRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
+#define SKIPLOBBY 0 //Set to 1 to skip the slot screen and assign players to random roles. Based on the mission context, this may be prefered
+
 #define DISABLEAI 1 // Disables AI for playable slots
 
 ////////////////
@@ -51,6 +54,7 @@
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
         #define END1WIN 1  // 1 is a win state. 0 is a fail state
+        #define MISSIONSWITCH "" //Only used with persistance system. Add the name of the next mission
 
         /////////////
         /// END 2 ///
@@ -60,6 +64,7 @@
         #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END2DESCRIPTION "" //Text that appears in the debriefing screen
         #define END2WIN 1  // 1 is a win state. 0 is a fail state
+        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
 
         /////////////
         /// END 3 ///
@@ -69,6 +74,8 @@
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
         #define END3WIN 1  // 1 is a win state. 0 is a fail state
+        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
+
 
         //////////////
         /// END 4 ///
@@ -78,6 +85,8 @@
         #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END4DESCRIPTION "" //Text that appears in the debriefing screen
         #define END4WIN 0  // 1 is a win state. 0 is a fail state
+        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
+
         /////////////
         /// END 5 ///
         /////////////
@@ -86,6 +95,7 @@
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
         #define END5WIN 0  // 1 is a win state. 0 is a fail state
+        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
 
     /////////////
     /// ORBAT ///
@@ -104,7 +114,7 @@
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
-#define CHECKPOINTPOINTSYSTEM true //Enables checkpoint point system where players can call a checkpoint
+#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
 #define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
 #define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
@@ -201,18 +211,38 @@
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
+/////////////////////////
+/// CAMPAIGN SETTINGS ///
+/////////////////////////
+
+//NOTE: The mission must END in order to save. #missions does not count.
+
+#define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
+
+#define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
+#define MISSIONINDEX -1 //Index of this mission within your campaign.
+
+#define LOCKMISSION false //Will not allow the mission to open unless a mission with a previous index has been COMPLETED.
+#define MUSTWIN false //Will only allow allow this mission to unlock if a mission in the previous index was a WIN. LOCKMISSION must also be true
+
+#define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
+
+#define PERSISTENTPLAYERGEAR false //Player gear carries over to next mission. Setting must also be true in next mission
+
+#define SAVEARRAY [] //List variable names of objects you would like to be saved.
+
 ////////////////////////
 /// RESPAWN SETTINGS ///
 ///////////////////////
 
 //NOTE: Leave these settings like this if you plan to use the checkpoint system
 #define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
-#define RESPAWNTIME 1e10 //Respawn delay for players in seconds
+#define RESPAWNTIME 2 //Respawn delay for players in seconds
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
-#define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
+#define RESPAWNTEMPLATES {"SpectatorFilter"};
 
 //////////////////
 /// SAFE START ///
@@ -260,7 +290,7 @@
 /// Misc settings ///
 /////////////////////
 
-#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
+#define LOADOUTARRAY [gar] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
 
 #define FIXARSENALBUG true // Runs a fix that will resolve being unable to access AI inventory sometimes.
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
@@ -283,7 +313,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define MISSIONTELEPORT true
 #define BRIEFING true
 #define ORBAT true
-#define CHECKPOINTSYSTEM true
+#define CHECKPOINTSYSTEM false
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
 #define DIFFICULTY true
