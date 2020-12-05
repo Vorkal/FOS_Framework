@@ -49,7 +49,7 @@
         /////////////
         /// END 1 ///
         /////////////
-        #define END1NAME END1//Name of the win type as shown to the admin (NO SPACES!)
+        #define END1NAME END1 //Name of the win type as shown to the admin (NO SPACES!)
         #define END1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
@@ -111,10 +111,11 @@
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
 
+
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
-#define CHECKPOINTPOINTSYSTEM false //Enables checkpoint point system where players can call a checkpoint
+#define CHECKPOINTPOINTSYSTEM true //Enables checkpoint point system where players can call a checkpoint
 #define INITIALPOINTAMOUNT 0 //Amount of checkpoint calls the players have at the start.
 #define POINTSPAWN true //True: Use default method of checkpoint Array: array of objects that respawned players will spawn at.  Example: [sphere1,sphere2]
 #define POINTGEAR "SAVED" //String to control point spawn gear. "":Do not override ArmA method "INIT": use starting gear "SAVED": Use gear on death
@@ -122,6 +123,7 @@
 
 #define CALLCHECKPOINTPERMISSIONS 0 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
 
+#define CHECKPOINTDEADONLY true //Allow only the dead to call checkpoints
 #define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
 #define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
 
@@ -242,7 +244,7 @@
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
-#define RESPAWNTEMPLATES {"SpectatorFilter"};
+#define RESPAWNTEMPLATES {"SpectatorFilter", "checkpointSystem"};
 
 //////////////////
 /// SAFE START ///
