@@ -6,7 +6,7 @@ if !(CAMPAIGNSYSTEM) exitWith {};
 
 _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
 
-if (MISSIONINDEX == 0) exitWith {systemChat "missionIndex is 0"};
+if (MISSIONINDEX == 0) exitWith {};
 
 //Find the data of the correct mission
 _previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == MISSIONKEY && _x # 0 # 1 == (MISSIONINDEX - 1)};
