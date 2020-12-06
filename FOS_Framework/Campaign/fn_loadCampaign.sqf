@@ -48,8 +48,6 @@ _allObjects = entities "";
     if (_index != -1) then {
         _object = _allObjects # _index;
 
-        //
-
         //Load hit points
         _hitPointData = _x # 1;
         //Mortars don't have hitpoint data
