@@ -1,7 +1,7 @@
 #define MISSIONKEY "TEST KEY"
 #define MISSIONINDEX 0
 #define PERSISTENTPLAYERGEAR false
-#define SAVEARRAY [t1,t2,t3]
+#define SAVEARRAY []
 
 //#include "..\..\settings.hpp"
 if !(CAMPAIGNSYSTEM) exitWith {};
