@@ -230,7 +230,7 @@
 #define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
 
 #define PERSISTENTPLAYERGEAR false //Player gear carries over to next mission. Setting must also be true in next mission
-#define REFILLPARTIALMAGS true
+#define REFILLPARTIALMAGS true //True makes partial mags refill
 #define SAVEARRAY [] //List variable names of objects you would like to be saved.
 
 ////////////////////////
