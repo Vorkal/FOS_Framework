@@ -18,7 +18,7 @@ _state = (missionconfigfile >> "CfgDebriefing" >> _end >> "win") call BIS_fnc_ge
 _missionSwitch = (missionconfigfile >> "CfgDebriefing" >> _end >> "missionSwitch") call BIS_fnc_getCfgData;
 
 if (_missionSwitch != "") then {
-    [_missionSwitch] call FOS_fnc_switchMission;
+    [SERVERCOMMANDPASSWORD,"#mission " + _missionSwitch] remoteExec ["serverCommand",2];
 } else {
     if (isNil "_state") then {_state = true};
     [_end,_state,true,true,true] remoteExec ["BIS_fnc_endMission",0];
