@@ -16,11 +16,11 @@ if (count _FOSMissions > 25) then {
 _FOSMissions pushBackUnique (missionName + "." + worldName);
 profilenamespace setVariable ["FOS_MissionList",_FOSMissions];
 
-if (_index == -1) then {
+if (true) then {
     _emptyDisplay = findDisplay 313 createDisplay "RscDisplayEmpty";
 
     _backGround  = _emptyDisplay ctrlCreate ["RscBackground", -1];
-    _backGround ctrlSetPosition [0.25,0.15,0.35,0.50];
+    _backGround ctrlSetPosition [0.25,0.15,0.35,0.65];
     _backGround ctrlSetBackgroundColor [0,0,0,0.7];
     _backGround ctrlCommit 0;
 
@@ -59,13 +59,28 @@ if (_index == -1) then {
     _listBox ctrlSetPosition [0.32,0.35,0.20,0.125];
     _listBox ctrlCommit 0;
 
+    _listSideText  = _emptyDisplay ctrlCreate ["RscText", -1];
+    _listSideText ctrlSetPosition [0.365,0.40,0.75,0.2];
+    _listSideText ctrlSetBackgroundColor [1,1,1,0];
+    _listSideText ctrlSetTextColor [1,1,1,1];
+    _listSideText ctrlSetText "Squad Side";
+    _listSideText ctrlCommit 0;
+
+    _listSideBox = _emptyDisplay ctrlCreate ["RscListBox", 4173];
+    _listSideBox lbAdd "West";
+    _listSideBox lbAdd "East";
+    _listSideBox lbAdd "Independent";
+    _listSideBox ctrlSetPosition [0.32,0.52,0.20,0.125];
+    _listSideBox ctrlCommit 0;
+
     _okButton = _emptyDisplay ctrlCreate ["RscButton", -1];
     _okButton ctrlSetText "Create";
-    _okButton ctrlSetPosition [0.32,0.50,0.20,0.125];
+    _okButton ctrlSetPosition [0.32,0.655,0.20,0.125];
     _okButton ctrlCommit 0;
 
     uiNamespace setVariable ["FOS_FTS_Edit", _editBox];
     uiNamespace setVariable ["FOS_FTS_List", _listBox];
+    uiNamespace setVariable ["FOS_FTS_ListSide", _listSideBox];
 
     //functions don't appear to compile on first run in 3den So the my whole function has to be shoved into this event handler
     _okButton ctrladdEventHandler ["ButtonClick",{
@@ -75,6 +90,7 @@ if (_index == -1) then {
         _display = ctrlParent _ctrl;
         _amountOfSquads = parseNumber ctrlText (uiNamespace getVariable ["FOS_FTS_Edit",2]);
         _squadType = lbCurSel (uiNamespace getVariable ["FOS_FTS_List",1]);
+        _squadSide = lbCurSel (uiNamespace getVariable ["FOS_FTS_ListSide",0]);
 
         if (_amountOfSquads == 0) exitWith {};
 
@@ -87,17 +103,40 @@ if (_index == -1) then {
         _squadDictionary = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec",
         "Romeo","Sierra","Tango","Uniform","Victor","Whiskey","xray","Yankee","Zulu"];
         _squadPrefixes = _squadDictionary apply {[_x,0,0] call BIS_fnc_trimString};
-        _side = west;
-        _sidePrefix = "B";
-
+        //Switch the unit type that appears based on mission maker choice
+        switch (_squadSide) do {
+            case (0): {
+                _side = west;
+                _sidePrefix = "B";
+            };
+            case (1): {
+                _side = east;
+                _sidePrefix = "O";
+            };
+            case (2): {
+                _side = independent;
+                _sidePrefix = "I";
+            };
+            default {
+                _side = west;
+                _sidePrefix = "B";
+            };
+        };
         //Create FT units
         _createFT = {
             _entity = objNull;
             _ftPos = _pos;
             {
+                //Exception handler
+                _unitClass = _x # 0;
+                if (_unitClass isEqualTo "I_HeavyGunner_F") then { //Vanilla Independent don't have an MMG
+                    _unitClass = "I_soldier_AR_F";
+                };
+
                 if (_forEachIndex == 0) then {
                     //Create group leader
-                    _entity = create3DENEntity ["Object",_x # 0,_ftPos];
+                    _entity = create3DENEntity ["Object",_unitClass,_ftPos];
+                    _entity set3DENLayer _id;
                     //Assign group variable name
                     group _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadPrefix + _x # 4];
                     group _entity set3DENAttribute ["groupID", _squadName + _x # 5];
@@ -105,7 +144,7 @@ if (_index == -1) then {
                     //Find new position to place subordinate
                     _ftPos = _ftPos vectorAdd [0,-2.5,0];
                     //create subordinate
-                    _entity = group _entity create3DENEntity ["Object",_x # 0,_ftPos];
+                    _entity = group _entity create3DENEntity ["Object",_unitClass,_ftPos];
                 };
                 //Assign variable name
                 _entity set3DENAttribute ["Name", _sidePrefix + "_" +  _squadPrefix + _x # 4 +  _x # 1];
@@ -123,6 +162,7 @@ if (_index == -1) then {
             {
                 //Create vehicle
                 _entity = create3DENEntity ["Object",_x,_vehiclePos vectorAdd [3.5,-(-2.5 * count (_this # 0)),0],true];
+                _entity set3DENLayer _id;
                 //Move the position down for the next vehicle spawn
                 _vehiclePos = _vehiclePos vectorAdd [0,-10,0];
                 //Variable name for vehicle
@@ -150,7 +190,9 @@ if (_index == -1) then {
         {
             if (_forEachIndex == 0) then {
                 _entity = create3DENEntity ["Object",_x # 0,_cmdPos];
+                _entity set3DENLayer _id;
                 group _entity set3DENAttribute ["Name", _sidePrefix + "_" + "CMD"];
+                group _entity set3DENAttribute ["groupID", "Command"];
             } else {
                 _entity = group _entity create3DENEntity ["Object",_x # 0,_cmdPos vectorAdd [2.5,-5,0]];
             };
@@ -158,7 +200,6 @@ if (_index == -1) then {
             _entity set3DENAttribute ["Init", _x # 2];
             _entity set3DENAttribute ["description","Command " + _x # 3];
             _entity set3DENAttribute ["ControlMP",true];
-
         } forEach _cmdUnits # 0;
 
         for "_i" from 0 to (_amountOfSquads - 1) do {
@@ -184,6 +225,7 @@ if (_index == -1) then {
                         ["B_MRAP_01_F","B_MRAP_01_F"]
                     ];
                     _FTComp call _createFT;
+                    _pos = _pos vectorAdd [7.5,0,0];
                 };
                 //14 Man Squad | 2 FT
                 case (1): {
