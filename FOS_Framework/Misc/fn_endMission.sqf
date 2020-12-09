@@ -17,7 +17,7 @@ saveProfileNamespace;
 _state = (missionconfigfile >> "CfgDebriefing" >> _end >> "win") call BIS_fnc_getCfgDataBool;
 _missionSwitch = (missionconfigfile >> "CfgDebriefing" >> _end >> "missionSwitch") call BIS_fnc_getCfgData;
 
-if (_missionSwitch != "") then {
+if (_missionSwitch != "") then { //Campaign system is in use
     [SERVERCOMMANDPASSWORD,"#mission " + _missionSwitch] remoteExec ["serverCommand",2];
 } else {
     if (isNil "_state") then {_state = true};
