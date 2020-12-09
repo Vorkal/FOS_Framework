@@ -179,6 +179,7 @@ class CfgDebriefing
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
+        missionSwitch = END1MISSIONSWITCH;
     };
     class END2NAME
     {
@@ -189,6 +190,7 @@ class CfgDebriefing
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
+        missionSwitch = END2MISSIONSWITCH;
     };
     class END3NAME
     {
@@ -199,6 +201,7 @@ class CfgDebriefing
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
+        missionSwitch = END3MISSIONSWITCH;
     };
     class END4NAME
     {
@@ -209,6 +212,7 @@ class CfgDebriefing
         pictureBackground = "";
         picture = "";
         pictureColor[] = {0.6,0.6,0.0,1};
+        missionSwitch = END4MISSIONSWITCH;
     };
     class END5NAME
     {
@@ -219,6 +223,7 @@ class CfgDebriefing
         pictureBackground = "";
         picture = "";
         pictureColor[] = {0.6,0.6,0.0,1};
+        missionSwitch = END5MISSIONSWITCH;
     };
 };
 
