@@ -18,17 +18,20 @@ _campaignData = _campaignList # _previousCampaignIndex;
 */
 
 //load player loadouts
-_loadouts = _campaignData # 1;
-{
-	//Find unique ID and index in the array
-	_playerID = getPlayerUID _x;
-    _playerIndex = _loadouts findIf {_x # 0 == _playerID};
+if (PERSISTENTPLAYERGEAR) then {
+	_loadouts = _campaignData # 1;
+	{
+		//Find unique ID and index in the array
+		_playerID = getPlayerUID _x;
+	    _playerIndex = _loadouts findIf {_x # 0 == _playerID};
 
-    //Assign gear
-    if (_playerIndex != -1) then {
-        _x setUnitLoadout [_loadouts # _playerIndex # 1,REFILLPARTIALMAGS]
-    };
-} forEach (call BIS_fnc_listPlayers);
+	    //Assign gear
+	    if (_playerIndex != -1) then {
+	        _x setUnitLoadout [_loadouts # _playerIndex # 1,REFILLPARTIALMAGS]
+	    };
+	} forEach (call BIS_fnc_listPlayers);
+};
+
 
 /*
     OBJECT DATA
