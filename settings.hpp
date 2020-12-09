@@ -54,7 +54,7 @@
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
         #define END1WIN 1  // 1 is a win state. 0 is a fail state
-        #define END1MISSIONSWITCH "missionSwitchTest.Altis" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
+        #define END1MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 2 ///
