@@ -54,7 +54,7 @@
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
         #define END1WIN 1  // 1 is a win state. 0 is a fail state
-        #define MISSIONSWITCH "" //Only used with persistance system. Add the name of the next mission
+        #define END1MISSIONSWITCH "missionSwitchTest.Altis" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 2 ///
@@ -64,7 +64,7 @@
         #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END2DESCRIPTION "" //Text that appears in the debriefing screen
         #define END2WIN 1  // 1 is a win state. 0 is a fail state
-        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
+        #define END2MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 3 ///
@@ -74,8 +74,7 @@
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
         #define END3WIN 1  // 1 is a win state. 0 is a fail state
-        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
-
+        #define END3MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         //////////////
         /// END 4 ///
@@ -85,7 +84,7 @@
         #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END4DESCRIPTION "" //Text that appears in the debriefing screen
         #define END4WIN 0  // 1 is a win state. 0 is a fail state
-        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
+        #define END4MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 5 ///
@@ -95,7 +94,7 @@
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
         #define END5WIN 0  // 1 is a win state. 0 is a fail state
-        #define MISSIONSWITCH "" //Only used with persistance system. Add the next mission name
+        #define END5MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
     /////////////
     /// ORBAT ///
@@ -217,19 +216,16 @@
 /// CAMPAIGN SETTINGS ///
 /////////////////////////
 
-//NOTE: The mission must END in order to save. #missions does not count.
+//NOTE: The mission must END in order to save. #missions doesn't count.
 
 #define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
 
 #define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
 #define MISSIONINDEX -1 //Index of this mission within your campaign.
 
-#define LOCKMISSION false //Will not allow the mission to open unless a mission with a previous index has been COMPLETED.
-#define MUSTWIN false //Will only allow allow this mission to unlock if a mission in the previous index was a WIN. LOCKMISSION must also be true
-
 #define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
 
-#define PERSISTENTPLAYERGEAR false //Player gear carries over to next mission. Setting must also be true in next mission
+#define PERSISTENTPLAYERGEAR true //Player gear carries over to next mission. Setting must also be true in next mission
 #define REFILLPARTIALMAGS true //True makes partial mags refill. False does not refill partials.
 #define SAVEARRAY [] //List variable names of objects you would like to be saved.
 
