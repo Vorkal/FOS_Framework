@@ -1,7 +1,13 @@
+#define MISSIONPERSISTANCE false
+#include "..\..\settings.hpp"
 params ["_end"];
 private ["_state"];
 //No one needs to run this except server
 if !(isServer) exitWith {};
+
+if (MISSIONPERSISTANCE) then {
+    [] call FOS_fnc_saveCampaign;
+};
 
 //Enable safe start on mission end
 [true,false] call FOS_fnc_safeStartToggleServer;

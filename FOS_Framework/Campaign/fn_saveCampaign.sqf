@@ -3,7 +3,7 @@
 #define PERSISTENTPLAYERGEAR false
 #define SAVEARRAY []
 
-//#include "..\..\settings.hpp"
+#include "..\..\settings.hpp"
 if !(CAMPAIGNSYSTEM) exitWith {};
 
 _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
@@ -11,7 +11,6 @@ _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
 
 //Delete any data where the missionKey and MissionIndex matches
 _duplicateEntryIndex = _campaignList findIf {_x # 0 # 0 == MISSIONKEY && _x # 0 # 1 == MISSIONINDEX};
-systemChat str _duplicateEntryIndex;
 if (_duplicateEntryIndex != -1) then {
 	_campaignList deleteAt _duplicateEntryIndex;
 	profileNameSpace setVariable ["FOS_CAMPAIGNDATA",_campaignList];
@@ -42,23 +41,26 @@ _playerData = [];
 */
 
 //save data from SAVEARRAY
-_variableData = [];
+_objectData = [];
+_objectList = SAVEARRAY	select {!isNil "_x"};
 {
-    //All storable data
-    _variableData pushBack [
-        str _x, //need stringify variable name so it doesn't become NULL
-        getAllHitPointsDamage _x,
-        fuel _x,
-        getFuelCargo _x,
-        magazinesAllTurrets _x,
-        getAmmoCargo _x,
-        [getWeaponcargo _x,getMagazineCargo _x,getBackpackCargo _x,getItemCargo _x],
-		damage _x //Alternative damaage modifier if getAllHitPointsDamage fails
-    ]
-} forEach SAVEARRAY;
+	if !(isNil "_x") then {
+		//All storable data
+	    _objectData pushBack [
+	        str _x, //need stringify variable name so it doesn't become NULL
+	        getAllHitPointsDamage _x,
+	        fuel _x,
+	        getFuelCargo _x,
+	        magazinesAllTurrets _x,
+	        getAmmoCargo _x,
+	        [getWeaponcargo _x,getMagazineCargo _x,getBackpackCargo _x,getItemCargo _x],
+			damage _x //Alternative damaage modifier if getAllHitPointsDamage fails
+	    ];
+	};
+} forEach _objectList;
 
 //update list with new campaign
-_campaign = [_campaignMetaData,_playerData,_variableData];
+_campaign = [_campaignMetaData,_playerData,_objectData];
 _campaignList pushBack _campaign;
 
 /*

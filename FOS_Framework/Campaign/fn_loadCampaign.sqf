@@ -13,7 +13,6 @@ _previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == MISSIONKEY && _x # 
 
 _campaignData = _campaignList # _previousCampaignIndex;
 
-
 /*
     PLAYER LOADOUTS
 */
