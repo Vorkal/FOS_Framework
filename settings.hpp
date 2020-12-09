@@ -219,10 +219,10 @@
 
 //NOTE: The mission must END in order to save. #missions does not count.
 
-#define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
+#define MISSIONPERSISTANCE true // Set to true to activate all parameters listed in this category
 
-#define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
-#define MISSIONINDEX -1 //Index of this mission within your campaign.
+#define MISSIONKEY "417" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
+#define MISSIONINDEX 0 //Index of this mission within your campaign.
 
 #define LOCKMISSION false //Will not allow the mission to open unless a mission with a previous index has been COMPLETED.
 #define MUSTWIN false //Will only allow allow this mission to unlock if a mission in the previous index was a WIN. LOCKMISSION must also be true
@@ -231,7 +231,7 @@
 
 #define PERSISTENTPLAYERGEAR false //Player gear carries over to next mission. Setting must also be true in next mission
 #define REFILLPARTIALMAGS true //True makes partial mags refill. False does not refill partials.
-#define SAVEARRAY [] //List variable names of objects you would like to be saved.
+#define SAVEARRAY [t1,t2,t3] //List variable names of objects you would like to be saved.
 
 ////////////////////////
 /// RESPAWN SETTINGS ///
@@ -292,7 +292,7 @@
 /// Misc settings ///
 /////////////////////
 
-#define LOADOUTARRAY [gar] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
+#define LOADOUTARRAY [] //Add the variable names of units that you wish to overwrite units of the same class with with their current loadout (CBA REQUIRED)
 
 #define FIXARSENALBUG true // Runs a fix that will resolve being unable to access AI inventory sometimes.
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
