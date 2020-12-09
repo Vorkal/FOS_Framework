@@ -315,7 +315,8 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define MISSIONTELEPORT true
 #define BRIEFING true
 #define ORBAT true
-#define CHECKPOINTSYSTEM false
+#define CHECKPOINTSYSTEM true
+#define CAMPAIGNSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
 #define DIFFICULTY true
