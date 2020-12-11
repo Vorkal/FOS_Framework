@@ -16,7 +16,7 @@ if (count _FOSMissions > 25) then {
 _FOSMissions pushBackUnique (missionName + "." + worldName);
 profilenamespace setVariable ["FOS_MissionList",_FOSMissions];
 
-if (true) then {
+if (_index == -1) then {
     _emptyDisplay = findDisplay 313 createDisplay "RscDisplayEmpty";
 
     _backGround  = _emptyDisplay ctrlCreate ["RscBackground", -1];
