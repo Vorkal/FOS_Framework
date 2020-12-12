@@ -1,9 +1,3 @@
-
-if (isNil "FOS_AlertRecord") then {
-	_AlertRecord = player createDiaryRecord ["Diary", ["FOS Admin Menu", "It's under Mission Options now. Not Briefing"]];
-	missionNameSpace setVariable ["FOS_AlertRecord",_AlertRecord];
-};
-
 _briefing = "
 <br/>
 <font size='18'>ADMIN SECTION</font><br/>
