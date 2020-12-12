@@ -43,6 +43,7 @@ _playerData = [];
 //save data from SAVEARRAY
 _objectData = [];
 _objectList = SAVEARRAY	select {!isNil "_x"};
+_objectList = _objectList + (missionNameSpace getVariable ["FOS_CampaignObjects",[]]);
 {
 	if !(isNil "_x") then {
 		//All storable data

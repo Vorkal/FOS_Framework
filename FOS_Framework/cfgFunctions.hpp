@@ -30,6 +30,7 @@ class FOS
 		file = "FOS_Framework\Campaign";
 		class saveCampaign {};
 		class loadCampaign {};
+		class assignCampaignObject {};
 	};
 	class Checkpoints
 	{
