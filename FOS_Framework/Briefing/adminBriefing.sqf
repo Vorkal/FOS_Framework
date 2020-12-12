@@ -1,9 +1,3 @@
-
-if (isNil "FOS_AlertRecord") then {
-	_AlertRecord = player createDiaryRecord ["Diary", ["FOS Admin Menu", "It's under Mission Options now. Not Briefing"]];
-	missionNameSpace setVariable ["FOS_AlertRecord",_AlertRecord];
-};
-
 _briefing = "
 <br/>
 <font size='18'>ADMIN SECTION</font><br/>
@@ -39,7 +33,7 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 {
 	_end = _this select 0;
 	_briefing = _briefing + format ["
-	<execute expression='[%1] remoteExec [""FOS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
+	<execute expression='[%1] remoteExecCall [""FOS_fnc_endMission"",0];'>'%1'</execute> - %2:<br/>
 	%3<br/>
 	"
 	,str (_x # 0),(_x # 1),(_x # 2),(_x # 3)];

@@ -26,6 +26,12 @@ class FOS
 		class orbatnotes {};
 		class adminChecker {};
 	};
+	class Campaign {
+		file = "FOS_Framework\Campaign";
+		class saveCampaign {};
+		class loadCampaign {};
+		class assignCampaignObject {};
+	};
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";

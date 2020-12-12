@@ -318,8 +318,8 @@ if (side player == independent) then {
     _situation = _situation + _enemyForcesHeaderindependent + _indenemyForces + _friendlyForcesHeaderindependent + _indfriendlyForces;
 
     //Remove the formating text if mission maker did not add any details
-    if (_independentenemyForces == "") then {_enemyForcesHeaderindependent = ""};
-    if (_independentfriendlyForces == "") then {_friendlyForcesHeaderindependent = ""};
+    if (_indenemyForces == "") then {_enemyForcesHeaderindependent = ""};
+    if (_indfriendlyForces == "") then {_friendlyForcesHeaderindependent = ""};
     if (_indsituation == "") then {_indSituationHeader = ""};
     if (_indmission == "") then {_indMissionHeader = ""};
     if (_indExecution == "") then {_indExecutionHeader = ""};
@@ -331,29 +331,29 @@ if (side player == independent) then {
         if (isNil "FOS_SMEACRecord" && _SMEACBriefing != "") then {player createDiaryRecord ["Diary",["SMEAC",_SMEACBriefing]]};
         missionNameSpace setVariable ["FOS_SMEACRecord",_SMEACBriefing];
     } else {
-        if (_independentcredits != "" && isNil "FOS_CreditRecord") then {
-            player createDiaryRecord ["diary", ["Credits",_independentcredits]];
-            missionNameSpace setVariable ["FOS_CreditRecord",_independentcredits];
+        if (_indcredits != "" && isNil "FOS_CreditRecord") then {
+            player createDiaryRecord ["diary", ["Credits",_indcredits]];
+            missionNameSpace setVariable ["FOS_CreditRecord",_indcredits];
         };
-        if (_independentAdministration != "" && isNil "FOS_AdministrationRecord") then {
-            player createDiaryRecord ["Diary",["Administration",_independentAdministration]];
-            missionNameSpace setVariable ["FOS_AdministrationRecord",_independentAdministration];
+        if (_indAdministration != "" && isNil "FOS_AdministrationRecord") then {
+            player createDiaryRecord ["Diary",["Administration",_indAdministration]];
+            missionNameSpace setVariable ["FOS_AdministrationRecord",_indAdministration];
         };
-        if (_independentintel != "" && isNil "FOS_IntelRecord") then {
-            player createDiaryRecord ["Diary",["Intel",_independentintel]];
-            missionNameSpace setVariable ["FOS_IntelRecord",_independentintel];
+        if (_indintel != "" && isNil "FOS_IntelRecord") then {
+            player createDiaryRecord ["Diary",["Intel",_indintel]];
+            missionNameSpace setVariable ["FOS_IntelRecord",_indintel];
         };
-        if (_independentExecution != "" && isNil "FOS_ExecutionRecord") then {
-            player createDiaryRecord ["Diary",["Execution",_independentExecution]];
-            missionNameSpace setVariable ["FOS_ExecutionRecord",_independentExecution];
+        if (_indExecution != "" && isNil "FOS_ExecutionRecord") then {
+            player createDiaryRecord ["Diary",["Execution",_indExecution]];
+            missionNameSpace setVariable ["FOS_ExecutionRecord",_indExecution];
         };
-        if (_independentmission != "" && isNil "FOS_MissionRecord") then {
-            player createDiaryRecord ["Diary",["Mission",_independentmission]];
-            missionNameSpace setVariable ["FOS_MissionRecord",_independentmission];
+        if (_indmission != "" && isNil "FOS_MissionRecord") then {
+            player createDiaryRecord ["Diary",["Mission",_indmission]];
+            missionNameSpace setVariable ["FOS_MissionRecord",_indmission];
         };
-        if (_independentsituation != "" && isNil "FOS_SituationRecord") then {
-            player createDiaryRecord ["Diary",["Situation",_independentsituation]];
-            missionNameSpace setVariable ["FOS_SituationRecord",_independentsituation];
+        if (_indsituation != "" && isNil "FOS_SituationRecord") then {
+            player createDiaryRecord ["Diary",["Situation",_indsituation]];
+            missionNameSpace setVariable ["FOS_SituationRecord",_indsituation];
         };
     };
 };

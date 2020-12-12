@@ -7,6 +7,10 @@ if (isServer) then {
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
+	if (MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
+		[] call FOS_fnc_loadCampaign
+	};
+
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
@@ -34,7 +38,7 @@ if (isServer) then {
 	[] spawn FOS_fnc_adminChecker;
 
 	//Run dynamic simulation settings if requested
-	if (isServer && ENABLEDYNAMICSIMULATION) then {
+	if (ENABLEDYNAMICSIMULATION) then {
 		enableDynamicSimulationSystem ENABLEDYNAMICSIMULATION;
 		"Group" setDynamicSimulationDistance DYNAMICSIMDISTANCEINFANTRY;
 		"Vehicle" setDynamicSimulationDistance DYNAMICSIMDISTANCEVEHICLE;
@@ -52,6 +56,40 @@ if (isServer) then {
 		if !(DYNAMICSIMCANAIWAKE) then {
 			{_x triggerDynamicSimulation false} forEach _AIUnits;
 		};
+	};
+	//Friendly Kill tracker event handler
+	if (FRIENDLYKILLTRACKER) then {
+		{
+			//Add to all players
+			_x addEventHandler ["Killed", {
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+				//Check if the killer was friendly
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+					_admin = call FOS_fnc_getAdmin;
+					_message = format ["Friendly Kill Tracker: %1 killed %2!",name _instigator,name _unit];
+					if (_admin != objNull) then {
+						_message remoteExec ["systemChat",_admin];
+					};
+				};
+			}]
+		} forEach (call BIS_fnc_listPlayers)
+	};
+	//Friendly fire tracker event handler
+	if (FRIENDLYFIRETRACKER) then {
+		{
+			//Add to all players
+			_x addEventHandler ["Hit", {
+				params ["_unit", "_source", "_damage", "_instigator"];
+				//Check if the _instigator was friendly
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+					_admin = call FOS_fnc_getAdmin;
+					_message = format ["Friendly Fire Tracker: %1 attacked %2!",name _instigator,name _unit];
+					if (_admin != objNull) then {
+						_message remoteExec ["systemChat",_admin];
+					};
+				};
+			}]
+		} forEach (call BIS_fnc_listPlayers);
 	};
 	if (FIXARSENALBUG) then {
 		waitUntil {time > 0};

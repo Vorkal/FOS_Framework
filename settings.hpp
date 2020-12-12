@@ -33,6 +33,9 @@
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
+#define BRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
+#define SKIPLOBBY 0 //Set to 1 to skip the slot screen and assign players to random roles. Based on the mission context, this may be prefered
+
 #define DISABLEAI 1 // Disables AI for playable slots
 
 ////////////////
@@ -46,20 +49,22 @@
         /////////////
         /// END 1 ///
         /////////////
-        #define END1NAME END1//Name of the win type as shown to the admin (NO SPACES!)
+        #define END1NAME END1 //Name of the win type as shown to the admin (NO SPACES!)
         #define END1TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END1SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END1DESCRIPTION "" //Text that appears in the debriefing screen
         #define END1WIN 1  // 1 is a win state. 0 is a fail state
+        #define END1MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 2 ///
         /////////////
-        #define END2NAME END2//Name of the win type as shown to the admin (NO SPACES!)
+        #define END2NAME END2 //Name of the win type as shown to the admin (NO SPACES!)
         #define END2TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END2SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END2DESCRIPTION "" //Text that appears in the debriefing screen
         #define END2WIN 1  // 1 is a win state. 0 is a fail state
+        #define END2MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         /////////////
         /// END 3 ///
@@ -69,15 +74,18 @@
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
         #define END3WIN 1  // 1 is a win state. 0 is a fail state
+        #define END3MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
         //////////////
         /// END 4 ///
         /////////////
-        #define END4NAME END4//Name of the win type as shown to the admin (NO SPACES!)
+        #define END4NAME END4 //Name of the win type as shown to the admin (NO SPACES!)
         #define END4TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END4SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END4DESCRIPTION "" //Text that appears in the debriefing screen
         #define END4WIN 0  // 1 is a win state. 0 is a fail state
+        #define END4MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
+
         /////////////
         /// END 5 ///
         /////////////
@@ -86,6 +94,7 @@
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
         #define END5WIN 0  // 1 is a win state. 0 is a fail state
+        #define END5MISSIONSWITCH "" //Swaps mission on end as long as SERVERCOMMANDPASSWORD is correct. USE DIRECT FILENAME
 
     /////////////
     /// ORBAT ///
@@ -101,6 +110,7 @@
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
 
+
 #define HIDEBODIES true //Controls when players respawn if their old body is removed from the game
 #define CLEARBODIES true //Controls when players respawn, if their old bodies have all items (not assigned items) removed.
 
@@ -112,6 +122,7 @@
 
 #define CALLCHECKPOINTPERMISSIONS 0 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
 
+#define CHECKPOINTDEADONLY true //Allow only the dead to call checkpoints
 #define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
 #define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
 
@@ -201,18 +212,35 @@
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
+/////////////////////////
+/// CAMPAIGN SETTINGS ///
+/////////////////////////
+
+//NOTE: The mission must END in order to save. #missions doesn't count.
+
+#define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
+
+#define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
+#define MISSIONINDEX -1 //Index of this mission within your campaign.
+
+#define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
+
+#define PERSISTENTPLAYERGEAR true //Player gear carries over to next mission. Setting must also be true in next mission
+#define REFILLPARTIALMAGS true //True makes partial mags refill. False does not refill partials.
+#define SAVEARRAY [] //List variable names of objects you would like to be saved.
+
 ////////////////////////
 /// RESPAWN SETTINGS ///
 ///////////////////////
 
 //NOTE: Leave these settings like this if you plan to use the checkpoint system
 #define RESPAWNTYPE 3 //set to 3 for MP respawn. set to 0 for no respawn.
-#define RESPAWNTIME 1e10 //Respawn delay for players in seconds
+#define RESPAWNTIME 2 //Respawn delay for players in seconds
 #define VEHICLERESPAWNDELAY 30 // respawn delay for vehicles in seconds
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
-#define RESPAWNTEMPLATES {"SpectatorFilter","checkpointSystem"};
+#define RESPAWNTEMPLATES {"SpectatorFilter", "checkpointSystem"};
 
 //////////////////
 /// SAFE START ///
@@ -266,6 +294,9 @@
 #define MESSAGEADMIN true //Controls if players can use the chat command #help to reach out to the admin. (CBA REQUIRED)
 #define PMPERMISSIONS "adminlogged" //Controls who can use #PM command. Possible options are "all", "admin" or "adminLogged" (CBA REQUIRED)
 
+#define FRIENDLYFIRETRACKER true //Tells the admin when a friendly hits a friendly
+#define FRIENDLYKILLTRACKER true //Tells the admin when a friendly kills a friendly
+
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
@@ -281,6 +312,7 @@ Also useful if you are an advanced mission maker and something you want to do co
 #define BRIEFING true
 #define ORBAT true
 #define CHECKPOINTSYSTEM true
+#define CAMPAIGNSYSTEM true
 #define DEBUGMESSAGESYSTEM true
 #define JIPMENU true
 #define DIFFICULTY true
