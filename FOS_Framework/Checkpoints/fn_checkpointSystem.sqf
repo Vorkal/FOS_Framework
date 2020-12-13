@@ -10,8 +10,8 @@
  *
  * Parameter(s):
  * _SpawnOnTeam (BOOLEAN/OBJECT/ARRAY/STRING): - Will accept object location or array of objects as spawn point.
- *  TRUE = Spawn on original group
- *  FALSE = Spawn unit in whatever default way is given.
+ *  TRUE = Spawn the unit as close to their original group as possible
+ *  FALSE = Spawns the unit with no spawn interception. Use if you have a custom way of handling spawns
  *  OBJECT = Spawn unit on object given
  *  ARRAY (object) = Selects a random object in the array and spawns the player there. All players get their own random spawn.
  *
@@ -25,17 +25,18 @@
  *
  *
  * Example(s):
- * 	[true,"INIT",3] spawn FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their starting gear. with 3 second spawn protection
- *	[true,"SAVED",0] spawn FOS_fnc_checkpointSystem // Spawn dead players back to their leader with their gear on death. No spawn protection
- *
+ * 	[true,"INIT",3] spawn FOS_fnc_checkpointSystem; // Spawn dead players back to their leader with their starting gear. with 3 second spawn protection
+ *  [true,"SAVED",0] spawn FOS_fnc_checkpointSystem; // Spawn dead players back to their leader with their gear on death. No spawn protection
+ *  [true,"SAVED",0] remoteExec ["FOS_fnc_checkpointSystem",0]; // Same as above, except it will fire globally. Useful when ran server only
  */
 
-
+ #include "..\..\settings.hpp"
+ if !(CHECKPOINTSYSTEM) exitWith {};
 
 params [
-    ["_spawn",true,[true,objNull,[1,2,3]]],
+    ["_spawn",false,[true,objNull,[1,2,3]]],
     ["_Gear","",["default"]],
-    ["_Protection",5,[417]],
+    ["_Protection",0,[417]],
     ["_reviveDowned",false,[false]]
 ];
 
@@ -56,9 +57,9 @@ if (leader _playerGroup != player && !(alive leader _playerGroup)) then {
 };
 
 //Spawn player
-setPlayerRespawnTime 0;
+setPlayerRespawnTime 1.5;
 //Wait for player to be alive
-waitUntil {alive player};
+waitUntil {sleep 0.1;alive player};
 //Reset timer
 setPlayerRespawnTime 1e10;
 

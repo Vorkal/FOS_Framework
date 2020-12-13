@@ -13,7 +13,10 @@ class Header
 
 //add the user IDs of players you trust with debug console.
 enableDebugConsole[] = {};
-allowFunctionsRecompile = 1;
+
+//Allows you to recompile functions in the function library without having to restart.
+allowFunctionsRecompile = 1; //You should only change this to 1 for a testing environment.
+
 //////////////
 /// Author ///
 //////////////
@@ -26,8 +29,16 @@ author = AUTHOR;
 onLoadMission = LOADSCREENDESCRIPTON;
 overViewText = OVERVIEWDESCRIPTION;
 overviewPicture = OVERVIEWPICTURE;
-onLoadName = ONLOADNAME;
+onLoadName = MISSIONTITLE;
 loadScreen = LOADSCREENIMAGE;
+briefingName = BRIEFINGNAME;
+
+////////////////////////
+/// Mission Settings ///
+////////////////////////
+briefing = BRIEFING
+aiKills = 0;
+debriefing = 1;
 
 ///////////////
 /// Respawn ///
@@ -38,11 +49,13 @@ respawnDialog = RESPAWNPROMPT;
 respawnTemplates[] = RESPAWNTEMPLATES
 respawnOnStart = RESPAWNONSTART;
 
+
+
 /////////////////////////////////
 /// Playable unit manipulation///
 /////////////////////////////////
 
-disabledAI = 0;			//Stop AI from taking player slots
+disabledAI = DISABLEAI;			//Stop AI from taking player slots
 
 //////////////////////
 /// Revive options ///
@@ -65,6 +78,19 @@ ReviveBleedOutDelay = 500;              //unconscious state duration (in secs)
 taskManagement_drawDist = 500;			// Any tasks within this distance will appear, even if unassigned.
 taskManagement_propagate = 1;			// Squad leader controls the assigned task of himself and his subordinates.
 
+///////////////////////
+/// GARBAGE MANAGER ///
+///////////////////////
+
+corpseManagerMode = CORPSEMANAGERMODE;
+corpseLimit = CORPSELIMIT;
+corpseRemovalMinTime = CORPSEREMOVALMINTIME;
+corpseRemovalMaxTime = CORPSEREMOVALMAXTIME;
+wreckManagerMode = WRECKMANAGERMODE;
+wreckLimit = WRECKLIMIT;
+wreckRemovalMinTime = WRECKREMOVALMINTIME;
+wreckRemovalMaxTime = WRECKREMOVALMAXTIME;
+minPlayerDistance = MINPLAYERDISTANCE;
 
 //Class useful for creating template task names. Leave empty if you don't know what it does.
 class CfgTaskDescriptions
@@ -144,28 +170,61 @@ class Params
 ///Endings
 class CfgDebriefing
 {
-	// Win.
-	class Win
-	{
-		win = 1;
-		title = "Mission accomplished!";
-		subtitle = "";
-		description = "";
+    class END1NAME
+    {
+        win = END1WIN;
+		title = END1TITLE;
+		subtitle = END1SUBTITLE;
+		description = END1DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
 		pictureColor[] = {1,0,0,1};
-	};
-	// Lose
-	class Lose
-	{
-		win = 0;
-		title = "Mission failed";
-		subtitle = "";
-		description = "";
+        missionSwitch = END1MISSIONSWITCH;
+    };
+    class END2NAME
+    {
+        win = END2WIN;
+		title = END2TITLE;
+		subtitle = END2SUBTITLE;
+		description = END2DESCRIPTION;
 		pictureBackground = "";
 		picture = "";
-		pictureColor[] = {0.6,0.6,0.0,1};
-	};
+		pictureColor[] = {1,0,0,1};
+        missionSwitch = END2MISSIONSWITCH;
+    };
+    class END3NAME
+    {
+        win = END3WIN;
+		title = END3TITLE;
+		subtitle = END3SUBTITLE;
+		description = END3DESCRIPTION;
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {1,0,0,1};
+        missionSwitch = END3MISSIONSWITCH;
+    };
+    class END4NAME
+    {
+        win = END4WIN;
+        title = END4TITLE;
+        subtitle = END4SUBTITLE;
+        description = END4DESCRIPTION;
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.6,0.6,0.0,1};
+        missionSwitch = END4MISSIONSWITCH;
+    };
+    class END5NAME
+    {
+        win = END5WIN;
+        title = END5TITLE;
+        subtitle = END5SUBTITLE;
+        description = END5DESCRIPTION;
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.6,0.6,0.0,1};
+        missionSwitch = END5MISSIONSWITCH;
+    };
 };
 
 class CfgNotifications {
@@ -207,6 +266,12 @@ class CfgRespawnTemplates
 	{
         onPlayerKilled = "FOS_fnc_spectatorOnKilled";
         onPlayerRespawn = "FOS_fnc_spectatorOnRespawn";
-        isCall = 1;
+        isCall = 0;
 	};
+};
+
+class Extended_InitPost_EventHandlers {
+    class Man {
+        serverInit = "_this call FOS_fnc_customLoadout";
+    };
 };

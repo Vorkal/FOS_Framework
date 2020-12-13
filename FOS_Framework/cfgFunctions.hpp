@@ -13,6 +13,7 @@ class FOS
 		class spawnPatrol {};
 		class spawnGarrison {};
 		class spawnCamp {};
+		class spawnDefend {};
 	}
 	class AO
 	{
@@ -22,7 +23,15 @@ class FOS
 	class briefing {
 		file = "FOS_Framework\Briefing";
 		class briefing {};
-	}
+		class orbatnotes {};
+		class adminChecker {};
+	};
+	class Campaign {
+		file = "FOS_Framework\Campaign";
+		class saveCampaign {};
+		class loadCampaign {};
+		class assignCampaignObject {};
+	};
 	class Checkpoints
 	{
 		file = "FOS_Framework\Checkpoints";
@@ -37,6 +46,7 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
+		class CopyQA {};
 	}
 	class Difficulty
 	{
@@ -44,6 +54,7 @@ class FOS
 		class setSkill {};
 		class setDynamicSkill {};
 		class difficultyInit {};
+		class limitLootDrop {};
 	};
 	class FTMarkers
 	{
@@ -79,6 +90,15 @@ class FOS
 		class ambientRadio {};
 		class protectedUnit {};
 		class endMission {};
+		class fillAmmoContainer {};
+		class getRoleIcon {};
+		class getTeamColor {};
+		class customLoadout {};
+		class canSee {};
+		class tfarFindFrequency {};
+		class pauseMissionServer {};
+		class pauseMissionClient {};
+		class addTeleportAction {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
@@ -98,10 +118,12 @@ class FOS
 		class safeStartServerInit {};
 		class safeStartToggleClient {};
 		class safeStartToggleServer {};
+		class safeStartRestrictZone {};
 	};
 	class Zeus
 	{
 		file = "FOS_Framework\Zeus";
 		class zeusInit {};
+		class zeusTracer {};
 	};
 };

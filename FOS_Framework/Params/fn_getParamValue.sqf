@@ -12,7 +12,7 @@ private ["_result"];
 
 _profileVar = profileNameSpace getVariable ("FOS_" + _value);
 
-if (["loadParams",1] call BIS_fnc_getParamValue isEqualTo 1 && !(isNil "_profileVar")) then {
+if (["loadParams",1] call BIS_fnc_getParamValue isEqualTo 1 && !(isNil "_profileVar") && isMultiplayer) then {
   _result = profileNamespace getVariable ("FOS_" + _value);
 } else {
     if (isNil "_default") then {

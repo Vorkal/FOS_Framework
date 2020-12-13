@@ -57,18 +57,29 @@ _ftEventHandlers = {
 	} forEach _units;
 
 	{
-		_x addEventHandler ["Killed", {
-			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			_mrk = format ["FTMrk_%1", name _unit];
-			_mrk_Shadow = format ["FTMrk_%1_Shadow", name _unit];
-			_mrk setMarkerTypeLocal "KIA";
-			_mrk_Shadow setMarkerTypeLocal "KIA";
-			_mrk setMarkerSizeLocal [0.75,0.75];
-			_mrk_Shadow setMarkerSizeLocal [0,0];
-			[_mrk,300] spawn BIS_fnc_hideMarker;
-			[_mrk_Shadow,300] spawn BIS_fnc_hideMarker;
-			[_mrk,_mrk_Shadow] spawn {sleep 300; {deleteMarker _x} forEach _this};
-		}];
+		if (DEATHMARKER) then {
+			_x addEventHandler ["Killed", {
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+				_mrk = format ["FTMrk_%1", name _unit];
+				_mrk_Shadow = format ["FTMrk_%1_Shadow", name _unit];
+				_mrk setMarkerTypeLocal "KIA";
+				_mrk_Shadow setMarkerTypeLocal "KIA";
+				_mrk setMarkerSizeLocal [0.75,0.75];
+				_mrk_Shadow setMarkerSizeLocal [0,0];
+				[_mrk,300] spawn BIS_fnc_hideMarker;
+				[_mrk_Shadow,300] spawn BIS_fnc_hideMarker;
+				[_mrk,_mrk_Shadow] spawn {sleep 300; {deleteMarker _x} forEach _this};
+			}];
+		};
+		if (DELETEONDEATH) then {
+			_x addEventHandler ["Killed", {
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+				_mrk = format ["FTMrk_%1", name _unit];
+				_mrk_Shadow = format ["FTMrk_%1_Shadow", name _unit];
+				deleteMarker _mrk;
+				deleteMarker _mrk_Shadow;
+			}];
+		}
 	} forEach _units
 };
 
@@ -112,4 +123,20 @@ addMissionEventHandler ["MapSingleClick", {
 		[_newUnits] call _ftEventHandlers;
 		_initUnits = (units group player);
 	};
+};
+
+[] spawn {
+	//Force exit if mission maker chose to use death markers
+	if !(DEATHMARKER) exitWith {};
+    while {sleep 1; true} do {
+        _FTMarkers = allMapMarkers;
+        //Filter array down to FTMARKER specific markers
+        _FTMarkers = _FTMarkers select {"FTMrk_" in _x};
+        //Delete any markers that doesn't match a unit name
+        {
+            _marker = _x;
+            _index = (units group player) findIf {name _x in _marker};
+            if (_index == -1) then {deletemarker _marker};
+        } forEach _FTMarkers;
+    };
 };

@@ -6,16 +6,14 @@
     This is file contains all you need to edit the briefing
     Place into the strings your briefing information.
     <br/> can be used to create a new line
- */
+*/
 
-//Set this to true if you want the briefing file to auto detect dobule line breaks
-//NOTE: You will need to hit enter twice to do a new line. Not once. Because reasons.
-_autolinebreak = false; //-- Doesn't work properly yet! You should leave it false
-
-
+_autolinebreak = false; //Set this to true if you want the briefing file to auto detect double line breaks
 ////////////////////////
 /// PLAYER BRIEFING ///
 ///////////////////////
+
+/* NOTE: Player briefing will overwrite side based briefings. Leave empty to use side based briefings */
 
 //Describe the situation revolving around this mission
 _situation = "";
@@ -34,16 +32,56 @@ _Administration = "";
 //Who made the mission
 _credits = "";
 
+//Places all sections above into a single briefing page if set to true
+_SMEAC = false;
+/////////////////////
+/// WEST BRIEFING ///
+/////////////////////
+
+_westsituation = "";
+_westenemyForces = "";
+_westfriendlyForces = "";
+_westmission = "";
+_westExecution = "";
+_westintel = "";
+_westAdministration = "";
+_westcredits = "";
+
+//Places all sections above into a single briefing page if set to true
+_westSMEAC = false;
+/////////////////////
+/// EAST BRIEFING ///
+/////////////////////
+
+_eastsituation = "";
+_eastenemyForces = "";
+_eastfriendlyForces = "";
+_eastmission = "";
+_eastExecution = "";
+_eastintel = "";
+_eastAdministration = "";
+_eastcredits = "";
+//Places all sections above into a single briefing page if set to true
+_eastSMEAC = true;
+////////////////////////////
+/// INDEPENDENT BRIEFING ///
+///////////////////////////
+
+_indsituation = "";
+_indenemyForces = "";
+_indfriendlyForces = "";
+_indmission = "";
+_indExecution = "";
+_indintel = "";
+_indAdministration = "";
+_indcredits = "";
+
+//Places all sections above into a single briefing page if set to true
+_indSMEAC = false;
+
 //////////////////////
 /// Admin Briefing ///
 /////////////////////
 
 //Details that only the admin can see
 _adminText = "";
-
-/////////////////////
-/// Zeus Briefing ///
-/////////////////////
-
-//Details that only admin OR zeus can see
-_zeusText = "";
