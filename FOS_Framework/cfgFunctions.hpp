@@ -99,6 +99,7 @@ class FOS
 		class pauseMissionServer {};
 		class pauseMissionClient {};
 		class addTeleportAction {};
+		class dynamicEarplugs {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
