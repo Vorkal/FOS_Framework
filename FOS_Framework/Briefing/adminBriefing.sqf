@@ -1,4 +1,4 @@
-_briefing = "
+private _briefing = "
 <br/>
 <font size='18'>ADMIN SECTION</font><br/>
 This can only be seen by the current admin.
