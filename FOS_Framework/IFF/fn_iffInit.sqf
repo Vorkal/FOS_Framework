@@ -8,7 +8,7 @@ addMissionEventHandler ["EachFrame", {
     private ["_targets"];
     switch (IFFDEFAULTTARGET) do {
         case (0): {
-            _targets = [];
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",[]];
         };
         case (1): {
             _targets = allUnits select {
@@ -16,6 +16,7 @@ addMissionEventHandler ["EachFrame", {
                 &&
                 side _x isEqualTo side player
             };
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",_targets];
         };
         case (2);
         default {
@@ -24,6 +25,7 @@ addMissionEventHandler ["EachFrame", {
                 &&
                 [side group player, side group _x] call BIS_fnc_sideIsFriendly
             };
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",_targets];
         };
     };
     //Do not draw IFF icons if the need glasses parameter is added and they do not have glasses equipped
