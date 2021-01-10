@@ -213,6 +213,7 @@
 #define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 
 //////////////////
