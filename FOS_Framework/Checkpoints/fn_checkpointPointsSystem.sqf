@@ -42,7 +42,7 @@ switch (typeName _var) do {
 		"
 		]];
 
-		"FOS: Call Checkpoints briefing menu created" call FOS_fnc_debugSystemAdd
+		"Call Checkpoints briefing menu created" call FOS_fnc_debugSystemAdd
 	};
 	case "SCALAR": {
 	if (!isServer) exitWith {};
