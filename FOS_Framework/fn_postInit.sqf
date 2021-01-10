@@ -114,7 +114,6 @@ if (hasInterface) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	[] spawn FOS_fnc_addTeleportAction;
-	//add nametags
 	[] spawn FOS_fnc_iffInit;
 	[] spawn FOS_fnc_nametagInit;
 	//Create group trackers if requested on in the parameters
