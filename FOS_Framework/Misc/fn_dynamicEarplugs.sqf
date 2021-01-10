@@ -5,39 +5,42 @@ if (typeName _state isEqualType typeName true) then {
     switch (_currentSetting) do {
         case ("strong"): {
             missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","off"];
+            systemChat "Dynamic Earplugs set to strong";
         };
         case ("normal"): {
             missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","strong"];
+            systemChat "Dynamic Earplugs set to normal";
         };
         case ("weak"): {
             missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","normal"];
+            systemChat "Dynamic Earplugs set to weak";
         };
         default { //Off
             missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","weak"];
+            systemChat "Dynamic Earplugs set to off";
         };
     };
-};
-
-
-switch (toLower _state) do {
-    case ("strong"): {
-        missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","strong"];
-        systemChat "Dynamic Earplugs set to strong";
-    };
-    case ("normal"): {
-        missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","normal"];
-        systemChat "Dynamic Earplugs set to normal";
-    };
-    case ("weak"): {
-        missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","weak"];
-        systemChat "Dynamic Earplugs set to weak";
-    };
-    case ("off"): {
-        missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","off"];
-        systemChat "Dynamic Earplugs set to off";
-    };
-    default {
-        missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","off"];
+} else {
+    switch (toLower _state) do {
+        case ("strong"): {
+            missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","strong"];
+            systemChat "Dynamic Earplugs set to strong";
+        };
+        case ("normal"): {
+            missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","normal"];
+            systemChat "Dynamic Earplugs set to normal";
+        };
+        case ("weak"): {
+            missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","weak"];
+            systemChat "Dynamic Earplugs set to weak";
+        };
+        case ("off"): {
+            missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","off"];
+            systemChat "Dynamic Earplugs set to off";
+        };
+        default {
+            missionNameSpace setVariable ["FOS_dynamicEarplugsSetting","off"];
+        };
     };
 };
 
