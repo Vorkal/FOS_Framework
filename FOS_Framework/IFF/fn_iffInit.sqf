@@ -1,6 +1,8 @@
 #include "..\..\settings.hpp"
 if !(IFF) exitWith {};
 
+if (missionNameSpace getVariable ["ace_nametags_showplayernames",0] > 0) exitWith {"ACE nametags is enabled. Disabling FOS iff" call FOS_fnc_debugSystemAdd};
+
 addMissionEventHandler ["EachFrame", {
     //Check if mission maker requests for glasses to be required.  Also check for whitelisted goggles
     if (IFFNEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
