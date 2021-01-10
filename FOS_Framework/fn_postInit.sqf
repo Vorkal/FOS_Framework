@@ -4,6 +4,14 @@
 
 //Server only code
 if (isServer) then {
+
+	//debug channel
+	private _channelName = "Debug Channel";
+	private _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], _channelName, "Debug Message:", []];
+	if (_channelID == 0) exitWith {diag_log format ["Custom channel '%1' creation failed!", _channelName]};
+	[_channelID, {_this radioChannelAdd [player]}] remoteExec ["call", [0, -2] select isDedicated, _channelName];
+	missionNameSpace setVariable ["FOS_debugChannelID",_channelID,true];
+
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
