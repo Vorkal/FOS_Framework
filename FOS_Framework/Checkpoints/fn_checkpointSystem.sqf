@@ -52,8 +52,8 @@ _oldPos = getPos player;
 //Delay subordinate spawn time
 if (leader _playerGroup != player && !(alive leader _playerGroup)) then {
     _time = time;
-    //Wait 1 second OR until leader comes back to life
-    waitUntil {alive leader _playerGroup || time > _time + 1};
+    //Wait 5 second OR until leader comes back to life
+    waitUntil {alive leader _playerGroup || time > _time + 5};
 };
 
 //Spawn player
@@ -73,7 +73,7 @@ switch (typename _spawn) do {
         _spawnGroup = _playerGroup;
         //If player is leader and all members are dead then change the spawn group
         if (_isLeader && {alive _x} count units _spawnGroup == 0) then {
-            _friendlyPlayers = allGroups select {[side group player, side _x] call BIS_fnc_sideIsFriendly && isPlayer leader _x && leader _x != player};
+            _friendlyPlayers = allGroups select {alive leader _x && [side group player, side _x] call BIS_fnc_sideIsFriendly && isPlayer leader _x && leader _x != player};
             if (count _friendlyPlayers > 0) then {
                 _distances = _friendlyPlayers apply {leader _x distance _oldPos};
                 _spawnGroup = _friendlyPlayers select (_distances find (selectmin _distances));
