@@ -82,3 +82,5 @@ _marker setmarkerdir 0;
 _marker setmarkershape "rectangle";
 _marker setmarkerbrush "border";
 _marker setmarkercolor "colorblack";
+
+"AO Marker Created" call FOS_fnc_debugSystemAdd;

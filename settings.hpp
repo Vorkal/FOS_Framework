@@ -106,6 +106,23 @@
     #define FINDFREQ true //Lets you click on any unit in ORBAT in order to see their currently used frequencies (TFAR ONLY SETTING)
     #define HIDEGROUPS [] //List of groups you can tell the ORBAT to hide no matter what
 
+    /////////////////////////
+    /// CAMPAIGN SETTINGS ///
+    /////////////////////////
+
+    //NOTE: The mission must END in order to save. #missions doesn't count.
+
+    #define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
+
+    #define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
+    #define MISSIONINDEX -1 //Index of this mission within your campaign.
+
+    #define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
+
+    #define PERSISTENTPLAYERGEAR true //Player gear carries over to next mission. Setting must also be true in next mission
+    #define REFILLPARTIALMAGS true //True makes partial mags refill. False does not refill partials.
+    #define SAVEARRAY [] //List variable names of objects you would like to be saved.
+
 /////////////////////////
 /// CHECKPOINT SYSTEM ///
 ////////////////////////
@@ -122,7 +139,7 @@
 
 #define CALLCHECKPOINTPERMISSIONS 0 // 0: Everyone can call checkpoints 1: Squad leaders can call checkpoints 2: Only admin can
 
-#define CHECKPOINTDEADONLY true //Allow only the dead to call checkpoints
+//#define CHECKPOINTDEADONLY true //Allow only the dead to call checkpoints
 #define SPECTATORCHECKPOINTSLEFT true // Allows dead players to see checkpoints left
 #define SPECTATORCALLCHECKPOINTS true // Allows dead players to call a checkpoint
 
@@ -190,10 +207,13 @@
 ///////////
 /// IFF ///
 ///////////
+
+#define IFFLOCKSETTINGS false //Locks players from being able to adjust from mission settings
 #define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
 #define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
 #define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 
 //////////////////
@@ -206,28 +226,12 @@
 /// NAMETAG ///
 ///////////////
 
+#define NAMETAGLOCKSETTINGS false //Locks players from being able to adjust from mission settings
 #define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
 #define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
 #define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
-
-/////////////////////////
-/// CAMPAIGN SETTINGS ///
-/////////////////////////
-
-//NOTE: The mission must END in order to save. #missions doesn't count.
-
-#define MISSIONPERSISTANCE false // Set to true to activate all parameters listed in this category
-
-#define MISSIONKEY "" //The "key" that all missions within the same campaign must have. Case sensitive. Leave empty if you are not building a campaign
-#define MISSIONINDEX -1 //Index of this mission within your campaign.
-
-#define SERVERCOMMANDPASSWORD "password" //This string must match the server command password of the server you want to use this campaign on
-
-#define PERSISTENTPLAYERGEAR true //Player gear carries over to next mission. Setting must also be true in next mission
-#define REFILLPARTIALMAGS true //True makes partial mags refill. False does not refill partials.
-#define SAVEARRAY [] //List variable names of objects you would like to be saved.
 
 ////////////////////////
 /// RESPAWN SETTINGS ///

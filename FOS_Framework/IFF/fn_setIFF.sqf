@@ -78,13 +78,23 @@ if (player distance _unit < IFFMAXDISTANCE && cursorTarget isEqualTo _unit) then
     //Find the current rank of unit in their group
     _rank = [_unit, "texture"] call BIS_fnc_rankParams;
 
+    //Reduce the size of icon based on distance
+    _icoDistance = linearConversion [25,100,player distance _unit,0.75,0.75];
+    _textDistance = linearConversion [25,100,player distance _unit,0.02,0.02];
     //Draw the lines and icons to show status
     drawLine3D [_line1_start, _line1_end, _color];
     drawLine3D [_line1_end, _line2_end, _color];
-    drawIcon3D [_rank, _color, _grpIco_Pos, 0.75, 0.75, 0, groupID group _unit,0,0.03];
-    drawIcon3D ["a3\ui_f\data\map\mapcontrol\hospital_ca.paa", _color, _healthIco_Pos,0.75, 0.75, 0,str round _healthIco_Info + "%"];
-    drawIcon3D ["a3\missions_f_exp\data\img\classes\assault_ca.paa", _color, _AmmoIco_Pos, 0.75, 0.75, 0,str round _AmmoIco_Info + "%"];
-    drawIcon3D ["a3\ui_f\data\igui\cfg\simpletasks\types\run_ca.paa", _color,_StaminaIco_Pos, 0.75, 0.75, 0, str round _staminaIco_Info + "%"];
+    if (isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true) then {
+        _healthIco_Info = _unit getVariable ["ace_medical_woundbleeding",0];
+        _healthIco_Info = linearConversion [0,1,_healthIco_Info,0,100,true];
+        drawIcon3D ["\a3\ui_f\data\igui\cfg\cursors\unitbleeding_ca.paa", _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,(_healthIco_Info toFixed 2) + "%",IFFOUTLINE,_textDistance];
+    } else {
+        drawIcon3D ["a3\ui_f\data\map\mapcontrol\hospital_ca.paa", _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,str round _healthIco_Info + "%",IFFOUTLINE,_textDistance];
+    };
+    drawIcon3D [_rank, _color, _grpIco_Pos, _icoDistance, _icoDistance, 0, groupID group _unit,IFFOUTLINE,_textDistance];
+
+    drawIcon3D ["a3\missions_f_exp\data\img\classes\assault_ca.paa", _color, _AmmoIco_Pos, _icoDistance, _icoDistance, 0,str round _AmmoIco_Info + "%",IFFOUTLINE,_textDistance];
+    drawIcon3D ["a3\ui_f\data\igui\cfg\simpletasks\types\run_ca.paa", _color,_StaminaIco_Pos, _icoDistance, _icoDistance, 0, str round _staminaIco_Info + "%",IFFOUTLINE,_textDistance];
 };
 
 

@@ -46,7 +46,6 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
-		class CopyQA {};
 	}
 	class Difficulty
 	{

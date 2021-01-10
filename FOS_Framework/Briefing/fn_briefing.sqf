@@ -2,7 +2,7 @@ if (!isDedicated && (isNull player)) then
 {
     waitUntil {sleep 0.1; !isNull player};
 };
-
+#include "..\..\settings.hpp"
 #include "..\..\Briefing.sqf";
 
 private ["_situation"];
@@ -255,7 +255,6 @@ if (side player == east) then {
 
     if (_eastSMEAC) then {
         _SMEACBriefing = _eastSituationHeader + _eastsituation + _eastMissionHeader + _eastmission + _eastExecutionHeader + _eastExecution + _eastIntelHeader + _eastintel + _eastAdministrationHeader + _eastAdministration;
-        systemChat "Test";
         if (isNil "FOS_SMEACRecord" && _SMEACBriefing != "") then {player createDiaryRecord ["Diary",["SMEAC",_SMEACBriefing]]};
         missionNameSpace setVariable ["FOS_SMEACRecord",_SMEACBriefing];
     } else {
@@ -370,4 +369,4 @@ if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
 
 #include "playerSettings.sqf";
 
-"FOS: briefing system initialized" call FOS_fnc_debugSystemAdd;
+"briefing system initialized" call FOS_fnc_debugSystemAdd;
