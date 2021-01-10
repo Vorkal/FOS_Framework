@@ -255,7 +255,6 @@ if (side player == east) then {
 
     if (_eastSMEAC) then {
         _SMEACBriefing = _eastSituationHeader + _eastsituation + _eastMissionHeader + _eastmission + _eastExecutionHeader + _eastExecution + _eastIntelHeader + _eastintel + _eastAdministrationHeader + _eastAdministration;
-        systemChat "Test";
         if (isNil "FOS_SMEACRecord" && _SMEACBriefing != "") then {player createDiaryRecord ["Diary",["SMEAC",_SMEACBriefing]]};
         missionNameSpace setVariable ["FOS_SMEACRecord",_SMEACBriefing];
     } else {
