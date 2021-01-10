@@ -145,7 +145,7 @@ switch (typename _spawn) do {
         _randomspawn = selectRandom _spawn;
         //Find out if "randomSpawn" is actually cordinates
         if ({_x isEqualType 0} count _spawn == 3) then {_randomSpawn = _spawn};
-        if (_randomspawn isEqualType objNull) then {
+        if (_randomspawn isEqualType objNull) then { //spawn is an object
             //if _spawn is an static object then just spawn on top of it
             if (_randomspawn isKindOf "Static") then {
     			player setposATL getposATL _randomspawn
@@ -162,7 +162,7 @@ switch (typename _spawn) do {
     				};
                 };
             };
-        } else {
+        } else { //Not an object. Most likely a position
             player setposATL _randomspawn
         };
     };
