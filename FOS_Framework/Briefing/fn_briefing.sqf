@@ -2,7 +2,7 @@ if (!isDedicated && (isNull player)) then
 {
     waitUntil {sleep 0.1; !isNull player};
 };
-
+#include "..\..\settings.hpp"
 #include "..\..\Briefing.sqf";
 
 private ["_situation"];
