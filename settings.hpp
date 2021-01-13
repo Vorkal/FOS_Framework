@@ -67,7 +67,7 @@
         /////////////
         /// END 3 ///
         /////////////
-        #define END3NAME END3//Name of the win type as shown to the admin (NO SPACES!)
+        #define END3NAME END3 //Name of the win type as shown to the admin (NO SPACES!)
         #define END3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
@@ -87,7 +87,7 @@
         /////////////
         /// END 5 ///
         /////////////
-        #define END5NAME END5//Name of the win type as shown to the admin (NO SPACES!)
+        #define END5NAME END5 //Name of the win type as shown to the admin (NO SPACES!)
         #define END5TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
