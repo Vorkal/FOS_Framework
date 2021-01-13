@@ -36,9 +36,10 @@ briefingName = BRIEFINGNAME;
 ////////////////////////
 /// Mission Settings ///
 ////////////////////////
-briefing = BRIEFING
+briefing = SHOWBRIEFING
 aiKills = 0;
 debriefing = 1;
+skipLobby = SKIPLOBBY;
 
 ///////////////
 /// Respawn ///

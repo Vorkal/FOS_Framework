@@ -31,7 +31,7 @@
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-#define BRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
+#define SHOWBRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
 #define SKIPLOBBY 0 //Set to 1 to skip the slot screen and assign players to random roles. Based on the mission context, this may be prefered
 
 #define DISABLEAI 1 // Disables AI for playable slots
