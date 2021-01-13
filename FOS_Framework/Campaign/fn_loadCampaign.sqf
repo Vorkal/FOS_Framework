@@ -3,6 +3,7 @@
 
 #include "..\..\settings.hpp"
 if !(CAMPAIGNSYSTEM) exitWith {};
+if !(isServer) exitWith {};
 
 _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
 
@@ -21,13 +22,16 @@ _campaignData = _campaignList # _previousCampaignIndex;
 if (PERSISTENTPLAYERGEAR) then {
 	_loadouts = _campaignData # 1;
 	{
+		//TODO: Figure out why this doesn't work during post init
+		waitUntil {time > 0.1};
 		//Find unique ID and index in the array
 		_playerID = getPlayerUID _x;
 	    _playerIndex = _loadouts findIf {_x # 0 == _playerID};
 
 	    //Assign gear
 	    if (_playerIndex != -1) then {
-	        _x setUnitLoadout [_loadouts # _playerIndex # 1,REFILLPARTIALMAGS]
+			[_x,[_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]] remoteExecCall ["setUnitLoadout",_x];
+	       // _x setUnitLoadout [_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]
 	    };
 	} forEach (call BIS_fnc_listPlayers);
 };
