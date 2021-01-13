@@ -15,10 +15,6 @@ if (isServer) then {
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
-	if (MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
-		[] call FOS_fnc_loadCampaign
-	};
-
 	if (isMultiplayer) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
@@ -106,6 +102,9 @@ if (isServer) then {
 	if (FIXARSENALBUG) then {
 		waitUntil {time > 0};
 		{_x setUnitLoadout getUnitLoadout _x} forEach allUnits;
+	};
+	if (MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
+		[] spawn FOS_fnc_loadCampaign;
 	};
 };
 
