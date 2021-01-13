@@ -292,6 +292,9 @@
 #define FRIENDLYFIRETRACKER true //Notify the admin when a friendly HITS a friendly
 #define FRIENDLYKILLTRACKER true //Notify the admin when a friendly KILLS a friendly
 
+#define AUTOGEARPLAYERS false //Will essentially do a rearm on units at start. Helps ensure that their loadouts have sufficient mags.
+#define AUTOGEARARRAY [["FirstAidKit",2]] //An array you can use to pass items (not magazines) to the auto gear function at start.
+
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////

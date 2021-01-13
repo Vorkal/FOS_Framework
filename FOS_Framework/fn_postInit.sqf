@@ -64,6 +64,10 @@ if (isServer) then {
 		if !(DYNAMICSIMCANAIWAKE) then {
 			{_x triggerDynamicSimulation false} forEach _AIUnits;
 		};
+		//Auto gear option
+		if (AUTOGEARPLAYERS) then {
+			{[_x,AUTOGEARARRAY] call FOS_fnc_autogear} forEach (call BIS_fnc_listPlayers);
+		};
 	};
 	//Friendly Kill tracker event handler
 	if (FRIENDLYKILLTRACKER) then {

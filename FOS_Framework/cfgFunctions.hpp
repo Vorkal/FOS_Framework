@@ -82,6 +82,7 @@ class FOS
 	class Misc
 	{
 		file = "FOS_Framework\Misc";
+		class autogear {};
 		class Bombardment {};
 		class getAdmin {};
 		class messageAdmin {};
