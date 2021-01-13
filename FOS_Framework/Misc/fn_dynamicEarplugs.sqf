@@ -73,6 +73,5 @@ if (missionNameSpace getVariable ["FOS_dynamicEarplugs",false] isEqualTo false) 
             };
             default {1.5 fadeSound 1;};
         };
-        hintSilent str soundVolume;
     };
 };
