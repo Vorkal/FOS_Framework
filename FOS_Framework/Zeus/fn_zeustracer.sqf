@@ -8,8 +8,8 @@ addMissionEventHandler ["Draw3D", {
 	if !(missionNameSpace getVariable ["FOS_DrawZeusTracer",false]) exitWith {};
     private _projectiles = missionNamespace getVariable ["FOS_Tracers", []];
     private _projectilesNew = [];
-	private _grenades = missionNamespace getVariable ["FOS_Grenades", []];
-	private _grenadesNew = [];
+  	private _grenades = missionNamespace getVariable ["FOS_Grenades", []];
+  	private _grenadesNew = [];
 
     // Draw projectiles if there are any
     if (count _projectiles > 0) then

@@ -13,6 +13,8 @@ class Header
 
 //add the user IDs of players you trust with debug console.
 enableDebugConsole[] = {};
+enableTargetDebug = 1;
+
 
 //Allows you to recompile functions in the function library without having to restart.
 allowFunctionsRecompile = 1; //You should only change this to 1 for a testing environment.
@@ -36,9 +38,10 @@ briefingName = BRIEFINGNAME;
 ////////////////////////
 /// Mission Settings ///
 ////////////////////////
-briefing = BRIEFING
+briefing = SHOWBRIEFING
 aiKills = 0;
 debriefing = 1;
+skipLobby = SKIPLOBBY;
 
 ///////////////
 /// Respawn ///

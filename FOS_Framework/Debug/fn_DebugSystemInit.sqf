@@ -46,9 +46,16 @@ _messages = missionNameSpace getVariable ["FOS_debugSystemMessages",[]];
 
 //create loop that pushes out a debug message on a loop(parameter)
 while {true} do {
-  waitUntil {sleep 1;count _messages > 0};
-  sleep _frequency;
-  _nextMessage = _messages # 0;
-  systemChat _nextMessage;
-  _messages deleteAt 0;
+    waitUntil {sleep 1;count _messages > 0};
+    sleep _frequency;
+    _nextMessage = _messages # 0;
+    _channelID = missionNameSpace getVariable ["FOS_debugChannelID",0];
+    if (_channelID isEqualTo 0) then {
+        systemChat _nextMessage;
+    } else {
+        player customChat [_channelID, _nextMessage];
+    };
+
+
+    _messages deleteAt 0;
 };

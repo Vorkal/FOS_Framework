@@ -46,7 +46,6 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
-		class CopyQA {};
 	}
 	class Difficulty
 	{
@@ -83,6 +82,7 @@ class FOS
 	class Misc
 	{
 		file = "FOS_Framework\Misc";
+		class autogear {};
 		class Bombardment {};
 		class getAdmin {};
 		class messageAdmin {};
@@ -99,6 +99,7 @@ class FOS
 		class pauseMissionServer {};
 		class pauseMissionClient {};
 		class addTeleportAction {};
+		class dynamicEarplugs {};
 	};
 	class nametag {
 		file = "FOS_Framework\Nametag"
