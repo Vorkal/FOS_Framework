@@ -92,3 +92,72 @@ PMPERMISSIONS] call CBA_fnc_registerChatCommand;
     [POINTSPAWN,POINTGEAR,POINTPROTECTION] remoteExec ["FOS_fnc_checkpointSystem",_target,false];
 },
 "admin"] call CBA_fnc_registerChatCommand;
+
+["tp",
+{
+    if !(CUSTOMCHATCOMMANDS) exitWith {};
+    params ["_message"];
+    private ["_text","_name","_firstParam","_secondParam","_messageArray"];
+
+    //Check if either parameter is using a '
+    if (_message select [0,1] == "'" || _message select [count _message - 1,9999] == "'") then {
+        //Split string based on ' instead
+        _messageArray = _message splitString "'";
+        //Select the first parameter
+        _firstString = _messageArray # 0;
+        //In case it wasn't in in single quotes, split and join to remove the hanging space
+        _firstString = _firstString splitString " ";
+        _firstString = _firstString joinString " ";
+
+        //Remove the first parameter so it won't be added back in
+        _messageArray deleteAt 0;
+
+        //Join the string, split it, then join again to remove that first space if it exists
+        _secondString = _messageArray joinString " ";
+        _secondString = _secondString splitString " ";
+        _secondString = _secondString joinString " ";
+        //update _messageArray with both strings
+        _messageArray = [_firstString,_secondString];
+    } else {
+        _messageArray = _message splitString " ";
+    };
+
+    //handling for user error
+    if (count _messageArray > 2) exitWith {systemChat format ["TP ERROR: %1 IS TOO MANY PARAMETERS",_messageArray]};
+    if (count _messageArray == 1) exitWith {systemChat format ["TP ERROR: %1 IS TOO FEW PARAMETERS",_messageArray]};
+    //list of elements to check
+    //_playerList = (call BIS_fnc_listPlayers) apply {name _x};
+    _playerList = (call BIS_fnc_listPlayers) apply {name _x};
+    _groupList = allGroups apply {groupID _x};
+    _strList = _playerList + _groupList;
+    _list = (call BIS_fnc_listPlayers) + allGroups;
+
+    //Search for a match for first parameter
+    _firstParam = _strList findIf {(_messageArray # 0) == _x};
+    if (_firstParam == -1) exitWith {systemChat format ["TP ERROR: %1 NOT FOUND",(_messageArray # 0)]};
+    _firstParam = _list # _firstParam;
+
+    //Search for a match for second parameter
+    _secondParam = _strList findIf {(_messageArray # 1) == _x};
+    if (_secondParam == -1) exitWith {systemChat format ["TP ERROR: %1 NOT FOUND",(_messageArray # 1)]};
+    _secondParam = _list # _secondParam;
+
+    //Check if first param is a group
+    if (typeName _firstParam == "GROUP") then {
+        if (typeName _secondParam == "GROUP") then {
+            //If second param is a group then move the group in first param to leader of the group in second param
+            {_x setPos getPos leader _secondParam} forEach units _firstParam;
+        } else {
+            //If second param is a player then move the group in first param to player in second param
+            {_x setPos getPos _secondParam} forEach units _firstParam;
+        };
+    } else {
+        if (typeName _secondParam == "GROUP") then {
+            //If second param is a group then move the player in first param to leader of the group in second param
+            _firstParam setPos getPos leader _secondParam;
+        } else {
+            //If second param is a player then move the player in first param to player in second param
+            _firstParam setPos getPos _secondParam;
+        };
+    };
+},"admin"] call CBA_fnc_registerChatCommand;

@@ -1,6 +1,8 @@
 #include "..\..\settings.hpp"
 if !(IFF) exitWith {};
 
+if (missionNameSpace getVariable ["ace_nametags_showplayernames",0] > 0) exitWith {"ACE nametags is enabled. Disabling FOS iff" call FOS_fnc_debugSystemAdd};
+
 addMissionEventHandler ["EachFrame", {
     //Check if mission maker requests for glasses to be required.  Also check for whitelisted goggles
     if (IFFNEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
@@ -8,7 +10,7 @@ addMissionEventHandler ["EachFrame", {
     private ["_targets"];
     switch (IFFDEFAULTTARGET) do {
         case (0): {
-            _targets = [];
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",[]];
         };
         case (1): {
             _targets = allUnits select {
@@ -16,6 +18,7 @@ addMissionEventHandler ["EachFrame", {
                 &&
                 side _x isEqualTo side player
             };
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",_targets];
         };
         case (2);
         default {
@@ -24,6 +27,7 @@ addMissionEventHandler ["EachFrame", {
                 &&
                 [side group player, side group _x] call BIS_fnc_sideIsFriendly
             };
+            _targets = missionNameSpace getVariable ["FOS_iffTargets",_targets];
         };
     };
     //Do not draw IFF icons if the need glasses parameter is added and they do not have glasses equipped

@@ -1,13 +1,12 @@
 
 #include "..\..\settings.hpp"
 if !(FTMARKERS) exitWith {};
-
-
-
+//Make sure player exists
 waitUntil {!isNull player};
-
+//all units in player's group
 _initUnits = units group player;
 
+//Continously draw FT Markers
 addMissionEventHandler ["EachFrame", {
 	_units = [];
 	if (DRAWPLAYER) then {_units pushBack player};
@@ -40,6 +39,7 @@ _ftEventHandlers = {
 					deleteMarker _mrk;
 				};
 			};
+
 		}];
 
 	} forEach _units;

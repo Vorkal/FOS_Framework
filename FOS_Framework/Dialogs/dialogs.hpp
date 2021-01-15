@@ -44,31 +44,3 @@ class FOS_JipMenu
 		};
 	};
 };
-class Earplugs
-{
-	idd = -1;
-	movingEnable = false;
-	enableSimulation = true;
-	class Controls
-	{
-		class Sliderbar
-		{
-			type = 43;
-			idc = 52;
-			access = 1;
-			x = 0.12121213;
-			y = 0.91388892;
-			w = 0.75757576;
-			h = 0.05656568;
-			style = 1024+128;
-			arrowEmpty = "\A3\ui_f\data\GUI\Cfg\Slider\arrowEmpty_ca.paa";
-			arrowFull = "\A3\ui_f\data\GUI\Cfg\Slider\arrowFull_ca.paa";
-			border = "\A3\ui_f\data\GUI\Cfg\Slider\border_ca.paa";
-			color[] = {0.4627,0.4157,0.3412,1};
-			colorActive[] = {1,1,1,1};
-			thumb = "\A3\ui_f\data\GUI\Cfg\Slider\thumb_ca.paa";
-			onLoad = "[] spawn {sliderSetPosition [52, (soundVolume * 10)]}";
-			onSliderPosChanged = "0 fadeSound ((_this select 1) / 10);";
-		};
-	};
-};

@@ -4,6 +4,14 @@
 
 //Server only code
 if (isServer) then {
+
+	//debug channel
+	private _channelName = "Debug Channel";
+	private _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], _channelName, "Debug Message:", []];
+	if (_channelID == 0) exitWith {diag_log format ["Custom channel '%1' creation failed!", _channelName]};
+	[_channelID, {_this radioChannelAdd [player]}] remoteExec ["call", [0, -2] select isDedicated, _channelName];
+	missionNameSpace setVariable ["FOS_debugChannelID",_channelID,true];
+
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
@@ -34,7 +42,7 @@ if (isServer) then {
 	[] spawn FOS_fnc_adminChecker;
 
 	//Run dynamic simulation settings if requested
-	if (isServer && ENABLEDYNAMICSIMULATION) then {
+	if (ENABLEDYNAMICSIMULATION) then {
 		enableDynamicSimulationSystem ENABLEDYNAMICSIMULATION;
 		"Group" setDynamicSimulationDistance DYNAMICSIMDISTANCEINFANTRY;
 		"Vehicle" setDynamicSimulationDistance DYNAMICSIMDISTANCEVEHICLE;
@@ -52,10 +60,51 @@ if (isServer) then {
 		if !(DYNAMICSIMCANAIWAKE) then {
 			{_x triggerDynamicSimulation false} forEach _AIUnits;
 		};
+		//Auto gear option
+		if (AUTOGEARPLAYERS) then {
+			{[_x,AUTOGEARARRAY] call FOS_fnc_autogear} forEach (call BIS_fnc_listPlayers);
+		};
+	};
+	//Friendly Kill tracker event handler
+	if (FRIENDLYKILLTRACKER) then {
+		{
+			//Add to all players
+			_x addEventHandler ["Killed", {
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+				//Check if the killer was friendly
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+					_admin = call FOS_fnc_getAdmin;
+					_message = format ["Friendly Kill Tracker: %1 killed %2!",name _instigator,name _unit];
+					if (_admin != objNull) then {
+						_message remoteExec ["systemChat",_admin];
+					};
+				};
+			}]
+		} forEach (call BIS_fnc_listPlayers)
+	};
+	//Friendly fire tracker event handler
+	if (FRIENDLYFIRETRACKER) then {
+		{
+			//Add to all players
+			_x addEventHandler ["Hit", {
+				params ["_unit", "_source", "_damage", "_instigator"];
+				//Check if the _instigator was friendly
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+					_admin = call FOS_fnc_getAdmin;
+					_message = format ["Friendly Fire Tracker: %1 attacked %2!",name _instigator,name _unit];
+					if (_admin != objNull) then {
+						_message remoteExec ["systemChat",_admin];
+					};
+				};
+			}]
+		} forEach (call BIS_fnc_listPlayers);
 	};
 	if (FIXARSENALBUG) then {
 		waitUntil {time > 0};
 		{_x setUnitLoadout getUnitLoadout _x} forEach allUnits;
+	};
+	if (MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
+		[] spawn FOS_fnc_loadCampaign;
 	};
 };
 
@@ -71,7 +120,6 @@ if (hasInterface) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	[] spawn FOS_fnc_addTeleportAction;
-	//add nametags
 	[] spawn FOS_fnc_iffInit;
 	[] spawn FOS_fnc_nametagInit;
 	//Create group trackers if requested on in the parameters
