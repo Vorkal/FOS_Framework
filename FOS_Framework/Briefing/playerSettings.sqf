@@ -5,34 +5,8 @@ This is a menu to quickly change personal player settings.
 <br/><br/>
 ";
 
-//Disable nametags
-if !(NAMETAGLOCKSETTINGS) then {
-    _briefing = _briefing +
-    "<font color='#FFA500' size='18' face='PuristaBold'>Nametags</font><br/>
-    	<execute expression='
-            switch (missionNamespace getVariable [""FOS_nametagTargets"",[]]) do {
-                case ([]): {
-                    missionNameSpace setVariable [""FOS_nametagTargets"",units group player - [player]];
-                    systemChat ""group only"";
-                };
-                case (units group player - [player]): {
-                    missionNameSpace setVariable [""FOS_nametagTargets"",allUnits select {[side group player, side group _x] call BIS_fnc_sideIsFriendly}];
-                    systemChat ""All friendlies"";
-                };
-                case (units group player - [player]): {
-                    missionNameSpace setVariable [""FOS_nametagTargets"",[]];
-                    systemChat ""Off"";
-                };
-                default {
-                    missionNameSpace setVariable [""FOS_nametagTargets"",[]];
-                    systemChat ""off"";
-                };
-            }
-        '>Toggle Nametags</execute><br/><br/>
-    ";
-};
 //IFF settings
-if !(IFFLOCKSETTINGS) then {
+/* if !(IFFLOCKSETTINGS) then {
     _briefing = _briefing +
     "<font color='#FFA500' size='18' face='PuristaBold'>IFF</font><br/>
     	<execute expression='
@@ -42,7 +16,7 @@ if !(IFFLOCKSETTINGS) then {
                     missionNameSpace setVariable [""FOS_iffTargets"",_targets];
                     systemChat ""Side only"";
                 };
-                case (allUnits select {leader _x != leader player && [side group player, side group _x] call BIS_fnc_sideIsFriendly}): {
+                case (allUnits select {leader _x != leader player && side _x isEqualTo side player}): {
                     _targets = allUnits select {leader _x != leader player && [side group player, side group _x] call BIS_fnc_sideIsFriendly};
                     missionNameSpace setVariable [""FOS_iffTargets"",_targets];
                     systemChat ""All friendlies"";
@@ -54,15 +28,40 @@ if !(IFFLOCKSETTINGS) then {
             }
         '>Toggle IFF</execute><br/><br/>
     ";
-};
+}; */
 
+//Disable nametags
+if !(NAMETAGLOCKSETTINGS) then {
+    _briefing = _briefing +
+    "<font color='#FFA500' size='18' face='PuristaBold'>Nametags</font><br/>
+    	<execute expression='
+            switch (missionNamespace getVariable [""FOS_nametagTargets"",[]]) do {
+                case ([]): {
+                    if (count (units group player - [player]) > 0) then {
+                        missionNameSpace setVariable [""FOS_nametagTargets"",units group player - [player]];
+                        systemChat ""group only"";
+                    } else {
+                        missionNameSpace setVariable [""FOS_nametagTargets"",allUnits select {[side group player, side group _x] call BIS_fnc_sideIsFriendly}];
+                        systemChat ""All friendlies"";
+                    };
+                };
+                case (units group player - [player]): {
+                    missionNameSpace setVariable [""FOS_nametagTargets"",allUnits select {[side group player, side group _x] call BIS_fnc_sideIsFriendly}];
+                    systemChat ""All friendlies"";
+                };
+                default {
+                    missionNameSpace setVariable [""FOS_nametagTargets"",[]];
+                    systemChat ""off"";
+                };
+            }
+        '>Toggle Nametags</execute><br/><br/>";
+};
 //toggle dynamic earplugs
 _briefing = _briefing +
 "<font color='#FFA500' size='18' face='PuristaBold'>Dynamic Earplugs</font><br/>
 	<execute expression='
         [true] spawn FOS_fnc_dynamicEarplugs;
-    '>set Dynamic Earplugs mode</execute><br/><br/>
-";
+    '>set Dynamic Earplugs mode</execute><br/><br/>";
 
 _settingRecord = missionNameSpace getVariable ["FOS_settingsRecord",nil];
 
