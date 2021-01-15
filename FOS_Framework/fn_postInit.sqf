@@ -72,7 +72,7 @@ if (isServer) then {
 			_x addEventHandler ["Killed", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
 				//Check if the killer was friendly
-				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly && isPlayer _instigator) then {
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Kill Tracker: %1 killed %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {
@@ -89,7 +89,7 @@ if (isServer) then {
 			_x addEventHandler ["Hit", {
 				params ["_unit", "_source", "_damage", "_instigator"];
 				//Check if the _instigator was friendly
-				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly && isPlayer _instigator) then {
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Fire Tracker: %1 attacked %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {
