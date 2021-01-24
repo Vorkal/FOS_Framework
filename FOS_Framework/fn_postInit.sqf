@@ -12,11 +12,12 @@ if (isServer) then {
 	[_channelID, {_this radioChannelAdd [player]}] remoteExec ["call", [0, -2] select isDedicated, _channelName];
 	missionNameSpace setVariable ["FOS_debugChannelID",_channelID,true];
 
-	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
+	if (MISSIONAO) then {
+		[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
+	};
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
-
-	if (MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
-		[] call FOS_fnc_loadCampaign
+	if (CAMPAIGNSYSTEM && MISSIONPERSISTANCE && MISSIONINDEX > 0 && MISSIONKEY != "") then {
+		[MISSIONKEY,MISSIONINDEX,PERSISTENTPLAYERGEAR,REFILLPARTIALMAGS] call FOS_fnc_loadCampaign
 	};
 
 	if (isMultiplayer) then {

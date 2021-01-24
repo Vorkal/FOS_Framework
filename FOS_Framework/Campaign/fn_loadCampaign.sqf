@@ -1,15 +1,15 @@
-#define PERSISTENTPLAYERGEAR false
-#define REFILLPARTIALMAGS true
-
-#include "..\..\settings.hpp"
-if !(CAMPAIGNSYSTEM) exitWith {};
+params [
+["_missionKey","",["String"]],
+["_missionIndex",0,[42]],
+["_persistentPlayerGear",true,[true]],
+["_refillPartialMags",true,[true]]];
 
 _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
 
-if (MISSIONINDEX == 0) exitWith {};
+if (_missionIndex == 0) exitWith {};
 
 //Find the data of the correct mission
-_previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == MISSIONKEY && _x # 0 # 1 == (MISSIONINDEX - 1)};
+_previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == _missionKey && _x # 0 # 1 == (_missionIndex - 1)};
 
 _campaignData = _campaignList # _previousCampaignIndex;
 
@@ -18,7 +18,7 @@ _campaignData = _campaignList # _previousCampaignIndex;
 */
 
 //load player loadouts
-if (PERSISTENTPLAYERGEAR) then {
+if (_persistentPlayerGear) then {
 	_loadouts = _campaignData # 1;
 	{
 		//Find unique ID and index in the array
@@ -27,7 +27,7 @@ if (PERSISTENTPLAYERGEAR) then {
 
 	    //Assign gear
 	    if (_playerIndex != -1) then {
-	        _x setUnitLoadout [_loadouts # _playerIndex # 1,REFILLPARTIALMAGS]
+	        _x setUnitLoadout [_loadouts # _playerIndex # 1,_refillPartialMags]
 	    };
 	} forEach (call BIS_fnc_listPlayers);
 };
