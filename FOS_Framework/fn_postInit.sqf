@@ -29,6 +29,7 @@ if (isServer) then {
 		enableSentences false;
 	} else {
 		//safe start timer isn't needed for singleplayer. Set it to false.
+		missionNameSpace setVariable ["FOS_Safemode",false];
 		FOS_Safemode = false
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
