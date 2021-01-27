@@ -1,6 +1,8 @@
 #include "..\settings.hpp"
 
-[] spawn FOS_fnc_debugSystemInit;
+if (DEBUGMESSAGESYSTEM) then {
+	[] spawn FOS_fnc_debugSystemInit;
+};
 
 //Server only code
 if (isServer) then {
@@ -30,7 +32,6 @@ if (isServer) then {
 	} else {
 		//safe start timer isn't needed for singleplayer. Set it to false.
 		missionNameSpace setVariable ["FOS_Safemode",false];
-		FOS_Safemode = false
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
 	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
