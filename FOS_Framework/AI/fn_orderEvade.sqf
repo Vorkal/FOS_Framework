@@ -1,3 +1,0 @@
-/*
-AI will constantly run away from enemy forces. Engaging enemies as they flee unless set to hold fire.
-*/
