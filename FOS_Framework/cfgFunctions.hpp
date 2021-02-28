@@ -10,9 +10,6 @@ class FOS
 	class AI
 	{
 		file = "FOS_Framework\AI";
-		class orderEvade {};
-		class orderSentry {};
-		class orderStaticLoop {};
 		class spawnPatrol {};
 		class spawnGarrison {};
 		class spawnCamp {};
