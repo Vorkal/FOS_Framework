@@ -11,7 +11,7 @@ You can also run a different fuction to copy all debug messages to your clipboar
 
 
 scriptName "FOS_debugSystem";
-params [["_debug",true,[true]],["_frequency",5,[123]]];
+params [["_debug",true,[true]],["_frequency",0.75,[123]]];
 
 //Exit if player isn't admin
 if (player != (call FOS_fnc_getAdmin)) exitWith {};
