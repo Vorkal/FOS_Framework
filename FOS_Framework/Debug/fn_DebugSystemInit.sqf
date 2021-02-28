@@ -16,7 +16,11 @@ params [["_debug",true,[true]],["_frequency",5,[123]]];
 //Exit if player isn't admin
 if (player != (call FOS_fnc_getAdmin)) exitWith {};
 
-execVM "testfile.sqf";
+
+if (is3denPreview) then {
+    execVM "testfile.sqf";
+};
+
 
 _originalState = missionNamespace getVariable ["FOS_debugSystem",[false,-1]];
 _scriptName = missionNamespace getVariable ["FOS_debugSystemName",nil];
