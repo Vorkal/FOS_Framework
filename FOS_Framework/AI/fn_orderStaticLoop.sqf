@@ -3,11 +3,10 @@ Similar to a patrol, but the group moves between static waypoints. Good for ambi
 Also works for helicopters which will land at each waypoint before leaving again.
 */
 params [
-["_grp",grpNull,[grpNull]],
-["_staticPoints",[[0,0,0],[1,1,1]]],
-["_delay",[30,60,90]],
-["_speed",0],
-["_debug",false]
+    ["_grp",grpNull,[grpNull]],
+    ["_staticPoints",[[0,0,0],[1,1,1]],[[1,2,3]]],
+    ["_delay",[30,60,90],[[1,2,3]],3],
+    ["_speed",0,[12]]
 ];
 
 //If this is called (not spawned), spawn script
@@ -16,6 +15,12 @@ if !(canSuspend) exitWith {_this spawn _thisScript};
 if !(local _grp) exitWith {};
 
 _veh = vehicle leader _grp;
+
+if (typeof _veh isKindOf "Man") exitWith {"Leader not in a vehicle" call BIS_fnc_error};
+
+
+//Used to check if group was given waypoints by some other script or Zeus later
+_wpCount = count waypoints _grp;
 
 if (_speed > 0) then { // _speed paramter used
     _veh limitSpeed _speed;
@@ -35,6 +40,8 @@ if (typeof _veh isKindOf "landVehicle") then { //ground vehicle
 
         //Group hit combat. Disengage patrol route
         if (behaviour _grp isEqualTo "COMBAT") exitWith {};
+        //Either Zeus or another script is attempting to give a waypoint to this group. Disengage patrol route
+        if (count waypoints _grp > _wpCount) exitWith {};
     };
 };
 
@@ -59,8 +66,11 @@ if (typeof _veh isKindOf "Helicopter") then { //helicopter
         };
 
         waitUntil {isTouchingGround _veh && unitReady _veh};
-        sleep random _sleep;
+
+        //Group hit combat. Disengage patrol route
+        if (behaviour _grp isEqualTo "COMBAT") exitWith {};
         //Either Zeus or another script is attempting to give a waypoint to this group. Exit.
-        if (count waypoints _grp > 1) exitWith {};
+        if (count waypoints _grp > _wpCount) exitWith {};
+        sleep (random _delay);
     };
 };
