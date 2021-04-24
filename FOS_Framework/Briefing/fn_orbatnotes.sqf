@@ -51,7 +51,7 @@ if (SHOWALL) then {
 			 case west: {"#007fff"};
 			 case east: {"#ff0000"};
 			 case independent: {"#41ff00"};
-             case civilian {"#660080"};
+             case civilian: {"#660080"};
 			 default {"#FFFFFF"};
  		};
         //Create side header
