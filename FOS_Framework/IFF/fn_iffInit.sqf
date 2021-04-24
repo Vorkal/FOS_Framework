@@ -5,7 +5,7 @@ if (missionNameSpace getVariable ["ace_nametags_showplayernames",0] > 0) exitWit
 
 addMissionEventHandler ["EachFrame", {
     //Check if mission maker requests for glasses to be required.  Also check for whitelisted goggles
-    if (IFFNEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
+    if (IFFNEEDGLASSES && goggles player in IFFGOGGLESNEEDED isEqualTo false) exitWith {};
     //Find all units that are not the player's group and are friendly
     private ["_targets"];
     switch (IFFDEFAULTTARGET) do {
@@ -30,7 +30,5 @@ addMissionEventHandler ["EachFrame", {
             _targets = missionNameSpace getVariable ["FOS_iffTargets",_targets];
         };
     };
-    //Do not draw IFF icons if the need glasses parameter is added and they do not have glasses equipped
-    if (NEEDGLASSES && goggles player in ["G_Tactical_Black","G_Tactical_Clear"] isEqualTo false) exitWith {};
 	{[_x] call FOS_fnc_setIFF} forEach _targets;
 }];

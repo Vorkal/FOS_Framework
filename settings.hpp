@@ -171,6 +171,7 @@
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
+#define FIRETEAM true //toggle fireteam markers
 #define DEATHMARKER true //True for a skull to replace the FT marker.
 #define DELETEONDEATH false //always delete the FT marker on death (Even if nobody has seen the death)
 #define DRAWPLAYER true //Controls if a marker is drawn for the player.
@@ -196,12 +197,14 @@
 /// GROUP TRACKER ///
 /////////////////////
 
+#define GRPTRACKER true //Enable group trackers
 #define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
 
 ///////////
 /// IFF ///
 ///////////
 
+#define IFF true // toggle IFF
 #define IFFLOCKSETTINGS false //Locks players from being able to adjust from mission settings
 #define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
 #define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
@@ -209,7 +212,7 @@
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
-
+#define IFFGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -220,12 +223,14 @@
 /// NAMETAG ///
 ///////////////
 
+#define NAMETAG true //Enables nametags
 #define NAMETAGLOCKSETTINGS false //Locks players from being able to adjust from mission settings
 #define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
 #define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
 #define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
+#define NAMETAGGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
 
 ////////////////////////
 /// RESPAWN SETTINGS ///

@@ -15,6 +15,7 @@ if ({"GPS" in _x || "Terminal" in _x} count assignedItems player == 0 && NEEDGPS
 _pos = getPos _unit;
 //Find the current team
 _color = "Color" + assignedTeam _unit;
+if (_color isEqualTo "Color") then {_color = "ColorMAIN"};
 //Convert string to match white marker color classname
 if (_color isEqualTo "ColorMAIN") then {_color = "ColorWhite"};
 

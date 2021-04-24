@@ -1,6 +1,8 @@
 #include "..\settings.hpp"
 
-[] spawn FOS_fnc_debugSystemInit;
+if (DEBUGMESSAGESYSTEM) then {
+	[] spawn FOS_fnc_debugSystemInit;
+};
 
 //Server only code
 if (isServer) then {
@@ -29,10 +31,10 @@ if (isServer) then {
 		enableSentences false;
 	} else {
 		//safe start timer isn't needed for singleplayer. Set it to false.
-		FOS_Safemode = false
+		missionNameSpace setVariable ["FOS_Safemode",false];
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
-	if (["revivesystem"] call FOS_fnc_getParamValue isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
+	if (REVIVEENABLED isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
     	if (isMultiplayer) then {(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive};
 	};
 	if (CHECKPOINTPOINTSYSTEM) then {
@@ -112,17 +114,21 @@ if (isServer) then {
 if (hasInterface) then {
 	//Execute briefing
 	[] spawn FOS_fnc_briefing;
-	//create fire team markers if requested on in the parameters
-	if (["ftMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
+	if (FIRETEAM) then {
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	[] spawn FOS_fnc_addTeleportAction;
-	[] spawn FOS_fnc_iffInit;
-	[] spawn FOS_fnc_nametagInit;
-	//Create group trackers if requested on in the parameters
-	if (["groupMarkers"] call FOS_fnc_getParamValue isEqualTo 1) then {
+	if (IFF) then {
+		[] spawn FOS_fnc_iffInit;
+	};
+	if (NAMETAG) then {
+		[] spawn FOS_fnc_nametagInit;
+	};
+	if (GRPTRACKER) then {
 		[] spawn FOS_fnc_grpTrackerinit;
 	};
+
+
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
 	if (REDUCELOOT) then {
@@ -134,7 +140,7 @@ if (hasInterface) then {
 		[] call FOS_fnc_orbatnotes;
 	};
 
-	if (_this # 1) then {
+	if (didJip) then {
 		createDialog "FOS_JipMenu";
 		{
 			_index = lbAdd [1500, (format ["%1",name _x])];
