@@ -120,13 +120,6 @@ class CfgFunctions
 ///Parameters
 class Params
 {
-	class missionSettings
-	{
-		title = "### MISSION SETTINGS ###";
-		values[] = {};
-		texts[] = {};
-		default = 0;
-	};
     class difficulty
 	{
 		title = "Difficulty";
@@ -134,41 +127,6 @@ class Params
 		texts[] = {"Easy","Normal","Hard"};
 		default = 1;
 	};
-    class systemSettings
-	{
-		title = "### SYSTEM SETTINGS ###";
-		values[] = {};
-		texts[] = {};
-		default = 0;
-	};
-    class loadParams
-    {
-        title = "Load parameters (Be sure to change this to save if you change below settings)";
-		values[] = {0,1};
-		texts[] = {"Save","Load"};
-		default = 1;
-    };
-    class reviveSystem
-    {
-        title = "Vanilla Revive";
-		values[] = {0,1};
-		texts[] = {"Off","On"};
-		default = 1;
-    };
-    class ftMarkers
-    {
-        title = "FT markers";
-        values[] = {0,1};
-        texts[] = {"Off","On"};
-        default = 1;
-    };
-    class groupMarkers
-    {
-        title = "Group markers";
-        values[] = {0,1};
-        texts[] = {"Off","On"};
-        default = 1;
-    };
 };
 ///Endings
 class CfgDebriefing

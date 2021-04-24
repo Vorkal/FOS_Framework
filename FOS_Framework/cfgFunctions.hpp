@@ -106,12 +106,6 @@ class FOS
 		class nametagInit {};
 		class setNametag {};
 	};
-	class Params
-	{
-		file = "FOS_Framework\Params";
-		class getParamValue {};
-		class saveParams {};
-	}
 	class SafeStart
 	{
 		file = "FOS_Framework\SafeStart";

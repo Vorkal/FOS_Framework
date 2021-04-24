@@ -1,9 +1,5 @@
 #include "..\settings.hpp"
 
-if (["loadParams"] call FOS_fnc_getParamValue isEqualTo 0) then {
-    [] call FOS_fnc_saveParams;
-};
-
 FOS_difficulty = ["difficulty",1] call BIS_fnc_getParamValue;
 
 //Increase mission played amount by one.
