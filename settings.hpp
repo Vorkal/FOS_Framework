@@ -209,7 +209,7 @@
 #define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
-
+#define IFFGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
 //////////////////
 /// Mission AO ///
 //////////////////
@@ -226,6 +226,7 @@
 #define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
 #define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
+#define NAMETAGGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
 
 ////////////////////////
 /// RESPAWN SETTINGS ///
