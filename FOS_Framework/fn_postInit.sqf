@@ -140,7 +140,7 @@ if (hasInterface) then {
 		[] call FOS_fnc_orbatnotes;
 	};
 
-	if (_this # 1) then {
+	if (didJip) then {
 		createDialog "FOS_JipMenu";
 		{
 			_index = lbAdd [1500, (format ["%1",name _x])];
