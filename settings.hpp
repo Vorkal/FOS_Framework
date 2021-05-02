@@ -278,11 +278,40 @@
 #define TELESAFESTARTONLY false //Can only be accessed during safestart
 #define TELEAFTERSAFESTART true //Allows SLs to mark where they want to be teleported. But only teleport once safe start is over.
 
-//////////////////////
-/// VANILLA REVIVE ///
-//////////////////////
+///////////////////
+/// FOS medical ///
+///////////////////
 
-#define	REVIVEENABLED 1 // Vanilla revive (Always off if Ace_Medical detected)
+#define FOSMEDICAL true //Enables enhanced vanilla medical. Auto turns off if ace medical detected.
+    //////////////
+    /// Damage ///
+    //////////////
+    #define PREVENTINSTAKILL false // players at 0 damage who are hit for 100% of their health lose 75% of their health instead. Prevents insta death
+    #define ALWAYSINCAPACITATE false //Players always go into revive state.
+
+    ///////////////
+    /// Revive ////
+    ///////////////
+
+    // #define REVIVEALLOWED true //Enables player uncon revive state
+    // #define REVIVEFADESOUND true //Controls if audio fades in this state
+    // #define REVIVEVISIONMODE "Black" //Options are: None (Do not affect vision), Blur (Blur screen heavily), or Black (Black out screen)
+    // #define REVIVESETCAPTIVE false //Controls if players should be considered non combatant by AI.
+    // #define DOWNLIMIT -1 //Maximum amount of times a player can go into revive state
+
+    // #define BLEEDOUTTIMER 300 // Controls how long you have to revive player
+    // #define BLEEDOUTTIMERVIEW false //Can player see their bleedout timer
+    // #define BLEEDOUTHEARTBEAT true //Controls if player hears a heart beat get faster as they bleed out
+    // #define BLEEDOUTPERSISTANCE true //if bleed out starts where it left off on next down
+    // #define BLEEDOUTMEDICRESET true // A heal or revive from a medic resets bleed out timer
+
+    // #define DOWNALLOWED true //Enables player downed state
+    // #define DOWNSETCAPTIVE true //Controls if players should be considered non combatant by AI UNTIL they try to shoot
+    // #define DOWNCANSHOOT true //Allows player to still shoot from this state
+    // #define DOWNCANCRAWL true // ALlows player to crawl from this state
+    // #define DOWNGETINTOVEHICLE true // Allows player to get into vehicle from this state
+    // #define DOWNMEDICSELFREVIVE true //Controls if Medic can heal himself.
+    // #define DOWNPLAYERSELFREVIVE false //Controls if player can heal himself
 
 /////////////////////
 /// Misc settings ///
