@@ -34,7 +34,7 @@ if (isServer) then {
 		missionNameSpace setVariable ["FOS_Safemode",false];
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
-	if (REVIVEENABLED isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
+	if (isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
     	if (isMultiplayer) then {(call BIS_fnc_listPlayers) call BIS_fnc_disableRevive};
 	};
 	if (CHECKPOINTPOINTSYSTEM) then {
@@ -119,16 +119,17 @@ if (hasInterface) then {
 	};
 	[] spawn FOS_fnc_addTeleportAction;
 	if (IFF) then {
-		[] spawn FOS_fnc_iffInit;
+		[] spawn FOS_fnc_iffInit
 	};
 	if (NAMETAG) then {
-		[] spawn FOS_fnc_nametagInit;
+		[] spawn FOS_fnc_nametagInit
 	};
 	if (GRPTRACKER) then {
-		[] spawn FOS_fnc_grpTrackerinit;
+		[] spawn FOS_fnc_grpTrackerinit
 	};
-
-
+	if (FOSMEDICAL) then {
+		call FOS_fnc_medicalInit;
+	};
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
 	if (REDUCELOOT) then {
