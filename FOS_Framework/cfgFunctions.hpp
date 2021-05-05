@@ -73,6 +73,17 @@ class FOS
 		class iffInit {};
 		class setIFF {};
 	};
+	class medical
+	{
+		file = "FOS_Framework\Medical";
+		class medicalInit {};
+		class beginHeal {};
+		class beginHealOther {};
+		class medicalEhHandleDamage {};
+		class medicalEHdammaged {};
+		class addHealAction {};
+
+	};
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
