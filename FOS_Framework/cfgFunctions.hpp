@@ -73,6 +73,12 @@ class FOS
 		class iffInit {};
 		class setIFF {};
 	};
+	class Spectator
+	{
+		file = "FOS_Framework\Spectator";
+		class spectatorOnRespawn {};
+		class spectatorOnKilled {};
+	};
 	class medical
 	{
 		file = "FOS_Framework\Medical";
@@ -82,13 +88,7 @@ class FOS
 		class medicalEhHandleDamage {};
 		class medicalEHdammaged {};
 		class addHealAction {};
-
-	};
-	class Spectator
-	{
-		file = "FOS_Framework\Spectator";
-		class spectatorOnRespawn {};
-		class spectatorOnKilled {};
+		class medicalCalculateState {};
 	};
 	class Misc
 	{

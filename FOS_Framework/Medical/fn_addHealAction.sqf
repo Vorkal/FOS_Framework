@@ -5,7 +5,7 @@ _unit,
 "Treat " + name _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
-"damage _target >= 0.25 && _target distance _this < 3 && stance _this in ['UNDEFINED',''] isEqualTo false",
+"((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target >= 0.25 && _this getUnitTrait 'medic' isEqualTo false)) && _target distance _this < 3 && stance _this in ['UNDEFINED',''] isEqualTo false",
 "'FirstAidKit' in items _this",
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
