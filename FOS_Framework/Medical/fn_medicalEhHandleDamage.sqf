@@ -5,7 +5,7 @@ _unit addEventHandler ["HandleDamage", {
 
     //ignore damage under the threshold
     if (_damage < 0.1) exitWith {0};
-	
+
     if (alive _unit) then { //Unit shot is still alive
         _damage = _damage min 0.95
     };

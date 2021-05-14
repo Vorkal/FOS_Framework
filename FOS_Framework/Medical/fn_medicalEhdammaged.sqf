@@ -5,6 +5,18 @@ _unit addEventHandler ["Dammaged", {
 
 	if (alive _unit && damage _unit >= 0.95 && _hitPoint == "incapacitated") then {
 
-		systemChat str ([_unit] call FOS_fnc_medicalCalculateState);
+		_state = [_unit] call FOS_fnc_medicalCalculateState;
+		switch (toUpper _state) do {
+		    case ("DOWN"): {
+				if (_unit getVariable ["FOS_MedicalState","HEALTHY"] isEqualTo "HEALTHY") then {
+					[_unit] spawn FOS_fnc_setDownState;
+				};
+		    };
+			default {
+				if (_unit getVariable ["FOS_MedicalState","HEALTHY"] isEqualTo "HEALTHY") then {
+					[_unit] spawn FOS_fnc_setDownState;
+				};
+			};
+		};
 	};
 }];

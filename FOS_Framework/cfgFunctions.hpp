@@ -14,7 +14,7 @@ class FOS
 		class spawnGarrison {};
 		class spawnCamp {};
 		class spawnDefend {};
-	}
+	};
 	class AO
 	{
 		file = "FOS_Framework\AO";
@@ -46,7 +46,7 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
-	}
+	};
 	class Difficulty
 	{
 		file = "FOS_Framework\Difficulty";
@@ -84,11 +84,14 @@ class FOS
 		file = "FOS_Framework\Medical";
 		class medicalInit {};
 		class beginHeal {};
+		class setDownState {};
 		class beginHealOther {};
 		class medicalEhHandleDamage {};
 		class medicalEHdammaged {};
 		class addHealAction {};
 		class medicalCalculateState {};
+		class medicalPPEffects {};
+
 	};
 	class Misc
 	{
