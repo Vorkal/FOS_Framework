@@ -85,6 +85,7 @@ class FOS
 		class medicalInit {};
 		class beginHeal {};
 		class setDownState {};
+		class setIncapacitatedState {};
 		class beginHealOther {};
 		class medicalEhHandleDamage {};
 		class medicalEHdammaged {};
