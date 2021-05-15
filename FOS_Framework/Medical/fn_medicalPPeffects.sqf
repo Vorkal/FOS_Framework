@@ -62,11 +62,23 @@ switch (toLower _type) do {
     };
     case (toLower "unconscious"): {
         if (_mode) then {
+
             if (isNil {missionNameSpace getVariable ["FOS_Medical_BlackPP",nil]}) then { //Make sure this is not already active
+
                 _blackPP = ppEffectCreate ["colorCorrections", 1502];
                 _blackPP ppEffectEnable true;
-                _blackPP ppEffectAdjust [1.0, 1.0, 0.0, [0, 0, 0, 1], [0.0, 1.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0],[0.50,0.25,1,0,0,0.5,0.745]];
-                _blackPP ppEffectCommit 0.25;
+                _blackPP ppEffectAdjust [1.0, 1.0, 0.0, [0, 0, 0, 1], [0.0, 1.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0],[0,0,1,0,0,0.5,0.745]];
+                _blackPP ppEffectCommit 0;
+
+                _currentSound = soundVolume;
+                0 fadeSound 0;
+                [_blackPP,_currentSound] spawn {
+                    _delay = random [5,10,25];
+                    sleep _delay;
+                    10 fadeSound (_this # 1);
+                    (_this # 0) ppEffectAdjust [1.0, 1.0, 0.0, [0, 0, 0, 1], [0.0, 1.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0],[0.50,0.25,1,0,0,0.5,0.745]];
+                    (_this # 0) ppEffectCommit 10;
+                };
                 //Store handler
                 missionNameSpace setVariable ["FOS_Medical_BlackPP",_blackPP];
             };
