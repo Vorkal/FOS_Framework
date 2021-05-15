@@ -55,10 +55,6 @@ if (_state) then {
         };
     };
 
-    ["DOWN",false] call FOS_fnc_medicalPPEffects;
-} else {
-    //Declare unit healthy
-    _unit setVariable ["FOS_MedicalState","HEALTHY"];
     //Remove PP effect
     ["DOWN",false] call FOS_fnc_medicalPPEffects;
     //heal all damage
@@ -67,4 +63,7 @@ if (_state) then {
     _hudState = shownHud;
     _hudstate set [0,true];
     showHud _hudState;
+} else {
+    //Declare unit healthy
+    _unit setVariable ["FOS_MedicalState","HEALTHY"];
 };
