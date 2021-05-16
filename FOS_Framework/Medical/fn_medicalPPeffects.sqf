@@ -71,14 +71,27 @@ switch (toLower _type) do {
                 _blackPP ppEffectCommit 0;
 
                 _currentSound = soundVolume;
+                _currentMusic = musicVolume;
+                _currentEnvironment = environmentVolume;
+                _currentRadio = radioVolume;
+
                 0 fadeSound 0;
-                [_blackPP,_currentSound] spawn {
+                0 fadeMusic 0;
+                0 fadeEnvironment 0;
+                0 fadeRadio 0;
+
+                [_blackPP,_currentSound,_currentMusic,_currentEnvironment,_currentRadio] spawn {
                     _delay = random [5,10,25];
                     sleep _delay;
                     10 fadeSound (_this # 1);
+                    10 fadeMusic (_this # 2);
+                    10 fadeEnvironment (_this # 3);
+                    10 fadeRadio (_this # 4);
+
                     (_this # 0) ppEffectAdjust [1.0, 1.0, 0.0, [0, 0, 0, 1], [0.0, 1.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0],[0.50,0.25,1,0,0,0.5,0.745]];
                     (_this # 0) ppEffectCommit 10;
                 };
+
                 //Store handler
                 missionNameSpace setVariable ["FOS_Medical_BlackPP",_blackPP];
             };
