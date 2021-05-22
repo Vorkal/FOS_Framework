@@ -92,6 +92,8 @@ class FOS
 		class addHealAction {};
 		class medicalCalculateState {};
 		class medicalPPEffects {};
+		class setUnconsciousState {};
+		class calculateBandageTime {};
 
 	};
 	class Misc
