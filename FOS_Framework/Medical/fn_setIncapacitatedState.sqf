@@ -24,8 +24,16 @@ if (_state) then {
 
     //Find the most damaged part of body and play injured animation for it
     _list = ["hitface","hitneck","hithead","hitpelvis","hitabdomen","hitdiaphragm","hitchest","hitbody","hitarms","hithands","hitlegs","incapacitated"];
-    _list = _list - ["incapacitated"]; //Don't check 'incapacitated'. Almost always at 1 when killed
-    _highestDamageIndex = _list find (selectMax (getAllHitPointsDamage _unit));
+    _hitpointDamage = getAllHitPointsDamage _unit # 2;
+
+    //Don't check 'incapacitated'. Almost always at 1 when killed
+    _list = _list - ["incapacitated"];
+    _hitpointDamage deleteAt 11;
+
+    _highestDamageIndex = _hitpointDamage find (selectMax _hitpointDamage);
+
+    //No damage detected. Select first index.
+    if (_highestDamageIndex == -1) then {_highestDamageIndex = 0;};
     switch (toLower (_list # _highestDamageIndex)) do {
 
         //Head hit the most
@@ -39,7 +47,6 @@ if (_state) then {
         case "hitdiaphragm";
         case "hitchest";
         case "hitbody";
-        case "incapacitated";
         case "hitpelvis": {
             _animation = "UnconsciousReviveBody";
         };
@@ -74,6 +81,7 @@ if (_state) then {
     _unit switchMove "unconsciousrevivedefault";
     _unit playMove "unconsciousOutProne";
     _unit setUnconscious false;
+    _unit setCaptive false;
 
     //Remove PP effect
     ["INCAPACITATED",false] call FOS_fnc_medicalPPEffects;

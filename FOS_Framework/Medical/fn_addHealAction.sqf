@@ -1,12 +1,14 @@
 params [["_unit",objNull,[objNull]]];
 
-[
+_id = [
 _unit,
 "Treat " + name _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
-((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target >= 0.25 && _this getUnitTrait 'medic' isEqualTo false))
+_target != _this
+&&
+((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target > 0.25 && _this getUnitTrait 'medic' isEqualTo false))
 &&
 _target distance _this < 3
 &&
@@ -25,13 +27,25 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments', '_progress', '_maxProgress'];
+    //Slowly remove damage
+    if (12 % 4 == 0) then {
+        if (_caller getUnitTrait 'medic') then { //is medic
+            _target setHitIndex [round random 11, 0, false];
+        } else { //is not medic
+            _target setHitIndex [round random 11, 0.25, false];
+        };
+    };
     if ("MedicOther" in animationState _caller isEqualTo false) then {
         _caller playAction "MedicOther";
     };
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
-    _target setDamage 0.25;
+    if (_caller getUnitTrait 'medic') then {
+        _target setDamage 0;
+    } else {
+        _target setDamage 0.25;
+    };
     _caller removeItem "FirstAidKit";
     if ("ppn" in animationState _caller) then { // Prone detected in animation
         if ([currentWeapon player] call BIS_fnc_invSlotType select 0 == 1) exitWith {
@@ -51,6 +65,8 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
+    [_target,_actionId] remoteExec ["BIS_fnc_holdActionRemove",0];
+    [_target] remoteExec ["FOS_fnc_addStabilizeAction",0];
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
@@ -73,11 +89,15 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
+    [_target,_actionId] remoteExec ["BIS_fnc_holdActionRemove",0];
+    [_target] remoteExec ["FOS_fnc_addHealAction",0];
 },
 [],
-12,
+[_unit] call FOS_fnc_calculateBandageTime,
 9999,
 false,
 false,
 true
 ] call BIS_fnc_holdActionAdd;
+
+_unit setVariable ["FOS_fnc_healActionID",_id,true];
