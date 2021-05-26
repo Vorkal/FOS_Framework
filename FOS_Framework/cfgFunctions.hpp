@@ -90,6 +90,7 @@ class FOS
 		class medicalEhHandleDamage {};
 		class medicalEHdammaged {};
 		class addHealAction {};
+		class removeHealAction {};
 		class medicalCalculateState {};
 		class medicalPPEffects {};
 		class setUnconsciousState {};

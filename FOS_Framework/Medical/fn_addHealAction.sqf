@@ -1,10 +1,7 @@
 params [["_unit",objNull,[objNull]]];
 
 //Remove heal action if it already exists
-_id = _unit getVariable ["FOS_fnc_healActionID",-1];
-if (_id isNotEqualTo -1) then {
-    [_unit,_id] call BIS_fnc_holdActionRemove
-};
+[_unit] call FOS_fnc_removeHealAction;
 
 
 _id = [
@@ -13,8 +10,6 @@ _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
-_target != _this
-&&
 ((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target > 0.25 && _this getUnitTrait 'medic' isEqualTo false))
 &&
 _target distance _this < 3
@@ -52,8 +47,9 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
         _target setDamage 0;
     } else {
         _target setDamage 0.25;
+        _caller removeItem "FirstAidKit";
     };
-    _caller removeItem "FirstAidKit";
+
     if ("ppn" in animationState _caller) then { // Prone detected in animation
         if ([currentWeapon player] call BIS_fnc_invSlotType select 0 == 1) exitWith {
             _caller switchMove "amovppnemstpsraswrfldnon";
@@ -72,11 +68,14 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
-    /* [_target] remoteExecCall ["FOS_fnc_addHealAction",0]; */
+    //Remove heal action on everyone entirely.
+    [_target] remoteExecCall ["FOS_fnc_removeHealAction",0];
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
     if ('FirstAidKit' in items _caller isEqualTo false) exitWith {};
+
+    //Remove the healing animation instantly. Moving the player into the most suitable stance.
     if ("ppn" in animationState _caller) then { // Prone detected in animation
         if ([currentWeapon player] call BIS_fnc_invSlotType select 0 == 1) exitWith {
             _caller switchMove "amovppnemstpsraswrfldnon";
@@ -95,6 +94,7 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
+    //bandage cancelled. Re-add heal action to unit to recalcualte bandage time for everyone
     [_target] remoteExecCall ["FOS_fnc_addHealAction",0];
 },
 [],
