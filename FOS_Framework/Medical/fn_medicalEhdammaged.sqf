@@ -31,7 +31,7 @@ _unit addEventHandler ["Dammaged", {
 	} else {
 		_actionID = _unit getVariable ["FOS_fnc_healActionID",-1];
 		if (_actionID != -1) then {
-			[_unit,_actionID] call BIS_fnc_holdActionRemove;
+			[_unit,_actionID] remoteExecCall ["BIS_fnc_holdActionRemove",0];
 		};
 	    [_unit] remoteExecCall ["FOS_fnc_addHealAction",0];
 	};

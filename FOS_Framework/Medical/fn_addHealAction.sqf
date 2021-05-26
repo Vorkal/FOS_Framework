@@ -1,5 +1,12 @@
 params [["_unit",objNull,[objNull]]];
 
+//Remove heal action if it already exists
+_id = _unit getVariable ["FOS_fnc_healActionID",-1];
+if (_id isNotEqualTo -1) then {
+    [_unit,_id] call BIS_fnc_holdActionRemove
+};
+
+
 _id = [
 _unit,
 "Treat " + name _unit,
@@ -65,8 +72,7 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
-    [_target,_actionId] remoteExec ["BIS_fnc_holdActionRemove",0];
-    [_target] remoteExec ["FOS_fnc_addStabilizeAction",0];
+    /* [_target] remoteExecCall ["FOS_fnc_addHealAction",0]; */
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
@@ -89,15 +95,14 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
-    [_target,_actionId] remoteExec ["BIS_fnc_holdActionRemove",0];
-    [_target] remoteExec ["FOS_fnc_addHealAction",0];
+    [_target] remoteExecCall ["FOS_fnc_addHealAction",0];
 },
 [],
-[_unit] call FOS_fnc_calculateBandageTime,
+[_unit,2,2] call FOS_fnc_calculateBandageTime,
 9999,
 false,
 false,
 true
 ] call BIS_fnc_holdActionAdd;
 
-_unit setVariable ["FOS_fnc_healActionID",_id,true];
+_unit setVariable ["FOS_fnc_healActionID",_id];
