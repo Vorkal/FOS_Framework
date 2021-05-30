@@ -7,7 +7,7 @@ if (_state) then {
     //Play PP effects for player
     ["INCAPACITATED",true] call FOS_fnc_medicalPPEffects;
     //Set variable
-    _unit setVariable ["FOS_MedicalState","INCAPACITATED"];
+    _unit setVariable ["FOS_MedicalState","INCAPACITATED",true];
     //Disable action menu
     _hudState = shownHud;
     _hudstate set [0,false];
@@ -21,7 +21,7 @@ if (_state) then {
     //Wait until player rolls over
     waitUntil {animationState _unit isEqualTo "unconsciousrevivedefault"};
 
-
+    [_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
     //Find the most damaged part of body and play injured animation for it
     _list = ["hitface","hitneck","hithead","hitpelvis","hitabdomen","hitdiaphragm","hitchest","hitbody","hitarms","hithands","hitlegs","incapacitated"];
     _hitpointDamage = getAllHitPointsDamage _unit # 2;
@@ -94,5 +94,5 @@ if (_state) then {
 
 } else {
     //Declare unit healthy
-    _unit setVariable ["FOS_MedicalState","HEALTHY"];
+    _unit setVariable ["FOS_MedicalState","HEALTHY",true];
 };

@@ -90,11 +90,13 @@ class FOS
 		class medicalEhHandleDamage {};
 		class medicalEHdammaged {};
 		class addHealAction {};
-		class removeHealAction {};
 		class medicalCalculateState {};
 		class medicalPPEffects {};
 		class setUnconsciousState {};
 		class calculateBandageTime {};
+		class addStabilizeAction {};
+		class addReviveAction {};
+		class forceRevive {};
 
 	};
 	class Misc

@@ -5,7 +5,7 @@ if !(_unit isEqualTo player) exitWith {};
 if (_state) then {
     if (_unit getVariable ["FOS_MedicalState","HEALTHY"] isEqualTo "DOWN") exitWith {};
     //Set variable
-    _unit setVariable ["FOS_MedicalState","DOWN"];
+    _unit setVariable ["FOS_MedicalState","DOWN",true];
     //Play PP effects for player
     ["DOWN",true] call FOS_fnc_medicalPPEffects;
     //Disable action menu
@@ -23,6 +23,7 @@ if (_state) then {
 
     //Wait until player rolls over
     waitUntil {animationState _unit isEqualTo "unconsciousrevivedefault"};
+    [_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
     //Wait until player is no longer injured or until player is healthy.
     waitUntil {_unit getVariable ["FOS_MedicalState","HEALTHY"] isNotEqualTo "DOWN" || inputAction "moveForward" isEqualTo 1};
 
@@ -65,5 +66,5 @@ if (_state) then {
     showHud _hudState;
 } else {
     //Declare unit healthy
-    _unit setVariable ["FOS_MedicalState","HEALTHY"];
+    _unit setVariable ["FOS_MedicalState","HEALTHY",true];
 };

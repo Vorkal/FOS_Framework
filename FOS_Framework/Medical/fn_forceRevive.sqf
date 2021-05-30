@@ -1,20 +1,13 @@
-params ["_state"];
+params [["_unit",player]];
 
-switch (toUpper _unit getVariable ["FOS_MedicalState","HEALTHY"]) do {
-    case ("DOWN"): {
-        //Declare unit healthy
-        _unit setVariable ["FOS_MedicalState","HEALTHY"];
-    };
-    case ("INCAPACITATED"): {
-        //Declare unit healthy
-        _unit setVariable ["FOS_MedicalState","HEALTHY"];
-    };
-    case ("UNCONSCIOUS"): {
-        //Declare unit healthy
-        _unit setVariable ["FOS_MedicalState","HEALTHY"];
-        ["unconscious",false] call FOS_fnc_medicalPPEffects;
-        _unit setUnconscious false;
-        showHud true;
-        _unit setCaptive false;
-    };
-};
+//Declare unit healthy
+_unit setVariable ["FOS_MedicalState","HEALTHY",true];
+{["unconscious",false] call FOS_fnc_medicalPPEffects} forEach ["DOWN","INCAPACITATED","UNCONSCIOUS"];
+_unit setUnconscious false;
+
+if (vehicle _unit != _unit) then {moveOut _unit};
+
+showHud true;
+_unit setCaptive false;
+
+_unit setDamage 0;

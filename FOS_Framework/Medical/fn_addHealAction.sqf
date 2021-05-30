@@ -1,7 +1,10 @@
-params [["_unit",objNull,[objNull]]];
+params [["_unit",player,[objNull]]];
 
 //Remove heal action if it already exists
-[_unit] call FOS_fnc_removeHealAction;
+_id = _unit getVariable ["FOS_fnc_healActionID",-1];
+if (_id isNotEqualTo -1) then {
+    [_unit,_id] call BIS_fnc_holdActionRemove
+};
 
 
 _id = [
@@ -10,6 +13,8 @@ _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
+alive _target
+&&
 ((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target > 0.25 && _this getUnitTrait 'medic' isEqualTo false))
 &&
 _target distance _this < 3
@@ -17,28 +22,36 @@ _target distance _this < 3
 stance _this in ['UNDEFINED',''] isEqualTo false
 &&
 _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
-"'FirstAidKit' in items _this",
+"'FirstAidKit' in items _this || ('Medkit' in items _this && _this getUnitTrait 'medic')",
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
 
-    if ('FirstAidKit' in items _caller) then {
-        _caller playAction "MedicOther";
+    if ('FirstAidKit' in items _caller || ("Medkit" in items _caller && _caller getUnitTrait "Medic")) then { //Medical Equipment found
+        if (_target == _caller) then {
+            _caller playAction "Medic";
+        } else {
+            _caller playAction "MedicOther";
+        };
     } else {
-        cutText ["No FAKs remaining", "PLAIN", 0.05];
+        cutText ["No medical equipment remaining", "PLAIN", 0.05];
     };
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments', '_progress', '_maxProgress'];
     //Slowly remove damage
-    if (12 % 4 == 0) then {
+    if (_progress % 2 == 0) then {
         if (_caller getUnitTrait 'medic') then { //is medic
             _target setHitIndex [round random 11, 0, false];
         } else { //is not medic
             _target setHitIndex [round random 11, 0.25, false];
         };
     };
-    if ("MedicOther" in animationState _caller isEqualTo false) then {
-        _caller playAction "MedicOther";
+    if ({_x in animationState _caller} count ["MedicOther","Medic"] isEqualTo 0) then {
+        if (_target == _caller) then {
+            _caller playAction "Medic";
+        } else {
+            _caller playAction "MedicOther";
+        };
     };
 },
 {
@@ -68,8 +81,6 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
             _caller switchMove "amovpknlmstpsraswlnrdnon";
         };
     };
-    //Remove heal action on everyone entirely.
-    [_target] remoteExecCall ["FOS_fnc_removeHealAction",0];
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
@@ -98,7 +109,7 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isEqualTo 'HEALTHY'",
     [_target] remoteExecCall ["FOS_fnc_addHealAction",0];
 },
 [],
-[_unit,2,2] call FOS_fnc_calculateBandageTime,
+[_unit,2,3] call FOS_fnc_calculateBandageTime,
 9999,
 false,
 false,
