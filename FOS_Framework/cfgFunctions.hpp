@@ -97,6 +97,8 @@ class FOS
 		class addStabilizeAction {};
 		class addReviveAction {};
 		class forceRevive {};
+		class dragPlayer {};
+		class draggedPLayer {};
 
 	};
 	class Misc
