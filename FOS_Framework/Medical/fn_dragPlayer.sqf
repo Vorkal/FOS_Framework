@@ -26,4 +26,5 @@ if (_mode) then {
     };
 } else {
     _unit setVariable ["FOS_dragging",nil,true];
+    _unit switchMove "AcinPknlMstpSrasWrflDnon_AmovPknlMstpSrasWrflDnon";
 };
