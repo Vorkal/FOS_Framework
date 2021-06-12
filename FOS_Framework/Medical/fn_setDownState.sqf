@@ -23,8 +23,8 @@ if (_state) then {
 
     //Wait until player rolls over
     waitUntil {animationState _unit isEqualTo "unconsciousrevivedefault"};
-    [_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
-    //Wait until player is no longer injured or until player is healthy.
+
+    //Wait until player is no longer injured or presses their forward key.
     waitUntil {_unit getVariable ["FOS_MedicalState","HEALTHY"] isNotEqualTo "DOWN" || inputAction "moveForward" isEqualTo 1};
 
     //Remove unconscious flag
