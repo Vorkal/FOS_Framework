@@ -13,6 +13,8 @@ _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
+isNil {_this getVariable ['FOS_dragging',nil]}
+&&
 alive _target
 &&
 ((damage _target >= 0 && _this getUnitTrait 'medic') || (damage _target > 0.25 && _this getUnitTrait 'medic' isEqualTo false))

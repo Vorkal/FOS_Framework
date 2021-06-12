@@ -1,5 +1,8 @@
 params [["_unit",objNull,[objNull]]];
 
+//add drag action as well
+[_unit] remoteExecCall ["FOS_fnc_addDragAction",0];
+
 //Remove stabilize action if it already exists
 _id = _unit getVariable ["FOS_stabilizeActionID",-1];
 if (_id isNotEqualTo -1) then {
@@ -13,6 +16,8 @@ _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
+isNil {_this getVariable ['FOS_dragging',nil]}
+&&
 _target != _this
 &&
 _target distance _this < 3
