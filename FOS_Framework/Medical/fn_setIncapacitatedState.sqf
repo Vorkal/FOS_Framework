@@ -21,7 +21,7 @@ if (_state) then {
     //Wait until player rolls over
     waitUntil {animationState _unit isEqualTo "unconsciousrevivedefault"};
 
-    [_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
+    
     //Find the most damaged part of body and play injured animation for it
     _list = ["hitface","hitneck","hithead","hitpelvis","hitabdomen","hitdiaphragm","hitchest","hitbody","hitarms","hithands","hitlegs","incapacitated"];
     _hitpointDamage = getAllHitPointsDamage _unit # 2;
@@ -69,6 +69,10 @@ if (_state) then {
     _unit switchMove _animation + "_Base";
 
     while {_unit getVariable ["FOS_MedicalState","HEALTHY"] isEqualTo "INCAPACITATED"} do {
+
+        //If the unit is being dragged. Then wait.
+        waitUntil {isNil {_unit getVariable ["FOS_dragBy",nil]}};
+
         _timeStart = time;
 
         //Loop injury state

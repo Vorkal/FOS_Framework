@@ -12,7 +12,6 @@ if (_state) then {
     if (vehicle _unit != _unit) then {_unit playAction "unconscious"}; //In a vehicle
 
     _unit setCaptive true;
-    [_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
 } else {
     //Declare unit healthy
     _unit setVariable ["FOS_MedicalState","HEALTHY",true];
