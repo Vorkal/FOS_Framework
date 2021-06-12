@@ -27,6 +27,7 @@ _unit addEventHandler ["Dammaged", {
 				};
 			};
 		};
+		[_unit] remoteExecCall ["FOS_fnc_addStabilizeAction",0];
 	} else {
 		//Most likely a scripted setHit if there is no _projectile or _shooter
 		if (_shooter isEqualTo objNull && _projectile isEqualTo objnull) exitWith {};
