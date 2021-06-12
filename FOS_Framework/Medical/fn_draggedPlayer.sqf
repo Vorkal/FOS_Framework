@@ -1,18 +1,17 @@
 params [["_unit",objNull,[objnull]],["_target",objNull,[objnull]],["_mode",true,[true]]];
 
-
 if (_mode) then {
     _unit setVariable ["FOS_dragBy",_target,true];
 
     _unit setUnconscious false;
     sleep 0.1;
 
+    _unit switchMove "AinjPpneMrunSnonWnonDb_grab";
+    _unit playMove "AinjPpneMrunSnonWnonDb";
+
     //Make sure they are not already attached
     detach _unit;
     detach _target;
-
-    _unit switchMove "AinjPpneMrunSnonWnonDb_grab";
-    _unit playMove "AinjPpneMrunSnonWnonDb";
 
     //Attach units together.
     _unit attachTo [_target, [0, 1.1, 0.05]];
@@ -44,15 +43,21 @@ if (_mode) then {
     detach _unit;
     detach _target;
     //_unit switchMove "Unconscious";
+    systemChat toUpper (_unit getVariable ["FOS_MedicalState","HEALTHY"]);
     switch (toUpper (_unit getVariable ["FOS_MedicalState","HEALTHY"])) do {
         case ("DOWN"): {
-            [_unit] spawn FOS_fnc_setDownState;
+            _unit setUnconscious false;
+            _unit setCaptive false;
+            _unit switchMove "AinjPpneMstpSnonWrflDb_release";
+            _unit playMoveNow "unconsciousOutProne";
         };
         case ("INCAPACITATED"): {
-            [_unit] spawn FOS_fnc_setIncapacitatedState
+            _unit switchMove "unconsciousrevivedefault";
+            _unit setUnconscious true;
         };
         case ("UNCONSCIOUS"): {
-            [_unit] spawn FOS_fnc_setUnconsciousState;
+            _unit playMove "unconsciousrevivedefault";
+            _unit setUnconscious true;
         };
         default {
             _unit setUnconscious false;
