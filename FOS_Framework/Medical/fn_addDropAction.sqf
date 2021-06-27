@@ -13,7 +13,11 @@ _unit,
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "\a3\ui_f\data\IGUI\cfg\holdactions\holdAction_revive_ca.paa",
 "
-!isNil {_this getVariable ['FOS_dragging',nil]}
+(
+    isNil {_this getVariable ['FOS_Carrying',nil]} isEqualTo false
+||
+    isNil {_this getVariable ['FOS_dragging',nil]} isEqualTo false
+)
 &&
 alive _target
 &&
@@ -33,8 +37,14 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isNotEqualTo 'HEALTHY'",
 },
 {
     params ['_target', '_caller', '_actionId', '_arguments'];
-    [_caller,_target,false] remoteExecCall ["FOS_fnc_dragPlayer",_caller];
-    [_target,_caller,false] remoteExecCall ["FOS_fnc_draggedPlayer",_target];
+
+    if (!isNil {_caller getVariable ["FOS_dragging",nil]}) then { //Is dragging player
+        [_caller,_target,false] remoteExecCall ["FOS_fnc_dragPlayer",_caller];
+        [_target,_caller,false] remoteExecCall ["FOS_fnc_draggedPlayer",_target];
+    } else { //Is carrying player
+        [_caller,_target,false] remoteExecCall ["FOS_fnc_carryPlayer",_caller];
+        [_target,_caller,false] remoteExecCall ["FOS_fnc_carriedPlayer",_target];
+    };
 
     //Remove drop action
     _id = _target getVariable ["FOS_fnc_dropActionID",-1];

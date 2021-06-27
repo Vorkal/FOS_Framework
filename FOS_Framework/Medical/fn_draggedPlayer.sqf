@@ -21,15 +21,13 @@ if (_mode) then {
     //Create loop for animation handling
     [_unit,_target] spawn {
         params ["_unit","_target"];
-        private ["_pos","_moving"];
+        private ["_pos"];
 
         while {!isNil {_unit getVariable ["FOS_dragBy",nil]}} do {
 
             if (animationState _target == "AcinPknlMwlkSrasWrflDb") then {
-                _moving = true;
                 _unit playMoveNow "AinjPpneMrunSnonWnonDb";
             } else {
-                _moving = false;
                 _unit switchMove "AinjPpneMrunSnonWnonDb_still";
             };
 
@@ -42,8 +40,6 @@ if (_mode) then {
     _unit setVariable ["FOS_dragBy",nil,true];
     detach _unit;
     detach _target;
-    //_unit switchMove "Unconscious";
-    systemChat toUpper (_unit getVariable ["FOS_MedicalState","HEALTHY"]);
     switch (toUpper (_unit getVariable ["FOS_MedicalState","HEALTHY"])) do {
         case ("DOWN"): {
             _unit setUnconscious false;

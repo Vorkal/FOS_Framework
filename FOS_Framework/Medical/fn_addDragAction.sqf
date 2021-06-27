@@ -35,6 +35,7 @@ _target getVariable ['FOS_MedicalState','HEALTHY'] isNotEqualTo 'HEALTHY'",
     params ['_target', '_caller', '_actionId', '_arguments'];
     [_caller,_target] remoteExec ["FOS_fnc_dragPlayer",_caller];
     [_target,_caller] remoteExec ["FOS_fnc_draggedPlayer",_target];
+    //[_target] call FOS_fnc_addCarryAction;
     [_target] call FOS_fnc_addDropAction;
 },
 {

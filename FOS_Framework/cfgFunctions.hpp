@@ -99,8 +99,11 @@ class FOS
 		class forceRevive {};
 		class dragPlayer {};
 		class draggedPLayer {};
+		class carriedPlayer {};
+		class carryPlayer {};
 		class addDragAction {};
 		class addDropAction {};
+		class addCarryAction {};
 	};
 	class Misc
 	{

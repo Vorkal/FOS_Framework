@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=2;
@@ -8,22 +8,210 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=19;
+		nextID=25;
 	};
 	class Camera
 	{
-		pos[]={14602.627,67.336418,16827.594};
-		dir[]={0.029816898,-0.54238337,0.83963412};
-		up[]={0.019249329,0.84012812,0.54204726};
-		aside[]={0.9993915,4.5989145e-007,-0.035490759};
+		pos[]={4359.3555,230.45374,3791.0303};
+		dir[]={0.0043101851,-0.35133779,0.93624258};
+		up[]={0.0016174108,0.9362492,0.35133496};
+		aside[]={0.99999195,-2.0125299e-008,-0.0046034651};
 	};
 };
 binarizationWanted=0;
+sourceName="FrameworkTestBed";
+addons[]=
+{
+	"A3_Characters_F"
+};
 class AddonsMetaData
 {
+	class List
+	{
+		items=1;
+		class Item0
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
 };
 randomSeed=11704977;
 class ScenarioData
 {
 	author="417";
+};
+class Mission
+{
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=12;
+		minute=0;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+	class Entities
+	{
+		items=2;
+		class Item0
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4360.4331,226.44783,3805.207};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="testHost";
+						isPlayer=1;
+					};
+					id=20;
+					type="B_Soldier_SL_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=19;
+		};
+		class Item1
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4360.6401,226.58437,3811.8481};
+						angles[]={0,3.130091,0};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="testclient";
+						isPlayable=1;
+					};
+					id=22;
+					type="B_Soldier_TL_F";
+					atlOffset=-1.5258789e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male10ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=21;
+			atlOffset=-1.5258789e-005;
+		};
+	};
 };
