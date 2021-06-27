@@ -367,6 +367,5 @@ if (serverCommandAvailable "#kick" || !(isMultiplayer)) then {
     };
 };
 
-#include "playerSettings.sqf";
 
 "briefing system initialized" call FOS_fnc_debugSystemAdd;
