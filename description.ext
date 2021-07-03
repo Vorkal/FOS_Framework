@@ -95,6 +95,11 @@ wreckRemovalMinTime = WRECKREMOVALMINTIME;
 wreckRemovalMaxTime = WRECKREMOVALMAXTIME;
 minPlayerDistance = MINPLAYERDISTANCE;
 
+////////////////////
+/// GEAR MANAGER ///
+////////////////////
+allowProfileGlasses = ALLOWPROFILEGLASSES;
+
 //Class useful for creating template task names. Leave empty if you don't know what it does.
 class CfgTaskDescriptions
 {

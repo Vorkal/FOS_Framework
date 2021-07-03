@@ -300,6 +300,8 @@
 #define AUTOGEARPLAYERS false //Will essentially do a rearm on units at start. Helps ensure that their loadouts have sufficient mags.
 #define AUTOGEARARRAY [["FirstAidKit",2]] //An array you can use to pass items (not magazines) to the auto gear function at start.
 
+#define ALLOWPROFILEGLASSES 1 //0 will stop glasses set in player profile from being added to player's gear
+
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///
 //////////////////////////
