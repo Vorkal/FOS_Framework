@@ -6,7 +6,6 @@ if (DEBUGMESSAGESYSTEM) then {
 
 //Server only code
 if (isServer) then {
-
 	//debug channel
 	private _channelName = "Debug Channel";
 	private _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], _channelName, "Debug Message:", []];
@@ -32,6 +31,8 @@ if (isServer) then {
 	} else {
 		//safe start timer isn't needed for singleplayer. Set it to false.
 		missionNameSpace setVariable ["FOS_Safemode",false];
+		//Add zeus for all players in preview
+		{_x call FOS_fnc_zeusInit} forEach allPLayers;
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
 	if (REVIVEENABLED isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
@@ -139,12 +140,7 @@ if (hasInterface) then {
 		["InitializePlayer", [player]] spawn BIS_fnc_dynamicGroups;
 		[] call FOS_fnc_orbatnotes;
 	};
-
 	if (didJip) then {
-		createDialog "FOS_JipMenu";
-		{
-			_index = lbAdd [1500, (format ["%1",name _x])];
-			lbSetData [1500, _index,(format ["%1", _x])];
-		} foreach playableUnits;
+		[false] spawn FOS_fnc_jipSpawn;
 	};
 };

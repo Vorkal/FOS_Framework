@@ -74,6 +74,11 @@ class FOS
 		class setIFF {};
 		class setNametag {};
 	};
+	class JIP
+	{
+		file = "FOS_Framework\JIP";
+		class jipSpawn {};
+	};
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
