@@ -97,5 +97,5 @@ addMissionEventHandler ["EachFrame", {
 		_type = _typeSide + "_" + _type;
 		_color = [side _x, true] call BIS_fnc_sideColor;
 		[_x,_type,_color, groupId _x] spawn FOS_fnc_setGrpTracker
-	} forEach _groups;
+	} forEach _groups - [group player];
 }];
