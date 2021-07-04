@@ -115,15 +115,12 @@ if (isServer) then {
 if (hasInterface) then {
 	//Execute briefing
 	[] spawn FOS_fnc_briefing;
-	if (FIRETEAM) then {
+	if (FIRETEAM) then { //FT markers requested in description.ext
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	[] spawn FOS_fnc_addTeleportAction;
 	if (IFF) then {
 		[] spawn FOS_fnc_iffInit;
-	};
-	if (NAMETAG) then {
-		[] spawn FOS_fnc_nametagInit;
 	};
 	if (GRPTRACKER) then {
 		[] spawn FOS_fnc_grpTrackerinit;
