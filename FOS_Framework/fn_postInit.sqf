@@ -6,7 +6,6 @@ if (DEBUGMESSAGESYSTEM) then {
 
 //Server only code
 if (isServer) then {
-
 	//debug channel
 	private _channelName = "Debug Channel";
 	private _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], _channelName, "Debug Message:", []];
@@ -17,7 +16,7 @@ if (isServer) then {
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
-	if (isMultiplayer) then {
+	if !(is3denPreview) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		if (RESTRICTATSTART) then {
@@ -32,6 +31,8 @@ if (isServer) then {
 	} else {
 		//safe start timer isn't needed for singleplayer. Set it to false.
 		missionNameSpace setVariable ["FOS_Safemode",false];
+		//Add zeus for all players in preview
+		{_x call FOS_fnc_zeusInit} forEach allPLayers;
 	};
 	//Disable revive if ace detected or player wants it off in the parameters
 	if (REVIVEENABLED isEqualTo 0 || isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true ) then {
@@ -74,7 +75,7 @@ if (isServer) then {
 			_x addEventHandler ["Killed", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
 				//Check if the killer was friendly
-				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+				if ([side group _instigator, side group _unit] call BIS_fnc_sideIsFriendly) then {
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Kill Tracker: %1 killed %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {
@@ -114,15 +115,12 @@ if (isServer) then {
 if (hasInterface) then {
 	//Execute briefing
 	[] spawn FOS_fnc_briefing;
-	if (FIRETEAM) then {
+	if (FIRETEAM) then { //FT markers requested in description.ext
 		[] spawn FOS_fnc_FTMarkerInit;
 	};
 	[] spawn FOS_fnc_addTeleportAction;
 	if (IFF) then {
 		[] spawn FOS_fnc_iffInit;
-	};
-	if (NAMETAG) then {
-		[] spawn FOS_fnc_nametagInit;
 	};
 	if (GRPTRACKER) then {
 		[] spawn FOS_fnc_grpTrackerinit;
@@ -139,12 +137,7 @@ if (hasInterface) then {
 		["InitializePlayer", [player]] spawn BIS_fnc_dynamicGroups;
 		[] call FOS_fnc_orbatnotes;
 	};
-
 	if (didJip) then {
-		createDialog "FOS_JipMenu";
-		{
-			_index = lbAdd [1500, (format ["%1",name _x])];
-			lbSetData [1500, _index,(format ["%1", _x])];
-		} foreach playableUnits;
+		[false] spawn FOS_fnc_jipSpawn;
 	};
 };

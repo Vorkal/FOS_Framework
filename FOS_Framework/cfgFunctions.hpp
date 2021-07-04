@@ -72,6 +72,12 @@ class FOS
 		file = "FOS_Framework\IFF";
 		class iffInit {};
 		class setIFF {};
+		class setNametag {};
+	};
+	class JIP
+	{
+		file = "FOS_Framework\JIP";
+		class jipSpawn {};
 	};
 	class Spectator
 	{
@@ -101,11 +107,6 @@ class FOS
 		class addTeleportAction {};
 		class dynamicEarplugs {};
 	};
-	class nametag {
-		file = "FOS_Framework\Nametag"
-		class nametagInit {};
-		class setNametag {};
-	};
 	class SafeStart
 	{
 		file = "FOS_Framework\SafeStart";
@@ -114,6 +115,7 @@ class FOS
 		class safeStartToggleClient {};
 		class safeStartToggleServer {};
 		class safeStartRestrictZone {};
+		class adminSafezoneAlert {};
 	};
 	class Zeus
 	{
