@@ -1,14 +1,13 @@
 
 params [
     ["_group",grpNull,[grpnull]],
-    ["_markerType","b_inf",["string"]],
+    ["_markerType","b_armor",["string"]],
     ["_markerColor","ColorWEST",["string"]],
     ["_text",nil]
 ];
 private ["_initGroupId"];
 
 if (_group isEqualTo grpNull) exitWith {};
-if (!canSuspend) exitWith {_this spawn FOS_fnc_setGrpTracker};
 if (isNil "_text") then {_text = groupId _group};
 
 _grpMarker = format ["grpMrk_%1", _group];
@@ -28,6 +27,7 @@ if (getMarkerPos _grpMarker isEqualTo [0,0,0]) then {
     _grpMarker setMarkerTypeLocal _markerType;
     _grpMarker setMarkerText _text;
 };
+
 
 //fixes a bug that can be caused by the editor.
 if (time == 0) then {

@@ -17,7 +17,7 @@ if (isServer) then {
 	[AOMARKERNAME] spawn FOS_fnc_missionAOInit;
 	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
 
-	if (isMultiplayer) then {
+	if !(is3denPreview) then {
 		//Run a script that protects players until the admin gives the start signal
 		["init"] spawn FOS_fnc_safeStartServerInit;
 		if (RESTRICTATSTART) then {

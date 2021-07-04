@@ -72,6 +72,7 @@ class FOS
 		file = "FOS_Framework\IFF";
 		class iffInit {};
 		class setIFF {};
+		class setNametag {};
 	};
 	class Spectator
 	{
@@ -100,11 +101,6 @@ class FOS
 		class pauseMissionClient {};
 		class addTeleportAction {};
 		class dynamicEarplugs {};
-	};
-	class nametag {
-		file = "FOS_Framework\Nametag"
-		class nametagInit {};
-		class setNametag {};
 	};
 	class SafeStart
 	{

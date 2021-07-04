@@ -197,7 +197,10 @@
 /// GROUP TRACKER ///
 /////////////////////
 
-#define GRPTRACKER true //Enable group trackers
+#define GRPTRACKER true
+#define GRPTRACKERLIST "FRIENDLY" //Options available are "FRIENDLY","SIDE","FRIENDLY PLAYERS", or "SIDE PLAYERS"
+#define GRPTRACKERNEEDGPS false //Requires group to have GPS
+#define GRPTRACKERGPSNEEDED ["itemGPS"] //Class name of GPS item required
 #define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
 
 ///////////
@@ -205,32 +208,22 @@
 ///////////
 
 #define IFF true // toggle IFF
-#define IFFLOCKSETTINGS false //Locks players from being able to adjust from mission settings
-#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
+#define IFFMODE 2 // 0 = no IFF. 1 = Nametag. 2 = group indicators
+#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 1 = group only | 2 = side only | 3 = friendly only | 4 = players only
 #define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
-#define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
-#define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define IFFMAXDISPLAYDISTANCE 50 //Max distance before nametag is no longer always displayed.
+#define IFFPRECISETHRESHOLD 75 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
 #define IFFGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
+#define IFFBLACKLIST [] //List of units that need to be blacklisted from any IFF features
+
 //////////////////
 /// Mission AO ///
 //////////////////
 
 #define AOMARKERNAME "AO" //Hides area outside of marker area.
 
-///////////////
-/// NAMETAG ///
-///////////////
-
-#define NAMETAG true //Enables nametags
-#define NAMETAGLOCKSETTINGS false //Locks players from being able to adjust from mission settings
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
-#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
-#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
-#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
-#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
-#define NAMETAGGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
 
 ////////////////////////
 /// RESPAWN SETTINGS ///
@@ -253,6 +246,7 @@
 #define PAUSEATSTART false //Starts the game paused. Can be unpaused by admin in FOS ADMIN MENU
 #define RESTRICTATSTART false //Drags players back if they walk too far from starting point at safe start
 #define RESTRICTDISTANCE 50 //How far the player can go before it drags them back
+
 
 /////////////////
 /// SPECTATOR ///
