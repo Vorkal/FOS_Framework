@@ -45,9 +45,9 @@ private ["_movein"];
 //Exit the script if player alive
 if (alive player && _reviveDowned) exitWith {
     if (isClass(configfile >> "CfgPatches" >> "ace_medical")) then { //Ace detected
-        [player] call ace_medical_treatment_fnc_fullHealLocal
+        [player] call ace_medical_treatment_fnc_fullHealLocal;
         [player,player] call ACE_medical_fnc_treatmentAdvanced_fullHealLocal;
-        [player, false] call ace_medical_fnc_setUnconscious;
+        [player, false,0,true] call ace_medical_fnc_setUnconscious;
     } else { //No ace
         if (player getVariable ["BIS_revive_incapacitated",false]) then { //Player vanilla revive downed
             ["",1,player] call BIS_fnc_reviveOnState;
