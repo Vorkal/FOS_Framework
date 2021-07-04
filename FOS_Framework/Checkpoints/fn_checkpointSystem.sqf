@@ -37,7 +37,7 @@ params [
     ["_spawn",false,[true,objNull,[1,2,3],"test"]],
     ["_Gear","",["default"]],
     ["_Protection",0,[417]],
-    ["_reviveDowned",false,[false]]
+    ["_reviveDowned",true,[false]]
 ];
 
 private ["_movein"];
