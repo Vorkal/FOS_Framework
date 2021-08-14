@@ -140,4 +140,23 @@ if (hasInterface) then {
 	if (didJip) then {
 		[false] spawn FOS_fnc_jipSpawn;
 	};
+
+	//Spectator on uncon
+
+	//Player hit. Check if uncon.
+	if (UNCONSCIOUSSPECTATOR) then {
+		player addEventHandler ["Hit", {
+			params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+			if (alive player && (player getVariable ["ace_isunconscious",false] || lifestate player isEqualTo "INCAPACITATED")) then { //Player is uncon
+				//Run SPECTATOR
+				[true] call FOS_fnc_SpectatorOnUnconcious;
+				[] spawn {
+					//Wait until not uncon to exit spectator
+					waitUntil {sleep 1;alive player && (player getVariable ["ace_isunconscious",false] || lifestate player isEqualTo "INCAPACITATED") isEqualTo false};
+					[false] call FOS_fnc_SpectatorOnUnconcious;
+				};
+			};
+		}];
+	};
 };

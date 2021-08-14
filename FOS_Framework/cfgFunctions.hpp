@@ -84,6 +84,7 @@ class FOS
 		file = "FOS_Framework\Spectator";
 		class spectatorOnRespawn {};
 		class spectatorOnKilled {};
+		class spectatorOnUnconcious {};
 	};
 	class Misc
 	{

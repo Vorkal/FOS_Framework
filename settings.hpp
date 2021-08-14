@@ -263,6 +263,8 @@
 #define SHOWENTITYLIST true //show entitiy/location widget
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by players.
 
+#define UNCONSCIOUSSPECTATOR false //Players that go unconscious will get the spectator camera.
+
 ////////////////////////
 /// Mission Teleport ///
 ///////////////////////
