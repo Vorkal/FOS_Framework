@@ -42,21 +42,21 @@ if (player distance _unit < IFFMAXDISTANCE && cursorTarget isEqualTo _unit) then
     _line1_start = _headPos;
     _line1_end = _line1_start vectorAdd [0,0, 0.30 * _scale];
     _line2_end = _headPos getPos [0.65 * _scale, (_unit getDir player) - 90];
-    _line2_end set [2, (_unit selectionPosition "Head") # 2];
+    _line2_end set [2, (_unit modelToWorldVisual (_unit selectionPosition "Head")) # 2];
     _line2_end = _line2_end vectorAdd [0,0, 0.30 * _scale];
     //set variables for group icon
     _grpIco_Pos =  _headPos getPos [0.0495 *  _scale, (_unit getDir player) - 90];
-    _grpIco_Pos set [2, (_unit selectionPosition "Head") # 2];
+    _grpIco_Pos set [2, (_unit modelToWorldVisual (_unit selectionPosition "Head")) # 2];
     _grpIco_Pos = _grpIco_Pos vectorAdd [0,0, 0.42 * _scale];
 
     //set variables for health icon
     _healthIco_Pos = _headPos getPos [0.25 * _scale, (_unit getDir player) - 90];
-    _healthIco_Pos set [2, (_unit selectionPosition "Head") # 2];
+    _healthIco_Pos set [2, (_unit modelToWorldVisual (_unit selectionPosition "Head")) # 2];
     _healthIco_Pos = _healthIco_Pos vectorAdd [0,0, 0.42 * _scale];
     _healthIco_Info = linearConversion [0,1,damage _unit,100,0,true];
     //set variables for ammo icon
     _AmmoIco_Pos = _headPos getPos [0.40 * _scale, (_unit getDir player) - 90];
-    _AmmoIco_Pos set [2, (_unit selectionPosition "Head") # 2];
+    _AmmoIco_Pos set [2, (_unit modelToWorldVisual (_unit selectionPosition "Head")) # 2];
     _AmmoIco_Pos = _AmmoIco_Pos vectorAdd [0,0, 0.42 * _scale];
 
     _oldAmmoAmount = 0;
@@ -72,7 +72,7 @@ if (player distance _unit < IFFMAXDISTANCE && cursorTarget isEqualTo _unit) then
     _AmmoIco_Info = linearConversion [0,_oldAmmoAmount,_ammoAmount,0,100,false];
     //set variables for stamina icon
     _StaminaIco_Pos = _headPos getPos [0.55 * _scale, (_unit getDir player) - 90];
-    _StaminaIco_Pos set [2, (_unit selectionPosition "Head") # 2];
+    _StaminaIco_Pos set [2, (_unit modelToWorldVisual (_unit selectionPosition "Head")) # 2];
     _StaminaIco_Pos = _StaminaIco_Pos vectorAdd [0,0, 0.42 * _scale];
     _staminaIco_Info = linearConversion [0,1,getFatigue _unit,100,0,true];
     //Find the current rank of unit in their group
@@ -84,12 +84,17 @@ if (player distance _unit < IFFMAXDISTANCE && cursorTarget isEqualTo _unit) then
     //Draw the lines and icons to show status
     drawLine3D [_line1_start, _line1_end, _color];
     drawLine3D [_line1_end, _line2_end, _color];
+    //Store health icon
+    _healthIco_Icon = "a3\ui_f\data\map\mapcontrol\hospital_ca.paa";
     if (isClass(configfile >> "CfgPatches" >> "ace_medical") isEqualTo true) then {
         _healthIco_Info = _unit getVariable ["ace_medical_woundbleeding",0];
         _healthIco_Info = linearConversion [0,1,_healthIco_Info,0,100,true];
-        drawIcon3D ["\a3\ui_f\data\igui\cfg\cursors\unitbleeding_ca.paa", _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,(_healthIco_Info toFixed 2) + "%",IFFOUTLINE,_textDistance];
+        if (_unit getVariable ["ace_medical_woundbleeding",0] > 0) then { // Unit is bleeding. Change icon.
+            _healthIco_Icon = "\a3\ui_f\data\igui\cfg\cursors\unitbleeding_ca.paa"
+        };
+        drawIcon3D [_healthIco_Icon, _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,(_healthIco_Info toFixed 2) + "%",IFFOUTLINE,_textDistance];
     } else {
-        drawIcon3D ["a3\ui_f\data\map\mapcontrol\hospital_ca.paa", _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,str round _healthIco_Info + "%",IFFOUTLINE,_textDistance];
+        drawIcon3D [_healthIco_Icon, _color, _healthIco_Pos,_icoDistance, _icoDistance, 0,str round _healthIco_Info + "%",IFFOUTLINE,_textDistance];
     };
     drawIcon3D [_rank, _color, _grpIco_Pos, _icoDistance, _icoDistance, 0, groupID group _unit,IFFOUTLINE,_textDistance];
 
