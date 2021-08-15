@@ -1,15 +1,16 @@
-params [
-["_missionKey","",["String"]],
-["_missionIndex",0,[42]],
-["_persistentPlayerGear",true,[true]],
-["_refillPartialMags",true,[true]]];
+#define PERSISTENTPLAYERGEAR false
+#define REFILLPARTIALMAGS true
+
+#include "..\..\settings.hpp"
+if !(CAMPAIGNSYSTEM) exitWith {};
+if !(isServer) exitWith {};
 
 _campaignList = profileNameSpace getVariable ["FOS_CAMPAIGNDATA",[]];
 
-if (_missionIndex == 0) exitWith {};
+if (MISSIONINDEX == 0) exitWith {};
 
 //Find the data of the correct mission
-_previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == _missionKey && _x # 0 # 1 == (_missionIndex - 1)};
+_previousCampaignIndex = _campaignList findIf {_x # 0 # 0 == MISSIONKEY && _x # 0 # 1 == (MISSIONINDEX - 1)};
 
 _campaignData = _campaignList # _previousCampaignIndex;
 
@@ -18,16 +19,19 @@ _campaignData = _campaignList # _previousCampaignIndex;
 */
 
 //load player loadouts
-if (_persistentPlayerGear) then {
+if (PERSISTENTPLAYERGEAR) then {
 	_loadouts = _campaignData # 1;
 	{
+		//TODO: Figure out why this doesn't work during post init
+		waitUntil {time > 0.1};
 		//Find unique ID and index in the array
 		_playerID = getPlayerUID _x;
 	    _playerIndex = _loadouts findIf {_x # 0 == _playerID};
 
 	    //Assign gear
 	    if (_playerIndex != -1) then {
-	        _x setUnitLoadout [_loadouts # _playerIndex # 1,_refillPartialMags]
+			[_x,[_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]] remoteExecCall ["setUnitLoadout",_x];
+	       // _x setUnitLoadout [_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]
 	    };
 	} forEach (call BIS_fnc_listPlayers);
 };

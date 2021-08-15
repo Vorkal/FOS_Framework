@@ -31,7 +31,7 @@
 #define OVERVIEWDESCRIPTION "OVERVIEWDESCRIPTION" //Description of the mission listed below the overview picture on mission select screen
 #define OVERVIEWPICTURE "" //Image seen on mission select screen
 
-#define BRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
+#define SHOWBRIEFING 1 //Set to 0 to skip the map and load instantly into the mission
 #define SKIPLOBBY 0 //Set to 1 to skip the slot screen and assign players to random roles. Based on the mission context, this may be prefered
 
 #define DISABLEAI 1 // Disables AI for playable slots
@@ -67,7 +67,7 @@
         /////////////
         /// END 3 ///
         /////////////
-        #define END3NAME END3//Name of the win type as shown to the admin (NO SPACES!)
+        #define END3NAME END3 //Name of the win type as shown to the admin (NO SPACES!)
         #define END3TITLE "Mission accomplished!" //Title that appears to the players as this mission end type is triggered
         #define END3SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END3DESCRIPTION "" //Text that appears in the debriefing screen
@@ -87,7 +87,7 @@
         /////////////
         /// END 5 ///
         /////////////
-        #define END5NAME END5//Name of the win type as shown to the admin (NO SPACES!)
+        #define END5NAME END5 //Name of the win type as shown to the admin (NO SPACES!)
         #define END5TITLE "Mission failed!" //Title that appears to the players as this mission end type is triggered
         #define END5SUBTITLE "" //Subtitle that appears below the title as the mission end type is triggered. Leave blank to disable
         #define END5DESCRIPTION "" //Text that appears in the debriefing screen
@@ -171,6 +171,7 @@
 /// FIRETEAM MARKERS ///
 ////////////////////////
 
+#define FIRETEAM true //toggle fireteam markers
 #define DEATHMARKER true //True for a skull to replace the FT marker.
 #define DELETEONDEATH false //always delete the FT marker on death (Even if nobody has seen the death)
 #define DRAWPLAYER true //Controls if a marker is drawn for the player.
@@ -196,19 +197,26 @@
 /// GROUP TRACKER ///
 /////////////////////
 
+#define GRPTRACKER true
+#define GRPTRACKERLIST "FRIENDLY" //Options available are "FRIENDLY","SIDE","FRIENDLY PLAYERS", or "SIDE PLAYERS"
+#define GRPTRACKERNEEDGPS false //Requires group to have GPS
+#define GRPTRACKERGPSNEEDED ["itemGPS"] //Class name of GPS item required
 #define GRPTRACKERIGNOREACE false // By default, group trackers will not be created if ACE_MAP is detected. You can alter this behaviour by setting this to true
 
 ///////////
 /// IFF ///
 ///////////
 
-#define IFFLOCKSETTINGS false //Locks players from being able to adjust from mission settings
-#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 0: none/off || 1: side only || 2: Anyone who is considered friendly
+#define IFF true // toggle IFF
+#define IFFMODE 2 // 0 = no IFF. 1 = Nametag. 2 = group indicators
+#define IFFDEFAULTTARGET 2 //Controls the targets for IFF. 1 = group only | 2 = side only | 3 = friendly only | 4 = players only
 #define IFFMAXDISTANCE 1e10 //Max distance before IFF does not appear under any circumstances.
-#define IFFMAXDISPLAYDISTANCE 100 //Max distance before nametag is no longer always displayed.
-#define IFFPRECISETHRESHOLD 42 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
+#define IFFMAXDISPLAYDISTANCE 50 //Max distance before nametag is no longer always displayed.
+#define IFFPRECISETHRESHOLD 75 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
 #define IFFOUTLINE true //Outlines the icons and text
 #define IFFNEEDGLASSES false //Requires player to have tactical glasses in order to see IFF
+#define IFFGOGGLESNEEDED ["G_Tactical_Black","G_Tactical_Clear"] //class names of glasses required
+#define IFFBLACKLIST [] //List of units that need to be blacklisted from any IFF features
 
 //////////////////
 /// Mission AO ///
@@ -216,16 +224,6 @@
 
 #define AOMARKERNAME "AO" //Hides area outside of marker area.
 
-///////////////
-/// NAMETAG ///
-///////////////
-
-#define NAMETAGLOCKSETTINGS false //Locks players from being able to adjust from mission settings
-#define NAMETAGDEFAULTTARGET 1 //Controls the initial targets for nametag. 0: none/off || 1: squad members || 2: all friendly players (Turn off IFF for #2)
-#define NAMETAGMAXDISTANCE 1e10 //Max distance before nametag does not appear under any circumstances.
-#define NAMETAGMAXDISPLAYDISTANCE 75 //Max distance before nametag is no longer always displayed.
-#define NAMETAGPRECISETHRESHOLD 35 //At what distance past that point should the player need to be aiming *exactly* on the target to get a nametag to appear?
-#define NAMETAGNEEDGLASSES false //Requires player to have tactical glasses in order to see nametags
 
 ////////////////////////
 /// RESPAWN SETTINGS ///
@@ -249,6 +247,7 @@
 #define RESTRICTATSTART false //Drags players back if they walk too far from starting point at safe start
 #define RESTRICTDISTANCE 50 //How far the player can go before it drags them back
 
+
 /////////////////
 /// SPECTATOR ///
 /////////////////
@@ -263,6 +262,8 @@
 #define SHOWHEADER true //Show header
 #define SHOWENTITYLIST true //show entitiy/location widget
 #define HIDEUNKNOWNENEMY false //hide enemy not yet seen by players.
+
+#define UNCONSCIOUSSPECTATOR false //Players that go unconscious will get the spectator camera.
 
 ////////////////////////
 /// Mission Teleport ///
@@ -291,6 +292,11 @@
 
 #define FRIENDLYFIRETRACKER true //Notify the admin when a friendly HITS a friendly
 #define FRIENDLYKILLTRACKER true //Notify the admin when a friendly KILLS a friendly
+
+#define AUTOGEARPLAYERS false //Will essentially do a rearm on units at start. Helps ensure that their loadouts have sufficient mags.
+#define AUTOGEARARRAY [["FirstAidKit",2]] //An array you can use to pass items (not magazines) to the auto gear function at start.
+
+#define ALLOWPROFILEGLASSES 1 //0 will stop glasses set in player profile from being added to player's gear
 
 //////////////////////////
 /// OVERRIDE FUNCTIONS ///

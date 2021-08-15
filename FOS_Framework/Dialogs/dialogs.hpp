@@ -16,7 +16,7 @@ class FOS_JipMenu
 		};
 		class FOS_TELEPORT: RscButtonMenuOK
 		{
-			text = "Spawn"; //--- ToDo: Localize;
+			text = "Spawn";
 			x = 12 * GUI_GRID_W + GUI_GRID_X;
 			y = 21 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5 * GUI_GRID_W;
@@ -25,6 +25,7 @@ class FOS_JipMenu
 		};
 		class FOS_CANCEL: RscButtonMenuCancel
 		{
+			idc = 1501;
 			text = "Cancel";
 			x = 21 * GUI_GRID_W + GUI_GRID_X;
 			y = 21 * GUI_GRID_H + GUI_GRID_Y;
@@ -35,7 +36,7 @@ class FOS_JipMenu
 		class FOS_Text: RscText
 		{
 			idc = 1001;
-			text = "Choose a squad member to spawn on!"; //--- ToDo: Localize;
+			text = "Choose a squad member to spawn on!";
 			sizeEx = 0.030;
 			x = 0.412344 * safezoneW + safezoneX;
 			y = 0.225 * safezoneH + safezoneY;

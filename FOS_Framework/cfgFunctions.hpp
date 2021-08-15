@@ -72,16 +72,24 @@ class FOS
 		file = "FOS_Framework\IFF";
 		class iffInit {};
 		class setIFF {};
+		class setNametag {};
+	};
+	class JIP
+	{
+		file = "FOS_Framework\JIP";
+		class jipSpawn {};
 	};
 	class Spectator
 	{
 		file = "FOS_Framework\Spectator";
 		class spectatorOnRespawn {};
 		class spectatorOnKilled {};
+		class spectatorOnUnconcious {};
 	};
 	class Misc
 	{
 		file = "FOS_Framework\Misc";
+		class autogear {};
 		class Bombardment {};
 		class getAdmin {};
 		class messageAdmin {};
@@ -100,17 +108,6 @@ class FOS
 		class addTeleportAction {};
 		class dynamicEarplugs {};
 	};
-	class nametag {
-		file = "FOS_Framework\Nametag"
-		class nametagInit {};
-		class setNametag {};
-	};
-	class Params
-	{
-		file = "FOS_Framework\Params";
-		class getParamValue {};
-		class saveParams {};
-	}
 	class SafeStart
 	{
 		file = "FOS_Framework\SafeStart";
@@ -119,6 +116,7 @@ class FOS
 		class safeStartToggleClient {};
 		class safeStartToggleServer {};
 		class safeStartRestrictZone {};
+		class adminSafezoneAlert {};
 	};
 	class Zeus
 	{
