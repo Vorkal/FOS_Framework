@@ -12,7 +12,6 @@ Returns:
 Nothing
 */
 
-#include "..\..\settings.hpp"
 
 params [
 	["_markerName","AO"],
@@ -20,7 +19,6 @@ params [
 	["_cacheOutsideAO",false]
 ];
 
-if !(MISSIONAO) exitWith {};
 if (getMarkerPos _markerName isEqualTo [0,0,0]) exitWith {};
 
 

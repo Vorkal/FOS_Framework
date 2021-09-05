@@ -75,7 +75,7 @@ if (isServer) then {
 			_x addEventHandler ["Killed", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
 				//Check if the killer was friendly
-				if ([side group _instigator, side group _unit] call BIS_fnc_sideIsFriendly) then {
+				if ([side group _instigator, side group _unit] call BIS_fnc_sideIsFriendly && side group _unit isNotEqualTo civilian) then {
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Kill Tracker: %1 killed %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {
@@ -92,7 +92,7 @@ if (isServer) then {
 			_x addEventHandler ["Hit", {
 				params ["_unit", "_source", "_damage", "_instigator"];
 				//Check if the _instigator was friendly
-				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly) then {
+				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly && side group _unit isNotEqualTo civilian) then {
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Fire Tracker: %1 attacked %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {
@@ -139,5 +139,24 @@ if (hasInterface) then {
 	};
 	if (didJip) then {
 		[false] spawn FOS_fnc_jipSpawn;
+	};
+
+	//Spectator on uncon
+
+	//Player hit. Check if uncon.
+	if (UNCONSCIOUSSPECTATOR) then {
+		player addEventHandler ["Hit", {
+			params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+			if (alive player && (player getVariable ["ace_isunconscious",false] || lifestate player isEqualTo "INCAPACITATED")) then { //Player is uncon
+				//Run SPECTATOR
+				[true] call FOS_fnc_SpectatorOnUnconcious;
+				[] spawn {
+					//Wait until not uncon to exit spectator
+					waitUntil {sleep 1;alive player && (player getVariable ["ace_isunconscious",false] || lifestate player isEqualTo "INCAPACITATED") isEqualTo false};
+					[false] call FOS_fnc_SpectatorOnUnconcious;
+				};
+			};
+		}];
 	};
 };
