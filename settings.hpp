@@ -141,6 +141,12 @@
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
+/////////////
+/// DEBUG ///
+/////////////
+
+#define DEBUG false //Enable to have capability
+
 //////////////////
 /// DIFFICULTY ///
 //////////////////

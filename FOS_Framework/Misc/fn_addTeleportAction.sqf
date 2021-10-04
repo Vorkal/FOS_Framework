@@ -15,8 +15,8 @@ Example:
 [flag,[[position player, 200]],true,false,true] spawn FOS_fnc_addTeleportAction;
 */
 #include "..\..\settings.hpp"
-if !(MISSIONTELEPORT) exitWith {};
-if (isNil {TELEOBJECT}) exitWith {};
+if !(MISSIONTELEPORT) exitWith {"Mission teleport disabled. Exiting" call FOS_fnc_debugSystemAdd; //Debug message};
+if (isNil {TELEOBJECT}) exitWith {"object assigned for teleport does not exist. Exiting" call FOS_fnc_debugSystemAdd; //Debug message};
 
 params [
     ["_object",TELEOBJECT,[objNull]],

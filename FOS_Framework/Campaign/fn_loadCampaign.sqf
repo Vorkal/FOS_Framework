@@ -20,8 +20,10 @@ _campaignData = _campaignList # _previousCampaignIndex;
 
 //load player loadouts
 if (PERSISTENTPLAYERGEAR) then {
+	"Persistent player gear enabled: Looking for player gear" call FOS_fnc_debugSystemAdd;  //Debug message
 	_loadouts = _campaignData # 1;
 	{
+		"Checking for " + name _x + "'s gear." call FOS_fnc_debugSystemAdd;  //Debug message
 		//TODO: Figure out why this doesn't work during post init
 		waitUntil {time > 0.1};
 		//Find unique ID and index in the array
@@ -30,9 +32,12 @@ if (PERSISTENTPLAYERGEAR) then {
 
 	    //Assign gear
 	    if (_playerIndex != -1) then {
+			"Gear found for" + name _x call FOS_fnc_debugSystemAdd;
 			[_x,[_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]] remoteExecCall ["setUnitLoadout",_x];
 	       // _x setUnitLoadout [_loadouts select _playerIndex select 1,REFILLPARTIALMAGS]
-	    };
+	    } else {
+			"Gear not found for" + name _x call FOS_fnc_debugSystemAdd;  //Debug message
+		};
 	} forEach (call BIS_fnc_listPlayers);
 };
 
@@ -46,12 +51,14 @@ _objectData = _campaignData # 2;
 //Get all objects in current mission
 _allObjects = entities "";
 {
+	"Checking for " + str _x call FOS_fnc_debugSystemAdd; //Debug message
     //String of current object
     _currentObjectName = _x # 0;
     //Find if string matches string name of any other object
     _index = _allObjects findIf {_currentObjectName == str _x};
 
     if (_index != -1) then {
+			str _x + " found" call FOS_fnc_debugSystemAdd; //Debug message
         _object = _allObjects # _index;
 
         //Load hit points
@@ -99,5 +106,7 @@ _allObjects = entities "";
         if !(_itemData isEqualTo [[],[]]) then { //Array has data. Add data to _object
             {_object additemCargoGlobal [_x, _itemData # 1 # _forEachIndex]} forEach _itemData # 0;
         };
-    };
+    } else {
+		str _x + " not found" call FOS_fnc_debugSystemAdd; //Debug message
+	};
 } forEach _objectData;
