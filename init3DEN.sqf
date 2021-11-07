@@ -1,22 +1,43 @@
+#include "settings.hpp"
 
-if (uiNamespace getVariable ["FOS_FirstLaunch", true]) then {
+
+_missionName = (missionName + "." + worldName);
+
+if (uiNamespace getVariable ["FOS_FirstLaunch", true]) then { //First launch of this session
+
+    //Provide instructions to the editor
     systemChat "Welcome to the FOS Framework!";
     systemChat "Check out the Settings.hpp and briefing.sqf file for most configurable options";
+
+    //Save the start of this mission editing session. Used for tracking time spent
+    uiNamespace setVariable ["FOS_startTime",round diag_ticktime];
+
+
+
+};
+if (TRACKEDITTIME) then {
+    //Display time spent on first launch
+    _timeHash = profileNameSpace getVariable ["FOS_timeTracker",nil];
+    _time = _timeHash get _missionName;
+
+    if (_time > 0) then {
+        systemChat ("The time you have spent on " + missionName + " is:   " + ([_time, "HH:MM:SS", false] call BIS_fnc_secondsToString));
+    };
 };
 
 uiNamespace setVariable ["FOS_FirstLaunch", false];
 
 _FOSMissions = profileNameSpace getVariable ["FOS_MissionList",[]];
 
-_index = _FOSMissions findIf {(missionName + "." + worldName) == _x};
+_index = _FOSMissions findIf {(_missionName) == _x};
 //Only keep up with the last 25 missions
-if (count _FOSMissions > 25) then {
+/* if (count _FOSMissions > 25) then {
     _FOSMissions deleteat 0;
-};
-_FOSMissions pushBackUnique (missionName + "." + worldName);
+}; */
+_FOSMissions pushBackUnique (_missionName);
 profilenamespace setVariable ["FOS_MissionList",_FOSMissions];
 
-if (_index == -1) then {
+if (_index == -1) then {//Mission name not detected in recent missions loaded. Run first time setup
     _emptyDisplay = findDisplay 313 createDisplay "RscDisplayEmpty";
 
     _backGround  = _emptyDisplay ctrlCreate ["RscBackground", -1];
@@ -319,3 +340,38 @@ if (_index == -1) then {
         _display closeDisplay 1;
     }];
 };
+
+
+
+//Add event handlers that store time on save or auto save
+add3DENEventHandler ["OnMissionSave", {
+
+    //Get mission name formatting
+    _missionName = (missionName + "." + worldName);
+    //Check if mission timer exists
+    _timeHash = profileNameSpace getVariable ["FOS_timeTracker",nil];
+
+    //Create time hashmap if it doesn't exist
+    if (isNil "_timeHash") then {//Timer does not exist
+        profileNameSpace setVariable ["FOS_timeTracker",createHashMap];
+        _timeHash = profileNameSpace getVariable ["FOS_timeTracker",nil];
+    };
+    //Get the start of mission editing
+    _startTime = uiNamespace getVariable ["FOS_startTime",round diag_ticktime];
+    //Get the last time stamp
+    _lastTime = uiNamespace getVariable ["FOS_LastTime",round diag_ticktime];
+
+    //Store the current time or add onto the last time stamp
+    if (isNil {_timeHash get _missionName}) then { //mission does not exist
+        //Add current time to time hashmap
+        _timeHash set [_missionName, _lastTime - _startTime];
+    } else { //value does exist
+        //Get the difference between the last time stamp and the current time stamp
+        _timeDifference = round diag_ticktime - _lastTime;
+        //add current time to last time stamp
+        _timeHash set [_missionName, (_timeHash get _missionName) + _timeDifference];
+    };
+    profileNameSpace setVariable ["FOS_timeTracker",_timeHash];
+    //Save time stamp
+    uiNamespace setVariable ["FOS_LastTime",round diag_ticktime];
+}];
