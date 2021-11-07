@@ -126,8 +126,9 @@ if (hasInterface) then {
 		[] spawn FOS_fnc_grpTrackerinit;
 	};
 
-
-	[FOS_difficulty] spawn FOS_fnc_difficultyInit;
+	if (!isServer) then { //Make sure 'client' isn't also the server because then it will have already ran.
+		[FOS_difficulty] spawn FOS_fnc_difficultyInit;
+	};
 
 	if (REDUCELOOT) then {
 		[player] call FOS_fnc_limitLootDrop;

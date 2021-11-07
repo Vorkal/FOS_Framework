@@ -8,7 +8,7 @@
     <br/> can be used to create a new line
 */
 
-_autolinebreak = false; //Set this to true if you want the briefing file to auto detect double line breaks
+_autolinebreak = false; //Set this to true if you want the briefing file to auto detect line breaks
 ////////////////////////
 /// PLAYER BRIEFING ///
 ///////////////////////

@@ -36,6 +36,8 @@
 
 #define DISABLEAI 1 // Disables AI for playable slots
 
+#define TRACKEDITTIME false //Reports time worked on mission after mission load
+
 ////////////////
 /// Briefing ///
 ////////////////
@@ -141,6 +143,12 @@
 
 #define ANNOUNCEUSER true //Alert the entire server who pressed the call checkpoint button. Only tells current admin if set to false
 
+/////////////
+/// DEBUG ///
+/////////////
+
+#define DEBUG false //Enable to have capability
+
 //////////////////
 /// DIFFICULTY ///
 //////////////////
@@ -235,7 +243,7 @@
 #define RESPAWNBUTTON 1 //Allows players to respawn themselves in the menu
 #define RESPAWNPROMPT 0 //show scoreboard dialog and respawn timer on death. RespawnType must be set to 3
 #define RESPAWNONSTART 0 // -1 = don't respawn on start. Don't run respawn script || 0 = don't respawn on start. Run respawn script || 1 = respawn on start. Run respawn script.
-#define RESPAWNTEMPLATES {"SpectatorFilter", "checkpointSystem"};
+#define RESPAWNTEMPLATES {"SpectatorFilter", "checkpointSystem"}; //You probably shouldn't touch this unless you know what you are doing.
 
 //////////////////
 /// SAFE START ///

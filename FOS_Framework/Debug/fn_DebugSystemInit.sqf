@@ -17,7 +17,7 @@ params [["_debug",true,[true]],["_frequency",0.75,[123]]];
 if (player != (call FOS_fnc_getAdmin)) exitWith {};
 
 
-if (is3denPreview) then {
+if (is3denPreview) then { //Executes test file if preview
     execVM "testfile.sqf";
 };
 

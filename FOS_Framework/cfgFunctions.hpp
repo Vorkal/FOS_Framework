@@ -31,6 +31,8 @@ class FOS
 		class saveCampaign {};
 		class loadCampaign {};
 		class assignCampaignObject {};
+		class assignCampaignVariable {};
+		class getCampaignVariable {};
 	};
 	class Checkpoints
 	{
@@ -106,7 +108,6 @@ class FOS
 		class pauseMissionServer {};
 		class pauseMissionClient {};
 		class addTeleportAction {};
-		class dynamicEarplugs {};
 	};
 	class SafeStart
 	{

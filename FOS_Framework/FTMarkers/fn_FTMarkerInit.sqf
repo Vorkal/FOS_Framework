@@ -41,10 +41,6 @@ _ftEventHandlers = {
 			};
 
 		}];
-
-	} forEach _units;
-
-	{
 		_x addEventHandler ["Hit", {
 			params ["_unit", "_source", "_damage", "_instigator"];
 			_FTMarker_Shadow = format ["FTMrk_%1_Shadow", name _unit];
@@ -54,9 +50,6 @@ _ftEventHandlers = {
 				_this setMarkerColor "colorBlack";
 			};
 		}];
-	} forEach _units;
-
-	{
 		if (DEATHMARKER) then {
 			_x addEventHandler ["Killed", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
@@ -79,8 +72,8 @@ _ftEventHandlers = {
 				deleteMarker _mrk;
 				deleteMarker _mrk_Shadow;
 			}];
-		}
-	} forEach _units
+		};
+	} forEach _units;
 };
 
 [units group player] call _ftEventHandlers;
@@ -125,6 +118,7 @@ addMissionEventHandler ["MapSingleClick", {
 	};
 };
 
+//Todo: this needs to be tied to an event handler
 [] spawn {
 	//Force exit if mission maker chose to use death markers
 	if !(DEATHMARKER) exitWith {};
