@@ -36,6 +36,8 @@
 
 #define DISABLEAI 1 // Disables AI for playable slots
 
+#define TRACKEDITTIME false //Reports time worked on mission after mission load
+
 ////////////////
 /// Briefing ///
 ////////////////
