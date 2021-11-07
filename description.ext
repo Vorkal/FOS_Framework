@@ -17,7 +17,7 @@ enableTargetDebug = 1;
 
 
 //Allows you to recompile functions in the function library without having to restart.
-allowFunctionsRecompile = 1; //You should only change this to 1 for a testing environment.
+allowFunctionsRecompile = 0; //You should only change this to 1 for a testing environment.
 
 //////////////
 /// Author ///
@@ -38,7 +38,7 @@ briefingName = BRIEFINGNAME;
 ////////////////////////
 /// Mission Settings ///
 ////////////////////////
-briefing = SHOWBRIEFING
+briefing = SHOWBRIEFING;
 aiKills = 0;
 debriefing = 1;
 skipLobby = SKIPLOBBY;
@@ -95,6 +95,11 @@ wreckRemovalMinTime = WRECKREMOVALMINTIME;
 wreckRemovalMaxTime = WRECKREMOVALMAXTIME;
 minPlayerDistance = MINPLAYERDISTANCE;
 
+////////////////////
+/// GEAR MANAGER ///
+////////////////////
+allowProfileGlasses = ALLOWPROFILEGLASSES;
+
 //Class useful for creating template task names. Leave empty if you don't know what it does.
 class CfgTaskDescriptions
 {
@@ -120,13 +125,6 @@ class CfgFunctions
 ///Parameters
 class Params
 {
-	class missionSettings
-	{
-		title = "### MISSION SETTINGS ###";
-		values[] = {};
-		texts[] = {};
-		default = 0;
-	};
     class difficulty
 	{
 		title = "Difficulty";
@@ -134,41 +132,6 @@ class Params
 		texts[] = {"Easy","Normal","Hard"};
 		default = 1;
 	};
-    class systemSettings
-	{
-		title = "### SYSTEM SETTINGS ###";
-		values[] = {};
-		texts[] = {};
-		default = 0;
-	};
-    class loadParams
-    {
-        title = "Load parameters (Be sure to change this to save if you change below settings)";
-		values[] = {0,1};
-		texts[] = {"Save","Load"};
-		default = 1;
-    };
-    class reviveSystem
-    {
-        title = "Vanilla Revive";
-		values[] = {0,1};
-		texts[] = {"Off","On"};
-		default = 1;
-    };
-    class ftMarkers
-    {
-        title = "FT markers";
-        values[] = {0,1};
-        texts[] = {"Off","On"};
-        default = 1;
-    };
-    class groupMarkers
-    {
-        title = "Group markers";
-        values[] = {0,1};
-        texts[] = {"Off","On"};
-        default = 1;
-    };
 };
 ///Endings
 class CfgDebriefing
@@ -239,7 +202,7 @@ class CfgNotifications {
 		iconPicture = "\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
 		priority = 7;
 		duration = 5;
-		title = "Safe Start"
+		title = "Safe Start";
 		sound = "defaultNotification";
 		soundClose = "defaultNotificationClose";
 		soundRadio = "";
@@ -250,8 +213,8 @@ class CfgNotifications {
 	class FOS_SafestartTimer : FOS_Safestart {
 	};
 	class FOS_SafestartEnd : FOS_Safestart {
-		description = "Safe Start ends"
-	}
+		description = "Safe Start ends";
+	};
 };
 
 class CfgRespawnTemplates

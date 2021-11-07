@@ -1,4 +1,4 @@
-#define MISSIONPERSISTANCE false
+//TODO: Include default.hpp
 #include "..\..\settings.hpp"
 params ["_end"];
 private ["_state","_missionSwitch"];
@@ -6,7 +6,7 @@ private ["_state","_missionSwitch"];
 if !(isServer) exitWith {};
 
 if (MISSIONPERSISTANCE) then {
-    [] call FOS_fnc_saveCampaign;
+    [MISSIONKEY,MISSIONINDEX,PERSISTENTPLAYERGEAR,SAVEARRAY] call FOS_fnc_saveCampaign;
 };
 
 //Enable safe start on mission end

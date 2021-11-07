@@ -8,16 +8,19 @@ You can also run a different fuction to copy all debug messages to your clipboar
 
 */
 
-#include "..\..\settings.hpp"
-if !(DEBUGMESSAGESYSTEM) exitWith {};
+
 
 scriptName "FOS_debugSystem";
-params [["_debug",true,[true]],["_frequency",5,[123]]];
+params [["_debug",true,[true]],["_frequency",0.75,[123]]];
 
 //Exit if player isn't admin
 if (player != (call FOS_fnc_getAdmin)) exitWith {};
 
-execVM "testfile.sqf";
+
+if (is3denPreview) then { //Executes test file if preview
+    execVM "testfile.sqf";
+};
+
 
 _originalState = missionNamespace getVariable ["FOS_debugSystem",[false,-1]];
 _scriptName = missionNamespace getVariable ["FOS_debugSystemName",nil];

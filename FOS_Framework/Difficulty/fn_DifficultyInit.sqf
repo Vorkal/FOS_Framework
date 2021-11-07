@@ -24,13 +24,14 @@ if (DYNAMICSKILL && isServer && missionNamespace getVariable ["BIS_exp_camp_dyna
 			[true,[[west,0.50,0.09,0.70,0.25],[east,0.50,0.09,0.70,0.25],[independent,0.50,0.09,0.70,0.25]]] call FOS_fnc_setDynamicSkill;
 		};
 	};
+	"Dynamic difficulty enabled" call FOS_fnc_debugSystemAdd; //Debug message
 };
 
 
 //// CLIENT CODE
 if (isPlayer player && DAMAGEREDUCER) then {
 	//Stop damage reducer from firing if ace_medical is detected
-	if (isClass(configfile >> "CfgPatches" >> "ace_medical")) exitWith {};
+	if (isClass(configfile >> "CfgPatches" >> "ace_medical")) exitWith {"damage reduction not applied. Ace detected." call FOS_fnc_debugSystemAdd;};
 	switch (_difficulty) do
 	{
 		case 0:
@@ -42,6 +43,7 @@ if (isPlayer player && DAMAGEREDUCER) then {
 				_newDamage = _currentHealth + (_damage * 0.25);
 				_newDamage
 			}];
+			"Added Easy mode damage reduction" call FOS_fnc_debugSystemAdd; //Debug message
 		};
 		case 1:
 		{
@@ -52,6 +54,7 @@ if (isPlayer player && DAMAGEREDUCER) then {
 				_newDamage = _currentHealth + (_damage * 0.50);
 				_newDamage
 			}];
+			"Added normal mode damage reduction" call FOS_fnc_debugSystemAdd;
 		};
 		case 2:
 		{
