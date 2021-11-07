@@ -31,6 +31,8 @@ class FOS
 		class saveCampaign {};
 		class loadCampaign {};
 		class assignCampaignObject {};
+		class assignCampaignVariable {};
+		class getCampaignVariable {};
 	};
 	class Checkpoints
 	{
