@@ -66,15 +66,17 @@ _objectList = _objectList + (missionNameSpace getVariable ["FOS_CampaignObjects"
 	};
 } forEach _objectList;
 
-//update list with new campaign
-_campaign = [_campaignMetaData,_playerData,_objectData];
-_campaignList pushBack _campaign;
-
 /*
-    VARIABLE DATA
+	CUSTOM DATA
 */
 
-/* TODO: Add Variable data functionlity */
+_campaignCustomVars = missionNameSpace getVariable ["FOS_CampaignVariables",createHashMap];
+
+//update list with new campaign
+_campaign = [_campaignMetaData,_playerData,_objectData,_campaignCustomVars];
+_campaignList pushBack _campaign;
+
+
 
 "Saved campaign data" call FOS_fnc_debugSystemAdd; //Debug message
 

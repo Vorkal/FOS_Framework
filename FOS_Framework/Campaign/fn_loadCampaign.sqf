@@ -110,3 +110,9 @@ _allObjects = entities "";
 		str _x + " not found" call FOS_fnc_debugSystemAdd; //Debug message
 	};
 } forEach _objectData;
+
+
+/* CUSTOM DATA */
+
+_campaignCustomVars = _campaignData # 3;
+ missionNameSpace setVariable ["FOS_CampaignVariables",_campaignCustomVars,true];
