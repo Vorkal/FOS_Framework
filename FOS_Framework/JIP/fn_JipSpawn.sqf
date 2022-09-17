@@ -14,12 +14,14 @@
 private ["_index"];
 params [["_canCancel",false,[true]]];
 
+
 //Uncomment if player does not spawn with itemRadio
 // Give unit a radio if he did not have one already
 //player linkItem "itemRadio";
 
 #include "..\..\settings.hpp"
 if !(JIPMENU) exitWith {};
+
 
 waitUntil {findDisplay 46 isNotEqualTo displayNull};
 
@@ -30,4 +32,7 @@ createDialog "FOS_JipMenu";
 {
 _index = lbAdd [1500, (format ["%1",name _x])];
 lbSetData [1500, _index,(format ["%1", _x])];
+
 } foreach _players;
+
+player removeAction 0;

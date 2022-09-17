@@ -93,6 +93,7 @@ if (isServer) then {
 				params ["_unit", "_source", "_damage", "_instigator"];
 				//Check if the _instigator was friendly
 				if ([side _instigator, side _unit] call BIS_fnc_sideIsFriendly && side group _unit isNotEqualTo civilian) then {
+
 					_admin = call FOS_fnc_getAdmin;
 					_message = format ["Friendly Fire Tracker: %1 attacked %2!",name _instigator,name _unit];
 					if (_admin != objNull) then {

@@ -38,7 +38,7 @@ briefingName = BRIEFINGNAME;
 ////////////////////////
 /// Mission Settings ///
 ////////////////////////
-briefing = SHOWBRIEFING
+briefing = SHOWBRIEFING;
 aiKills = 0;
 debriefing = 1;
 skipLobby = SKIPLOBBY;
@@ -202,7 +202,7 @@ class CfgNotifications {
 		iconPicture = "\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
 		priority = 7;
 		duration = 5;
-		title = "Safe Start"
+		title = "Safe Start";
 		sound = "defaultNotification";
 		soundClose = "defaultNotificationClose";
 		soundRadio = "";
@@ -213,8 +213,8 @@ class CfgNotifications {
 	class FOS_SafestartTimer : FOS_Safestart {
 	};
 	class FOS_SafestartEnd : FOS_Safestart {
-		description = "Safe Start ends"
-	}
+		description = "Safe Start ends";
+	};
 };
 
 class CfgRespawnTemplates

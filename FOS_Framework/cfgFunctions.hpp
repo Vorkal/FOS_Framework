@@ -4,8 +4,8 @@ class FOS
 	class functions
 	{
 		file = "FOS_Framework";
-		class preInit {preInit = 1};
-		class postInit {postInit = 1};
+		class preInit {preInit = 1;};
+		class postInit {postInit = 1;};
 	};
 	class AI
 	{
@@ -14,7 +14,7 @@ class FOS
 		class spawnGarrison {};
 		class spawnCamp {};
 		class spawnDefend {};
-	}
+	};
 	class AO
 	{
 		file = "FOS_Framework\AO";
@@ -48,7 +48,7 @@ class FOS
 		class debugSystemAdd {};
 		class debugSystemInit {};
 		class debugSystemCopy {};
-	}
+	};
 	class Difficulty
 	{
 		file = "FOS_Framework\Difficulty";
