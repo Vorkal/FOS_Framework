@@ -4,8 +4,8 @@ class FOS
 	class functions
 	{
 		file = "FOS_Framework";
-		class preInit {preInit = 1};
-		class postInit {postInit = 1};
+		class preInit {preInit = 1;};
+		class postInit {postInit = 1;};
 	};
 	class AI
 	{
