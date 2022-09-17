@@ -4,7 +4,7 @@ if !(GROUPTRACKER) exitWith {};
 
 //Do not initialize if ACE Blueforce tracking is possible
 if !(GRPTRACKERIGNOREACE) then {
-	if (isClass(configfile >> "CfgPatches" >> "ace_map")) exitWith {"Group tracker disabling. ACE detected" call FOS_fnc_debugSystemAdd; //Debug message};
+	if (isClass(configfile >> "CfgPatches" >> "ace_map")) exitWith {"Group tracker disabling. ACE detected" call FOS_fnc_debugSystemAdd};
 };
 
 addMissionEventHandler ["EachFrame", {
